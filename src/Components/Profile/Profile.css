@@ -1,0 +1,11 @@
+.profile-image { 
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+}
+
+.profile-root { 
+    width: 30px;
+    height: 30px;
+    margin-left: 30px;
+}

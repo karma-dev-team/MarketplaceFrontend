@@ -1,0 +1,16 @@
+.navigationmap-root { 
+    display: flex;
+    align-items: center;
+}
+
+.navigationmap-element { 
+    color: rbga(0, 0, 0, 0.6); 
+    margin: 18px 10px 0 0; 
+}
+
+.navigationmap-link {
+    margin: 10px 0; 
+    color: black; 
+    opacity: 0.6;
+    text-decoration: none;
+}

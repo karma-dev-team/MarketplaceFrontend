@@ -1,0 +1,15 @@
+.content { 
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.general-button { 
+  background-color: var(--button-color);
+  display: flex;
+  padding: 8px 10px;
+  border-radius: 2px;
+}
+
+:root { 
+  --button-color: #4971FC; 
+}

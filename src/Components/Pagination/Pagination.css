@@ -1,0 +1,28 @@
+
+.pagination-list { 
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.pagination-list li { 
+    margin: 3px; 
+}
+
+.left-arrow { 
+    rotate: -180deg; 
+}
+
+.page { 
+    padding: 3px 7px;
+    background-color: rgba(152, 175, 255, 0.6);
+    border-radius: 2px;
+}
+
+.arrow-button { 
+    padding: 0;
+    border: none;  
+    cursor: pointer;  
+    background-color: white;
+}
