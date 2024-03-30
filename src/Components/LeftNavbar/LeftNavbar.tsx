@@ -10,10 +10,12 @@ const LeftNavbarComponent: React.FC<props> = (props: props) => {
                     <img src={karmaStoreLogo} alt="home" />
                     <div className="logo-text">Karma store</div>
                 </Link>
+                <Link to={"/"}>
+                </Link>
             </div>
             <div className=""></div>
         </div>
     )
 }
 
-export default LeftNavbar; 
+export default LeftNavbarComponent; 
