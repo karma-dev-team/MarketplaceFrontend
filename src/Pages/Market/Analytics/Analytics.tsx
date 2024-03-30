@@ -1,4 +1,6 @@
-const Page: React.FC = () => {  
+import "./Analytics.css"
+
+const AnalyticsPage: React.FC = () => {  
     return (
         <div className="root-">
             
