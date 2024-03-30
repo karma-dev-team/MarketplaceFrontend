@@ -9,3 +9,5 @@ const NavItemComponent: React.FC<props> = (props: props) => {
         </div>
     )
 }
+
+export default NavItemComponent; 
