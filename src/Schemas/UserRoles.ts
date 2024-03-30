@@ -7,3 +7,5 @@ enum UserRoles {
     Owner = "Owner", 
     Superadmin = "Superadmin"
 }
+
+export default UserRoles; 

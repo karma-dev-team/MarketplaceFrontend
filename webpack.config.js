@@ -8,6 +8,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    alias: {
+      '@images': path.resolve(__dirname, 'src/Static/Images'),
+    },
   },
   module: {
     rules: [
@@ -30,7 +33,10 @@ module.exports = {
           },
         ],
       },
-      { test: /\\.(png|jp(e*)g|svg|gif)$/, use: ['file-loader'], }, 
+      {
+        test: /\.(png|jpe?g|svg|gif)$/,
+        use: ['file-loader'],
+      },
       {
         test: /\.css$/,
         use: [

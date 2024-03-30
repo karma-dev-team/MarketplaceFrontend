@@ -18,7 +18,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "@images/*": ["src/Static/Images/*"]
+    }, 
   },
   "files": [
     "types/index.d.ts"

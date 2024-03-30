@@ -2,6 +2,7 @@ import './App.css';
 import { Routes } from 'react-router-dom';
 import NavbarComponent from './Components/Navbar/Navbar';
 import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
+import UserRoles from './Schemas/UserRoles';
 
 function App() {	
 	return (
