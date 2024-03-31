@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import karmaStoreLogo from "@images/auth-background.svg";
 import UserRoles from "../../Schemas/UserRoles";
 
 type props = { Role: UserRoles }

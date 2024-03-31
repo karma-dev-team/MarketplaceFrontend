@@ -1,5 +1,5 @@
 import "./ToHome.css"
-import backLongArrow from "@images  /long-arrow.svg"
+import backLongArrow from "@images/long-arrow.svg";
 
 type props = { text: string }
 

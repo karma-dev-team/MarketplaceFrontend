@@ -13,16 +13,16 @@ type props = {
 }
 
 const InputField: React.FC<props> = (props: props) => { 
-    if (props.bgcolor == undefined) { 
+    if (props.bgcolor === undefined) { 
         props.bgcolor = "var(--input-field-default)";  
     }
-    if (props.required == undefined) { 
+    if (props.required === undefined) { 
         props.required = false; 
     }
     return ( 
         <div className="root-inputfield">
             {props.titleText !== undefined ? <div className="input-title-text">
-                {props.titleText} {props.required == true ? <span style={{color: "red"}}>*</span> : null}
+                {props.titleText} {props.required === true ? <span style={{color: "red"}}>*</span> : null}
             </div> : null}
             <input 
                 style={{ 
