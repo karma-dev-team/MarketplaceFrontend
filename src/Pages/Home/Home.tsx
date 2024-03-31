@@ -1,9 +1,9 @@
-const Page: React.FC = () => {  
+const HomePage: React.FC = () => {  
     return (
-        <div className="root-">
+        <div className="root-home">
             
         </div>
     ); 
 }
 
-export default Page; 
+export default HomePage; 

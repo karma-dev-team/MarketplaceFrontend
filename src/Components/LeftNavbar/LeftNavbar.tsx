@@ -9,8 +9,7 @@ const LeftNavbarComponent: React.FC<props> = (props: props) => {
         <div className="root-leftnavbar">
             <div className="logo navbar-button">
                 <Link to={"/"}>
-                    <img src={karmaStoreLogo} alt="home" />
-                    <div className="logo-text">Karma store</div>
+
                 </Link>
                 <Link to={"/"}>
                 </Link>

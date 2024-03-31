@@ -1,0 +1,12 @@
+.root-tohome { 
+    display: flex;
+    left: 10px; 
+    top: 10px; 
+    position: absolute; 
+}
+
+.tohome-back-long-arrow { 
+    width: 45px;
+    height: 25px;
+    rotate: 180deg;
+}
