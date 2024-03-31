@@ -1,4 +1,13 @@
 .inputfield-input { 
     border: 1px solid #384153; 
     padding: 10px 6px;
+    border-radius: 3px;
+}
+
+.root-inputfield { 
+    margin: 12px 0;
+}
+
+.input-title-text { 
+    margin-bottom: 6px;
 }

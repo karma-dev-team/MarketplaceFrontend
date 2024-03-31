@@ -7,7 +7,7 @@ const ToHomeComponent: React.FC<props> = (props: props) => {
     return (
         <div className="root-tohome">
             <img src={backLongArrow} alt={props.text} className="tohome-back-long-arrow"/>
-            <div className="tohome-text">{props.text}</div>
+            <p className="tohome-text">{props.text}</p>
         </div>
     )
 }

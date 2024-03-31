@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import NavbarComponent from './Components/Navbar/Navbar';
+// import NavbarComponent from './Components/Navbar/Navbar';
 import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
 import UserRoles from './Schemas/UserRoles';
 import LoginPage from './Pages/Users/Login/Login';
@@ -10,7 +10,7 @@ function App() {
 	return (
 		<div>
 			<LeftNavbar Role={UserRoles.Admin}/>
-			<NavbarComponent/>
+			{/* <NavbarComponent/> */}
 			<div className='content'>
 				<Routes>
 					<Route path="/" element={<HomePage />} />

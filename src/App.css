@@ -1,12 +1,12 @@
 :root { 
-  --button-color: #4971FC; 
+  --button-color: #2F3241; 
   --input-field-default: #252834; 
   --text-color: #A8A8A8; 
+  --line-color: #4F5A71; 
 }
 
 .content { 
-  padding-left: 20px;
-  padding-right: 20px;
+  background-color: #191920;
 }
 
 p, h1, h2, h3, h4 { 
@@ -16,6 +16,18 @@ p, h1, h2, h3, h4 {
 .general-button { 
   background-color: var(--button-color);
   display: flex;
-  padding: 8px 10px;
-  border-radius: 2px;
+  padding: 6px 10px;
+  border: none;
+  margin: 10px 0;
+  border-radius: 3px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  cursor: pointer;
+  min-height: 33px;
+}
+
+.general-button:hover { 
+  background-color: #434659;
 }
