@@ -9,13 +9,15 @@ type props = {
     titleText?: string | undefined, 
     width?: number | string | undefined, 
     height?: number | string | undefined, 
-    bgcolor?: string | undefined
+    bgcolor?: string | undefined, 
+    type?: string | undefined
 }
 
 const InputField: React.FC<props> = (props: props) => { 
-    let bgcolor, required; 
+    let bgcolor, required, type; 
     bgcolor = props.bgcolor === undefined ? "var(--input-field-default)" : props.bgcolor; 
-    required = props.required === undefined ? false : props.required; 
+    required = props.required === undefined ? false : props.required;
+    type = props.type === undefined ? "text" : props.type;  
     return ( 
         <div className="root-inputfield">
             {props.titleText !== undefined ? <p className="input-title-text">
@@ -28,11 +30,12 @@ const InputField: React.FC<props> = (props: props) => {
                     background: bgcolor, 
                     caretColor: "white"
                 }}
-                type="text"     
+                type={type}   
                 className="inputfield-input" 
                 value={props.text}
                 onChange={(e) => props.onChange(e.target.value)}
                 placeholder={props.placeholder}
+                autoComplete="new-password" 
             />
         </div>
     )

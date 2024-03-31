@@ -2,6 +2,7 @@
     border: 1px solid #384153; 
     padding: 10px 6px;
     border-radius: 3px;
+    color: var(--text-color); 
 }
 
 .root-inputfield { 

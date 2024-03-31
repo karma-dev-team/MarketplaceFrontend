@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {  
     const [email, setEmail] = useState<string>(''); 
+    const [password, setPassword] = useState<string>(''); 
 
     const handleLogin = () => { 
 
@@ -35,12 +36,13 @@ const LoginPage: React.FC = () => {
                             width={"100%"}
                         /> 
                         <InputField 
-                            placeholder="Введите свою почту" 
-                            text={email} 
-                            onChange={setEmail} 
-                            titleText="Введите свою почту" 
+                            placeholder="Введите свой пароль" 
+                            text={password} 
+                            onChange={setPassword} 
+                            titleText="Введите свой пароль" 
                             required={true}
                             width={"100%"}
+                            type="password"
                         /> 
                     </div>
                     <button className="general-button" onClick={handleLogin}>
@@ -51,7 +53,7 @@ const LoginPage: React.FC = () => {
                 <p className="continue-with">Войти через</p>
                 <button className="general-button google-login">
                     <img src={googleIcon} alt="войти через Google" className="google-icon"/>
-                    <p className="google-login-text">Google</p>
+                    <p className="google-text">Google</p>
                 </button>
                 <Link to={"/register"} className="register-button">Нету аккаунта? Создать аккаунт</Link>
                 <Link to={"/reset-password"} className="register-button">Забыли пароль?</Link>
