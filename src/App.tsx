@@ -6,11 +6,15 @@ import LoginPage from './Pages/Users/Login/Login';
 import HomePage from './Pages/Home/Home';
 import RegisterPage from './Pages/Users/Register/Register';
 import ResetPasswordPage from './Pages/Users/ResetPassword/ResetPassword';
+<<<<<<< HEAD
 import ChatSelectPage from './Pages/Payment/Chat_select/Chat_select';
 import WaitingPage from './Pages/Payment/Waiting/Waiting';
 import ContactPage from './Pages/Contact/Contact';
 import UserSettingsPage from './Pages/Users/UserSettings/UserSettings';
 import UserSecurityPage from './Pages/Users/UserSettings/Categories/Security';
+=======
+import ProductCardComponent from './Components/ProductCard/ProductCard';
+>>>>>>> a547ed2b09e7ddd5126c83b6501f212dad8130ec
 
 function App() {	
 	const location = useLocation();
