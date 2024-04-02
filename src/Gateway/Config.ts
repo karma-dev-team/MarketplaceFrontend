@@ -12,7 +12,7 @@
 
 
 // import { Configuration } from "task-manager";
-import { AuthKey, baseDownloadPath, basePath } from "./Consts";
+import { AuthKey, baseDownloadPath } from "./Consts";
 
 
 // export let ApiConfig = new Configuration({ 

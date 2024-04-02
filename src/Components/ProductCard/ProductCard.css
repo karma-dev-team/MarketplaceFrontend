@@ -1,0 +1,36 @@
+.root-productcard { 
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+}
+
+.root-productcard a { 
+    color: var(--text-color); 
+}
+
+.productcard-image { 
+    width: 280px;
+    height: 160px;
+    border-radius: 5px;
+}
+
+.productcard-gameimage { 
+    width: 30px;
+    height: 30px;
+}
+
+.productcard-header { 
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.productcard-header-text { 
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
+}
+
+.productcard-info { 
+    margin-left: 5px; 
+}

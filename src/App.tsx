@@ -6,6 +6,7 @@ import LoginPage from './Pages/Users/Login/Login';
 import HomePage from './Pages/Home/Home';
 import RegisterPage from './Pages/Users/Register/Register';
 import ResetPasswordPage from './Pages/Users/ResetPassword/ResetPassword';
+import ProductCardComponent from './Components/ProductCard/ProductCard';
 
 function App() {	
 	const location = useLocation();
