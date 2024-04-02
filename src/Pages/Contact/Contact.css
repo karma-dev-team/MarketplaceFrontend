@@ -1,0 +1,117 @@
+.root-contact {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.huinia-123 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 6px;
+}
+
+.container123 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.zvezda {
+    width: 79px;
+    height: 26px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #9A9A9A;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.tochka {
+    width: 13px;
+    height: 26px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #666666;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.pizda {
+    width: 101px;
+    height: 26px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #666666;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.helpinfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.contactform {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.textname123{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #A8A8A8;
+}
+
+.knopka {
+    background-color: #FD4B4B;
+    color: #FFFFFF;
+    height: 31px;
+    width: 98px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.knopka:hover {
+    background-color: #9c3131;
+}

@@ -1,0 +1,88 @@
+.root-usersettings {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.omegacontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.left {
+    flex-direction: left;
+    justify-content: left;
+    color: #FFFFFF;
+    text-align: left;
+    margin-right: 0%;
+    margin-left: 0%;
+}
+
+.right {
+    color: #FFFFFF;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.img321 {
+    background-color: #D9D9D9;
+    padding: 15px;
+    border-radius: 40px;
+}
+
+.qwerty {
+    display: flex;
+}
+
+.textinfo {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #A8A8A8;
+}
+
+.username {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.useremail {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.knopka {
+    background-color: #FF5722;
+    color: #FFFFFF;
+    height: 39px;
+    width: 144px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+    /* identical to box height, or 94% */
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+.knopka:hover {
+    background-color: #c7461f;
+}

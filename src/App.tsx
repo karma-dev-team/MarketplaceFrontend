@@ -6,6 +6,11 @@ import LoginPage from './Pages/Users/Login/Login';
 import HomePage from './Pages/Home/Home';
 import RegisterPage from './Pages/Users/Register/Register';
 import ResetPasswordPage from './Pages/Users/ResetPassword/ResetPassword';
+import ChatSelectPage from './Pages/Payment/Chat_select/Chat_select';
+import WaitingPage from './Pages/Payment/Waiting/Waiting';
+import ContactPage from './Pages/Contact/Contact';
+import UserSettingsPage from './Pages/Users/UserSettings/UserSettings';
+import UserSecurityPage from './Pages/Users/UserSettings/Categories/Security';
 
 function App() {	
 	const location = useLocation();
@@ -22,6 +27,11 @@ function App() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/reset-password" element={<ResetPasswordPage />} />
+				<Route path="/chat-select/:id" element={<ChatSelectPage />} />
+				<Route path="/waiting/:id" element={<WaitingPage />} />
+				<Route path="/contact/" element={<ContactPage />} />
+				<Route path="/user/:id/settings/" element={<UserSettingsPage />} />
+				<Route path="/user/:id/security/" element={<UserSecurityPage />} />
 			</Routes>
 		</div>
 		</div>

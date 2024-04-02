@@ -1,0 +1,36 @@
+.root-waiting {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text-123 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF; 
+    display: flex;
+    flex-direction: column;
+}
+
+.text-321 {   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;    
+    display: flex;
+    flex-direction: column;
+}
+
+.container123 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

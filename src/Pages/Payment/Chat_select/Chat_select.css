@@ -1,0 +1,50 @@
+.root-chatselect {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.text-123 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.left {
+    flex-direction: left;
+    justify-content: left;
+    margin: 100px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.right {
+    flex-direction: right;
+    justify-content: right;
+    margin: 100px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.img321 {
+    background-color: #242732;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.container123 {
+    display: flex;
+}
