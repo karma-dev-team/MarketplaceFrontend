@@ -1,24 +1,39 @@
-import { Dispatch, ReactNode } from "react"
+import React from 'react';
+import Select, { components, OnChangeValue, ActionMeta, OptionProps } from 'react-select';
 
-type Option = { title: string; value: string };
-
-type props = { 
-    selected: Option | null;
-    options: Option[];
-    placeholder?: string;
-    mode?: 'rows' | 'cells';
-    status?: 'default' | 'invalid';
-    onChange?: (selected: Option['value']) => void;
-    onClose?: () => void;
+export interface OptionType {
+  value: string;
+  label: string;
+  icon: string; 
 }
 
-const SelectorComponent: React.FC<props> = (props: props) => { 
-    return ( 
-        <div className="root-selector">
-            <div>
-            </div>
-        </div>
-    )
+interface SelectorComponentProps {
+  options: OptionType[];
+  onChange: (newValue: OnChangeValue<OptionType, false>, actionMeta: ActionMeta<OptionType>) => void;
 }
 
-export default SelectorComponent; 
+const CustomOption: React.ComponentType<OptionProps<OptionType, false>> = (props) => {
+  return (
+    <components.Option {...props}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={props.data.icon} alt={props.data.label} style={{ marginRight: '10px', height: '20px' }} />
+        {props.data.label}
+      </div>
+    </components.Option>
+  );
+};
+
+const SelectorComponent: React.FC<SelectorComponentProps> = ({ options, onChange }) => {
+  return (
+    <Select<OptionType, false>
+      className="custom-select"
+      classNamePrefix="select"
+      options={options}
+      onChange={onChange}
+      components={{ Option: CustomOption }}
+      getOptionLabel={(option) => option.label} // adhering to the string type requirement
+    />
+  );
+};
+
+export default SelectorComponent;

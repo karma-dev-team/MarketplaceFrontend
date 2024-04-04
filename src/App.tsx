@@ -16,6 +16,7 @@ import UserSecurityPage from './Pages/Users/UserSettings/Categories/Security';
 import { useState } from 'react';
 import GamesPage from './Pages/Market/Games/Games';
 import WalletPage from './Pages/Payment/Wallet/Wallet';
+import SelectorComponent, { OptionType } from './Components/Selector/Selector';
 
 
 function App() {	
@@ -23,7 +24,10 @@ function App() {
 	const excludeNavbarPaths = ['/login', '/register', '/reset_password'];
 	const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 	const [category, setCategory] = useState<string>('')
-	
+	const options: OptionType[] = [
+		{ value: "dsada", label: "dasda", icon: "/"}
+	];
+
 	return (
 		<div className='root-content'>
 			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}

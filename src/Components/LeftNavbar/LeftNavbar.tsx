@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import UserRoles from "../../Schemas/UserRoles";
 import HartCartLogo from "@images/Group.svg";
 import SearchLogo from "@images/Search.svg";
