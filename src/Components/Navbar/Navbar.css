@@ -8,21 +8,51 @@
     display: flex;
     align-self: end;
     flex-direction: row;
-    justify-content: space-between; /* Распределение пространства между элементами */
+    justify-content: end;
     align-items: center; /* Вертикальное выравнивание элементов */
     margin: 0 auto; /* Автоматический отступ справа и слева для центрирования */
-    border-bottom: 1px solid black; /* Нижняя граница */
-    box-shadow: 0 4px 2px -2px gray; /* Тень под navbar */
-    background-color: #2F3241;
+    border-bottom: #2F3241 solid 1px; 
+    background-color: #1B1D27;
 }
 
 .navbar-searchbar{
-    display: flex;
-    flex-direction: row;
     background-color: #101010;
-    border: #696969 solid 1px;
 }
-.navbar-searchbar_contant{
+
+.navbar-item { 
     display: flex;
-    flex-direction: row;
+    align-items: center; 
+    margin-right: 20px;
+}
+
+.navbar-root { 
+    width: 100%;
+}
+
+.navbar-home-link { 
+    width: 33px;
+    height: 33px;
+    border-radius: 5px;
+}
+
+.navbar_notification { 
+    padding: 5px; 
+    background-color: #202027;
+    border: 1px solid #2F3241; /* Slightly lighter border for contrast */
+    border-radius: 5px;
+}
+
+.navbar_notification img { 
+    margin-right: 5px;
+} 
+
+.navbar_payment { 
+    padding: 6px;
+    background-color: #202027;
+    border: 1px solid #2F3241; /* Slightly lighter border for contrast */
+    border-radius: 5px;
+}
+
+.navbar_payment img { 
+    margin-right: 10px;
 }

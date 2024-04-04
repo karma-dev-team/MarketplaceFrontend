@@ -2,14 +2,7 @@
     transform: scale(1.06); /* Увеличение кнопки при наведении */
     transition: ease 0.1s;
   }
-<<<<<<< Updated upstream
 
-.navbar-button:active {
-  background-color: #FF6B00; /* Цвет фона активной кнопки */
-  border-radius: 15px;
-}
-=======
-  
   .navbar-button:active {
     background-color: #FF6B00; /* Цвет фона активной кнопки */
     border-radius: 15px;
@@ -28,7 +21,7 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
-        
+    z-index: 31231; 
   }
   
   .logo-section {
@@ -63,15 +56,6 @@
     height: 23px;
     margin-right: 15px;
   }
-  
-  .footer{
-    display: flex;
-    flex-direction: column;
-    max-width: 199px;
-    max-height: 124px;
-    padding-top: 230px;
-  }
->>>>>>> Stashed changes
 
 .button-icon:active {
   filter: brightness(1); /* Пример изменения иконки, используя filter для упрощения */
