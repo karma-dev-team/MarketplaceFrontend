@@ -1,0 +1,109 @@
+.root-wallet {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.korobka123 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.info1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #54617A;
+}
+
+.info {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #54617A;
+}
+
+.userballance {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.text123 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2F3241;
+    text-align: left;
+}
+
+.walletactions {
+    display: flex;
+    flex-direction: row;
+}
+
+.wallet {
+    margin: 10px;
+    box-sizing: border-box;
+    background: #1A1B21;
+    border: 1px solid #2F3241;
+    border-radius: 13px;
+    width: 150px;
+    height: 138px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.cashout {
+    margin: 10px;
+    box-sizing: border-box;
+    background: #242634;
+    border: 1px solid #2F3241;
+    border-radius: 13px;    
+    width: 150px;
+    height: 138px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.deposit {
+    margin: 10px;
+    box-sizing: border-box;
+    background: #242634;
+    border: 1px solid #2F3241;
+    border-radius: 13px;    
+    width: 150px;
+    height: 138px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.img123 {
+    align-items: right;
+    justify-content: right;
+    flex-direction: row;
+    margin: 10px;
+}
+

@@ -15,6 +15,7 @@ import UserSettingsPage from './Pages/Users/UserSettings/UserSettings';
 import UserSecurityPage from './Pages/Users/UserSettings/Categories/Security';
 import { useState } from 'react';
 import GamesPage from './Pages/Market/Games/Games';
+import WalletPage from './Pages/Payment/Wallet/Wallet';
 
 
 function App() {	
@@ -39,6 +40,7 @@ function App() {
 					<Route path="/user/:id/settings/" element={<UserSettingsPage />} />
 					<Route path="/user/:id/security/" element={<UserSecurityPage />} />
 					<Route path="/games" element={<GamesPage />}/>
+					<Route path="/wallet/:id" element={<WalletPage />} />
 				</Routes>
 			</div>
 		</div>
