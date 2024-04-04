@@ -1,5 +1,6 @@
 import "./Games.css" 
 import data from "@testdata/Games.json"
+import { Link } from "react-router-dom"
 import NavigationMapComponent from "src/Components/NavigationMap/NavigationMap"
 
 type Game = { name: string, logo: string, categories: string[] }
@@ -46,7 +47,7 @@ const GamesPage: React.FC = () => {
                                             <div className="group-game-categories">
                                                 {value.categories.map((value) => { 
                                                     return ( 
-                                                        <span className="game-category-element-text">{value}</span>
+                                                        <Link to={`/category/${value}`} className="game-category-element-text">{value}</Link>
                                                     )
                                                 })}
                                             </div>

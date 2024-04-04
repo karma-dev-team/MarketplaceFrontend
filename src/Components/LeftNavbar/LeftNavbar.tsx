@@ -59,7 +59,6 @@ const LeftNavbarComponent = (props: Props) => {
           })}
         </div>
         <div className="footer">
-            <ContentLine color="#2F3241"/>
             <div className="footer_icon">
                 <a href="#"><img src={DiscordLogo} alt="Discord" /></a>
                 <a href="#"><img src={TelegramLogo} alt="Telegram" /></a>

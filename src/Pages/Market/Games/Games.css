@@ -57,3 +57,7 @@
     line-height: 8px;
     vertical-align: middle;
 }
+
+.game-category-element-text { 
+    color: rgb(141, 145, 167); 
+}

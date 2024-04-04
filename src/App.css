@@ -37,6 +37,10 @@ a:visited {
   color: var(--link-color);
 }
 
+a:hover { 
+  text-decoration: underline;
+}
+
 .general-button { 
   background-color: var(--button-color);
   display: flex;
