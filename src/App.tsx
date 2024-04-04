@@ -1,6 +1,7 @@
 import './App.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
+import Navbar from './Components/Navbar/Navbar'
 import UserRoles from './Schemas/UserRoles';
 import LoginPage from './Pages/Users/Login/Login';
 import HomePage from './Pages/Home/Home';
@@ -25,7 +26,7 @@ function App() {
 	return (
 		<div className='root-content'>
 			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
-			{/* <NavbarComponent/> */}
+			{showNavbar && <Navbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			<div className='content'>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
