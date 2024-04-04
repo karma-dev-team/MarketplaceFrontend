@@ -3,8 +3,6 @@
     top: 0; /* Отступ сверху */
     right: 0; /* Выравнивание по правому краю */
     z-index: 2; /* Убедитесь, что navbar находится поверх других элементов */
-    width: 85%; /* Фиксированная ширина */
-    height: 7%; /* Фиксированная высота */
     display: flex;
     align-self: end;
     flex-direction: row;
@@ -27,6 +25,7 @@
 
 .navbar-root { 
     width: 100%;
+    height: 80px;
 }
 
 .navbar-home-link { 
