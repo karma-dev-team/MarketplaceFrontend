@@ -1,6 +1,7 @@
 .navigationmap-root { 
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .navigationmap-element { 
@@ -10,7 +11,11 @@
 
 .navigationmap-link {
     margin: 10px 0; 
-    color: black; 
+    color: rgb(177, 179, 192); 
     opacity: 0.6;
     text-decoration: none;
+}
+
+.navigationmap-link:visited { 
+    color: rgb(181, 184, 199); 
 }

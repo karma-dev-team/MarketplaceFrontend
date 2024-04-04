@@ -7,7 +7,7 @@ const NavigationMapComponent: React.FC<props> = (props: props) => {
     const preNavigationBar = Array.from(props.elements.keys())
     let navigationBar: Array<string> = []; 
     preNavigationBar.forEach((value, index) => { 
-        navigationBar.push(value, "/")
+        navigationBar.push(value, "•")
     })
     navigationBar = navigationBar.slice(0, -1)
     
