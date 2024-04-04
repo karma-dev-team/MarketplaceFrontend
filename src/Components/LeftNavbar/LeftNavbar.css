@@ -2,93 +2,94 @@
     transform: scale(1.06); /* Увеличение кнопки при наведении */
     transition: ease 0.1s;
   }
-  
-  .navbar-button:active {
-    background-color: #FF6B00; /* Цвет фона активной кнопки */
-    border-radius: 15px;
-  }
-  
-  .button-icon:active {
-    filter: brightness(1); /* Пример изменения иконки, используя filter для упрощения */
-  }
-  
-  /* Исходные стили */
-  .navbar {
-    width: 235px;
-    height: 1024px;
-    background-color: #2F3241;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
 
-  }
-  
-  .logo-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px; 
-    padding-right: 62px;
-  }
-  
-  .logo-section span {
-    font-size: 16px;
-  }
-  
-  .buttons-section {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .navbar-button {
-    display: flex;
-    justify-content: baseline;
-    align-items: center;
-    width: 100%;
-    padding: 10px 60px 10px 10px;
-    margin-bottom: 5px; 
-    cursor: pointer;
-  }
-  
-  
-  .button-icon {
-    width: 23px;
-    height: 23px;
-    margin-right: 15px;
-  }
-  
-  .footer{
-    display: flex;
-    flex-direction: column;
-    max-width: 199px;
-    max-height: 124px;
-    padding-top: 230px;
-  }
+.navbar-button:active {
+  background-color: #FF6B00; /* Цвет фона активной кнопки */
+  border-radius: 15px;
+}
 
-  
-  
-  .footer_link{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-decoration: none;
-    font-size: 12px;
-  }
+.button-icon:active {
+  filter: brightness(1); /* Пример изменения иконки, используя filter для упрощения */
+}
 
-  .footer_link a{
-    padding-right: 5px;
-    text-decoration: none;
-    color: #A8A8A8;
-  }
+/* Исходные стили */
+.navbar {
+  width: 235px;
+  height: 100%;
+  background-color: #2F3241;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  justify-content: space-between;
+}
 
-  .footer_icon{
-    display: flex;
-  }
-  .footer_icon a{
-    margin-right: 5px;
-  }
+.logo-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; 
+  padding-right: 62px;
+}
 
-  .footer_copyright{
-    margin-top: 5px;
-    font-size: 12px;
-  }
+.logo-section span {
+  font-size: 16px;
+}
+
+.buttons-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-button {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  width: 100%;
+  padding: 10px 60px 10px 10px;
+  margin-bottom: 5px; 
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+
+.button-icon {
+  width: 23px;
+  height: 23px;
+  margin-right: 15px;
+}
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  max-width: 199px;
+  max-height: 124px;
+  margin-bottom: 20px;
+}
+
+
+
+.footer_link{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.footer_link a{
+  padding-right: 5px;
+  text-decoration: none;
+  color: #A8A8A8;
+}
+
+.footer_icon{
+  display: flex;
+}
+.footer_icon a{
+  margin-right: 5px;
+}
+
+.footer_copyright{
+  margin-top: 5px;
+  font-size: 12px;
+}

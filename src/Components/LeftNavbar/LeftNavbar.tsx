@@ -41,10 +41,10 @@ const LeftNavbarComponent = (props: Props) => {
   
     return (
       <div className="navbar">
-        <div className="logo-section">
-          <LogoComponent />
-        </div>
         <div className="buttons-section">
+          <div className="logo-section">
+            <LogoComponent />
+          </div>
           {buttons.map((button, index) => {
             const contentLineAfterButton = buttonsLine.includes(button.id);
             return (
@@ -59,6 +59,7 @@ const LeftNavbarComponent = (props: Props) => {
           })}
         </div>
         <div className="footer">
+            <ContentLine margin="0"/>
             <div className="footer_icon">
                 <a href="#"><img src={DiscordLogo} alt="Discord" /></a>
                 <a href="#"><img src={TelegramLogo} alt="Telegram" /></a>
