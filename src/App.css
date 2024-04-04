@@ -17,11 +17,14 @@ body {
 .content { 
   margin-left: 240px; 
   width: calc(100% - 240px);
-  padding: 0 50px;
 }
 
-p, h1, h2, h3, h4 { 
+p, h1, h2, h3, h4, span { 
   color: var(--text-color); 
+}
+
+.content p, h1, h2, h3, h4, span { 
+  font-family: Montserrat, sans-serif;
 }
 
 a { 

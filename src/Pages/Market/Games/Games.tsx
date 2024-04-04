@@ -1,4 +1,3 @@
-import ContentLine from "src/Components/ContentLine/ContentLine"
 import "./Games.css" 
 import data from "@testdata/Games.json"
 import NavigationMapComponent from "src/Components/NavigationMap/NavigationMap"
@@ -34,21 +33,20 @@ const GamesPage: React.FC = () => {
                     return ( 
                         <div className="games-group">
                             <div className="games-group-header">
-                                <h1>{character}</h1>
-                                <ContentLine />
+                                <h1 className="games-group-title">{character}</h1>
                             </div>
                             <div className="group-games">
                                 {gamesByFirstCharacters[character].map((value) => { 
                                     return (
                                         <div className="group-game-one">
                                             <div className="group-game-header">
-                                                <img src={value.logo} alt={value.name} />
-                                                <p>{value.name}</p>
+                                                <img src={value.logo} alt={value.name} width={48} height={48}/>
+                                                <h1>{character} - {value.name}</h1>
                                             </div>
                                             <div className="group-game-categories">
                                                 {value.categories.map((value) => { 
                                                     return ( 
-                                                        <p className="game-category-element">{value} •</p>
+                                                        <span className="game-category-element-text">{value}</span>
                                                     )
                                                 })}
                                             </div>
