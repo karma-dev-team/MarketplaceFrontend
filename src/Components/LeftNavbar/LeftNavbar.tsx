@@ -53,13 +53,13 @@ const LeftNavbarComponent = (props: Props) => {
                   <img src={button.icon} alt={`${button.label} Icon`} className="button-icon"/>
                   <p>{button.label}</p>
                 </div>
-                {contentLineAfterButton && <ContentLine color="#696969"/>}
+                {contentLineAfterButton && <ContentLine color="#696969" margin="5px"/>}
               </React.Fragment>
             );
           })}
         </div>
         <div className="footer">
-            <ContentLine margin="0"/>
+            <ContentLine />
             <div className="footer_icon">
                 <a href="#"><img src={DiscordLogo} alt="Discord" /></a>
                 <a href="#"><img src={TelegramLogo} alt="Telegram" /></a>

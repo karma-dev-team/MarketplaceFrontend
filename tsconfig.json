@@ -21,7 +21,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".", // This must be specified if "paths" is.
     "paths": {
-      "@images/*": ["src/Static/Images/*"]
+      "@images/*": ["src/Static/Images/*"], 
+      "@testdata/*": ["src/TestData/*"]
     }, 
   },
   "files": [

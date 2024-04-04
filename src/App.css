@@ -6,8 +6,18 @@
   --link-color: #4971FC; 
 }
 
-.content { 
+body { 
   background-color: #191920;
+}
+
+.root-content { 
+  display: flex;
+}
+
+.content { 
+  margin-left: 240px; 
+  width: calc(100% - 240px);
+  padding: 0 50px;
 }
 
 p, h1, h2, h3, h4 { 

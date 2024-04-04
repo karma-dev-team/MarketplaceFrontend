@@ -10,4 +10,7 @@ module.exports = override(
   addWebpackAlias({
     '@images': path.resolve(__dirname, 'src/Static/Images'),
   }),
+  addWebpackAlias({
+    '@testdata': path.resolve(__dirname, 'src/TestData'),
+  }),
 );

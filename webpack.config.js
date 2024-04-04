@@ -7,9 +7,10 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', ".json"],
     alias: {
       '@images': path.resolve(__dirname, 'src/Static/Images'),
+      '@testdata': path.resolve(__dirname, 'src/TestData'),
     },
   },
   module: {
