@@ -60,17 +60,17 @@ const LeftNavbarComponent = (props: Props) => {
         </div>
         <div className="footer">
             <div className="footer_icon">
-                <a href="#"><img src={DiscordLogo} alt="Discord" /></a>
+                <a href="https://discord.gg/4BxZEjhetP"><img src={DiscordLogo} alt="Discord" /></a>
                 <a href="#"><img src={TelegramLogo} alt="Telegram" /></a>
-                <a href="#"><img src={SteamLogo} alt="Steam" /></a>
+                <a href="https://steamcommunity.com/groups/IgraKarma"><img src={SteamLogo} alt="Steam" /></a>
             </div>
             <div className="footer_link">
-                <a href="#">Помощь</a>
+                <a href="http://localhost:3000/contact/#">Помощь</a>
                 <a href="#">О проекте</a>
                 <a href="#">Правила</a>
-                <a href="#">Соглашение</a>
+                <a href="https://www.google.com/intl/ru/policies/terms/changes/">Соглашение</a>
                 <a href="#">Конфидиценциальность</a>
-                <a href="#">Контакты</a>
+                <a href="http://localhost:3000/contact/#">Контакты</a>
             </div>
             <div className="footer_copyright">
                 <p>@ 2024 ООО «Karma Team»</p>
