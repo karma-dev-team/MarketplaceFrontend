@@ -6,10 +6,10 @@ type props = { stars: number, reviewsCount?: number | undefined}
 const StarsComponent: React.FC<props> = (props: props) => { 
     return (
         <div className="root-stars" style={{display: "flex"}}>
-            {range(0, 5).map((i) => { 
+            {range(1, 5).map((i) => { 
                 return ( 
                     <div className="stars-star">
-                        <img src={starImage} alt="" style={{fill: props.stars > i ? "#FFE500" : "FFFFFF"}}/>
+                        <img src={starImage} alt="" style={{fill: props.stars >= i ? "#FFE500" : "#FFFFFF"}}/>
                     </div>
                 )
             })}
