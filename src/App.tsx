@@ -16,28 +16,20 @@ import { useState } from 'react';
 import GamesPage from './Pages/Market/Games/Games';
 import WalletPage from './Pages/Payment/Wallet/Wallet';
 import SelectorComponent, { OptionType } from './Components/Selector/Selector';
+import GamePage from './Pages/Market/Game/Game';
+
 
 function App() {	
 	const location = useLocation();
 	const excludeNavbarPaths = ['/login', '/register', '/reset_password'];
 	const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 	const [category, setCategory] = useState<string>('')
-	const options: OptionType[] = [
-		// Your options here
-	  ];
 
 	return (
 		<div className='root-content'>
 			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			{showNavbar && <Navbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			<div className='content'>
-				<SelectorComponent 
-				  options={options}
-				  onChange={(newValue, actionMeta) => {
-					console.log(newValue, actionMeta);
-				  }}
-				  width='50%'
-				/>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/login" element={<LoginPage />} />
@@ -50,6 +42,7 @@ function App() {
 					<Route path="/user/:id/security/" element={<UserSecurityPage />} />
 					<Route path="/games" element={<GamesPage />}/>
 					<Route path="/wallet/:id" element={<WalletPage />} />
+					<Route path="/games/:id" element={<GamePage />}/>
 				</Routes>
 			</div>
 		</div>
