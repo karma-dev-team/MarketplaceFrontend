@@ -20,7 +20,12 @@
 .navbar-item { 
     display: flex;
     align-items: center; 
+    cursor: pointer;
     margin-right: 20px;
+}
+
+.navbar-item:hover { 
+    background-color: rgba(255, 87, 34, 0.1);
 }
 
 .navbar-root { 

@@ -5,6 +5,7 @@ import NotificationLogo from "@images/Notefication.svg";
 import PaymantLogo from "@images/paymant.svg";
 import SearchInput from "../Search/Search";
 import arrow from "@images/Arrow.svg"
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     Role: UserRoles;
@@ -13,20 +14,22 @@ type Props = {
   };
 
 const NavbarComponent = (props: Props) => {
+    const navigate = useNavigate()
+
     return (
         <div className="navbar-root">
             <div className="navbar_searchbar navbar-item">
                 <SearchInput placeholder="Поиск"/>
             </div>
-            <div className="navbar_notification navbar-item">
+            <div className="navbar_notification navbar-item" onClick={() => navigate("/user/{userId}/notifications")}>
                 <img src={NotificationLogo} alt="notification" />
                 <p>Уведомление</p>
             </div>
-            <div className="navbar_payment navbar-item">
+            <div className="navbar_payment navbar-item" onClick={() => navigate("/wallet/{userId}")}>
                 <img src={PaymantLogo} alt="paymant" />
                 <p>0 ₽</p>  
             </div>
-            <div className="navbar_User navbar-item">
+            <div className="navbar_User navbar-item" onClick={() => navigate("/user/{userId}")}>
                  <p>User</p>
                  <a href="/" className="navbar-home-link">
                     <img src="path_to_your_logo.png" alt="" />
