@@ -16,6 +16,7 @@ import { useState } from 'react';
 import GamesPage from './Pages/Market/Games/Games';
 import WalletPage from './Pages/Payment/Wallet/Wallet';
 import GamePage from './Pages/Market/Game/Game';
+import NotificationsPage from './Pages/Users/Notifications/Notifications';
 
 
 function App() {	
@@ -38,6 +39,7 @@ function App() {
 					<Route path="/contact/" element={<ContactPage />} />
 					<Route path="/user/:id/settings/" element={<UserSettingsPage />} />
 					<Route path="/user/:id/security/" element={<UserSecurityPage />} />
+					<Route path="/user/:id/notifications/" element={<NotificationsPage />} />
 					<Route path="/games" element={<GamesPage />}/>
 					<Route path="/wallet/:id" element={<WalletPage />} />
 					<Route path="/games/:id" element={<GamePage />}/>

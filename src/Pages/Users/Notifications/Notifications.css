@@ -1,0 +1,13 @@
+.root-notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.korobka337 {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-top: 30px;
+}
