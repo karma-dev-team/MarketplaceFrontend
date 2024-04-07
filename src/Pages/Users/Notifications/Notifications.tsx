@@ -5,11 +5,11 @@ import logo from "@images/karmastore-logo.png"
 
 const NotificationsPage: React.FC = () => {  
     return (
-        <div className="root-notification">
+        <div className="root-notifications">
             <div className="korobka337">
                 <h2>Уведомления</h2>
                 <ContentLine/>
-                <div className="notif-container">
+                <div className="notif-container global-overflow">
                     <NotificationComponent        
                         notificationId = "string" 
                         title = "Karma Market"

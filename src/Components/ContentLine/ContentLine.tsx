@@ -13,8 +13,7 @@ const ContentLine: React.FC<props> = (props: props) => {
                 width: width, 
                 border: "none", 
                 height: "1px", 
-                margin: `${margin} 0`,
-                zIndex: 676878
+                margin: `${margin} 0`
             }}/>
         </>
     )

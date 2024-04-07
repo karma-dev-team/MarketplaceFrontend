@@ -39,6 +39,13 @@ a:visited {
   color: var(--link-color);
 }
 
+.global-overflow { 
+  scrollbar-color: #2F3241 rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+  overflow: scroll;
+  overflow-y: scroll;
+}
+
 a:hover { 
   text-decoration: underline;
 }

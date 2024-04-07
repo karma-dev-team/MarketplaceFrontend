@@ -1,39 +1,29 @@
-.root-notifications { 
-    box-sizing: border-box;
-    background: #1B1D27;
-    border: 1px solid #384153;
+.root-notification { 
+    display: flex;
+    margin: 10px 0;
+    width: 100%;
     border-radius: 10px;
+    border: 1px solid #384153; 
+    padding: 15px 5px;
+    background-color: #1B1D27;    
+}
+
+.notfication-container { 
+    display: flex;
+}
+
+.notification-header { 
     display: flex;
     flex-direction: column;
-    width: 710px;
-    height: 50px;
-    margin-bottom: 10px;
-    margin-left: 5px;
+    margin-left: 10px; 
+
 }
 
-.korobka1337 {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-top: 7px;
+.notification-image { 
+    height: auto;
+    width: 38px;
 }
 
-.notifications-header { 
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-}
-
-.productcard-titletext {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: #A8A8A8;
-}
-
-
-.notifications-info {
-    margin-left: 5px;
+.notification-info { 
+    color: #D9D9D9; 
 }

@@ -11,14 +11,14 @@ type props = {
 
 const NotificationComponent: React.FC<props> = (props: props) => {  
     return (
-        <div className="root-notifications" >
-            <div className="korobka1337">
-                <div className="notifications-header">
-                    <img src={asFileUrl(props.image)} alt="avatarimage" className="productcard-image"/>
+        <div className="root-notification" >
+            <div className="notfication-container">
+                <div className="notification-header">
+                    <img src={asFileUrl(props.image)} alt="avatarimage" className="notification-image"/>
                 </div>
-                <div className="notifications-info">
-                    <h2 className="productcard-titletext">{props.title}</h2>
-                    <h4 className="productcard-info">{props.content}</h4>
+                <div className="notification-content">
+                    <h3 className="notification-titletext">{props.title}</h3>
+                    <p className="notification-info">{props.content.slice(0, 100)}</p>
                 </div>
             </div>
         </div>

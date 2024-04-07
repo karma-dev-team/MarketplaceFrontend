@@ -1,8 +1,5 @@
-.root-notification {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.root-notifications {
+    padding: 0 30px;
 }
 
 .korobka337 {
@@ -10,4 +7,8 @@
     flex-direction: column;
     justify-content: left;
     margin-top: 30px;
+}
+
+.notif-container { 
+    width: 100%;
 }
