@@ -31,19 +31,5 @@
             }, 
             "membersCount": 2 
         }
-    ], 
-    "tasks": [ 
-        { 
-            "id": "32131", 
-            "name": "Сделать что то", 
-            "projectName": "dsadsa", 
-            "createdAt": "Вчера" 
-        }
-    ], 
-    "workVisits": [ 
-        { 
-            "visitedAt": "9:00 12.02.2023", 
-            "endedAt": "20:00 12.02.2023"
-        }
     ]
 }

@@ -1,7 +1,7 @@
 .root-productcard { 
     display: flex;
     flex-direction: column;
-    width: 280px;
+    width: 100%;
 }
 
 .root-productcard a { 
@@ -9,28 +9,31 @@
 }
 
 .productcard-image { 
-    width: 280px;
-    height: 160px;
-    border-radius: 5px;
+    width: 100%;
+    height: 210px;
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center center;
 }
 
 .productcard-gameimage { 
-    width: 30px;
-    height: 30px;
+    width: 37px;
+    height: auto;
+    max-width: 100%;
+}
+
+.productcard-image-container { 
+    margin-bottom: 10px;
 }
 
 .productcard-header { 
     display: flex;
     align-items: center;
-    margin-left: 5px;
+    margin-bottom: 10px;
 }
 
 .productcard-header-text { 
     display: flex;
     margin-left: 10px;
     flex-direction: column;
-}
-
-.productcard-info { 
-    margin-left: 5px; 
 }

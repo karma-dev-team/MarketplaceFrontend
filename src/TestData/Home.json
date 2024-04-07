@@ -1,0 +1,126 @@
+{ 
+    "games": [ 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        },
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        },  
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "GAME"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "APPLICATION"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "APPLICATION"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "APPLICATION"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "APPLICATION"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "APPLICATION"
+        }, 
+        { 
+            "name": "Garry's mod", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "type": "APPLICATION"
+        }
+    ], 
+    "products": [ 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
+        },
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
+        }, 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
+        }, 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
+        }, 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
+        } 
+    ]
+}

@@ -28,7 +28,7 @@ const ProductCardComponent: React.FC<props> = (props: props) => {
                 <img src={asFileUrl(props.image)} alt={props.title} className="productcard-image"/>
             </div>
             <div className="productcard-info">
-                <h4>{props.price} ₽</h4>
+                <h3>{props.price} ₽</h3>
                 <Link to={`/product/${props.productId}`}>{props.title}</Link>
                 <StarsComponent stars={props.userStars}/> 
             </div>
