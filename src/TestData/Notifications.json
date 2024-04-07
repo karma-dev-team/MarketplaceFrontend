@@ -1,0 +1,44 @@
+[ 
+    { 
+        "id": "123", 
+        "title": "Да да?", 
+        "text": "Ок даОк даОк даОк даОк даОк даОк даОк да", 
+        "byUserImage": "https://store-images.s-microsoft.com/image/apps.65178.9007199266246789.dfb1c4fb-983f-4ce1-82c2-212765396aff.e4c94818-3916-474c-ac14-3be893975101",
+        "type": "System"
+    },
+    { 
+        "id": "123", 
+        "title": "Да да?", 
+        "text": "Ок даОк даОк даОк даОк даОк даОк даОк да", 
+        "byUserImage": "https://store-images.s-microsoft.com/image/apps.65178.9007199266246789.dfb1c4fb-983f-4ce1-82c2-212765396aff.e4c94818-3916-474c-ac14-3be893975101",
+        "type": "System"
+    }, 
+    { 
+        "id": "123", 
+        "title": "Да да?", 
+        "text": "Ок даОк даОк даОк даОк даОк даОк даОк да", 
+        "byUserImage": "https://store-images.s-microsoft.com/image/apps.65178.9007199266246789.dfb1c4fb-983f-4ce1-82c2-212765396aff.e4c94818-3916-474c-ac14-3be893975101",
+        "type": "Withdraw"
+    }, 
+    { 
+        "id": "123", 
+        "title": "Да да?", 
+        "text": "Ок даОк даОк даОк даОк даОк даОк даОк да", 
+        "byUserImage": "https://store-images.s-microsoft.com/image/apps.65178.9007199266246789.dfb1c4fb-983f-4ce1-82c2-212765396aff.e4c94818-3916-474c-ac14-3be893975101",
+        "type": "Wallet"
+    }, 
+    { 
+        "id": "123", 
+        "title": "Да да?", 
+        "text": "Ок даОк даОк даОк даОк даОк даОк даОк да", 
+        "byUserImage": "https://store-images.s-microsoft.com/image/apps.65178.9007199266246789.dfb1c4fb-983f-4ce1-82c2-212765396aff.e4c94818-3916-474c-ac14-3be893975101",
+        "type": "System"
+    }, 
+    { 
+        "title": "Да да?", 
+        "text": "Ок даОк даОк даОк даОк даОк даОк даОк да", 
+        "byUserImage": "https://store-images.s-microsoft.com/image/apps.65178.9007199266246789.dfb1c4fb-983f-4ce1-82c2-212765396aff.e4c94818-3916-474c-ac14-3be893975101",
+        "id": "123", 
+        "type": "Buy"
+    }
+]

@@ -6,7 +6,6 @@ type props = {
     title: string,
     image: string,
     content: string, 
-    category: string
 }
 
 const NotificationComponent: React.FC<props> = (props: props) => {  
