@@ -5,7 +5,7 @@ import "./Selector.css"
 export interface OptionType {
   value: string;
   label: string;
-  icon: string; 
+  icon?: string | undefined; 
 }
 
 interface SelectorComponentProps {
@@ -18,7 +18,9 @@ const CustomOption: React.ComponentType<OptionProps<OptionType, false>> = (props
   return (
     <components.Option {...props}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={props.data.icon} alt={props.data.label} style={{ marginRight: '10px', height: '20px', width: "20px"}} />
+        {props.data.icon !== undefined ? 
+          <img src={props.data.icon} alt={props.data.label} style={{ marginRight: '10px', height: '20px', width: "20px"}} /> 
+        : null}
         {props.data.label}
       </div>
     </components.Option>

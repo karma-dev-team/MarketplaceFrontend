@@ -17,27 +17,22 @@ const WalletPage: React.FC = () => {
         {
           label: "Подтвержденные",
           value: TransactionStatus.Confirmed,
-          icon: ""
         },
         {
           label: "Откатывающиеся",
           value: TransactionStatus.RolledBack,
-          icon: ""
         },
         {
           label: "Неудачные",
           value: TransactionStatus.Failed,
-          icon: ""
         },
         {
           label: "Истекшие",
           value: TransactionStatus.Expired,
-          icon: ""
         },
         {
           label: "В ожидании",
           value: TransactionStatus.Pending,
-          icon: ""
         }
     ];
 
@@ -45,47 +40,38 @@ const WalletPage: React.FC = () => {
         {
           label: "Продажа",
           value: TransactonOperations.Sell,
-          icon: ""
         },
         {
           label: "Вывод",
           value: TransactonOperations.Withdraw,
-          icon: ""
         },
         {
           label: "Уменьшение вручную баланса",
           value: TransactonOperations.ManualBalanceDecrease,
-          icon: ""
         },
         {
           label: "Приоритет премиум-продукта",
           value: TransactonOperations.Product_premium_priority,
-          icon: ""
         },
         {
           label: "Увеличение вручную баланса",
           value: TransactonOperations.ManualBalanceIncrease,
-          icon: ""
         },
         {
           label: "Депозит",
           value: TransactonOperations.Deposit,
-          icon: ""
         },
         {
           label: "Замороженный",
           value: TransactonOperations.Frozen,
-          icon: ""
         },
         {
           label: "Покупка",
           value: TransactonOperations.Buy,
-          icon: ""
         },
         {
           label: "Бонус за реферал",
           value: TransactonOperations.ReferralBonus,
-          icon: ""
         }
     ];
 
@@ -150,10 +136,12 @@ const WalletPage: React.FC = () => {
                 : 
                 <div className="transactions-list">
                     {transactions.map((value) => { 
-                        if (operationFilter !== value.operation && operationFilter !== undefined) { 
+                        if (operationFilter?.toLowerCase() !== value.operation.toLowerCase()
+                            && operationFilter !== undefined) { 
                             return null; 
                         }
-                        if (statusFilter !== value.status && operationFilter !== undefined) { 
+                        if (statusFilter?.toLowerCase() !== value.status.toLowerCase() 
+                            && operationFilter !== undefined) { 
                             return null; 
                         }
 
