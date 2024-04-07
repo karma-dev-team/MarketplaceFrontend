@@ -51,7 +51,7 @@ const WalletPage: React.FC = () => {
         },
         {
           label: "Приоритет премиум-продукта",
-          value: TransactonOperations.Product_premium_priority,
+          value: TransactonOperations.ProductPremiumPriority,
         },
         {
           label: "Увеличение вручную баланса",
@@ -136,13 +136,16 @@ const WalletPage: React.FC = () => {
                 : 
                 <div className="transactions-list">
                     {transactions.map((value) => { 
-                        if (operationFilter?.toLowerCase() !== value.operation.toLowerCase()
-                            && operationFilter !== undefined) { 
-                            return null; 
-                        }
-                        if (statusFilter?.toLowerCase() !== value.status.toLowerCase() 
-                            && operationFilter !== undefined) { 
-                            return null; 
+                        if (operationFilter !== undefined) { 
+                            if (operationFilter?.toLowerCase() !== value.operation.toLowerCase()) { 
+                                return null; 
+                            }
+                        } 
+                        
+                        if (statusFilter !== undefined) { 
+                            if (statusFilter?.toLowerCase() !== value.status.toLowerCase()) { 
+                                return null; 
+                            }
                         }
 
                         return ( 

@@ -8,7 +8,7 @@ export enum OptionTypes {
     Sell = "Sell",
     Withdraw = "Withdraw",
     ManualBalanceDecrease = "ManualBalanceDecrease",
-    Product_premium_priority = "Product_premium_priority",
+    ProductPremiumPriority = "ProductPremiumPriority",
     ManualBalanceIncrease = "ManualBalanceIncrease",
     Deposit = "Deposit",
     Frozen = "Frozen",
