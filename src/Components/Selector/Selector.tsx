@@ -18,7 +18,7 @@ const CustomOption: React.ComponentType<OptionProps<OptionType, false>> = (props
   return (
     <components.Option {...props}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={props.data.icon} alt={props.data.label} style={{ marginRight: '10px', height: '20px' }} />
+        <img src={props.data.icon} alt={props.data.label} style={{ marginRight: '10px', height: '20px', width: "20px"}} />
         {props.data.label}
       </div>
     </components.Option>
@@ -34,26 +34,84 @@ const customStyles: StylesConfig<OptionType, false> = {
     '&:hover': {
       borderColor: state.isFocused ? '#2d3545' : '#2d3545',
     },
+    color: "#A8A8A8"
   }),
+  singleValue: (provided, state) => ({ 
+    ...provided, 
+    color: "#A8A8A"
+  }), 
+  indicatorsContainer: (provided, state) => ({ 
+    ...provided, 
+    color: "#54617A", 
+  }), 
+  indicatorSeparator: (provided, state) => ({ 
+    ...provided, 
+    backgroundColor: "#384153",
+    color: "#54617A",
+
+  }), 
+  placeholder: (provided, state) => ({ 
+    ...provided, 
+    color: "#A8A8A8"
+  }), 
   option: (provided, state) => ( { 
     ...provided, 
-    backgroundColor: "#252834"
+    backgroundColor: "#252834", 
+    color: "#A8A8A8"
   }), 
   noOptionsMessage: (provided, state) => ({ 
     ...provided, 
     backgroundColor: "#252834",
     color: "#a8a8a8"
-  })
+  }), 
+  valueContainer: (provided, state) => ({ 
+    ...provided, 
+    backgroundColor: "#252834",
+    color: "#a8a8a8"
+  }), 
+  input: (provided, state) => ({ 
+    ...provided, 
+    color: "#a8a8a8"
+  }), 
+  menuList: (provided, state) => ({ 
+    ...provided, 
+    backgroundColor: "#252834",
+    "::-webkit-scrollbar": {
+      width: "4px",
+      height: "0px",
+    },
+    "::-webkit-scrollbar-track": {
+      background: "#191920"
+    },
+    "::-webkit-scrollbar-thumb": {
+      background: "#2F3241",
+      borderRadius: "5px"
+    },
+    "::-webkit-scrollbar-thumb:hover": {
+      background: "#555"
+    }
+  }), 
+  container: (provided, state)  => ({
+    ...provided,
+    flex: 1
+  }), 
+  menu: (provided, state) => ({
+    ...provided,
+    width: "max-content",
+    minWidth: "100%"
+  }),
 };
 
 const SelectorComponent: React.FC<SelectorComponentProps> = ({ options, onChange, width }) => {
   return (
-    <div className='selector-container' style={{maxWidth: width}}>
+    <div className='selector-container'>
       <Select<OptionType, false>
         className="general-selector"
         classNamePrefix="select"
         options={options}
         onChange={onChange}
+        placeholder="Выбрите"
+        // defaultValue={options[0] || undefined}
         components={{ Option: CustomOption }}
         getOptionLabel={(option) => option.label} // adhering to the string type requirement
         styles={customStyles}

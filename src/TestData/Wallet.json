@@ -1,0 +1,34 @@
+{ 
+    "wallet": { 
+        "available": 1232, 
+        "currency": "RUB"
+    }, 
+    "transactions": [ 
+        { 
+            "id": "21313", 
+            "direction": "IN", 
+            "operation": "BUY", 
+            "status": "SUCCESS", 
+            "amount": { 
+                "amount": 312, 
+                "currency": "RUB"
+            }, 
+            "title": "Оплата покупки", 
+            "providerName": "Баланс", 
+            "createdAt": "2024-04-02"
+        },
+        { 
+            "id": "21313", 
+            "direction": "OUT", 
+            "operation": "BUY", 
+            "status": "SUCCESS", 
+            "amount": { 
+                "amount": 312, 
+                "currency": "RUB"
+            }, 
+            "title": "Оплата покупки", 
+            "providerName": "Баланс", 
+            "createdAt": "2024-04-02"
+        }
+    ]
+}

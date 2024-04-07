@@ -1,7 +1,6 @@
 import "./Notifications.css";
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import NotificationComponent from "src/Components/Notification/Notification";
-import logo from "@images/karmastore-logo.png"
 import data from "@testdata/Notifications.json"
 import { useState } from "react";
 
@@ -21,11 +20,13 @@ const NotificationsPage: React.FC = () => {
     return (
         <div className="root-notifications">
             <div className="korobka337">
-                <h2>Уведомления</h2>
-                <ContentLine/>
+                <div className="notifications-header">
+                    <h2>Уведомления</h2>
+                    <ContentLine/>
+                </div>
                 <div className="notif-container global-overflow">
                     {notifications.map((value) => {
-                        if (value.type != currentType) { 
+                        if (value.type !== currentType) { 
                             return null; 
                         } 
                         return <NotificationComponent        

@@ -1,3 +1,6 @@
 .general-selector input { 
     background-color: black;
+    white-space: nowrap; /* Запрещает перенос строки */
+    overflow: hidden; /* Обрезает текст, который не помещается */
+    text-overflow: ellipsis; /* Добавляет многоточие для обрезанного текста */
 }
