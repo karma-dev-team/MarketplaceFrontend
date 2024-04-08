@@ -3,12 +3,20 @@ import data from "@testdata/Games.json"
 import { Link } from "react-router-dom"
 import NavigationMapComponent from "src/Components/NavigationMap/NavigationMap"
 
-type Game = { name: string, logo: string, categories: string[] }
+type Game = { name: string, logo: string, categories: string[], type: string }
+type props = { type: "Application" | "Game" }
 
-const GamesPage: React.FC = () => {  
+const GamesPage: React.FC<props> = ({ type }) => {  
     let gamesByFirstCharacters: { [name: string] : Game[]; } = {}
+    const games: Game[] = [] 
+    data.map((value) => { 
+        if (value.type === type) { 
+            games.push(value)
+        } 
+        return 
+    })
 
-    data.forEach((value) => { 
+    games.forEach((value) => { 
         let gameNameFirstLetter = value.name[0]; 
         
         if (!gamesByFirstCharacters[gameNameFirstLetter]) { 
@@ -23,12 +31,12 @@ const GamesPage: React.FC = () => {
     let navigationPath = new Map<string, string>(); 
 
     navigationPath.set("Главная", "/")
-    navigationPath.set("Каталог игр", "/games")
+    navigationPath.set(type !== "Application" ? "Каталог игр" : "Каталог приложений", "/games")
 
     return (
         <div className="root-games">
             <NavigationMapComponent elements={navigationPath}/>
-            <h1>Каталог игр</h1>
+            <h1>{type !== "Application" ? "Каталог игр" : "Каталог приложений"} </h1>
             <div className="games-list">
                 {characters.map((character) => { 
                     return ( 

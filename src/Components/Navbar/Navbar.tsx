@@ -21,19 +21,17 @@ const NavbarComponent = (props: Props) => {
             <div className="navbar_searchbar navbar-item">
                 <NavbarSearchInput placeholder="Поиск"/>
             </div>
-            <div className="navbar_notification navbar-item" onClick={() => navigate("/user/{userId}/notifications")}>
+            <div className="navbar_notification navbar-item" onClick={() => navigate("/user/123/notifications")}>
                 <img src={NotificationLogo} alt="notification" />
                 <p>Уведомление</p>
             </div>
-            <div className="navbar_payment navbar-item" onClick={() => navigate("/wallet/{userId}")}>
+            <div className="navbar_payment navbar-item" onClick={() => navigate("/wallet/132")}>
                 <img src={PaymantLogo} alt="paymant" />
                 <p>0 ₽</p>  
             </div>
-            <div className="navbar_User navbar-item" onClick={() => navigate("/user/{userId}")}>
-                 <p>User</p>
-                 <a href="/" className="navbar-home-link">
-                    <img src="path_to_your_logo.png" alt="" />
-                </a>
+            <div className="navbar_User navbar-item" onClick={() => navigate(`/user/123`)}>
+                <p>User</p>
+                <img src="path_to_your_logo.png" alt="" width={30} height={30} className="navbar-user-image"/>
                 <img src={arrow} alt="" width={20} height={20}/>
             </div>
         </div>

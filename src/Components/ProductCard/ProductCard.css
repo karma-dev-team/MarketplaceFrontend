@@ -18,14 +18,15 @@
 
 .productcard-gameimage { 
     width: 37px;
+    cursor: pointer;
     height: auto;
     max-width: 100%;
 }
 
 .productcard-image-container { 
     margin-bottom: 10px;
+    cursor: pointer;
 }
-
 .productcard-header { 
     display: flex;
     align-items: center;
