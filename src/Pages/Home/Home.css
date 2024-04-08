@@ -44,12 +44,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
+}
+
+.home-game-container p:hover { 
+    color: rgb(190, 190, 190); 
 }
 
 .home-application-container { 
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
+}
+
+.home-application-container p:hover { 
+    color: rgb(188, 188, 188); 
 }
 
 .premium-products { 

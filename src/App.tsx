@@ -43,7 +43,8 @@ function App() {
 					<Route path="/user/:id/settings/" element={<UserSettingsPage />} />
 					<Route path="/user/:id/security/" element={<UserSecurityPage />} />
 					<Route path="/user/:id/notifications/" element={<NotificationsPage />} />
-					<Route path="/games" element={<GamesPage />}/>
+					<Route path="/games" element={<GamesPage  type="Game"/>}/>
+					<Route path="/applications" element={<GamesPage type="Application"/>}/>
 					<Route path="/wallet/:id" element={<WalletPage />} />
 					<Route path="/games/:id" element={<GamePage />}/>
 					<Route path="/user/:id" element={<UserPage />}/>
