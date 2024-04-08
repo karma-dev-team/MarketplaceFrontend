@@ -18,6 +18,8 @@ import WalletPage from './Pages/Payment/Wallet/Wallet';
 import GamePage from './Pages/Market/Game/Game';
 import NotificationsPage from './Pages/Users/Notifications/Notifications';
 import UserPage from './Pages/Users/User/User';
+import PurchasesPage from './Pages/Payment/Purchases/Purchases';
+import SalesPage from './Pages/Market/Sales/Sales';
 
 
 function App() {	
@@ -45,6 +47,8 @@ function App() {
 					<Route path="/wallet/:id" element={<WalletPage />} />
 					<Route path="/games/:id" element={<GamePage />}/>
 					<Route path="/user/:id" element={<UserPage />}/>
+					<Route path="/user/:id/purchases/" element={<PurchasesPage />}/>
+					<Route path="/user/:id/sales/" element={<SalesPage />}/>
 				</Routes>
 			</div>
 		</div>
