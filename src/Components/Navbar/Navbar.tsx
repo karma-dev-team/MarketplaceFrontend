@@ -3,7 +3,7 @@ import { Dispatch } from "react";
 import UserRoles from "../../Schemas/UserRoles";
 import NotificationLogo from "@images/Notefication.svg";
 import PaymantLogo from "@images/paymant.svg";
-import SearchInput from "../Search/Search";
+import NavbarSearchInput from "./Search";
 import arrow from "@images/Arrow.svg"
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const NavbarComponent = (props: Props) => {
     return (
         <div className="navbar-root">
             <div className="navbar_searchbar navbar-item">
-                <SearchInput placeholder="Поиск"/>
+                <NavbarSearchInput placeholder="Поиск"/>
             </div>
             <div className="navbar_notification navbar-item" onClick={() => navigate("/user/{userId}/notifications")}>
                 <img src={NotificationLogo} alt="notification" />

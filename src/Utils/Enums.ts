@@ -53,6 +53,7 @@ export enum OptionTypes {
     Admin = "Admin",
     Superadmin = "Superadmin",
     Other = "Other",
+    Owner = "Owner"
   }
   
   export enum PurchaseStatus {

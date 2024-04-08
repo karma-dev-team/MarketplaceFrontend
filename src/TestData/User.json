@@ -1,35 +1,56 @@
 {
     "id": "31321", 
     "name": "da", 
-    "organization": "blabla", 
-    "banner": { 
-        "fileId": "3132131", 
-        "fileUrl": "https://www.robin-noorda.com/uploads/1/6/8/3/16830688/3347022_orig.jpg", 
-        "mimeType": "image", 
-        "fileName": "313dasdadas", 
-        "fileSize": 31321312
-    }, 
-    "avatar": { 
-        "fileId": "3132131", 
-        "fileUrl": "https://img.freepik.com/premium-photo/wide-field-with-sunflowers-and-cloudy-sky-over-the-field_199743-11638.jpg", 
-        "mimeType": "image", 
-        "fileName": "313dasdadas", 
-        "fileSize": 31321312
-    }, 
-    "job": "ahah", 
+    "isOnline": true, 
+    "banner": "https://www.robin-noorda.com/uploads/1/6/8/3/16830688/3347022_orig.jpg",
+    "avatar": "https://img.freepik.com/premium-photo/wide-field-with-sunflowers-and-cloudy-sky-over-the-field_199743-11638.jpg", 
     "email": "blabla@gmail.com", 
-    "teams": [ 
+    "sells": 3, 
+    "purchases": 4, 
+    "products": [ 
         { 
-            "id": "3123", 
-            "name": "Дада", 
-            "logo": {
-                "fileId": "3132131", 
-                "fileUrl": "https://img.freepik.com/premium-photo/wide-field-with-sunflowers-and-cloudy-sky-over-the-field_199743-11638.jpg", 
-                "mimeType": "image", 
-                "fileName": "313dasdadas", 
-                "fileSize": 31321312
-            }, 
-            "membersCount": 2 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
+        }, 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
+        }, 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category"
         }
-    ]
+    ], 
+    "reviews": [ 
+        { 
+            "id": "2131", 
+            "createdBy": { 
+                "name": "Mamkin hunter", 
+                "id": "312"
+            }, 
+            "rate": 5, 
+            "createdAt": ""
+        }
+    ], 
+    "description": "Продажа производится через обмен.Гарантированная и быстрая доставка", 
+    "role": "Moderator", 
+    "createdAt": "18 июня 2023, в 14:27"
 }

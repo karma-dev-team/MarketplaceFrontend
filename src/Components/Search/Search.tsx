@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import './Search.css'; // Assuming you will define styles in this CSS file
-import searchIcon from "@images/SearchLoop.svg";
 
-type props = { placeholder: string }
+type props = { placeholder: string, onChange: Dispatch<string>, searchText: string }
 
-const SearchInput = (props: props) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleSearchChange = (event: any) => {
-    setSearchTerm(event.target.value);
-  };
-
+const SearchbarComponent = (props: props) => {
   return (
-    <div className="search-input">
-      <button className="search-button">
-        <img src={searchIcon} alt="" />
+    <div className="root-searchbar">
+      <button className="searchbar-button">
+        Найти
       </button>
       <input
         type="text"
-        value={searchTerm}
-        onChange={handleSearchChange}
+        value={props.searchText}
+        onChange={(e) => props.onChange(e.target.value)}
         placeholder={props.placeholder}
         width={19}
         height={19}
@@ -28,4 +21,4 @@ const SearchInput = (props: props) => {
   );
 };
 
-export default SearchInput;
+export default SearchbarComponent;
