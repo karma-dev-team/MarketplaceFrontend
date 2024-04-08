@@ -4,6 +4,7 @@
         overflow: hidden;
         position: relative;
         height: 200px;
+        border-bottom: 1px solid rgb(43, 45, 60);
     }
 
     .banner-image {
@@ -133,5 +134,25 @@
         line-height: 14px;
         margin: 0px;
         color: rgb(107, 110, 128);
+    }
+
+    .user-content { 
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        margin-left: 24px;
+    }
+
+    .user-content-nav { 
+        margin-top: -59px;
+    }
+
+    .control-buttons-list {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+        display: flex;
+        flex-flow: row;
+        -webkit-box-align: center;
+        align-items: center;
     }
 }

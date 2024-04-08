@@ -4,10 +4,15 @@ import data from "@testdata/User.json"
 import StarsComponent from "src/Components/Stars/Stars";
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import { RoleConversion } from "src/Utils/Conversions";
+import { useState } from "react";
+import UserOptionsIcon from "src/Components/Icons/UserOptions";
+
+type userPageStatuses = "Products" | "Reviews"
 
 const UserPage: React.FC = () => {  
     const products = data.products; 
     const user = data; 
+    const [currentState, setCurrentState] = useState<userPageStatuses>('Products'); 
 
     const reviewsRating: number[] = []
     data.reviews.forEach(element => {
@@ -77,6 +82,29 @@ const UserPage: React.FC = () => {
                                 Регистрация
                             </h4>
                             <div className="user-description-content">{user.createdAt}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="user-content">
+                    <div className="user-content-nav">
+                        <nav>
+                            <ul className="control-buttons-list">
+                                <li className="control-button user-products-button">
+                                    Товары
+                                    <span className="nav-counter">{user.products.length}</span>
+                                </li>
+                                <li className="control-button user-reviews-button">
+                                    Отзывы
+                                    <span className="nav-counter">{user.reviews.length}</span>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div className="user-actions">
+                            <div className="user-options">
+                                <button className="user-options-button">
+                                    <UserOptionsIcon />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

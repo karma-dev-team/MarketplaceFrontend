@@ -21,7 +21,7 @@ body {
   width: calc(100% - 240px);
 }
 
-p, h1, h2, h3, h4, span { 
+p, h1, h2, h3, h4, span, li { 
   color: var(--text-color); 
 }
 
