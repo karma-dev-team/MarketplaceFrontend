@@ -6,11 +6,13 @@ import ContentLine from "src/Components/ContentLine/ContentLine";
 import { RoleConversion } from "src/Utils/Conversions";
 import { useState } from "react";
 import UserOptionsIcon from "src/Components/Icons/UserOptions";
+import ProductCardComponent from "src/Components/ProductCard/ProductCard";
 
 type userPageStatuses = "Products" | "Reviews"
 
 const UserPage: React.FC = () => {  
     const products = data.products; 
+    const reviews = data.reviews; 
     const user = data; 
     const [currentState, setCurrentState] = useState<userPageStatuses>('Products'); 
 
@@ -85,15 +87,15 @@ const UserPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="user-content">
+                <div className="user-content-container">
                     <div className="user-content-nav">
                         <nav>
                             <ul className="control-buttons-list">
-                                <li className="control-button user-products-button">
+                                <li className={`control-button user-products-button ${currentState === "Products" ? "current-control" : ""}`} onClick={() => setCurrentState("Products")}>
                                     Товары
                                     <span className="nav-counter">{user.products.length}</span>
                                 </li>
-                                <li className="control-button user-reviews-button">
+                                <li className={`control-button user-reviews-button ${currentState === "Reviews" ? "current-control" : ""}`} onClick={() => setCurrentState("Reviews")}>
                                     Отзывы
                                     <span className="nav-counter">{user.reviews.length}</span>
                                 </li>
@@ -102,10 +104,52 @@ const UserPage: React.FC = () => {
                         <div className="user-actions">
                             <div className="user-options">
                                 <button className="user-options-button">
-                                    <UserOptionsIcon />
+                                    <UserOptionsIcon width={20} height={20}/>
                                 </button>
                             </div>
                         </div>
+                    </div>
+                    <div className="user-content">
+                        {currentState === "Products"
+                            ? <div className="user-products">
+                                {products.map((value) => { 
+                                    return ( 
+                                        <ProductCardComponent 
+                                            title={value.title}
+                                            category={value.category}
+                                            price={value.price}
+                                            game={value.game}
+                                            gameImage={value.gameImage}
+                                            productId={value.id}
+                                            image={value.image}
+                                            userStars={value.stars}
+                                        />
+                                    )
+                                })}
+                            </div> 
+                            : <div className="user-reviews-list">
+                                {reviews.map((value) => { 
+                                    return ( 
+                                        <div className="user-review">
+                                            <img src={value.createdBy.image} alt="" className="user-review-image"/>
+                                            <div className="user-review-container">
+                                                <div className="user-review-header">
+                                                    <h4 className="user-review-createdby">{value.createdBy.name}</h4>
+                                                    <div className="user-review-stars">
+                                                        <div className="review-stars-meta">
+                                                            <span>Оценка: {value.rate}</span>
+                                                        </div>
+                                                        <StarsComponent stars={value.rate} width={13} height={13}/>
+                                                    </div>
+                                                </div>
+                                                <p className="user-review-product">{value.product.name}, {value.product.price}</p>
+                                                <p className="user-review-content">{value.text}</p>
+                                                <p className="user-review-createdat">{value.createdAt}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>}
                     </div>
                 </div>
             </div>
