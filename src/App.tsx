@@ -20,6 +20,7 @@ import NotificationsPage from './Pages/Users/Notifications/Notifications';
 import UserPage from './Pages/Users/User/User';
 import PurchasesPage from './Pages/Payment/Purchases/Purchases';
 import SalesPage from './Pages/Market/Sales/Sales';
+import ProductPage from './Pages/Market/Product/Product';
 
 
 function App() {	
@@ -50,6 +51,7 @@ function App() {
 					<Route path="/user/:id" element={<UserPage />}/>
 					<Route path="/user/:id/purchases/" element={<PurchasesPage />}/>
 					<Route path="/user/:id/sales/" element={<SalesPage />}/>
+					<Route path="/games/:id/:id" element={<ProductPage />}/>
 				</Routes>
 			</div>
 		</div>
