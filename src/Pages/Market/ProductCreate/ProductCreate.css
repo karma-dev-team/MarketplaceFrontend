@@ -24,4 +24,25 @@
         margin-top: 24px !important; 
         margin-bottom: 24px !important;
     }
+
+    .createproduct-fields  {
+        display: grid;
+        gap: 16px; 
+        grid-template-columns: repeat(auto-fit, calc(50% - 8px));
+    }
+
+    .createproduct-automatic-switch { 
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .createproduct-attributes h2 { 
+        margin-bottom: 15px;
+    }
+
+    .createproduct-automatic-list { 
+        display: flex;
+        flex-direction: column;
+    }
 } 

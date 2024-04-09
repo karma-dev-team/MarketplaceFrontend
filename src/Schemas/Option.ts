@@ -1,6 +1,7 @@
 import { OptionTypes } from "src/Schemas/Enums";
 
 export interface OptionScheme { 
+    id: string, 
     group: string 
     label: string 
     type: OptionTypes

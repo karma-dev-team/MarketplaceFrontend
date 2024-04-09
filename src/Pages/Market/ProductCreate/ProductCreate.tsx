@@ -7,6 +7,8 @@ import data from "@testdata/ProductCreate.json"
 import { OptionScheme } from "src/Schemas/Option";
 import { OptionTypes } from "src/Schemas/Enums";
 import { RangeAttributes, SelectorAttributes, SwitchAttributes } from "./Attributes";
+import SwitchComponent from "src/Components/Switch/Switch";
+import plusIcon from "@images/PlusLog.svg"
 
 const ProductCreatePage: React.FC = () => {  
     // delete when connecting to backend 
@@ -44,6 +46,8 @@ const ProductCreatePage: React.FC = () => {
     const [titleText, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
     const [price, setPrice] = useState<number>(1.0)
+    const [autoDistrub, setAutoDistrub] = useState<boolean>(false)
+    const [distrubtion, setAutoDistrubtion] = useState<string[]>([])
     const handleLabelClick = (option: OptionScheme) => {
         setSelectedLabel(option.field);
         addAttributes(option.field, option.value);
@@ -107,9 +111,33 @@ const ProductCreatePage: React.FC = () => {
                 </div>
                 <ContentLine color="#414357"/> 
                 <div className="createproduct-attributes">
-                    <SelectorAttributes options={options} onLabelClick={handleLabelClick} />
-                    <RangeAttributes options={options} addAttributes={addAttributes} />
-                    <SwitchAttributes options={options} addAttributes={addAttributes} />
+                    <h2>Характеристики</h2>
+                    <div className="createproduct-fields">
+                        <SelectorAttributes options={options} onLabelClick={handleLabelClick} />
+                    </div>
+                    <div className="createproduct-fields">
+                        <RangeAttributes options={options} addAttributes={addAttributes} />
+                    </div>
+                    <div className="createproduct-fields">
+                        <SwitchAttributes options={options} addAttributes={addAttributes} />
+                    </div>
+                </div>
+                <ContentLine color="#414357"/>
+                <div className="createproduct-automatic">
+                    <div className="createproduct-automatic-switch">
+                        <h1>Автовыдача</h1>
+                        <SwitchComponent 
+                            onChange={setAutoDistrub}
+                            turn={autoDistrub}
+                        />
+                    </div>
+                    <p>Покупатель получит данные автовыдачи только после подтверждения оплаты.</p>
+                    {autoDistrub ? <div className="createproduct-automatic-list">
+                        <div className="automatic-distrub-button" onClick={() => setAutoDistrubtion([...distrubtion, ""])}>
+                            <img src={plusIcon} alt="" width={32} height={32}/>
+                            <p>Добавить</p>
+                        </div>
+                    </div> : null}
                 </div>
             </div>
         </div>

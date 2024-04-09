@@ -1,6 +1,7 @@
 { 
     "options": [ 
         { 
+            "id": "31231", 
             "group": "Особая акция",
             "label": "Скины",
             "type": "Selector",
