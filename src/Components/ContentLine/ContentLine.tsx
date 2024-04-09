@@ -2,7 +2,7 @@ type props = { width?: string | undefined, color?: string | undefined, margin?: 
 
 const ContentLine: React.FC<props> = (props: props) => { 
     let color, width, margin; 
-    width = props.width === undefined ? "100%" : props.width;
+    width = props.width === undefined ? "auto" : props.width;
     color = props.color === undefined ? "var(--line-color)" : props.color; 
     margin = props.margin === undefined ? "10px" : props.margin; 
 

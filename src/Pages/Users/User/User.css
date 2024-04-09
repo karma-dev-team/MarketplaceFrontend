@@ -1,4 +1,5 @@
 .root-user { 
+
     .root-user-banner {
         width: 100%;
         overflow: hidden;
@@ -18,6 +19,8 @@
     .user-container { 
         padding: 0 24px;
         display: flex;
+        max-width: 1440px;
+        margin: 0px auto;
     }
 
     .user-info { 
@@ -105,6 +108,13 @@
         align-items: center;
     }
 
+    .user-content-nav { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 100;
+    }
+
     .user-reviews-info { 
         font-size: 14px;
         color: rgb(107, 110, 128);
@@ -123,6 +133,18 @@
         color: #A8A8A8; 
     }
 
+    .control-button { 
+        padding: 10px;
+        z-index: 100;
+    }
+
+    .nav-counter { 
+        margin-left: 5px; 
+        padding: 4px;
+        background-color: rgba(255, 255, 255, 0.1); 
+        border-radius: 3px;
+    }
+
     .user-description { 
         flex-direction: column;
     }
@@ -136,14 +158,14 @@
         color: rgb(107, 110, 128);
     }
 
-    .user-content { 
+    .user-content-container { 
         -webkit-box-flex: 1;
         flex-grow: 1;
         margin-left: 24px;
     }
 
     .user-content-nav { 
-        margin-top: -59px;
+        margin-top: -43px;
     }
 
     .control-buttons-list {
@@ -154,5 +176,97 @@
         flex-flow: row;
         -webkit-box-align: center;
         align-items: center;
+    }
+
+    .control-button:hover { 
+        color: rgb(211, 211, 211);
+    }
+    
+    .user-options-button { 
+        background-color: rgba(69, 67, 79, 0.428);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 4px; 
+    }
+
+    .user-options-button:hover { 
+        background-color: rgba(69, 67, 79, 0.515);
+    }
+
+    .user-actions { 
+        z-index: 100; 
+    }
+
+    .current-control { 
+        cursor: pointer;
+        border-bottom: 1px solid white;
+    }
+
+    .user-products { 
+        display: flex;
+        gap: 25px; 
+    }
+    
+    .user-content { 
+        margin-top: 20px; 
+    }
+
+    .user-review { 
+        display: flex;
+        padding: 20px; 
+    }
+
+    .user-review-image { 
+        display: flex;
+        border-radius: 6px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .user-review-container { 
+        margin-left: 10px; 
+        width: 100%;
+    }
+
+    .user-review-stars { 
+        display: flex;
+        text-align: right;
+        background-color: rgb(43, 45, 60);
+        border-radius: 5px;
+        align-items: center;
+        flex-flow: row;
+        max-height: 20px;
+        padding: 3px 8px;
+    }
+
+    .user-review { 
+        background-color: rgb(28, 29, 38);
+        border: 1px solid rgb(43, 45, 60); 
+        border-radius: 8px;
+    }
+
+    .review-stars-meta { 
+        margin-right: 5px;
+        font-size: 12px;
+    }
+
+    .user-review-header { 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .user-review-product { 
+        color: rgba(168, 168, 168, 0.62)
+    }
+
+    .user-review-content { 
+        margin: 16px 0; 
+    }
+
+    .user-review-createdat { 
+        color: rgba(168, 168, 168, 0.62); 
+        font-size: 12px;
     }
 }

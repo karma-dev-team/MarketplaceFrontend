@@ -5,7 +5,7 @@ import cashout from "@images/cahsout.png"
 import data from "@testdata/Wallet.json"
 import SelectorComponent, {OptionType} from "src/Components/Selector/Selector";
 import { useState } from "react";
-import { TransactionStatus, TransactonOperations } from "src/Utils/Enums";
+import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
 
 const WalletPage: React.FC = () => {  

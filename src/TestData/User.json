@@ -44,10 +44,17 @@
             "id": "2131", 
             "createdBy": { 
                 "name": "Mamkin hunter", 
-                "id": "312"
+                "id": "312", 
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s"
+            }, 
+            "product": { 
+                "name": "Ключи активации World of Warcraft: Dragonflight", 
+                "price": 2300, 
+                "currency": "RUB"
             }, 
             "rate": 5, 
-            "createdAt": ""
+            "createdAt": "18 июня 2023, в 14:27", 
+            "text": "Да блять ты даун?"
         }
     ], 
     "description": "Продажа производится через обмен.Гарантированная и быстрая доставка", 
