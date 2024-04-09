@@ -1,0 +1,27 @@
+.root-createproduct { 
+    margin: 0 auto; 
+    max-width: 768px;
+    margin-top: 15px; 
+
+    .createproduct-container { 
+        padding: 24px;
+        margin-top: 14px;  
+        background-color: rgb(38, 40, 54);
+        border-radius: 18px;
+    }
+
+    .createproduct-main-selector { 
+        grid-template-columns: repeat(auto-fit, calc(50% - 8px));
+        margin-top: 16px;
+        display: grid;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .content-line { 
+        margin-right: -24px !important; 
+        margin-left: -24px !important; 
+        margin-top: 24px !important; 
+        margin-bottom: 24px !important;
+    }
+} 

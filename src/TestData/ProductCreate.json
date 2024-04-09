@@ -1,0 +1,12 @@
+{ 
+    "options": [ 
+        { 
+            "group": "Особая акция",
+            "label": "Скины",
+            "type": "Selector",
+            "field": "special-offer",
+            "value": "skins",
+            "sequence": 5
+        }
+    ]
+}

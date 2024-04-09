@@ -11,7 +11,9 @@ export interface OptionType {
 interface SelectorComponentProps {
   options: OptionType[];
   onChange: (newValue: OnChangeValue<OptionType, false>, actionMeta: ActionMeta<OptionType>) => void;
-  width: string, 
+  required?: boolean, 
+  titleText?: string, 
+  width?: string, 
 }
 
 const CustomOption: React.ComponentType<OptionProps<OptionType, false>> = (props) => {
@@ -104,9 +106,13 @@ const customStyles: StylesConfig<OptionType, false> = {
   }),
 };
 
-const SelectorComponent: React.FC<SelectorComponentProps> = ({ options, onChange, width }) => {
+const SelectorComponent: React.FC<SelectorComponentProps> = ({ options, onChange, required, titleText, width }) => {
+  let required_ = required === undefined ? false : required;
   return (
-    <div className='selector-container'>
+    <div className='selector-container' style={{maxWidth: width || "auto"}}>
+      {titleText !== undefined ? <p className="input-title-text">
+        {titleText} {required_ === true ? <span style={{color: "red"}}>*</span> : null}
+      </p> : null}
       <Select<OptionType, false>
         className="general-selector"
         classNamePrefix="select"

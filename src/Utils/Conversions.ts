@@ -1,4 +1,4 @@
-import { UserRoles } from "./Enums"
+import { UserRoles } from "../Schemas/Enums"
 
 export const RoleConversion: Map<string, string> = new Map<string, string>()
 

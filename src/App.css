@@ -25,7 +25,7 @@ p, h1, h2, h3, h4, span, li {
   color: var(--text-color); 
 }
 
-.content p, h1, h2, h3, h4, span { 
+.content p, h1, h2, h3, h4, span, textarea { 
   font-family: Montserrat, sans-serif;
 }
 
