@@ -6,7 +6,10 @@
 }
 
 .root-inputfield { 
-    margin: 12px 0;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
 }
 
 .input-title-text { 

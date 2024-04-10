@@ -26,14 +26,15 @@ const InputField: React.FC<props> = (props: props) => {
         caretColor: "white", 
         verticalAlign: "baseline", 
         borderRadius: "5px", 
-        paddingLeft: "10px"
+        paddingLeft: "10px", 
+        resize: "none"
     }
 
     return ( 
         <div className="root-inputfield">
-            {props.titleText !== undefined ? <p className="input-title-text">
+            {props.titleText !== undefined ? <label className="input-title-text">
                 {props.titleText} {required === true ? <span style={{color: "red"}}>*</span> : null}
-            </p> : null}
+            </label> : null}
             {type === "textarea" ?
                 <textarea 
                 style={styles} 

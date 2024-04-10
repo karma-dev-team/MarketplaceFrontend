@@ -21,11 +21,11 @@ body {
   width: calc(100% - 240px);
 }
 
-p, h1, h2, h3, h4, span, li { 
+p, h1, h2, h3, h4, span, li, label, textarea { 
   color: var(--text-color); 
 }
 
-.content p, h1, h2, h3, h4, span, textarea { 
+.content p, h1, h2, h3, h4, span, textarea, label { 
   font-family: Montserrat, sans-serif;
 }
 

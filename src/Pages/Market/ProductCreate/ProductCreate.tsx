@@ -9,6 +9,11 @@ import { OptionTypes } from "src/Schemas/Enums";
 import { RangeAttributes, SelectorAttributes, SwitchAttributes } from "./Attributes";
 import SwitchComponent from "src/Components/Switch/Switch";
 import plusIcon from "@images/PlusLog.svg"
+import binIcon from "@images/Bin.svg"
+import ImageScheme from "src/Schemas/Image";
+import warningIcon from "@images/warning.png"
+import criticalWarningIcon from "@images/criticalWarning.png"
+import ImageUploaderComponent from "src/Components/ImageUploader/ImageUploader";
 
 const ProductCreatePage: React.FC = () => {  
     // delete when connecting to backend 
@@ -38,20 +43,28 @@ const ProductCreatePage: React.FC = () => {
         )
     })
 
+    const submitProduct = async () => { 
+
+    }
+
+    const draftProduct = async () => { 
+        
+    }
+
     const [attributes, setAttributes] = useState<Map<string, string>[]>([]);
-    
     const [selectedLabel, setSelectedLabel] = useState<string>();
     const [selectedGame, setSelectedGame] = useState<string>()
     const [selectedCategory, setSelectedCategory] = useState<string>()
     const [titleText, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
     const [price, setPrice] = useState<number>(1.0)
-    const [autoDistrub, setAutoDistrub] = useState<boolean>(false)
+    const [autoDistrub, setTurnAutoDistrub] = useState<boolean>(false)
     const [distrubtion, setAutoDistrubtion] = useState<string[]>([])
     const handleLabelClick = (option: OptionScheme) => {
         setSelectedLabel(option.field);
         addAttributes(option.field, option.value);
     };
+    const [images, setImages] = useState<ImageScheme[]>([]); 
     const addAttributes = (label: string, value: string) => {
         let temp = new Map<string, string>()
 
@@ -77,7 +90,7 @@ const ProductCreatePage: React.FC = () => {
                 </div>
                 <ContentLine color="#414357"/>
                 <div className="createproduct-main-info">
-                    <h2>Основное</h2>
+                    <h2 className="createproduct-field-header">Основное</h2>
 
                     <InputField 
                         placeholder="Введите заголовок товара"
@@ -125,19 +138,72 @@ const ProductCreatePage: React.FC = () => {
                 <ContentLine color="#414357"/>
                 <div className="createproduct-automatic">
                     <div className="createproduct-automatic-switch">
-                        <h1>Автовыдача</h1>
+                        <h2>Автовыдача</h2>
                         <SwitchComponent 
-                            onChange={setAutoDistrub}
+                            onChange={setTurnAutoDistrub}
                             turn={autoDistrub}
                         />
                     </div>
                     <p>Покупатель получит данные автовыдачи только после подтверждения оплаты.</p>
+                    {autoDistrub && distrubtion.map((value, index) => { 
+                        return ( 
+                            <div className="autoanswer-field">
+                                <InputField 
+                                    text={distrubtion[index]}
+                                    onChange={(changedValue) => { 
+                                        let distrubCopy = [...distrubtion]
+                                        distrubCopy[index] = changedValue
+                                        setAutoDistrubtion(distrubCopy)
+                                    }}
+                                    placeholder="Введите информацию для покупателя"
+                                    type="textarea"
+                                    height={"8.6em"}
+                                /> 
+                                <div className="autoanswer-delete" onClick={() => { 
+                                    let distrubCopy = [...distrubtion.slice(0, index), ...distrubtion.slice(index + 1, distrubtion.length)]
+                                    setAutoDistrubtion(distrubCopy)
+                                }}>
+                                    <img src={binIcon} alt="" className="bin-icon"/>
+                                </div>
+                            </div>
+                        )
+                    })}
                     {autoDistrub ? <div className="createproduct-automatic-list">
                         <div className="automatic-distrub-button" onClick={() => setAutoDistrubtion([...distrubtion, ""])}>
-                            <img src={plusIcon} alt="" width={32} height={32}/>
+                            <img src={plusIcon} alt="" width={30} height={30}/>
                             <p>Добавить</p>
                         </div>
                     </div> : null}
+                </div>
+                <ContentLine color="#414357"/>
+                <div className="createproduct-images">
+                    <h2 className="createproduct-field-header">Изображения</h2>
+
+                    <ImageUploaderComponent 
+                        images={images}
+                        setImages={setImages}
+                        elementHeight={"100px"}
+                        elementWidth={"100%"}
+                    /> 
+                </div>
+                <ContentLine color="#414357"/> 
+                <div className="createproduct-warnings">
+                    <p>
+                        <img src={criticalWarningIcon} alt="" className="warning-icon"/>
+                        <span>В описании продукта запрещается передача данных от сторонних мессенджеров.</span>
+                    </p>
+                    <p>
+                        <img src={warningIcon} alt="" className="warning-icon"/>
+                        <span>При договоренностях или торговле за пределами KarmaStore вы лишаетесь поддержки по сделке и рискуете быть обманутыми.</span>
+                    </p>
+                    <div className="createproduct-actions">
+                        <div className="createproduct-draft createproduct-action" onClick={(e) => draftProduct()}>
+                            Сохранить как черновик
+                        </div>
+                        <div className="createproduct-submit createproduct-action" onClick={(e) => submitProduct()}>
+                            Разместить товар
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -8,6 +8,8 @@
         margin-top: 14px;  
         background-color: rgb(38, 40, 54);
         border-radius: 18px;
+        margin-bottom: 24px;
+        padding-bottom: 39px;
     }
 
     .createproduct-main-selector { 
@@ -44,5 +46,102 @@
     .createproduct-automatic-list { 
         display: flex;
         flex-direction: column;
+    }
+
+    .autoanswer-field { 
+        display: flex;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .automatic-distrub-button { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 0;
+        gap: 10px; 
+        border: 1px solid #383A4C;
+        margin-top: 10px; 
+        border-radius: 5px;
+        background-color: rgb(38, 40, 54);
+    }
+
+    .automatic-distrub-button:hover { 
+        background-color: rgb(48, 50, 68);
+    }
+    
+    .autoanswer-delete { 
+        margin-top: 10px; 
+        margin-left: 10px; 
+        background-color: rgba(255, 255, 255, 0.06);
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        padding: 5px; 
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .createproduct-field-header { 
+        margin-bottom: 12px;
+    }
+
+    .autoanswer-delete:hover { 
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .warning {
+        display: flex;
+        gap: 8px; 
+        font-size: 12px;
+    }
+
+    .createproduct-warnings p { 
+        font-size: 12px;
+    }
+
+    .warning-icon { 
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .createproduct-warnings p span { 
+        vertical-align: middle;
+    }
+
+    .createproduct-actions { 
+        display: grid;
+        color: #fff; 
+        margin-top: 10px; 
+        gap: 28px; 
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, calc(50% - 14px));
+    }
+
+    .createproduct-action { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-top: 14px; 
+    }
+
+    .createproduct-draft { 
+        background-color: #2F3241;
+    }
+
+    .createproduct-draft:hover { 
+        background-color: #3b3e4c;
+    }
+
+    .createproduct-submit { 
+        background-color: #FF5722;
     }
 } 
