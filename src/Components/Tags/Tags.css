@@ -1,0 +1,31 @@
+.root-searchtags { 
+    display: flex;
+    gap: 10px; 
+}
+
+.search-tag {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 16px;
+
+    background-color: rgb(26, 27, 33);
+    border: 1px solid #606060;
+    border-radius: 21px;
+    cursor: pointer;
+    color: rgb(168, 169, 180);
+    font-weight: bold;
+}
+
+.search-tag:hover { 
+    background-color: #31313c;
+}
+
+.search-tag.active { 
+    background-color: rgb(38, 45, 58);
+    border: none;
+    color: rgb(217, 217, 217); 
+    padding: 6px 17px;
+}

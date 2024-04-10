@@ -22,7 +22,7 @@ import PurchasesPage from './Pages/Payment/Purchases/Purchases';
 import SalesPage from './Pages/Market/Sales/Sales';
 import ProductPage from './Pages/Market/Product/Product';
 import ProductCreatePage from './Pages/Market/ProductCreate/ProductCreate';
-import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';
+import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';  // i'm losing mind, you cannot stop it, nor progress it. I am who will stop crazyness 
 
 
 function App() {	
@@ -30,11 +30,12 @@ function App() {
 	const excludeNavbarPaths = ['/login', '/register', '/reset_password'];
 	const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 	const [category, setCategory] = useState<string>('')
+
 	return (
 		<div className='root-content'>
 			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			{showNavbar && <Navbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
-			<div className='content'>				
+			<div className='content'>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/login" element={<LoginPage />} />
