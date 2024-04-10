@@ -23,6 +23,7 @@ import SalesPage from './Pages/Market/Sales/Sales';
 import ProductPage from './Pages/Market/Product/Product';
 import ProductCreatePage from './Pages/Market/ProductCreate/ProductCreate';
 import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';
+import CarouselComponent from './Components/Carousel/Carousel';
 
 
 function App() {	
@@ -30,11 +31,19 @@ function App() {
 	const excludeNavbarPaths = ['/login', '/register', '/reset_password'];
 	const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 	const [category, setCategory] = useState<string>('')
+
+	const images: { [key: string]: string } = { 
+		"gay": "https://www.copycat.dev/blog/wp-content/uploads/2022/12/rc.png", 
+		"day": "https://www.copycat.dev/blog/wp-content/uploads/2022/12/rc.png"
+	}
+
 	return (
 		<div className='root-content'>
 			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			{showNavbar && <Navbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			<div className='content'>
+				<CarouselComponent images={images}/> 
+
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/login" element={<LoginPage />} />

@@ -84,7 +84,7 @@ export const SelectorAttributes: React.FC<selectorProps> = ({ options, onLabelCl
   const uniqueGroups = getUniqueGroups(options);
 
   const handleLabelClick = (optionId: string) => {
-    let option = options.filter((value) => value.id == optionId)[0]
+    let option = options.filter((value) => value.id === optionId)[0]
 
     onLabelClick(option);
   };
@@ -95,7 +95,7 @@ export const SelectorAttributes: React.FC<selectorProps> = ({ options, onLabelCl
           let selectorOptions: OptionType[] = []
 
           options.forEach((value) => { 
-            if (value.group == group) { 
+            if (value.group === group) { 
               selectorOptions.push(
                 { 
                   label: value.label, 

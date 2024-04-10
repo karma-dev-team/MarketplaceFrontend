@@ -1,0 +1,60 @@
+.root-carousel {
+    width: 100%;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    position: relative;
+  }
+  
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust the button background color and opacity */
+    color: #333; /* Adjust the button text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb; /* Inactive dot color */
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+  
+.dot.active {
+    background-color: #555; /* Active dot color */
+}
+
+/* Optional: Hover effects for buttons */
+.prev-button:hover,
+.next-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
