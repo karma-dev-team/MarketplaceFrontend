@@ -22,6 +22,7 @@ import PurchasesPage from './Pages/Payment/Purchases/Purchases';
 import SalesPage from './Pages/Market/Sales/Sales';
 import ProductPage from './Pages/Market/Product/Product';
 import ProductCreatePage from './Pages/Market/ProductCreate/ProductCreate';
+import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';
 
 
 function App() {	
@@ -54,6 +55,7 @@ function App() {
 					<Route path="/user/:id/purchases/" element={<PurchasesPage />}/>
 					<Route path="/user/:id/sales/" element={<SalesPage />}/>
 					<Route path="/product/:id" element={<ProductPage />}/>
+					<Route path="/product/:id/edit" element={<ProductAnalPage />}/>
 				</Routes>
 			</div>
 		</div>
