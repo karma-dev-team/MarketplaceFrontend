@@ -10,12 +10,22 @@ const NotificationTypeToText: { [key: string]: string | undefined } = {
     "Buy": "Вы купили товар", 
     "Wallet": "Ваш кошелек изменился", 
     "Withdraw": "Пользватель купивший ваш товар отменил покупку", 
+    "Review": "Пользватель оставил отзыв после покупки", 
     "System": undefined
 }
 
 const NotificationsPage: React.FC = () => {  
     let notifications = data; 
     const [currentType, setCurrentType] = useState<string>(); 
+    const notificationTypes = { 
+        "": "Все уведомления",  
+        "Buy": "Вы оплатили заказ", 
+        "Purchase": "Новые сделки", 
+        "Review": "Отзывы", 
+        "Witdraw": "Возврат заказа", 
+        "Wallet": "Измнения в балансе", 
+        "System": "Системные"
+    }
 
     return (
         <div className="root-notifications">
@@ -24,21 +34,29 @@ const NotificationsPage: React.FC = () => {
                     <h2>Уведомления</h2>
                     <ContentLine/>
                 </div>
-                <div className="notif-container global-overflow">
-                    {notifications.map((value) => {
-                        if (value.type !== currentType) { 
-                            return null; 
-                        } 
-                        return <NotificationComponent        
-                            notificationId = {value.id} 
-                            title = {value.title}
-                            image = {value.byUserImage}
-                            content = {NotificationTypeToText[value.type] || value.text}
-                        />
-                    })}
-                </div>
-                <div className="notifications-selector">
-                    
+                <div className="notifications-container">
+                    <div className="notif-container global-overflow">
+                        {notifications.map((value) => {
+                            if (value.type !== currentType && currentType !== undefined) { 
+                                return null; 
+                            } 
+                            return <NotificationComponent        
+                                notificationId = {value.id} 
+                                title = {value.title}
+                                image = {value.byUserImage}
+                                content = {NotificationTypeToText[value.type] || value.text}
+                            />
+                        })}
+                    </div>
+                    <div className="notifications-selector-list">
+                        {Object.entries(notificationTypes).map((value) => {
+                            return (
+                                <div className={`notification-type-selector ${value[0] === currentType ? "active" : ""}`} onClick={() => setCurrentType(value[0])}>
+                                    {value[1]}
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
