@@ -76,13 +76,19 @@
     gap: 20px; 
 }
 
+@media (min-width: 1600px) {
+    .premium-products-content { 
+        grid-template: 1fr/repeat(5, 1fr);
+    }
+}
+
 @media (min-width: 1440px) {
     .premium-products-content { 
         grid-template: 1fr/repeat(4, 1fr);
     }
 }
 
-@media (mni-width: 1024px) { 
+@media (min-width: 1024px) { 
     .premium-products-content { 
         grid-template: 1fr/repeat(3, 1fr);
     }
