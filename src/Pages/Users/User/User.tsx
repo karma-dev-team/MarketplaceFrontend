@@ -7,6 +7,7 @@ import { RoleConversion } from "src/Utils/Conversions";
 import { useState } from "react";
 import UserOptionsIcon from "src/Components/Icons/UserOptions";
 import ProductCardComponent from "src/Components/ProductCard/ProductCard";
+import SearchbarComponent from "src/Components/Search/Search";
 
 type userPageStatuses = "Products" | "Reviews"
 
@@ -15,6 +16,7 @@ const UserPage: React.FC = () => {
     const reviews = data.reviews; 
     const user = data; 
     const [currentState, setCurrentState] = useState<userPageStatuses>('Products'); 
+    const [searchText, setSearchText] = useState<string>('')
 
     const reviewsRating: number[] = []
     data.reviews.forEach(element => {
@@ -111,21 +113,24 @@ const UserPage: React.FC = () => {
                     </div>
                     <div className="user-content">
                         {currentState === "Products"
-                            ? <div className="user-products">
-                                {products.map((value) => { 
-                                    return ( 
-                                        <ProductCardComponent 
-                                            title={value.title}
-                                            category={value.category}
-                                            price={value.price}
-                                            game={value.game}
-                                            gameImage={value.gameImage}
-                                            productId={value.id}
-                                            image={value.image}
-                                            userStars={value.stars}
-                                        />
-                                    )
-                                })}
+                            ? <div>
+                                <SearchbarComponent searchText={searchText} onChange={setSearchText} placeholder="Поиск продуктов ..."/>
+                                <div className="user-products">
+                                    {products.map((value) => { 
+                                        return ( 
+                                            <ProductCardComponent 
+                                                title={value.title}
+                                                category={value.category}
+                                                price={value.price}
+                                                game={value.game}
+                                                gameImage={value.gameImage}
+                                                productId={value.id}
+                                                image={value.image}
+                                                userStars={value.stars}
+                                            />
+                                        )
+                                    })}
+                                </div>
                             </div> 
                             : <div className="user-reviews-list">
                                 {reviews.map((value) => { 

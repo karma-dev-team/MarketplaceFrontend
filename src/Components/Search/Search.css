@@ -8,7 +8,7 @@
 }
 
 .root-searchbar input { 
-    background-color: #2F3241;
+    background-color: #2a2c3a;
     color: rgb(208, 210, 222);
     height: 46px;    
     padding: 0.6em 0.8em;
@@ -79,4 +79,8 @@
 /* Define the width for the input element */
 .input-width {
     width: 1000px; /* Set your desired width here */
+}
+
+.searchbar-button:hover { 
+    background-color: rgb(57, 61, 86);
 }
