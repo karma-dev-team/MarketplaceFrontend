@@ -19,9 +19,10 @@
     color: #A8A8A8; 
     cursor: pointer;
     padding: 8px 10px; 
+    position: relative;
 }
 
-.notification-type-selector .active::before { 
+.notification-type-selector.active::before { 
     position: absolute;
     content: "";
     top: 0px;
@@ -32,9 +33,6 @@
 }
 
 .notifications-selector-list { 
-    display: flex;
-    flex-direction: column;
-    margin-left: 24px;
     top: 96px;
     position: sticky;
     width: 296px;
@@ -47,9 +45,13 @@
     height: auto;
     background-color: rgb(26, 27, 33);
     transition: border-color 200ms ease 0s;
+    height: 267px;
+    max-height: 300px;
 }
 
 .notifications-container { 
     display: flex;
     gap: 20px; 
+    flex-direction: row;
+    
 }

@@ -48,15 +48,15 @@ const NotificationsPage: React.FC = () => {
                             />
                         })}
                     </div>
-                    <div className="notifications-selector-list">
+                    <ul className="notifications-selector-list">
                         {Object.entries(notificationTypes).map((value) => {
                             return (
-                                <div className={`notification-type-selector ${value[0] === currentType ? "active" : ""}`} onClick={() => setCurrentType(value[0])}>
+                                <li className={`notification-type-selector ${value[0] === currentType ? "active" : ""}`} onClick={() => setCurrentType(value[0])}>
                                     {value[1]}
-                                </div>
+                                </li>
                             )
                         })}
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
