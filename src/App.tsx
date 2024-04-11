@@ -24,6 +24,7 @@ import ProductPage from './Pages/Market/Product/Product';
 import ProductCreatePage from './Pages/Market/ProductCreate/ProductCreate';
 import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';  // i'm losing mind, you cannot stop it, nor progress it. I am who will stop crazyness 
 import CategoryProductsPage from './Pages/Market/CategoryProducts/CategoryProducts';
+import ChatsPage from './Pages/Messaging/Chats/Chats';
 
 
 function App() {	
@@ -59,7 +60,9 @@ function App() {
 					<Route path="/user/:id/purchases/" element={<PurchasesPage />}/>
 					<Route path="/user/:id/sales/" element={<SalesPage />}/>
 					<Route path="/product/:id" element={<ProductPage />}/>
+					<Route path="/chats" element={<ChatsPage />}/>
 					<Route path="/product/:id/edit" element={<ProductAnalPage />}/>
+					<Route path="/chat/:chatId" element={<ChatsPage />}/>
 				</Routes>
 			</div>
 		</div>

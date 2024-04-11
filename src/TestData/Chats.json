@@ -1,0 +1,114 @@
+{ 
+    "chats": [ 
+        { 
+            "id": "3123", 
+            "name": "dsada", 
+            "lastMessage": { 
+                "text": "dsdadas", 
+                "id": "31312", 
+                "createdAt": "Вчера", 
+                "type": "Text"
+            }, 
+            "createdBy": {
+                "id": "Dsda", 
+                "name": "Dsdsa", 
+                "isOnline": true
+            }, 
+            "image": "", 
+            "type": "Support", 
+            "unreadMessages": 2, 
+            "messages": [ 
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text"
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                    
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                }
+            ]
+        },
+        { 
+            "id": "3123", 
+            "name": "dsada", 
+            "lastMessage": { 
+                "text": "dsdadas", 
+                "id": "31312", 
+                "createdAt": "Вчера", 
+                "type": "Text"
+            }, 
+            "createdBy": {
+                "id": "Dsda", 
+                "name": "Dsdsa", 
+                "isOnline": true
+            }, 
+            "type": "Support", 
+            "image": "", 
+            "unreadMessages": 2, 
+            "messages": [ 
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                },
+                { 
+                    "text": "dsdadas", 
+                    "id": "31312", 
+                    "createdAt": "Вчера", 
+                    "type": "Text", 
+                    "images": []
+                }
+            ]
+        }
+    ]
+}

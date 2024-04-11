@@ -7,6 +7,7 @@ import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
+import Modal from "src/Modals/Base/Base";
 
 
 const ProductPage: React.FC = () => {  
