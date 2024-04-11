@@ -31,10 +31,11 @@ function App() {
 	const excludeNavbarPaths = ['/login', '/register', '/reset_password'];
 	const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 	const [category, setCategory] = useState<string>('')
+	const [navpath] = useState<string>('')
 
 	return (
 		<div className='root-content'>
-			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
+			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory} navpath={navpath}/>}
 			{showNavbar && <Navbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			<div className='content'>
 				<Routes>

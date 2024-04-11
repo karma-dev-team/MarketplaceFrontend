@@ -39,12 +39,14 @@
     color: #FFFFFF;
 }
 
-.img321 {
+.img3218327 {
     background-color: #242732;
     padding: 25px;
     border-radius: 25px;
 }
 
-.container123 {
+.container12332 {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

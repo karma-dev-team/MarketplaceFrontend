@@ -14,28 +14,33 @@ import "./LeftNavbar.css";
 import LogoComponent from "../Logo/Logo";
 import { Dispatch } from "react";
 import ContentLine from "../ContentLine/ContentLine";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   Role: UserRoles;
   setCategory: Dispatch<string>;
   category: string;
+  navpath: string;
 };
 
 const LeftNavbarComponent = (props: Props) => {
     const buttons = [
-      { id: 1, icon: HartCartLogo, label: 'Товары' },
-      { id: 2, icon: SearchLogo, label: 'Каталог игр' },
-      { id: 3, icon: ChatLogo, label: 'Сообщение' },
-      { id: 4, icon: CartLogo, label: 'Покупки' },
-      { id: 5, icon: CorzineLogo, label: 'Продажи' },
-      { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика' },
-      { id: 7, icon: PlusLogo, label: 'Продать' },
+      { id: 1, icon: HartCartLogo, label: 'Товары', navpath: '/games' },
+      { id: 2, icon: SearchLogo, label: 'Каталог игр', navpath: '/applications' },
+      { id: 3, icon: ChatLogo, label: 'Сообщение', navpath: '/chat-select/1'  },
+      { id: 4, icon: CartLogo, label: 'Покупки', navpath: '/user/1/purchases/'  },
+      { id: 5, icon: CorzineLogo, label: 'Продажи', navpath: '/user/1/sales/'  },
+      { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика', navpath: ''  },
+      { id: 7, icon: PlusLogo, label: 'Продать', navpath: '/products/create'  },
     ];
   
     const buttonsLine = [2, 3, 6];
   
-    const handleButtonClick = (label: string) => {
+    const navigate = useNavigate()
+    const handleButtonClick = (label: string, navpath: string) => {
       props.setCategory(label);
+
+      navigate(navpath)
     };
   
     return (
@@ -48,7 +53,7 @@ const LeftNavbarComponent = (props: Props) => {
             const contentLineAfterButton = buttonsLine.includes(button.id);
             return (
               <React.Fragment key={button.id}>
-                <div className="navbar-button" onClick={() => handleButtonClick(button.label)}>
+                <div className="navbar-button" onClick={() => handleButtonClick(button.label, button.navpath)}>
                   <img src={button.icon} alt={`${button.label} Icon`} className="button-icon"/>
                   <p>{button.label}</p>
                 </div>
