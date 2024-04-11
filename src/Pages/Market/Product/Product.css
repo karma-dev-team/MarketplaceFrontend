@@ -126,11 +126,7 @@
 
 .harakteristika {
     margin-right: 10px;
-    border: 1px solid;
-    border-color: black;
-    border-radius: 15px;
-    padding: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .righthuinia228 {
@@ -255,7 +251,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 22px;
     color: #858588;
     

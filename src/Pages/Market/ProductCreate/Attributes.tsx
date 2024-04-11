@@ -78,10 +78,13 @@ export const SwitchAttributes: React.FC<switchProps> = (props) => {
 type selectorProps = { 
     options: OptionScheme[], 
     onLabelClick: Dispatch<OptionScheme>
+    width?: string, 
+    titleOn?: boolean
 }
 
-export const SelectorAttributes: React.FC<selectorProps> = ({ options, onLabelClick }) => {
+export const SelectorAttributes: React.FC<selectorProps> = ({ options, onLabelClick, width, titleOn }) => {
   const uniqueGroups = getUniqueGroups(options);
+  const isTitleOn = titleOn === undefined ? false : titleOn
 
   const handleLabelClick = (optionId: string) => {
     let option = options.filter((value) => value.id === optionId)[0]
@@ -106,8 +109,9 @@ export const SelectorAttributes: React.FC<selectorProps> = ({ options, onLabelCl
           })
           return <SelectorComponent 
             options={selectorOptions}
-            titleText={group}
+            titleText={isTitleOn ? group : undefined}
             onChange={(value) => {handleLabelClick(value?.value || "")}}
+            width={width}
           /> 
       })}
 

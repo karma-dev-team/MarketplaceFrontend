@@ -22,6 +22,7 @@
 .notification-image { 
     height: auto;
     width: 38px;
+    border-radius: 5px;
 }
 
 .notification-info { 

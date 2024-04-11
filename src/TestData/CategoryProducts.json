@@ -1,0 +1,76 @@
+{ 
+    "products": [ 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category", 
+            "createdAt": "23232"
+        }, 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category", 
+            "createdAt": "23232"
+        }, 
+        { 
+            "id": "123", 
+            "title": "Name", 
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "gameImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXak-Ytg3HriGQ0LbJ4_btlwftVmqcJ_msVm7gNdjjSQ&s", 
+            "stars": 4, 
+            "price": 312, 
+            "game": "Gmod", 
+            "category": "category", 
+            "createdAt": "23232"
+        }
+    ], 
+    "options": [ 
+        { 
+            "id": "31231", 
+            "group": "Особая акция",
+            "label": "Скины",
+            "type": "Selector",
+            "field": "special-offer",
+            "value": "skins",
+            "sequence": 5
+        }, 
+        { 
+            "id": "31231", 
+            "group": "Особая акция",
+            "label": "Скины",
+            "type": "Selector",
+            "field": "special-offer",
+            "value": "skins",
+            "sequence": 5
+        }, 
+        { 
+            "id": "31231", 
+            "group": "Особая акция",
+            "label": "Скины",
+            "type": "Selector",
+            "field": "special-offer",
+            "value": "skins",
+            "sequence": 5
+        }
+    ],
+    "game": "Gmod", 
+    "category": { 
+        "id": "3123", 
+        "title": "Аккаунты"
+    }, 
+    "categories": [ 
+        "Ключи", 
+        "Аккаунты", 
+        "Родуксы"
+    ]
+}
