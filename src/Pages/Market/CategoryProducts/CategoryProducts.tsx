@@ -15,14 +15,14 @@ const CategoryProductsPage: React.FC = () => {
 
     elements.set("Главная", "/")
     elements.set("Игры", "/games")
-    elements.set(data.game, `/game/${data.game}`)
+    elements.set(data.game, `/games/${data.game}`)
     elements.set(data.category.title, `/category/${data.category.id}`)
 
     const [searchText, setSearchText] = useState<string>('')
     const [currentCategory, setCurrentCategory] = useState<string>(''); 
 
     const onLabelClick = () => { 
-
+        
     }
 
     let options: OptionScheme[] = []
