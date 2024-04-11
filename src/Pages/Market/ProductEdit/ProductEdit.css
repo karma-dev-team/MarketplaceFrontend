@@ -1,0 +1,306 @@
+.root-productedit {
+    padding: 10px 30px; 
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; 
+    max-width: 1440px;
+}
+
+.productkorobka1337 {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.typonavbar1337 {
+    width: 100%;
+    height: 26px;
+    left: 346px;
+    top: 117px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.navt-ochka {
+    width: 13px;
+    height: 26px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    padding-right: 5px;
+}
+
+.navinfo-text1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #C8C8C8;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    padding-right: 5px;
+}
+
+.navinfo-text2 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    
+    color: #9A9A9A;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 4;
+    flex-grow: 0;
+    padding-right: 5px;
+}
+
+.razdeli1337 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.razdeli1337::after { 
+    content: "";
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    background: rgb(43, 45, 60);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin-left: 16px;
+}
+
+.galymzhangay1337 {
+    width: 990px;
+    height: 270px;
+}
+
+.viewscount1337 {
+    display: flex;
+    flex-direction: row;
+}
+
+.razedenitel1337 {
+    display: flex;
+    flex-direction: row;
+}
+
+.rowdliarazdela1337 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.sallerprofile1337 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.salleropisanie1337 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.ocenkatovara1337  {
+    display: flex;
+    flex-direction: row;
+}
+
+.harakteristika1337 {
+    margin-right: 10px;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.righthuinia1337 {
+    display: flex;
+    margin-left: 15px;
+    flex-direction: column;
+}
+
+.cenanatovar1337 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 33px;
+    line-height: 20px;
+    color: #FFFFFF;
+    
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-top: 30px;
+}
+
+.nuopisanienoneopisanie1337 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 25px;
+    color: #787878;
+    margin-top: 20px;
+}
+
+.securitysdelki1337 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 29px;
+    text-decoration-line: underline;
+    color: #027200;
+    margin-top: 100px;
+}
+
+.numberotzivov1337 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    color: #0085FF;
+    margin-left: 10px;
+}
+
+.ocenka-number1337 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 15px;
+    color: #FFFFFF;
+    margin-right: 5px;
+}
+
+.kupittovar1337 {
+    margin-top: 10px;
+    width: 100%;
+    height: 52px;
+    background: #FF5722;
+    border-radius: 13px;
+    border: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 567;
+    font-size: 24px;
+    line-height: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.kupittovar1337:hover {
+    background: #ca441c;
+}
+
+.ocenkatovara1337 {
+    margin-bottom: 5px;
+}
+
+.views1337 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #626262;
+    margin-bottom: 2.5px;
+}
+
+.viewscount1337 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.viewscount1337 img {
+    width: 25px;
+    height: 25px;
+}
+
+.opisanietovara1337 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 10px;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.nazvanieharakteristiki1337 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #858588;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.opisanieharakteristiki1337 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.savebutton1337 {
+    box-sizing: border-box;
+    
+    width: 100%;
+    height: 50px;
+    
+    background: #0029F4;
+    border: 1px solid #54617A;
+    border-radius: 13px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 567;
+    font-size: 24px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.savebutton1337:hover {
+    background: #0923a7;
+}
