@@ -10,7 +10,7 @@ type props = {
     width?: number | string | undefined, 
     height?: number | string | undefined, 
     bgcolor?: string | undefined, 
-    type?: string | undefined
+    type?: string | undefined, 
 }
 
 const InputField: React.FC<props> = (props: props) => { 

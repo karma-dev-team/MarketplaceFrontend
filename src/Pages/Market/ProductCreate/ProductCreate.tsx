@@ -157,7 +157,7 @@ const ProductCreatePage: React.FC = () => {
                                     }}
                                     placeholder="Введите информацию для покупателя"
                                     type="textarea"
-                                    height={"8.6em"}
+                                    height={"6em"}
                                 /> 
                                 <div className="autoanswer-delete" onClick={() => { 
                                     let distrubCopy = [...distrubtion.slice(0, index), ...distrubtion.slice(index + 1, distrubtion.length)]
