@@ -31,7 +31,7 @@ button, input, optgroup, select, textarea {
   width: calc(100% - 240px);
 }
 
-p, h1, h2, h3, h4, span, li, label, textarea { 
+p, h1, h2, h3, h4, span, li, label, textarea, em { 
   color: var(--text-color); 
 }
 
