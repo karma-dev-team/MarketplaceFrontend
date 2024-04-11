@@ -16,7 +16,7 @@ const NotificationTypeToText: { [key: string]: string | undefined } = {
 
 const NotificationsPage: React.FC = () => {  
     let notifications = data; 
-    const [currentType, setCurrentType] = useState<string>(); 
+    
     const notificationTypes = { 
         "": "Все уведомления",  
         "Buy": "Вы оплатили заказ", 
@@ -25,7 +25,8 @@ const NotificationsPage: React.FC = () => {
         "Witdraw": "Возврат заказа", 
         "Wallet": "Измнения в балансе", 
         "System": "Системные"
-    }
+    }   
+    const [currentType, setCurrentType] = useState<string>(Object.keys(notificationTypes)[0]); 
 
     return (
         <div className="root-notifications">
@@ -37,7 +38,7 @@ const NotificationsPage: React.FC = () => {
                 <div className="notifications-container">
                     <div className="notif-container global-overflow">
                         {notifications.map((value) => {
-                            if (value.type !== currentType && currentType !== undefined) { 
+                            if (value.type !== currentType && currentType !== "") { 
                                 return null; 
                             } 
                             return <NotificationComponent        
