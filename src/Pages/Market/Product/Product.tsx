@@ -7,6 +7,7 @@ import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
+import StarsComponent from "src/Components/Stars/Stars";
 import Modal from "src/Modals/Base/Base";
 
 
@@ -41,11 +42,7 @@ const ProductPage: React.FC = () => {
                         <div className="karobkadliaotziva">
                             <div className="ocenkatovara">
                                 <p className="ocenka-number">4.0</p>
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
+                                <StarsComponent stars={4} width={15} height={15}/>
                                 <p className="numberotzivov">20 отзывов</p>
                             </div>
                         </div>
@@ -88,11 +85,7 @@ const ProductPage: React.FC = () => {
                         <div className="karobkadliaotziva">
                             <div className="ocenkatovara">
                                 <p className="ocenka-number">4.0</p>
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
-                                <img src={zvezda} alt="zvezda" />
+                                <StarsComponent stars={4} width={15} height={15}/>
                             </div>
                             <p className="numberotzivov">20 отзывов</p>
                         </div>

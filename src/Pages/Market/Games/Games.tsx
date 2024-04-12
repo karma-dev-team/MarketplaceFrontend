@@ -50,7 +50,7 @@ const GamesPage: React.FC<props> = ({ type }) => {
                                         <div className="group-game-one">
                                             <div className="group-game-header">
                                                 <img src={value.logo} alt={value.name} width={48} height={48}/>
-                                                <h1>{character} - {value.name}</h1>
+                                                <h1>{value.name}</h1>
                                             </div>
                                             <div className="group-game-categories">
                                                 {value.categories.map((value) => { 

@@ -7,6 +7,7 @@ import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
+import StarsComponent from "src/Components/Stars/Stars";
 
 
 
@@ -37,11 +38,7 @@ const ProductAnalPage: React.FC = () => {
                         <div className="karobkadliaotziva335">
                             <div className="ocenkatovara335">
                                 <p className="ocenka-number335">4.0</p>
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
+                                <StarsComponent stars={4} width={15} height={15}/>
                                 <p className="numberotzivov335">20 отзывов</p>
                             </div>
                         </div>
@@ -85,11 +82,7 @@ const ProductAnalPage: React.FC = () => {
                         <div className="karobkadliaotziva335">
                             <div className="ocenkatovara335">
                                 <p className="ocenka-number335">4.0</p>
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
-                                <img src={zvezda} alt="zvezda335" />
+                                <StarsComponent stars={4} width={15} height={15}/>
                             </div>
                             <p className="numberotzivov335">20 отзывов</p>
                         </div>

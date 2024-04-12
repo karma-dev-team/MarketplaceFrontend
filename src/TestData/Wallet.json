@@ -7,13 +7,13 @@
         { 
             "id": "21313", 
             "direction": "IN", 
-            "operation": "BUY", 
+            "operation": "SELL", 
             "status": "Confirmed", 
             "amount": { 
                 "amount": 312, 
                 "currency": "RUB"
             }, 
-            "title": "Оплата покупки", 
+            "title": "Продажа товара", 
             "providerName": "Баланс", 
             "createdAt": "2024-04-02"
         },

@@ -13,6 +13,7 @@ import { OptionScheme } from "src/Schemas/Option";
 import { OptionTypes } from "src/Schemas/Enums";
 import SelectorComponent, { OptionType } from "src/Components/Selector/Selector";
 import InputField from "src/Components/InputField/InputField";
+import StarsComponent from "src/Components/Stars/Stars";
 
 
 const ProductEditPage: React.FC = () => {  
@@ -92,11 +93,7 @@ const ProductEditPage: React.FC = () => {
                         <div className="karobkadliaotziva1337">
                             <div className="ocenkatovara1337">
                                 <p className="ocenka-number1337">4.0</p>
-                                <img src={zvezda} alt="zvezda1337" />
-                                <img src={zvezda} alt="zvezda1337" />
-                                <img src={zvezda} alt="zvezda1337" />
-                                <img src={zvezda} alt="zvezda1337" />
-                                <img src={zvezda} alt="zvezda1337" />
+                                <StarsComponent stars={4} width={15} height={15}/>
                             </div>
                             <p className="numberotzivov1337">20 отзывов</p>
                         </div>
