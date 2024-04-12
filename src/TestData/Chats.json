@@ -1,20 +1,22 @@
 { 
     "chats": [ 
         { 
-            "id": "3123", 
+            "id": "31das23", 
             "name": "dsada", 
+            "isVerified": true, 
             "lastMessage": { 
-                "text": "dsdadas", 
+                "text": "dsdasdadadadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdadasdsadadads", 
                 "id": "31312", 
                 "createdAt": "Вчера", 
-                "type": "Text"
+                "type": "Text", 
+                "createdById": "dsadas"
             }, 
             "createdBy": {
                 "id": "Dsda", 
                 "name": "Dsdsa", 
                 "isOnline": true
             }, 
-            "image": "", 
+            "image": "https://playerok4.com/images/Avatars/SupportChatAvatar.png", 
             "type": "Support", 
             "unreadMessages": 2, 
             "messages": [ 
@@ -22,21 +24,24 @@
                     "text": "dsdadas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
-                    "type": "Text"
+                    "type": "Text", 
+                    "createdById": "dsadas"
                 },
                 { 
                     "text": "dsdadas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsadas"
                 },
                 { 
                     "text": "dsdadas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsadas"
                     
                 },
                 { 
@@ -44,25 +49,29 @@
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsadas"
                 },
                 { 
                     "text": "dsdadas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsadas"
                 }
             ]
         },
         { 
             "id": "3123", 
-            "name": "dsada", 
+            "name": "dsadasdadda", 
+            "isVerified": false, 
             "lastMessage": { 
                 "text": "dsdadas", 
                 "id": "31312", 
                 "createdAt": "Вчера", 
-                "type": "Text"
+                "type": "Text", 
+                "createdById": "dsadas"
             }, 
             "createdBy": {
                 "id": "Dsda", 
@@ -70,7 +79,7 @@
                 "isOnline": true
             }, 
             "type": "Support", 
-            "image": "", 
+            "image": "https://playerok4.com/images/Avatars/SupportChatAvatar.png", 
             "unreadMessages": 2, 
             "messages": [ 
                 { 
@@ -78,35 +87,40 @@
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsdadas"
                 },
                 { 
                     "text": "dsdadas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsdadas"
                 },
                 { 
-                    "text": "dsdadas", 
+                    "text": "dsdadasddas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsdadas"
                 },
                 { 
-                    "text": "dsdadas", 
+                    "text": "dsdadsadadas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsdadas"
                 },
                 { 
-                    "text": "dsdadas", 
+                    "text": "dsdasdadadas", 
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "images": []
+                    "images": [], 
+                    "createdById": "dsdadass"
                 }
             ]
         }

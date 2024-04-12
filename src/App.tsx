@@ -25,6 +25,7 @@ import ProductCreatePage from './Pages/Market/ProductCreate/ProductCreate';
 import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';  // i'm losing mind, you cannot stop it, nor progress it. I am who will stop crazyness 
 import CategoryProductsPage from './Pages/Market/CategoryProducts/CategoryProducts';
 import ChatsPage from './Pages/Messaging/Chats/Chats';
+import ProductEditPage from './Pages/Market/ProductEdit/ProductEdit';
 
 
 function App() {	
@@ -44,8 +45,8 @@ function App() {
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/register" element={<RegisterPage />} />
 					<Route path="/reset-password" element={<ResetPasswordPage />} />
-					<Route path="/chat-select/:id" element={<ChatSelectPage />} />
-					<Route path="/waiting/:id" element={<WaitingPage />} />
+					<Route path="/transaction/:id/chat-select" element={<ChatSelectPage />} />
+					<Route path="/transaction/:id" element={<WaitingPage />} />
 					<Route path="/contact/" element={<ContactPage />} />
 					<Route path="/user/:id/settings/" element={<UserSettingsPage />} />
 					<Route path="/user/:id/security/" element={<UserSecurityPage />} />
@@ -63,6 +64,7 @@ function App() {
 					<Route path="/chats" element={<ChatsPage />}/>
 					<Route path="/product/:id/edit" element={<ProductAnalPage />}/>
 					<Route path="/chat/:chatId" element={<ChatsPage />}/>
+					<Route path="/product/:id/edit/edit" element={<ProductEditPage />}/>
 				</Routes>
 			</div>
 		</div>

@@ -27,7 +27,7 @@ const LeftNavbarComponent = (props: Props) => {
     const buttons = [
       { id: 1, icon: HartCartLogo, label: 'Товары', navpath: '/games' },
       { id: 2, icon: SearchLogo, label: 'Каталог игр', navpath: '/applications' },
-      { id: 3, icon: ChatLogo, label: 'Сообщение', navpath: '/chat-select/1'  },
+      { id: 3, icon: ChatLogo, label: 'Сообщение', navpath: '/chats'  },
       { id: 4, icon: CartLogo, label: 'Покупки', navpath: '/user/1/purchases/'  },
       { id: 5, icon: CorzineLogo, label: 'Продажи', navpath: '/user/1/sales/'  },
       { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика', navpath: ''  },

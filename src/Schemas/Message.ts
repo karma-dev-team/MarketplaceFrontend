@@ -5,5 +5,6 @@ export interface MessageScheme {
     id: string, 
     createdAt: string, 
     type: string, 
-    images?: ImageScheme[]
+    images?: ImageScheme[], 
+    createdById: string 
 }

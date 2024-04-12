@@ -6,7 +6,7 @@
     display: flex;
     align-self: end;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center; /* Вертикальное выравнивание элементов */
     margin: 0 auto; /* Автоматический отступ справа и слева для центрирования */
     border-bottom: #2F3241 solid 1px; 
