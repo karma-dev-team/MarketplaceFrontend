@@ -2,21 +2,21 @@
     "chats": [ 
         { 
             "id": "31das23", 
-            "name": "dsada", 
+            "name": "KarmaSupport", 
             "isVerified": true, 
             "lastMessage": { 
-                "text": "dsdasdadadadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdadasdsadadads", 
+                "text": "31 февраля вы получите особый подарок!", 
                 "id": "31312", 
                 "createdAt": "Вчера", 
                 "type": "Text", 
-                "createdById": "dsadas"
+                "createdById": "storesupport"
             }, 
             "createdBy": {
                 "id": "Dsda", 
                 "name": "Dsdsa", 
                 "isOnline": true
             }, 
-            "image": "https://playerok4.com/images/Avatars/SupportChatAvatar.png", 
+            "image": "data:image/png;base64,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", 
             "type": "Support", 
             "unreadMessages": 2, 
             "messages": [ 
@@ -25,7 +25,7 @@
                     "id": "31312", 
                     "createdAt": "Вчера", 
                     "type": "Text", 
-                    "createdById": "dsadas"
+                    "createdById": "storesupport"
                 },
                 { 
                     "text": "dsdadas", 
@@ -33,7 +33,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsadas"
+                    "createdById": "storesupport"
                 },
                 { 
                     "text": "dsdadas", 
@@ -41,7 +41,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsadas"
+                    "createdById": "storesupport"
                     
                 },
                 { 
@@ -50,7 +50,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsadas"
+                    "createdById": "storesupport"
                 },
                 { 
                     "text": "dsdadas", 
@@ -58,28 +58,28 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsadas"
+                    "createdById": "storesupport"
                 }
             ]
         },
         { 
             "id": "3123", 
-            "name": "dsadasdadda", 
+            "name": "Галымжан", 
             "isVerified": false, 
             "lastMessage": { 
                 "text": "dsdadas", 
                 "id": "31312", 
                 "createdAt": "Вчера", 
                 "type": "Text", 
-                "createdById": "dsadas"
+                "createdById": "Галымжан"
             }, 
             "createdBy": {
                 "id": "Dsda", 
                 "name": "Dsdsa", 
                 "isOnline": true
             }, 
-            "type": "Support", 
-            "image": "https://playerok4.com/images/Avatars/SupportChatAvatar.png", 
+            "type": "Private", 
+            "image": "https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png", 
             "unreadMessages": 2, 
             "messages": [ 
                 { 
@@ -88,7 +88,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsdadas"
+                    "createdById": "Галымжан"
                 },
                 { 
                     "text": "dsdadas", 
@@ -96,7 +96,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsdadas"
+                    "createdById": "Галымжан"
                 },
                 { 
                     "text": "dsdadasddas", 
@@ -104,7 +104,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsdadas"
+                    "createdById": "Галымжан"
                 },
                 { 
                     "text": "dsdadsadadas", 
@@ -112,7 +112,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsdadas"
+                    "createdById": "Галымжан"
                 },
                 { 
                     "text": "dsdasdadadas", 
@@ -120,7 +120,7 @@
                     "createdAt": "Вчера", 
                     "type": "Text", 
                     "images": [], 
-                    "createdById": "dsdadass"
+                    "createdById": "Галымжан"
                 }
             ]
         }
