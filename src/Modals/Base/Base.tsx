@@ -1,6 +1,14 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 import './Base.css';
-import closeIcon from '../../Static/Images/close-icon.svg';
+
+const CloseIcon: React.FC = () => { 
+  return ( 
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="16.2781" height="2.32545" rx="1" transform="matrix(-0.707107 0.707107 0.707107 0.707107 16.443 4.93213)" fill="#E9E9EA"/>
+      <rect width="16.2781" height="2.32545" rx="1" transform="matrix(0.707107 0.707107 0.707107 -0.707107 4.93311 6.57715)" fill="#E9E9EA"/>
+    </svg>
+  )
+}
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,13 +17,19 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  const handleOverlayClick = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose(); // Close only if the click was on the overlay and not its children
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal">
         <button onClick={onClose} className="modal-close-button">
-          <img src={closeIcon} alt="" width={24} height={24} />
+          <CloseIcon />
         </button>
         <div className="modal-content">{children}</div>
       </div>

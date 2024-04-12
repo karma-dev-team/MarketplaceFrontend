@@ -26,6 +26,7 @@ import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';  // i'
 import CategoryProductsPage from './Pages/Market/CategoryProducts/CategoryProducts';
 import ChatsPage from './Pages/Messaging/Chats/Chats';
 import ProductEditPage from './Pages/Market/ProductEdit/ProductEdit';
+import Modal from './Modals/Base/Base';
 
 
 function App() {	
@@ -34,12 +35,18 @@ function App() {
 	const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 	const [category, setCategory] = useState<string>('')
 	const [navpath] = useState<string>('')
+	const [isOpen, setIsModalOpen] = useState<boolean>(false) 
 
 	return (
 		<div className='root-content'>
 			{showNavbar && <LeftNavbar Role={UserRoles.Admin} category={category} setCategory={setCategory} navpath={navpath}/>}
 			{showNavbar && <Navbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			<div className='content'>
+				<Modal isOpen={isOpen} onClose={() => setIsModalOpen(false)}>
+					<p className=''>ddsadsa</p>
+				</Modal> 
+				<button onClick={() => setIsModalOpen(true)}>Open modal</button>
+
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/login" element={<LoginPage />} />
