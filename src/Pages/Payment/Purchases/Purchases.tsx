@@ -1,11 +1,12 @@
 import "./Purchases.css"
 import data from "@testdata/Wallet.json"
-import SelectorComponent, {OptionType} from "src/Components/Selector/Selector";
+import SelectorComponent from "src/Components/Selector/Selector";
 import { useState } from "react";
 import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ProductCard from "src/Components/ProductCard/ProductCard";
 import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
+import { OptionType } from "src/Schemas/Option";
 
 
 

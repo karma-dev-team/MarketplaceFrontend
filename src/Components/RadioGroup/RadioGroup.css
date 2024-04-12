@@ -1,0 +1,50 @@
+.radiogroup-member-button { 
+    display: flex;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    transition: ease 0.1s;
+    border-radius: 50%;
+    justify-content: center;
+    background-color: #515561;
+    cursor: pointer;
+}
+
+.radiogroup-member-button.active { 
+    display: flex;
+    background-color: #0066FF;
+}
+
+.radiogroup-header { 
+    display: flex;
+}
+
+.radiogroup-member-text { 
+    font-weight: 400;
+    font-size: 22px;
+    color: rgb(179, 179, 179); 
+    margin-left: 20px; 
+    line-height: 27px;
+}
+
+.radiogroup-memeber-image { 
+    width: 34px;
+    height: 34px;
+}
+
+.radiogroup-member { 
+    display: flex;
+    align-items: center;
+    margin: 16px 0; 
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.radiogroup-member:hover .radiogroup-member-button.notactive { 
+    background-color: #676b78;
+}
+
+.root-radiogroup { 
+    display: flex;
+    flex-direction: column;
+}

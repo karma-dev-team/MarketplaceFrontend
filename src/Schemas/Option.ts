@@ -11,3 +11,10 @@ export interface OptionScheme {
     valueRangeMin?: number
     valueRangeMax?: number
 } 
+
+
+export interface OptionType {
+    value: string;
+    label: string;
+    icon?: string | undefined; 
+}

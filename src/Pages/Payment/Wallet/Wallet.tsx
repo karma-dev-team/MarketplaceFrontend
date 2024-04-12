@@ -3,10 +3,11 @@ import ContentLine from "src/Components/ContentLine/ContentLine";
 import wallet from "@images/wallet.png"
 import cashout from "@images/cahsout.png"
 import data from "@testdata/Wallet.json"
-import SelectorComponent, {OptionType} from "src/Components/Selector/Selector";
+import SelectorComponent from "src/Components/Selector/Selector";
 import { useState } from "react";
 import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
+import { OptionType } from "src/Schemas/Option";
 
 const WalletPage: React.FC = () => {  
     let transactions = data.transactions; 

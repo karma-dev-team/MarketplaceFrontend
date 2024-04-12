@@ -1,10 +1,10 @@
-import SelectorComponent, { OptionType } from "src/Components/Selector/Selector";
+import SelectorComponent from "src/Components/Selector/Selector";
 import "./ProductCreate.css"
 import { useState } from 'react'
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import InputField from "src/Components/InputField/InputField";
 import data from "@testdata/ProductCreate.json"
-import { OptionScheme } from "src/Schemas/Option";
+import { OptionScheme, OptionType } from "src/Schemas/Option";
 import { OptionTypes } from "src/Schemas/Enums";
 import { RangeAttributes, SelectorAttributes, SwitchAttributes } from "./Attributes";
 import SwitchComponent from "src/Components/Switch/Switch";

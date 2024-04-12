@@ -9,9 +9,9 @@ import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
 import { useState } from 'react'
-import { OptionScheme } from "src/Schemas/Option";
+import { OptionScheme, OptionType } from "src/Schemas/Option";
 import { OptionTypes } from "src/Schemas/Enums";
-import SelectorComponent, { OptionType } from "src/Components/Selector/Selector";
+import SelectorComponent from "src/Components/Selector/Selector";
 import InputField from "src/Components/InputField/InputField";
 import StarsComponent from "src/Components/Stars/Stars";
 

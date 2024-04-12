@@ -9,11 +9,23 @@ import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
 import StarsComponent from "src/Components/Stars/Stars";
 import Modal from "src/Modals/Base/Base";
+import { useState } from "react";
+import BuyModal from "src/Modals/Buy/Buy";
 
 
 const ProductPage: React.FC = () => {  
+    const [buyModal, setBuyModal] = useState<boolean>(false)
+
+    const openBuyModal = () => { 
+        setBuyModal(true)
+    }
+
     return (
         <div className="root-product">
+            <Modal isOpen={buyModal} onClose={() => setBuyModal(false)}>
+                <BuyModal price={589}/>
+            </Modal> 
+
             <div className="productkorobka228">
                 <div className="typonavbar321">
                     <p className="nav-infotext1">Главная </p>
@@ -46,7 +58,7 @@ const ProductPage: React.FC = () => {
                                 <p className="numberotzivov">20 отзывов</p>
                             </div>
                         </div>
-                        <button className="kupittovar228">Купить</button>
+                        <button className="kupittovar228" onClick={(e) => openBuyModal()}>Купить</button>
                     </div>
                 </div>
 

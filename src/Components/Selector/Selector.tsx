@@ -1,12 +1,7 @@
 import React from 'react';
 import Select, { components, OnChangeValue, ActionMeta, OptionProps, StylesConfig } from 'react-select';
 import "./Selector.css"
-
-export interface OptionType {
-  value: string;
-  label: string;
-  icon?: string | undefined; 
-}
+import { OptionType } from 'src/Schemas/Option';
 
 interface SelectorComponentProps {
   options: OptionType[];
