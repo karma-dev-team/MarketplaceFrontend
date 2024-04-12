@@ -40,8 +40,12 @@
     cursor: pointer;
 }
 
+.radiogroup-member:hover .radiogroup-member-button.active  { 
+    background-color: #3256cd;
+}
+
 .radiogroup-member:hover .radiogroup-member-button.notactive { 
-    background-color: #676b78;
+    background-color: #707480;
 }
 
 .root-radiogroup { 

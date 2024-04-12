@@ -19,7 +19,7 @@ const RadioGroupComponent: React.FC<props> = (props: props) => {
                             </div> : null}
                             <div className="radiogroup-member-text">{value.label}</div>
                         </div>
-                        <div className={`radiogroup-member-button ${value.value === props.selected ? "active" : ""}`}>
+                        <div className={`radiogroup-member-button ${value.value === props.selected ? "active" : "notactive"}`}>
                             {props.selected === value.value ? 
                                 <VerifiedIcon /> 
                             : null }
