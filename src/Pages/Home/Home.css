@@ -84,12 +84,12 @@
 
 @media (min-width: 1440px) {
     .premium-products-content { 
-        grid-template: 1fr/repeat(4, 1fr);
+        grid-template: 1fr/repeat(5, 1fr);
     }
 }
 
 @media (min-width: 1024px) { 
     .premium-products-content { 
-        grid-template: 1fr/repeat(3, 1fr);
+        grid-template: 1fr/repeat(4, 1fr);
     }
 }
