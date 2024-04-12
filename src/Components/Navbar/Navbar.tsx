@@ -6,6 +6,7 @@ import PaymantLogo from "@images/paymant.svg";
 import NavbarSearchInput from "./Search";
 import arrow from "@images/Arrow.svg"
 import { useNavigate } from "react-router-dom";
+import testico from "@images/testico255.png"
 
 type Props = {
     Role: UserRoles;
@@ -31,7 +32,7 @@ const NavbarComponent = (props: Props) => {
             </div>
             <div className="navbar_User navbar-item" onClick={() => navigate(`/user/123`)}>
                 <p>User</p>
-                <img src="path_to_your_logo.png" alt="" width={30} height={30} className="navbar-user-image"/>
+                <img src={testico} alt="" width={30} height={30} className="navbar-user-image"/>
                 <img src={arrow} alt="" width={20} height={20}/>
             </div>
         </div>
