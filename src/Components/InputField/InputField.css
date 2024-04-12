@@ -5,6 +5,10 @@
     color: var(--text-color); 
 }
 
+.inputfield-input:focus { 
+    outline: none;
+}
+
 .root-inputfield { 
     margin: 8px 0;
     display: flex;

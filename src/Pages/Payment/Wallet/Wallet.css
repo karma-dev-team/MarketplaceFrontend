@@ -81,6 +81,7 @@
     align-items: center;
     justify-content: center;
     text-align: left;
+    cursor: pointer;
 }
 
 .deposit {
@@ -93,8 +94,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
     justify-content: center;
     text-align: left;
+}
+
+.deposit:hover, .cashout:hover { 
+    background-color: #282a39;
 }
 
 .img123 {

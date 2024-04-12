@@ -8,11 +8,16 @@ import { useState } from "react";
 import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
 import { OptionType } from "src/Schemas/Option";
+import Modal from "src/Modals/Base/Base";
+import BuyModal from "src/Modals/Buy/Buy";
+import PayoutModal from "src/Modals/Payout/Payout";
 
 const WalletPage: React.FC = () => {  
     let transactions = data.transactions; 
     const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
     const [operationFilter, setOperationFilter] = useState<TransactonOperations>()
+    const [payinModal, setPayinModal] = useState<boolean>(false)
+    const [cashoutModal, setCashoutModal] = useState<boolean>(false)
 
     const transactionStatuses: OptionType[] = [
         {
@@ -78,6 +83,17 @@ const WalletPage: React.FC = () => {
 
     return (
         <div className="root-wallet">
+            <Modal onClose={() => setPayinModal(false)} isOpen={payinModal}> 
+                <BuyModal 
+                    title="Пополнение"
+                    price={1}
+                    payin={true}
+                />
+            </Modal>
+            <Modal onClose={() => setCashoutModal(false)} isOpen={cashoutModal}>
+                <PayoutModal />
+            </Modal>
+
             <div className="korobka123">
                 <h2>Кошелёк</h2>
                 <ContentLine/>
@@ -89,13 +105,13 @@ const WalletPage: React.FC = () => {
                         <p className="info1">Балланс</p>
                         <p className="userballance">0 ₽</p>
                     </div>
-                    <div className="cashout">
+                    <div className="cashout" onClick={() => setCashoutModal(true)}>
                         <div className="img123">
                             <img src={cashout} alt="cahsout icon" />
                         </div>
                         <p className="info">Вывести <br /> средства</p>
                     </div>
-                    <div className="deposit">
+                    <div className="deposit" onClick={() => setPayinModal(true)}>
                         <div className="img123">
                             <img src={wallet} alt="deposit icon" />
                         </div>

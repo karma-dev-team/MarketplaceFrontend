@@ -8,12 +8,23 @@ import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
 import StarsComponent from "src/Components/Stars/Stars";
+import { useState } from "react";
+import Modal from "src/Modals/Base/Base";
+import BuyModal from "src/Modals/Buy/Buy";
 
 
 
 const ProductAnalPage: React.FC = () => {  
+    const [buyModal, setBuyModal] = useState<boolean>(false)
+
     return (
         <div className="root-productanal">
+            <Modal isOpen={buyModal} onClose={() => setBuyModal(false)}>
+                <BuyModal 
+                    price={400}
+                    title="Выведение на главную"
+                />
+            </Modal>
             <div className="productkorobka228335">
                 <div className="typonavbar321335">
                     <p className="navinfotext1">Аналитика </p>
@@ -43,7 +54,7 @@ const ProductAnalPage: React.FC = () => {
                             </div>
                         </div>
                         <button className="editbutton228335">Редактировать</button>
-                        <button className="kupittovar228335">Вывести в топ 🔥</button>
+                        <button className="kupittovar228335" onClick={() => setBuyModal(true)}>Вывести в топ 🔥</button>
                     </div>
                 </div>
 

@@ -1,20 +1,12 @@
-import RadioGroupComponent from "src/Components/RadioGroup/RadioGroup"
-import { useState } from "react"
-import { OptionType } from "src/Schemas/Option"
-import "./Buy.css"
-import InputField from "src/Components/InputField/InputField"
+import { useState } from "react";
+import InputField from "src/Components/InputField/InputField";
+import RadioGroupComponent from "src/Components/RadioGroup/RadioGroup";
+import { OptionType } from "src/Schemas/Option";
 
-type props = { 
-    price: number, 
-    currency?: string | undefined,
-    title?: string, 
-    payin?: boolean
-}
-
-const BuyModal: React.FC<props> = (props: props) => { 
+const PayoutModal: React.FC = () => { 
+    const [price, setPrice] = useState<number>(0)
     const [selected, setSelected] = useState<string>(''); 
-    const [price, setPrice] = useState<number>(props.price)
-    const payIn = props.payin === undefined ? false : props.payin
+    const [cardNumber, setCardNumber] = useState<string>('')
     const options: OptionType[] = [ 
         { 
             value: "dsa321",
@@ -38,27 +30,36 @@ const BuyModal: React.FC<props> = (props: props) => {
         },
     ]
 
+
     return ( 
-        <div className="root-buymodal">
-            <h2 className="modal-header">{props.title || "Покупка"}</h2>
-            {payIn ? <InputField
+        <div className="root-payout">
+            <h2 className="modal-header">Вывод средств</h2>
+
+            <InputField
                 text={price}
                 onChange={value => setPrice(parseFloat(value))} 
                 type="number"
                 placeholder={"1"}
-                titleText="К пополнению*"
+                titleText="К выводу*"
                 required={true}
-            /> : null } 
+            />
+            
             <RadioGroupComponent options={options} selected={selected} setSelected={setSelected}/> 
-            <p className="payment-warning">Для завершения оплаты Вы будете перемещены на сайт<br/> платежной системы</p>
+            <InputField
+                text={cardNumber}
+                onChange={value => setCardNumber(value)} 
+                type="text"
+                placeholder={"Введите номер карты"}
+                titleText="Номер карты*"
+                required={true}
+            />
             <div className="payment-buttom">
                 <div className="payment-price-container">
                     <span className="payment-price">
-                        {price}
-                        {props.currency || "₽"}
+                        {price} ₽
                     </span>
                     <span className="payment-type">
-                        Покупки
+                        Вывод 
                     </span>
                 </div>
                 <div className="pay-button">
@@ -66,7 +67,7 @@ const BuyModal: React.FC<props> = (props: props) => {
                 </div>
             </div>
         </div>
-    )  
+    )
 }
 
-export default BuyModal; 
+export default PayoutModal; 
