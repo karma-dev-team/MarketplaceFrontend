@@ -54,6 +54,7 @@ const ImageUploaderComponent: React.FC<Props> = (props) => {
             newImages.push({
               fileId: files[i].name,
               filePath: reader.result,
+              // fileBinary: reader.result
             });
             setImageBinaries([...imageBinaries, reader.result]);
             props.setImages([...props.images, ...newImages]);

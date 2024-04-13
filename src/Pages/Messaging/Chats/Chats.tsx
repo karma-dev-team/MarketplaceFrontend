@@ -18,6 +18,14 @@ const SendIcon: React.FC<iconProps> = (props: iconProps) => {
     )
 }
 
+const LoadingIcon: React.FC<iconProps> = (props: iconProps) => { 
+    return ( 
+        <div>
+
+        </div>
+    )
+} 
+
 const ChatsPage: React.FC = () => {  
     const { chatId } = useParams()
     const [currentMessages, setMessages] = useState<MessageScheme[]>([])
@@ -25,22 +33,30 @@ const ChatsPage: React.FC = () => {
     const [messageText, setMessageText] = useState<string>('')
     const userId = "dsdadas"
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [selectedFileBinary, setFileBinary] = useState<string>()
 
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
         if (file) {
-            setSelectedFile(file);
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = () => { 
+                if (typeof reader.result === "string") {
+                    setFileBinary(reader.result)
+                } 
+                setSelectedFile(file);
+            }
         }
     };
 
-    const handleSendMessage = () => {
+    const handleSendMessage = async () => {
         if (messageText.trim() !== '') {
             console.log('Sending message:', messageText);
         }
         if (selectedFile !== null) {
             console.log('Uploading file:', selectedFile);
         }
-        if (messageText.length === 0) { 
+        if (messageText.length === 0 && (selectedFileBinary === "" || selectedFileBinary === undefined)) { 
             return; 
         }
         let newMessages: MessageScheme[] = [{ 
@@ -48,9 +64,18 @@ const ChatsPage: React.FC = () => {
             id: "dsada", 
             createdAt: format(new Date(), 'h:mm'), 
             type: "Text", 
+            images: selectedFile !== undefined ? [ 
+                { 
+                    MimeType: "image",
+                    fileBinary: selectedFileBinary, 
+                    filePath: "dasdads", 
+                    fileId: "dasda"
+                }
+            ] : undefined,  
             createdById: userId
         }, ...currentMessages]
         setMessages(newMessages)
+        setFileBinary(undefined)
         setMessageText('');
         setSelectedFile(null);
     };
@@ -129,6 +154,9 @@ const ChatsPage: React.FC = () => {
                                 return (
                                     <div className={value.createdById === userId ? "user-message" : "other-message"}>
                                         <div className={`chat-message `}> 
+                                            {value.images?.length !== 0 && value.images !== undefined ? <div className="message-image-container">
+                                                <img src={value.images[0].fileBinary} alt="" className="message-image"/>
+                                            </div> : null}
                                             <span className="chat-message-text">{value.text}</span>
                                             <span className="chat-message-corner">
                                                 <div className="chat-message-date-container">
@@ -140,6 +168,15 @@ const ChatsPage: React.FC = () => {
                                 )
                             })}
                         </div>
+                        {selectedFileBinary !== undefined && selectedFileBinary !== "" ? <div className="message-added-files">
+                            <div className="message-added-file-container">
+                                <img src={selectedFileBinary} alt="" className="message-added-file-image" height={"100%"}/>
+                                <img src={plusIcon} alt="close-icon" width={25} height={25} className="message-file-clear" onClick={() => { 
+                                    setSelectedFile(null)
+                                    setFileBinary("")
+                                }}/>
+                            </div>
+                        </div> : null }
                         <div className="message-input">
                             <div className="message-input-container">
                                 <div className="message-add-file">
@@ -147,7 +184,8 @@ const ChatsPage: React.FC = () => {
                                         <input 
                                             type="file" 
                                             id="fileInput" 
-                                            className="message-input-file" 
+                                            className="message-input-file"      
+                                            accept="image/png,.png,image/jpeg,.jpg,.jpeg"
                                             onChange={handleFileChange} 
                                             style={{ display: 'none' }} // Hide the input element
                                         />

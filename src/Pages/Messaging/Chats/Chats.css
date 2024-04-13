@@ -236,6 +236,14 @@
     justify-content: flex-end;
 }
 
+.message-image { 
+    max-width: 512px;
+    max-height: 512px;
+    object-fit: cover;
+    object-position: center center;
+    margin-right: 10px;
+}
+
 .user-message .chat-message { 
     border-radius: 8px 8px 0px 8px;
     background-color: #5286FF;
@@ -246,6 +254,10 @@
     line-height: 155%;
 }
 
+.message-added-files { 
+    margin-left: 20px; 
+}
+
 .chat-message-text { 
     overflow-wrap: break-word;
     white-space: pre-wrap;
@@ -253,6 +265,24 @@
     color: white;
     font-size: 1.125rem;
     line-height: 155%;
+}
+
+.message-added-file-container { 
+    display: flex;
+    position: relative;
+    max-height: 200px;
+}
+
+.message-added-file-image { 
+    object-fit: cover;
+    object-position: center center;
+    max-height: 200px;
+}
+
+.message-file-clear { 
+    margin-left: -25px; 
+    rotate: 45deg;
+    cursor: pointer;
 }
 
 .chat-message-date { 
