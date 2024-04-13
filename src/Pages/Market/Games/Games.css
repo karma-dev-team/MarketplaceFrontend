@@ -61,3 +61,38 @@
 .game-category-element-text { 
     color: rgb(141, 145, 167) !important; 
 }
+
+.switch-buttons { 
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: 10px; 
+}
+
+.switch-button { 
+    display: flex;
+    padding: 12px 20px;
+    font-size: large;
+    font-weight: 400;
+    background-color: transparent;
+    outline: none;
+    border: none; 
+    color: var(--text-color); 
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.switch-button:hover { 
+    color: white; 
+    transition: 0.5s ease;
+}
+
+.switch-button.active { 
+    background-color: #515561;
+    color: white; 
+}
+
+.switch-button.active:hover { 
+    background-color: #5e626f;
+    transition: 0.5s ease;
+}

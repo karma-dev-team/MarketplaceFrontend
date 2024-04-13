@@ -1,7 +1,7 @@
 import React, { CSSProperties, Dispatch, useState } from 'react';
 import './Search.css'; // Assuming you will define styles in this CSS file
 
-type props = { placeholder: string, onChange: Dispatch<string>, searchText: string, style?: CSSProperties }
+type props = { placeholder: string, onChange: Dispatch<string>, searchText: string, style?: CSSProperties, onSubmit?: (value: string) => void }
 
 const SearchbarComponent: React.FC<props> = (props: props) => {
   return (
