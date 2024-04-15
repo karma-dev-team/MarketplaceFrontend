@@ -1,13 +1,16 @@
 import "./Sales.css"
 import data from "@testdata/Wallet.json"
 import SelectorComponent from "src/Components/Selector/Selector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ProductCard from "src/Components/ProductCard/ProductCard";
 import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import { OptionType } from "src/Schemas/Option";
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
 
 
 
@@ -16,6 +19,8 @@ const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     let transactions = data.transactions; 
     const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
     const [operationFilter, setOperationFilter] = useState<TransactonOperations>()
+    const [cookies] = useCookies([AuthKey])
+    const navigate = useNavigate()
 
     const transactionStatuses: OptionType[] = [
         {
@@ -43,6 +48,11 @@ const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
           value: TransactionStatus.Expired,
         },
     ];
+    useEffect(() => { 
+        if (cookies.Authorization === undefined || cookies.Authorization === "") { 
+            navigate("/login")
+        }
+    })
 
     return (
         <div className="root-sales">

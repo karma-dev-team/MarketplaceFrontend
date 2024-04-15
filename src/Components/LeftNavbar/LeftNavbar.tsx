@@ -47,6 +47,7 @@ const LeftNavbarComponent = (props: Props) => {
     const buttonsLine = [2, 3, 6, 7];
   
     const navigate = useNavigate()
+    
     const handleButtonClick = (label: string, navpath: string) => {
       props.setCategory(label);
 

@@ -17,10 +17,18 @@ import { CategoryControllersApi, CategoryEntity, GameControllersApi, OptionEntit
 import { convertObjectToOptions } from "src/Utils/Options";
 import { ApiConfig } from "src/Gateway/Config";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
 
 const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Продать')  
-    
+    const [cookies] = useCookies([AuthKey])
+    const navigate = useNavigate()
+
+    if (cookies.Authorization === undefined || cookies.Authorization === "") { 
+        navigate("/login")
+    }
+
     const [categoryOptions, setCategoryOptions] = useState<OptionType[]>([])
     const [gamesOptions, setGamesOptions] = useState<OptionType[]>([])
     const [options, setOptions] = useState<OptionEntity[]>([])
@@ -68,7 +76,6 @@ const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
     const categoryApi = new CategoryControllersApi(ApiConfig)
     const productApi = new ProductControllersApi(ApiConfig)
-    const navigate = useNavigate()
     const submitProduct = async () => { 
         if (selectedCategory === "" || selectedCategory === undefined
             || selectedGame === "" || selectedGame === undefined) { 

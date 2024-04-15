@@ -2,12 +2,14 @@ import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import "./Chats.css"
 import data from "@testdata/Chats.json"
 import { MessageScheme } from "src/Schemas/Message";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ChatScheme } from "src/Schemas/Chat";
 import plusIcon from "@images/PlusLog.svg"
 import { format } from 'date-fns';
 import VerifiedIcon from "src/Components/Icons/VerfiedIcon";
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
 
 type iconProps = { width?: string, height?: string }
 
@@ -21,6 +23,10 @@ const SendIcon: React.FC<iconProps> = (props: iconProps) => {
 
 const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Сообщение')  
+
+    const [cookies] = useCookies([AuthKey])
+    const navigate = useNavigate()
+
     const { chatId } = useParams()
     const [currentMessages, setMessages] = useState<MessageScheme[]>([])
     const [currentChat, setCurrentChat] = useState<ChatScheme>()
@@ -85,6 +91,10 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     };
     
     useEffect(() => {
+        if (cookies.Authorization === undefined || cookies.Authorization === "") { 
+            navigate("/login")
+        }
+
         if (chatId) {
             const selectedChat = data.chats.find((chat) => chat.id === chatId);
             if (selectedChat) {
