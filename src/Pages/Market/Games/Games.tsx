@@ -98,7 +98,7 @@ const GamesPage: React.FC<props> = (props: props) => {
                                 {gamesByFirstCharacters[character].map((value) => { 
                                     return (
                                         <div className="group-game-one" key={Math.random()}>
-                                            <div className="group-game-header">
+                                            <div className="group-game-header" onClick={() => navigate(`/games/${value.name}`)}>
                                                 <img src={value.logo} alt={value.name} width={48} height={48}/>
                                                 <h1>{value.name}</h1>
                                             </div>

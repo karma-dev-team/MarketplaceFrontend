@@ -5,9 +5,12 @@ import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { range } from "src/Utils/Range";
+import { useNavigate } from "react-router-dom";
 
 const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Товары') 
+    const navigate = useNavigate()
+
     return (
         <div className="root-game">
             <div className="nedonavbar">
@@ -22,7 +25,7 @@ const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                     <img src={gamelogo} alt="gamelogo" />
                     <p className="game-test123">Garry's mod is a greatest game</p>
                     <div className="categorykeys">
-                        <div className="key">Ключи</div>
+                        <div className="key" onClick={() => navigate(`/category/${'dsada'}`)}>Ключи</div>
                         <div className="key">Ключи</div>
                         <div className="key">Ключи</div>
                         <div className="key">Ключи</div>

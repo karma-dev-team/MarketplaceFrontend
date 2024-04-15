@@ -22,6 +22,11 @@
 .group-game-header { 
     display: flex;
     align-items: center;
+    cursor: pointer;
+}
+
+.group-game-header h1:hover { 
+    text-decoration: underline;
 }
 
 .group-game-header img { 
