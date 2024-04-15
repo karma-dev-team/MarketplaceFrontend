@@ -21,6 +21,7 @@
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
+    "restclient": "file:restclient",
     "task-manager": "file:TaskManagerRestClient",
     "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
