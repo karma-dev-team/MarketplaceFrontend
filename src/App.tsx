@@ -26,6 +26,7 @@ import ProductAnalPage from './Pages/Market/ProductUpdate/ProductUpdate';  // i'
 import CategoryProductsPage from './Pages/Market/CategoryProducts/CategoryProducts';
 import ChatsPage from './Pages/Messaging/Chats/Chats';
 import ProductEditPage from './Pages/Market/ProductEdit/ProductEdit';
+import AnalyticsPage from './Pages/Market/Analytics/Analytics';
 
 function App() {	
 	const location = useLocation();
@@ -40,30 +41,31 @@ function App() {
 			{showNavbar && <Navbar Role={UserRoles.Admin} category={category} setCategory={setCategory}/>}
 			<div className='content'>
 				<Routes>
-					<Route path="/" element={<HomePage />} />
+					<Route path="/" element={<HomePage setCategory={setCategory}/>} />
 					<Route path="/login" element={<LoginPage />} />
-					<Route path="/register" element={<RegisterPage />} />
-					<Route path="/reset-password" element={<ResetPasswordPage />} />
-					<Route path="/transaction/:id/chat-select" element={<ChatSelectPage />} />
-					<Route path="/transaction/:id" element={<WaitingPage />} />
-					<Route path="/contact/" element={<ContactPage />} />
-					<Route path="/user/:id/settings/" element={<UserSettingsPage />} />
-					<Route path="/user/:id/security/" element={<UserSecurityPage />} />
-					<Route path="/user/:id/notifications/" element={<NotificationsPage />} />
-					<Route path="/games" element={<GamesPage  type="Game"/>}/>
-					<Route path="/applications" element={<GamesPage type="Application"/>}/>
-					<Route path='/category/:id' element={<CategoryProductsPage />}/>
-					<Route path="/products/create" element={<ProductCreatePage />}/>
-					<Route path="/wallet/:id" element={<WalletPage />} />
-					<Route path="/games/:id" element={<GamePage />}/>
+					<Route path="/register" element={<RegisterPage/>} />
+					<Route path="/reset-password" element={<ResetPasswordPage/>} />
+					<Route path="/transaction/:id/chat-select" element={<ChatSelectPage setCategory={setCategory}/>} />
+					<Route path="/transaction/:id" element={<WaitingPage setCategory={setCategory}/>} />
+					<Route path="/contact/" element={<ContactPage setCategory={setCategory}/>} />
+					<Route path="/user/:id/settings/" element={<UserSettingsPage setCategory={setCategory}/>} />
+					<Route path="/user/:id/security/" element={<UserSecurityPage setCategory={setCategory}/>} />
+					<Route path="/user/:id/notifications/" element={<NotificationsPage setCategory={setCategory}/>} />
+					<Route path="/games" element={<GamesPage  type="Game" setCategory={setCategory}/>}/>
+					<Route path="/applications" element={<GamesPage type="Application" setCategory={setCategory}/>}/>
+					<Route path='/category/:id' element={<CategoryProductsPage setCategory={setCategory}/>}/>
+					<Route path="/products/create" element={<ProductCreatePage setCategory={setCategory}/>}/>
+					<Route path="/wallet/:id" element={<WalletPage setCategory={setCategory}/>} />
+					<Route path="/games/:id" element={<GamePage setCategory={setCategory}/>}/>
 					<Route path="/user/:id" element={<UserPage />}/>
-					<Route path="/user/:id/purchases/" element={<PurchasesPage />}/>
-					<Route path="/user/:id/sales/" element={<SalesPage />}/>
-					<Route path="/product/:id" element={<ProductPage />}/>
-					<Route path="/chats" element={<ChatsPage />}/>
-					<Route path="/product/:id/edit" element={<ProductAnalPage />}/>
-					<Route path="/chat/:chatId" element={<ChatsPage />}/>
-					<Route path="/product/:id/edit/edit" element={<ProductEditPage />}/>
+					<Route path="/user/:id/purchases/" element={<PurchasesPage setCategory={setCategory}/>}/>
+					<Route path="/user/:id/sales/" element={<SalesPage setCategory={setCategory}/>}/>
+					<Route path="/user/:id/analytics" element={<AnalyticsPage setCategory={setCategory}/>}/>
+					<Route path="/chats" element={<ChatsPage setCategory={setCategory}/>}/>
+					<Route path="/chat/:chatId" element={<ChatsPage setCategory={setCategory}/>}/>
+					<Route path="/product/:id" element={<ProductPage setCategory={setCategory}/>}/>
+					<Route path="/product/:id/edit" element={<ProductAnalPage setCategory={setCategory}/>}/>
+					<Route path="/product/:id/edit/edit" element={<ProductEditPage setCategory={setCategory}/>}/>
 				</Routes>
 			</div>
 		</div>

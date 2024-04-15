@@ -2,9 +2,11 @@ import "./Chat_select.css"
 
 import telegramIcon from "@images/telegram-icon.png"
 import chatIcon from "@images/Group.png"
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 
-const ChatSelectPage: React.FC = () => {  
+const ChatSelectPage: React.FC<NavbarProps> = (props: NavbarProps) => {  
+    props.setCategory('Покупки')
     return (
         <div className="root-chatselect">
             <h1 className="text-123">Выбырите тип чата в котором хотите продолжить общение</h1>

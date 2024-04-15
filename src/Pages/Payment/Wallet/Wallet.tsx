@@ -11,8 +11,10 @@ import { OptionType } from "src/Schemas/Option";
 import Modal from "src/Modals/Base/Base";
 import BuyModal from "src/Modals/Buy/Buy";
 import PayoutModal from "src/Modals/Payout/Payout";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
-const WalletPage: React.FC = () => {  
+const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('') 
     let transactions = data.transactions; 
     const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
     const [operationFilter, setOperationFilter] = useState<TransactonOperations>()

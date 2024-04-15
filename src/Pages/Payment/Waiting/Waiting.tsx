@@ -1,8 +1,10 @@
 import "./Waiting.css"
 
 import cartIcon from "@images/image32.png"
+import { NavbarProps } from "src/Utils/NavbarProps";
 
-const WaitingPage: React.FC = () => {  
+const WaitingPage: React.FC<NavbarProps> = (props: NavbarProps) => {  
+    props.setCategory('Покупки')
     return (
         <div className="root-waiting">
             <div className="container123">

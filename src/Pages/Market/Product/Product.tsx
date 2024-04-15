@@ -11,9 +11,11 @@ import StarsComponent from "src/Components/Stars/Stars";
 import Modal from "src/Modals/Base/Base";
 import { useState } from "react";
 import BuyModal from "src/Modals/Buy/Buy";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 
-const ProductPage: React.FC = () => {  
+const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('Товары') 
     const [buyModal, setBuyModal] = useState<boolean>(false)
 
     const openBuyModal = () => { 

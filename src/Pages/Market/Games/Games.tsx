@@ -1,14 +1,16 @@
 import "./Games.css" 
 import data from "@testdata/Games.json"
-import { useEffect, useState } from "react"
+import { Dispatch, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import NavigationMapComponent from "src/Components/NavigationMap/NavigationMap"
 import SearchbarComponent from "src/Components/Search/Search"
+import { NavbarCategories, NavbarProps } from "src/Utils/NavbarProps";
 
 type Game = { name: string, logo: string, categories: string[], type: string }
-type props = { type: "Application" | "Game" }
+type props = { type: "Application" | "Game", setCategory: Dispatch<NavbarCategories>}
 
 const GamesPage: React.FC<props> = (props: props) => {  
+    props.setCategory('Каталог игр')
     const [type, setType] = useState<"Application" | "Game">(props.type);
     const navigate = useNavigate();
     const [searchText, setSearchText] = useState<string>("");

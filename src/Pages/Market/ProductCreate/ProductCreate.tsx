@@ -14,8 +14,10 @@ import ImageScheme from "src/Schemas/Image";
 import warningIcon from "@images/warning.png"
 import criticalWarningIcon from "@images/criticalWarning.png"
 import ImageUploaderComponent from "src/Components/ImageUploader/ImageUploader";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
-const ProductCreatePage: React.FC = () => {  
+const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('Товары')  
     // delete when connecting to backend 
     const gameOptions: OptionType[] = [
         { 

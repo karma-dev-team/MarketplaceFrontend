@@ -2,9 +2,11 @@ import ContentLine from "src/Components/ContentLine/ContentLine";
 import "./Contact.css"
 import InputField from "src/Components/InputField/InputField";
 import { useState } from "react";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 
-const ContactPage: React.FC = () => {  
+const ContactPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('') 
     const [text, setText] = useState<string>(''); 
     return (
         <div className="root-contact">

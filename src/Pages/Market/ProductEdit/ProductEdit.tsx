@@ -14,9 +14,11 @@ import { OptionTypes } from "src/Schemas/Enums";
 import SelectorComponent from "src/Components/Selector/Selector";
 import InputField from "src/Components/InputField/InputField";
 import StarsComponent from "src/Components/Stars/Stars";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 
-const ProductEditPage: React.FC = () => {  
+const ProductEditPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('Товары') 
 
     const harakteristikOptions: OptionType[] = [ 
         { 

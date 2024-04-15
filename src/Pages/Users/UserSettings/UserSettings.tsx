@@ -3,8 +3,10 @@ import "./UserSettings.css"
 import InputField from "src/Components/InputField/InputField";
 import { useState } from "react";
 import avatarIcon from "@images/cameraicon.png"
+import { NavbarProps } from "src/Utils/NavbarProps";
 
-const UserSettingsPage: React.FC = () => {  
+const UserSettingsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
+    props.setCategory('')  
     const [text, setText] = useState<string>(''); 
     return (
         <div className="root-usersettings">

@@ -3,6 +3,7 @@ import ContentLine from "src/Components/ContentLine/ContentLine";
 import NotificationComponent from "src/Components/Notification/Notification";
 import data from "@testdata/Notifications.json"
 import { useState } from "react";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 const NotificationTypeToText: { [key: string]: string | undefined } = { 
     "Other": undefined, 
@@ -14,7 +15,8 @@ const NotificationTypeToText: { [key: string]: string | undefined } = {
     "System": undefined
 }
 
-const NotificationsPage: React.FC = () => {  
+const NotificationsPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('') 
     let notifications = data; 
     
     const notificationTypes = { 

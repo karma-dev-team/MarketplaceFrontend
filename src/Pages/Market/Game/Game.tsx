@@ -3,8 +3,10 @@ import ProductCard from "src/Components/ProductCard/ProductCard";
 import gamelogo from "@images/gamelogo1.png"
 import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
+import { NavbarProps } from "src/Utils/NavbarProps";
 
-const GamePage: React.FC = () => {  
+const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('Товары') 
     return (
         <div className="root-game">
             <div className="nedonavbar">

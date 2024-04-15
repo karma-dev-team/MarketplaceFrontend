@@ -7,6 +7,7 @@ import { ChatScheme } from "src/Schemas/Chat";
 import plusIcon from "@images/PlusLog.svg"
 import { format } from 'date-fns';
 import VerifiedIcon from "src/Components/Icons/VerfiedIcon";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 type iconProps = { width?: string, height?: string }
 
@@ -26,7 +27,8 @@ const LoadingIcon: React.FC<iconProps> = (props: iconProps) => {
     )
 } 
 
-const ChatsPage: React.FC = () => {  
+const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('Сообщение')  
     const { chatId } = useParams()
     const [currentMessages, setMessages] = useState<MessageScheme[]>([])
     const [currentChat, setCurrentChat] = useState<ChatScheme>()

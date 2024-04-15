@@ -7,10 +7,12 @@ import ProductCard from "src/Components/ProductCard/ProductCard";
 import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import { OptionType } from "src/Schemas/Option";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 
 
-const SalesPage: React.FC = () => {  
+const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('Аналитика') 
     let transactions = data.transactions; 
     const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
     const [operationFilter, setOperationFilter] = useState<TransactonOperations>()

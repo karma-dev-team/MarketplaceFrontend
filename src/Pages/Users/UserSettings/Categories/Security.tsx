@@ -1,7 +1,9 @@
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import "./Security.css"
+import { NavbarProps } from "src/Utils/NavbarProps";
 
-const UserSecurityPage: React.FC = () => {  
+const UserSecurityPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('')  
     return (
         <div className="root-usersecurity">
             <div className="korobka">

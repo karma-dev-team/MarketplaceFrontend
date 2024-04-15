@@ -15,6 +15,7 @@ import LogoComponent from "../Logo/Logo";
 import { Dispatch } from "react";
 import ContentLine from "../ContentLine/ContentLine";
 import { useNavigate } from "react-router-dom";
+import { NavbarCategories } from "src/Utils/NavbarProps";
 
 type Props = {
   Role: UserRoles;
@@ -23,18 +24,26 @@ type Props = {
   navpath: string;
 };
 
+type Button = {
+  id: number;
+  icon: any;  // Тип 'any' здесь использован для упрощения, замените на более конкретный тип, если он известен
+  label: NavbarCategories, 
+  navpath: string;
+};
+
 const LeftNavbarComponent = (props: Props) => {
-    const buttons = [
+    const buttons: Button[] = [
       { id: 1, icon: HartCartLogo, label: 'Товары', navpath: '/' },
       { id: 2, icon: SearchLogo, label: 'Каталог игр', navpath: '/games' },
       { id: 3, icon: ChatLogo, label: 'Сообщение', navpath: '/chats'  },
       { id: 4, icon: CartLogo, label: 'Покупки', navpath: '/user/1/purchases/'  },
       { id: 5, icon: CorzineLogo, label: 'Продажи', navpath: '/user/1/sales/'  },
-      { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика', navpath: ''  },
+      { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика', navpath: '/user/1/analytics'  },
       { id: 7, icon: PlusLogo, label: 'Продать', navpath: '/products/create'  },
+      { id: 8, icon: PlusLogo, label: "Управление", navpath: "/control"}
     ];
   
-    const buttonsLine = [2, 3, 6];
+    const buttonsLine = [2, 3, 6, 7];
   
     const navigate = useNavigate()
     const handleButtonClick = (label: string, navpath: string) => {

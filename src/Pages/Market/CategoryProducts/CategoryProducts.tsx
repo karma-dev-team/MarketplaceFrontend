@@ -9,8 +9,10 @@ import { OptionScheme } from "src/Schemas/Option";
 import { OptionTypes } from "src/Schemas/Enums";
 import ProductCardComponent from "src/Components/ProductCard/ProductCard";
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
-const CategoryProductsPage: React.FC = () => {  
+const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
+    props.setCategory('Каталог игр') 
     let elements = new Map<string, string>()
 
     elements.set("Главная", "/")
