@@ -2,8 +2,10 @@ import "./Games.css"
 import data from "@testdata/Games.json"
 import { Dispatch, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { GameControllersApi, GameEntity } from "restclient"
 import NavigationMapComponent from "src/Components/NavigationMap/NavigationMap"
 import SearchbarComponent from "src/Components/Search/Search"
+import { ApiConfig, asFileUrl } from "src/Gateway/Config"
 import { NavbarCategories, NavbarProps } from "src/Utils/NavbarProps";
 
 type Game = { name: string, logo: string, categories: string[], type: string }
@@ -14,41 +16,37 @@ const GamesPage: React.FC<props> = (props: props) => {
     const [type, setType] = useState<"Application" | "Game">(props.type);
     const navigate = useNavigate();
     const [searchText, setSearchText] = useState<string>("");
-    const [games, setGames] = useState<Game[]>([]);
-    const [gamesByFirstCharacters, setGamesByFirstCharacters] = useState<{ [name: string]: Game[] }>({});
+    const [games, setGames] = useState<GameEntity[]>([]);
+    const [gamesByFirstCharacters, setGamesByFirstCharacters] = useState<{ [name: string]: GameEntity[] }>({});
 
     useEffect(() => {
-        // Initialize games state
-        const filteredGames = data.filter(value => value.type === type);
-        setGames(filteredGames);
+        (async () => { 
+            const gameApi = new GameControllersApi(ApiConfig); 
 
+            let gamesResponse = await gameApi.apiGameGet(type, searchText === "" ? undefined : searchText);
+            setGames(gamesResponse.data)
+        })()
+    }, [searchText, type])
+
+    useEffect(() => {
         // Initialize gamesByFirstCharacters object
-        const gamesByFirstCharactersTemp: { [name: string]: Game[] } = {};
-        filteredGames.forEach(value => {
+        const gamesByFirstCharactersTemp: { [name: string]: GameEntity[] } = {};
+        games.forEach(value => {
         const gameNameFirstLetter = value.name[0];
-        if (!gamesByFirstCharactersTemp[gameNameFirstLetter]) {
-            gamesByFirstCharactersTemp[gameNameFirstLetter] = [];
-        }
-        gamesByFirstCharactersTemp[gameNameFirstLetter].push(value);
+            if (!gamesByFirstCharactersTemp[gameNameFirstLetter]) {
+                gamesByFirstCharactersTemp[gameNameFirstLetter] = [];
+            }
+            gamesByFirstCharactersTemp[gameNameFirstLetter].push(value);
         });
         // Update gamesByFirstCharacters state
         setGamesByFirstCharacters(gamesByFirstCharactersTemp);
-    }, [type]); 
+    }, [type, games]); 
 
     const handleSearch = (value: string) => {
         setSearchText(value);
     
-        let filteredGames = data.filter(game => {
-            return (
-                (value === "" || game.name.toLowerCase().includes(value.toLowerCase())) &&
-                game.type === type
-            );
-        });
-        
-        setGames(filteredGames);
-    
-        const gamesByFirstCharactersTemp: { [name: string]: Game[] } = {};
-        filteredGames.forEach(value => {
+        const gamesByFirstCharactersTemp: { [name: string]: GameEntity[] } = {};
+        games.forEach(value => {
         const gameNameFirstLetter = value.name[0];
         if (!gamesByFirstCharactersTemp[gameNameFirstLetter]) {
             gamesByFirstCharactersTemp[gameNameFirstLetter] = [];
@@ -99,13 +97,13 @@ const GamesPage: React.FC<props> = (props: props) => {
                                     return (
                                         <div className="group-game-one" key={Math.random()}>
                                             <div className="group-game-header" onClick={() => navigate(`/games/${value.name}`)}>
-                                                <img src={value.logo} alt={value.name} width={48} height={48}/>
+                                                <img src={asFileUrl(value.logo.id)} alt={value.name} width={48} height={48}/>
                                                 <h1>{value.name}</h1>
                                             </div>
                                             <div className="group-game-categories">
-                                                {value.categories.map((value) => { 
+                                                {value.categories?.map((value) => { 
                                                     return ( 
-                                                        <Link to={`/category/${value}`} className="game-category-element-text">{value}</Link>
+                                                        <Link to={`/category/${value}`} className="game-category-element-text">{value.name}</Link>
                                                     )
                                                 })}
                                             </div>
