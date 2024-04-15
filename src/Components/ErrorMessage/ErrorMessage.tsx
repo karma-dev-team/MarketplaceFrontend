@@ -1,7 +1,6 @@
-import {Dispatch} from 'react' 
 import "./ErrorMessage.css"
 
-type props = { errorMessage: string | undefined, setErrorMessage: Dispatch<string> }
+type props = { errorMessage: string | undefined }
 
 
 const ErrorMessage: React.FC<props> = (props: props) => { 
@@ -11,9 +10,7 @@ const ErrorMessage: React.FC<props> = (props: props) => {
 
     return ( 
         <div className="error-message">
-            <div className="error-message">
-                {props.errorMessage}
-            </div>
+            {props.errorMessage}
         </div>
     )
 }

@@ -3,16 +3,44 @@ import "./Login.css"
 import ToHomeComponent from "src/Components/ToHome/ToHome";
 import LogoComponent from "src/Components/Logo/Logo";
 import InputField from "src/Components/InputField/InputField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContentLine from "src/Components/ContentLine/ContentLine";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthControllersApi } from "restclient";
+import { ApiConfig, setToken } from "src/Gateway/Config";
+import ErrorMessage from "src/Components/ErrorMessage/ErrorMessage";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
 
 const LoginPage: React.FC = () => {  
     const [email, setEmail] = useState<string>(''); 
     const [password, setPassword] = useState<string>(''); 
+    const navigate = useNavigate()
+    const [errorMsg, setErrorMsg] = useState<string>()
+    const [cookies, setCookies] = useCookies([AuthKey])
+    useEffect(() => { 
+        if (cookies.Authorization !== undefined) { 
+            navigate("/")
+        }
+    }, [cookies])
 
-    const handleLogin = () => { 
+    const handleLogin = async () => { 
+        const authApi = new AuthControllersApi(ApiConfig)
 
+        if (email === '' || password === '') { 
+            return;
+        }
+        try { 
+            let loginResponse = await authApi.apiAuthLoginPost({ 
+                email: email, 
+                password: password, 
+            })
+
+            setToken(loginResponse.data.accessToken, setCookies); 
+        } catch (e) { 
+            console.error(e)
+            setErrorMsg(String(e))
+        } 
     }
 
     return (
@@ -45,6 +73,8 @@ const LoginPage: React.FC = () => {
                             type="password"
                         /> 
                     </div>
+                    
+                    <ErrorMessage errorMessage={errorMsg}/>
                     <button className="general-button" onClick={handleLogin}>
                         <h4>Войти</h4>
                     </button>

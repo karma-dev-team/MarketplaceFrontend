@@ -43,11 +43,13 @@ const InputField: React.FC<props> = (props: props) => {
                 onChange={(e) => props.onChange(e.target.value)}
                 placeholder={props.placeholder}
                 autoComplete="new-password" 
+                required={required}
             />
             : 
             <input 
                 style={styles}
                 type={type}   
+                required={required}
                 className="inputfield-input" 
                 value={props.text}
                 onChange={(e) => props.onChange(e.target.value)}

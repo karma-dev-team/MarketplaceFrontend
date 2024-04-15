@@ -1,18 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import googleIcon from "@images/google-icon.png"; 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import InputField from "src/Components/InputField/InputField";
 import LogoComponent from "src/Components/Logo/Logo";
 import "./Register.css"
 import ToHomeComponent from "src/Components/ToHome/ToHome";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
+import { AuthControllersApi } from "restclient";
+import { ApiConfig, setToken } from "src/Gateway/Config";
+import ErrorMessage from "src/Components/ErrorMessage/ErrorMessage";
 
 const RegisterPage: React.FC = () => {  
     const [email, setEmail] = useState<string>(''); 
     const [username, setUsername] = useState<string>(''); 
+    const [password, setPassword] = useState<string>('')
+    const [repeatPassword, setRepeatPassword] = useState<string>('')
+    const navigate = useNavigate()
+    const [errorMsg, setError] = useState<string>()
+    const [cookies, setCookies] = useCookies([AuthKey])
 
-    const handleRegister = () => { 
+    useEffect(() => { 
+        if (cookies.Authorization !== undefined) { 
+            navigate("/")
+        }
+    }, [cookies])
 
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => { 
+       e.preventDefault()
+
+        if (password !== repeatPassword) { 
+            setError("Ваш пароль не совпадает с повторенным паролем")
+            return 
+        }
+        let authApi = new AuthControllersApi(ApiConfig)
+        try { 
+            await authApi.apiAuthRegisterPost(
+                { 
+                    email: email, 
+                    password: password, 
+                    name: username, 
+            }
+        )
+        } catch (e: any) { 
+            setError("Такой пользватель уже существует")
+            return
+        }
+        let response = await authApi.apiAuthLoginPost(
+            { 
+                email: email, 
+                password: password, 
+            }
+        )
+        setToken(response.data.accessToken || "", setCookies)
+        setTimeout(() => navigate("/"), 500)
     }
 
     return (
@@ -24,12 +66,13 @@ const RegisterPage: React.FC = () => {
                     <h2 className="">Регистрация</h2>
                 </div>
 
-                <div className="register-form">
+                <form className="register-form" onSubmit={handleRegister}>
 
                     <div className="register-input-fields">
                         <InputField 
                             placeholder="Введите свою почту..." 
                             text={email} 
+                            type="email"
                             onChange={setEmail} 
                             titleText="Введите свою почту" 
                             required={true}
@@ -42,28 +85,31 @@ const RegisterPage: React.FC = () => {
                             titleText="Введите свое имя" 
                             required={true}
                             width={"100%"}
-                            type="password"
+                            type="text"
                         /> 
                         <InputField 
                             placeholder="Введите свой пароль..." 
-                            text={email} 
-                            onChange={setEmail} 
+                            text={password} 
+                            onChange={setPassword} 
                             titleText="Введите свой пароль" 
                             required={true}
                             width={"100%"}
+                            type="password"
                         /> 
                         <InputField 
                             placeholder="Повторите свой пароль..." 
-                            text={email} 
-                            onChange={setEmail} 
+                            text={repeatPassword} 
+                            onChange={setRepeatPassword} 
                             required={true}
                             width={"100%"}
+                            type="password"
                         /> 
                     </div>
-                    <button className="general-button" onClick={handleRegister}>
+                    <ErrorMessage errorMessage={errorMsg}/>
+                    <button className="general-button" type="submit">
                         <h4>Регистрация</h4>
                     </button>
-                </div>
+                </form>
                 <ContentLine />
                 <p className="continue-with">Войти через</p>
                 <button className="general-button google-login">
