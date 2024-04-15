@@ -16,7 +16,7 @@ import { Dispatch } from "react";
 import ContentLine from "../ContentLine/ContentLine";
 import { useNavigate } from "react-router-dom";
 import { NavbarCategories } from "src/Utils/NavbarProps";
-import cogsIcon from "@images/cogs.png"
+import cogsIcon from "@images/cogs.svg"
 
 type Props = {
   Role: UserRoles;

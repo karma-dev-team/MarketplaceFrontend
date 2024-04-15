@@ -1,10 +1,8 @@
 .root-contact {
-    height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     width: 100%;
+    padding: 20px 20px; 
 }
 
 .huinia-123 {
@@ -102,16 +100,30 @@
     color: #A8A8A8;
 }
 
-.knopka {
+.knopka1234 {
     background-color: #FD4B4B;
     color: #FFFFFF;
-    height: 31px;
-    width: 98px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 15px; 
+    width: min-content;
     border-radius: 15px;
     border: none;
     cursor: pointer;
 }
 
-.knopka:hover {
+.contactform-container { 
+    width: 40%;
+}
+
+.knopka-container { 
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.knopka1234:hover {
     background-color: #9c3131;
 }
