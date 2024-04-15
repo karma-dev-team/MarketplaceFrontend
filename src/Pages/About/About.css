@@ -1,0 +1,90 @@
+.root-about {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 20px; 
+}
+
+
+.huinia123321 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 6px;
+}
+
+.zvezda321 {
+    width: 79px;
+    height: 26px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #9A9A9A;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.tochka321 {
+    width: 13px;
+    height: 26px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #666666;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.pizda321 {
+    width: 101px;
+    height: 26px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #666666;
+    
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.projectinfo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.projectinfo-container h2 {
+    margin-top: 20px;
+}
+
+.projectinfo {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.projectlist123 {
+    margin-left: 15px;
+    margin-top: 5px;
+}
