@@ -80,10 +80,10 @@ const LeftNavbarComponent = (props: Props) => {
             </div>
             <div className="footer_link">
                 <a href="http://localhost:3000/contact/#">Помощь</a>
-                <a href="#">О проекте</a>
-                <a href="#">Правила</a>
+                <a href="http://localhost:3000/about/#">О проекте</a>
+                <a href="https://policies.google.com/terms?hl=ru">Правила</a>
                 <a href="https://www.google.com/intl/ru/policies/terms/changes/">Соглашение</a>
-                <a href="#">Конфидиценциальность</a>
+                <a href="https://policies.google.com/privacy?hl=ru">Конфидиценциальность</a>
                 <a href="http://localhost:3000/contact/#">Контакты</a>
             </div>
             <div className="footer_copyright">

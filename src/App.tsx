@@ -27,6 +27,7 @@ import CategoryProductsPage from './Pages/Market/CategoryProducts/CategoryProduc
 import ChatsPage from './Pages/Messaging/Chats/Chats';
 import ProductEditPage from './Pages/Market/ProductEdit/ProductEdit';
 import AnalyticsPage from './Pages/Market/Analytics/Analytics';
+import AboutPage from './Pages/About/About';
 
 function App() {	
 	const location = useLocation();
@@ -66,6 +67,7 @@ function App() {
 					<Route path="/product/:id" element={<ProductPage setCategory={setCategory}/>}/>
 					<Route path="/product/:id/edit" element={<ProductAnalPage setCategory={setCategory}/>}/>
 					<Route path="/product/:id/edit/edit" element={<ProductEditPage setCategory={setCategory}/>}/>
+					<Route path="/about" element={<AboutPage setCategory={setCategory}/>}/>
 				</Routes>
 			</div>
 		</div>

@@ -34,10 +34,12 @@ const ContactPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         • Звоните нам по номеру: <u>8-800-600-64-51</u> - звонок по России бесплатный.
                         <br />
                         • Чат с поддержкой: <u>написать</u>
+                        <br />
+                        • Или же можете написать на почту: <u>karma-team228@yandex.ru</u>
                     </p>
                 </div>
                 <div className="contactform">
-                    <h2 className="textname123">Контектная форма</h2>
+                    <h2 className="textname123">Контактная форма</h2>
                     <ContentLine />
                     <div className="contactform-container">
                         <InputField 
