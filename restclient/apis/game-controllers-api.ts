@@ -28,6 +28,53 @@ export const GameControllersApiAxiosParamCreator = function (configuration?: Con
     return {
         /**
          * 
+         * @param {string} [type] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiGameCountGet: async (type?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/game/count`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            if (type !== undefined) {
+                localVarQueryParameter['type'] = type;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} gameId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -177,11 +224,12 @@ export const GameControllersApiAxiosParamCreator = function (configuration?: Con
         },
         /**
          * 
+         * @param {string} [type] 
          * @param {string} [name] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiGameGet: async (name?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiGameGet: async (type?: string, name?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/game`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -200,6 +248,10 @@ export const GameControllersApiAxiosParamCreator = function (configuration?: Con
                     ? await configuration.accessToken()
                     : await configuration.accessToken;
                 localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            if (type !== undefined) {
+                localVarQueryParameter['Type'] = type;
             }
 
             if (name !== undefined) {
@@ -280,6 +332,19 @@ export const GameControllersApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {string} [type] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiGameCountGet(type?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<number>>> {
+            const localVarAxiosArgs = await GameControllersApiAxiosParamCreator(configuration).apiGameCountGet(type, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @param {string} gameId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -320,12 +385,13 @@ export const GameControllersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {string} [type] 
          * @param {string} [name] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiGameGet(name?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<GameEntity>>>> {
-            const localVarAxiosArgs = await GameControllersApiAxiosParamCreator(configuration).apiGameGet(name, options);
+        async apiGameGet(type?: string, name?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<GameEntity>>>> {
+            const localVarAxiosArgs = await GameControllersApiAxiosParamCreator(configuration).apiGameGet(type, name, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -353,6 +419,15 @@ export const GameControllersApiFp = function(configuration?: Configuration) {
  */
 export const GameControllersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
+        /**
+         * 
+         * @param {string} [type] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiGameCountGet(type?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<number>> {
+            return GameControllersApiFp(configuration).apiGameCountGet(type, options).then((request) => request(axios, basePath));
+        },
         /**
          * 
          * @param {string} gameId 
@@ -383,12 +458,13 @@ export const GameControllersApiFactory = function (configuration?: Configuration
         },
         /**
          * 
+         * @param {string} [type] 
          * @param {string} [name] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiGameGet(name?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<GameEntity>>> {
-            return GameControllersApiFp(configuration).apiGameGet(name, options).then((request) => request(axios, basePath));
+        async apiGameGet(type?: string, name?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<GameEntity>>> {
+            return GameControllersApiFp(configuration).apiGameGet(type, name, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -409,6 +485,16 @@ export const GameControllersApiFactory = function (configuration?: Configuration
  * @extends {BaseAPI}
  */
 export class GameControllersApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} [type] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GameControllersApi
+     */
+    public async apiGameCountGet(type?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<number>> {
+        return GameControllersApiFp(this.configuration).apiGameCountGet(type, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * 
      * @param {string} gameId 
@@ -442,13 +528,14 @@ export class GameControllersApi extends BaseAPI {
     }
     /**
      * 
+     * @param {string} [type] 
      * @param {string} [name] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GameControllersApi
      */
-    public async apiGameGet(name?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<GameEntity>>> {
-        return GameControllersApiFp(this.configuration).apiGameGet(name, options).then((request) => request(this.axios, this.basePath));
+    public async apiGameGet(type?: string, name?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<GameEntity>>> {
+        return GameControllersApiFp(this.configuration).apiGameGet(type, name, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

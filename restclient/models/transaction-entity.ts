@@ -29,7 +29,7 @@ export interface TransactionEntity {
      * @type {string}
      * @memberof TransactionEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -65,31 +65,31 @@ export interface TransactionEntity {
      * @type {Money}
      * @memberof TransactionEntity
      */
-    amount?: Money;
+    amount: Money;
 
     /**
      * @type {string}
      * @memberof TransactionEntity
      */
-    operation?: TransactionEntityOperationEnum;
+    operation: TransactionEntityOperationEnum;
 
     /**
      * @type {string}
      * @memberof TransactionEntity
      */
-    direction?: TransactionEntityDirectionEnum;
+    direction: TransactionEntityDirectionEnum;
 
     /**
      * @type {string}
      * @memberof TransactionEntity
      */
-    status?: TransactionEntityStatusEnum;
+    status: TransactionEntityStatusEnum;
 
     /**
      * @type {UserEntity}
      * @memberof TransactionEntity
      */
-    createdByUser?: UserEntity;
+    createdByUser: UserEntity;
 
     /**
      * @type {Date}
@@ -101,19 +101,19 @@ export interface TransactionEntity {
      * @type {string}
      * @memberof TransactionEntity
      */
-    statusDescription?: string | null;
+    statusDescription: string;
 
     /**
      * @type {Money}
      * @memberof TransactionEntity
      */
-    fee?: Money;
+    fee: Money;
 
     /**
      * @type {TransactionProviderEntity}
      * @memberof TransactionEntity
      */
-    provider?: TransactionProviderEntity;
+    provider: TransactionProviderEntity;
 
     /**
      * @type {TransactionPropsEntity}

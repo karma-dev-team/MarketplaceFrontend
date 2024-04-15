@@ -25,7 +25,7 @@ export interface ProductViewEntity {
      * @type {string}
      * @memberof ProductViewEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}

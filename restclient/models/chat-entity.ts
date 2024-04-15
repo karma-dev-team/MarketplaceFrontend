@@ -29,7 +29,7 @@ export interface ChatEntity {
      * @type {string}
      * @memberof ChatEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -65,7 +65,7 @@ export interface ChatEntity {
      * @type {string}
      * @memberof ChatEntity
      */
-    name?: string | null;
+    name: string;
 
     /**
      * @type {Array<UserEntity>}
@@ -83,13 +83,13 @@ export interface ChatEntity {
      * @type {boolean}
      * @memberof ChatEntity
      */
-    deleted?: boolean;
+    deleted: boolean;
 
     /**
      * @type {boolean}
      * @memberof ChatEntity
      */
-    isVerified?: boolean;
+    isVerified: boolean;
 
     /**
      * @type {Array<ChatReadRecord>}
@@ -101,7 +101,7 @@ export interface ChatEntity {
      * @type {string}
      * @memberof ChatEntity
      */
-    type?: ChatEntityTypeEnum;
+    type: ChatEntityTypeEnum;
 
     /**
      * @type {Array<MessageEntity>}

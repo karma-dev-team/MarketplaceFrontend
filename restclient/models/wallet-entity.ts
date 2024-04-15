@@ -27,7 +27,7 @@ export interface WalletEntity {
      * @type {string}
      * @memberof WalletEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -63,43 +63,43 @@ export interface WalletEntity {
      * @type {string}
      * @memberof WalletEntity
      */
-    userId?: string;
+    userId: string;
 
     /**
      * @type {UserEntity}
      * @memberof WalletEntity
      */
-    user?: UserEntity;
+    user: UserEntity;
 
     /**
      * @type {string}
      * @memberof WalletEntity
      */
-    currency?: WalletEntityCurrencyEnum;
+    currency: WalletEntityCurrencyEnum;
 
     /**
      * @type {Money}
      * @memberof WalletEntity
      */
-    frozen?: Money;
+    frozen: Money;
 
     /**
      * @type {Money}
      * @memberof WalletEntity
      */
-    availableBalance?: Money;
+    availableBalance: Money;
 
     /**
      * @type {Money}
      * @memberof WalletEntity
      */
-    pendingIncome?: Money;
+    pendingIncome: Money;
 
     /**
      * @type {boolean}
      * @memberof WalletEntity
      */
-    blocked?: boolean;
+    blocked: boolean;
 }
 
 /**

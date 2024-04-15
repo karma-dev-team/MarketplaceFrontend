@@ -24,13 +24,13 @@ export interface Money {
      * @type {number}
      * @memberof Money
      */
-    amount?: number;
+    amount: number;
 
     /**
      * @type {string}
      * @memberof Money
      */
-    currency?: MoneyCurrencyEnum;
+    currency: MoneyCurrencyEnum;
 }
 
 /**

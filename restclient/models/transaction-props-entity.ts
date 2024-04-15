@@ -25,7 +25,7 @@ export interface TransactionPropsEntity {
      * @type {string}
      * @memberof TransactionPropsEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}

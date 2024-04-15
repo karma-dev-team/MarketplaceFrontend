@@ -29,7 +29,7 @@ export interface MessageEntity {
      * @type {string}
      * @memberof MessageEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -65,25 +65,25 @@ export interface MessageEntity {
      * @type {string}
      * @memberof MessageEntity
      */
-    chatID?: string;
+    chatID: string;
 
     /**
      * @type {UserEntity}
      * @memberof MessageEntity
      */
-    fromUser?: UserEntity;
+    fromUser: UserEntity;
 
     /**
      * @type {string}
      * @memberof MessageEntity
      */
-    text?: string | null;
+    text: string;
 
     /**
      * @type {string}
      * @memberof MessageEntity
      */
-    type?: MessageEntityTypeEnum;
+    type: MessageEntityTypeEnum;
 
     /**
      * @type {FileEntity}

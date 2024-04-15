@@ -27,7 +27,7 @@ export interface GameEntity {
      * @type {string}
      * @memberof GameEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -99,7 +99,7 @@ export interface GameEntity {
      * @type {FileEntity}
      * @memberof GameEntity
      */
-    logo?: FileEntity;
+    logo: FileEntity;
 
     /**
      * @type {Array<CategoryEntity>}

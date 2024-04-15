@@ -26,7 +26,7 @@ export interface CategoryEntity {
      * @type {string}
      * @memberof CategoryEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -68,7 +68,7 @@ export interface CategoryEntity {
      * @type {Array<OptionEntity>}
      * @memberof CategoryEntity
      */
-    options?: Array<OptionEntity> | null;
+    options: Array<OptionEntity>;
 
     /**
      * @type {string}

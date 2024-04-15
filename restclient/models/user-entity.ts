@@ -26,7 +26,7 @@ export interface UserEntity {
      * @type {string}
      * @memberof UserEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -80,7 +80,7 @@ export interface UserEntity {
      * @type {string}
      * @memberof UserEntity
      */
-    role?: UserEntityRoleEnum;
+    role: UserEntityRoleEnum;
 
     /**
      * @type {FileEntity}

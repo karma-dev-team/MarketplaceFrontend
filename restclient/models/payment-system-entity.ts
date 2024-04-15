@@ -25,7 +25,7 @@ export interface PaymentSystemEntity {
      * @type {string}
      * @memberof PaymentSystemEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}

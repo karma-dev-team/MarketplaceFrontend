@@ -26,7 +26,7 @@ export interface TransactionProviderEntity {
      * @type {string}
      * @memberof TransactionProviderEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -62,17 +62,17 @@ export interface TransactionProviderEntity {
      * @type {string}
      * @memberof TransactionProviderEntity
      */
-    name?: string | null;
+    name: string;
 
     /**
      * @type {number}
      * @memberof TransactionProviderEntity
      */
-    fee?: number;
+    fee: number;
 
     /**
      * @type {Array<PaymentSystemEntity>}
      * @memberof TransactionProviderEntity
      */
-    systems?: Array<PaymentSystemEntity> | null;
+    systems: Array<PaymentSystemEntity>;
 }

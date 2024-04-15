@@ -25,7 +25,7 @@ export interface ChatReadRecord {
      * @type {string}
      * @memberof ChatReadRecord
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -61,17 +61,17 @@ export interface ChatReadRecord {
      * @type {string}
      * @memberof ChatReadRecord
      */
-    readById?: string;
+    readById: string;
 
     /**
      * @type {string}
      * @memberof ChatReadRecord
      */
-    chatId?: string;
+    chatId: string;
 
     /**
      * @type {Date}
      * @memberof ChatReadRecord
      */
-    readAt?: Date;
+    readAt: Date;
 }

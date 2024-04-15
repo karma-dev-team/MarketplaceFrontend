@@ -28,7 +28,7 @@ export interface ReviewEntity {
      * @type {string}
      * @memberof ReviewEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -64,7 +64,7 @@ export interface ReviewEntity {
      * @type {PurchaseEntity}
      * @memberof ReviewEntity
      */
-    purchase?: PurchaseEntity;
+    purchase: PurchaseEntity;
 
     /**
      * @type {number}
@@ -82,11 +82,11 @@ export interface ReviewEntity {
      * @type {UserEntity}
      * @memberof ReviewEntity
      */
-    createdBy?: UserEntity;
+    createdBy: UserEntity;
 
     /**
      * @type {ProductEntity}
      * @memberof ReviewEntity
      */
-    product?: ProductEntity;
+    product: ProductEntity;
 }

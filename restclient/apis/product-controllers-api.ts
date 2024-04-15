@@ -320,7 +320,7 @@ export const ProductControllersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiProductGet(name?: string, categoryId?: string, gameId?: string, status?: string, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ProductEntity>>> {
+        async apiProductGet(name?: string, categoryId?: string, gameId?: string, status?: string, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<ProductEntity>>>> {
             const localVarAxiosArgs = await ProductControllersApiAxiosParamCreator(configuration).apiProductGet(name, categoryId, gameId, status, userId, start, ends, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -401,7 +401,7 @@ export const ProductControllersApiFactory = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiProductGet(name?: string, categoryId?: string, gameId?: string, status?: string, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<ProductEntity>> {
+        async apiProductGet(name?: string, categoryId?: string, gameId?: string, status?: string, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<ProductEntity>>> {
             return ProductControllersApiFp(configuration).apiProductGet(name, categoryId, gameId, status, userId, start, ends, options).then((request) => request(axios, basePath));
         },
         /**
@@ -464,7 +464,7 @@ export class ProductControllersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProductControllersApi
      */
-    public async apiProductGet(name?: string, categoryId?: string, gameId?: string, status?: string, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<ProductEntity>> {
+    public async apiProductGet(name?: string, categoryId?: string, gameId?: string, status?: string, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<ProductEntity>>> {
         return ProductControllersApiFp(this.configuration).apiProductGet(name, categoryId, gameId, status, userId, start, ends, options).then((request) => request(this.axios, this.basePath));
     }
     /**

@@ -30,7 +30,7 @@ export interface PurchaseEntity {
      * @type {string}
      * @memberof PurchaseEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -66,43 +66,43 @@ export interface PurchaseEntity {
      * @type {string}
      * @memberof PurchaseEntity
      */
-    currency?: PurchaseEntityCurrencyEnum;
+    currency: PurchaseEntityCurrencyEnum;
 
     /**
      * @type {Money}
      * @memberof PurchaseEntity
      */
-    amount?: Money;
+    amount: Money;
 
     /**
      * @type {WalletEntity}
      * @memberof PurchaseEntity
      */
-    wallet?: WalletEntity;
+    wallet: WalletEntity;
 
     /**
      * @type {ProductEntity}
      * @memberof PurchaseEntity
      */
-    product?: ProductEntity;
+    product: ProductEntity;
 
     /**
      * @type {boolean}
      * @memberof PurchaseEntity
      */
-    completed?: boolean;
+    completed: boolean;
 
     /**
      * @type {ChatEntity}
      * @memberof PurchaseEntity
      */
-    chat?: ChatEntity;
+    chat: ChatEntity;
 
     /**
      * @type {string}
      * @memberof PurchaseEntity
      */
-    status?: PurchaseEntityStatusEnum;
+    status: PurchaseEntityStatusEnum;
 
     /**
      * @type {string}
@@ -114,7 +114,7 @@ export interface PurchaseEntity {
      * @type {TransactionEntity}
      * @memberof PurchaseEntity
      */
-    transaction?: TransactionEntity;
+    transaction: TransactionEntity;
 
     /**
      * @type {string}

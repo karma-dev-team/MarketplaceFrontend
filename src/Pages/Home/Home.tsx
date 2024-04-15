@@ -1,18 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Home.css"
 import data from "@testdata/Home.json"
 import arrowIcon from "@images/Arrow.svg"
 import ProductCardComponent from "src/Components/ProductCard/ProductCard";
 import { useNavigate } from "react-router-dom";
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { GameControllersApi, GameEntity, ProductControllersApi, ProductEntity } from "restclient";
+import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 
 const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {  
     props.setCategory('Товары')
-    const [games, setGames] = useState(data.games.filter((x => x.type === "GAME"))); 
-    const [applications, setApplications] = useState(data.games.filter((x => x.type === "APPLICATION")))
+    const [games, setGames] = useState<GameEntity[]>([]); 
+    const [applications, setApplications] = useState<GameEntity[]>([])
     const [gameCounter, setGameCounter] = useState<number>(games.length); 
     const [applicationCounter, setApplicationCounter] = useState<number>(applications.length); 
+    const [products, setProducts] = useState<ProductEntity[]>([]); 
     const navigate = useNavigate()
+
+    useEffect(() => { 
+        (async () => {
+            const productApi = new ProductControllersApi(ApiConfig)
+            const gamesApi = new GameControllersApi(ApiConfig)
+
+            try { 
+                var gameCountResponse = await gamesApi.apiGameCountGet('Game')
+                setGameCounter(gameCountResponse.data)
+                var appCountResponse = await gamesApi.apiGameCountGet("Application")
+                setApplicationCounter(appCountResponse.data)
+
+                var gamesResponse = await gamesApi.apiGameGet("Game")
+                setGames(gamesResponse.data)
+
+                var appsResponse = await gamesApi.apiGameGet("Applicaiton")
+                setApplications(appsResponse.data)
+
+                var response = await productApi.apiProductGet();
+                setProducts(response.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [])
 
     return (
         <div className="root-home">
@@ -29,7 +57,7 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         {games.map((value) => { 
                             return ( 
                                 <div className="home-game-container" onClick={() => navigate(`/games/${value.name}`)}>
-                                    <img src={value.image} alt="" className="game-image"/>
+                                    <img src={asFileUrl(value.logo.id)} alt="" className="game-image"/>
                                     <p>{value.name}</p>
                                 </div>
                             )
@@ -48,7 +76,7 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         {applications.map((value) => { 
                             return ( 
                                 <div className="home-application-container"  onClick={() => navigate(`/games/${value.name}`)}>
-                                    <img src={value.image} alt="" className="game-image"/>
+                                    <img src={asFileUrl(value.logo.id)} alt="" className="game-image"/>
                                     <p>{value.name}</p>
                                 </div>
                             )
@@ -61,17 +89,17 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                     <h2>🚀 Премиум товары</h2>
                 </div>
                 <div className="premium-products-content">
-                    {data.products.map((value) => { 
+                    {products.map((value) => { 
                         return ( 
                             <ProductCardComponent 
-                                title={value.title}
-                                category={value.category}
-                                price={value.price}
-                                game={value.game}
-                                gameImage={value.gameImage}
+                                title={value.name}
+                                category={value.category.name}
+                                price={value.basePrice.amount}
+                                game={value.category.name}
+                                gameImage={value.game.logo.id}
                                 productId={value.id}
-                                image={value.image}
-                                userStars={value.stars}
+                                image={value.images[0].id}
+                                userStars={4} // Исправить
                             />
                         )
                     })}

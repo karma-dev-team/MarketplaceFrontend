@@ -24,7 +24,7 @@ export interface FileEntity {
      * @type {string}
      * @memberof FileEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {string}

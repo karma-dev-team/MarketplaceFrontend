@@ -25,7 +25,7 @@ export interface OptionEntity {
      * @type {string}
      * @memberof OptionEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -73,25 +73,25 @@ export interface OptionEntity {
      * @type {string}
      * @memberof OptionEntity
      */
-    type?: OptionEntityTypeEnum;
+    type: OptionEntityTypeEnum;
 
     /**
      * @type {string}
      * @memberof OptionEntity
      */
-    value?: string | null;
+    value: string;
 
     /**
      * @type {string}
      * @memberof OptionEntity
      */
-    field?: string | null;
+    field: string;
 
     /**
      * @type {number}
      * @memberof OptionEntity
      */
-    sequence?: number;
+    sequence: number;
 
     /**
      * @type {number}

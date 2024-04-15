@@ -15,6 +15,7 @@
 import { BaseEvent } from './base-event';
 import { CategoryEntity } from './category-entity';
 import { FileEntity } from './file-entity';
+import { GameEntity } from './game-entity';
 import { Money } from './money';
 import { ProductViewEntity } from './product-view-entity';
 import { UserEntity } from './user-entity';
@@ -30,7 +31,7 @@ export interface ProductEntity {
      * @type {string}
      * @memberof ProductEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -66,13 +67,13 @@ export interface ProductEntity {
      * @type {UserEntity}
      * @memberof ProductEntity
      */
-    createdBy?: UserEntity;
+    createdBy: UserEntity;
 
     /**
      * @type {CategoryEntity}
      * @memberof ProductEntity
      */
-    category?: CategoryEntity;
+    category: CategoryEntity;
 
     /**
      * @type {string}
@@ -96,19 +97,25 @@ export interface ProductEntity {
      * @type {Money}
      * @memberof ProductEntity
      */
-    basePrice?: Money;
+    basePrice: Money;
 
     /**
      * @type {string}
      * @memberof ProductEntity
      */
-    description?: string | null;
+    description: string;
+
+    /**
+     * @type {GameEntity}
+     * @memberof ProductEntity
+     */
+    game: GameEntity;
 
     /**
      * @type {string}
      * @memberof ProductEntity
      */
-    status?: ProductEntityStatusEnum;
+    status: ProductEntityStatusEnum;
 
     /**
      * @type {UserEntity}
@@ -126,13 +133,13 @@ export interface ProductEntity {
      * @type {Array<FileEntity>}
      * @memberof ProductEntity
      */
-    images?: Array<FileEntity> | null;
+    images: Array<FileEntity>;
 
     /**
      * @type {Array<ProductViewEntity>}
      * @memberof ProductEntity
      */
-    productViews?: Array<ProductViewEntity> | null;
+    productViews: Array<ProductViewEntity>;
 
     /**
      * @type {Money}

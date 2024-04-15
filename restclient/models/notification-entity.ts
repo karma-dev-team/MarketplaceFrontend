@@ -25,7 +25,7 @@ export interface NotificationEntity {
      * @type {string}
      * @memberof NotificationEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<BaseEvent>}
@@ -79,7 +79,7 @@ export interface NotificationEntity {
      * @type {string}
      * @memberof NotificationEntity
      */
-    toUserId?: string;
+    toUserId: string;
 
     /**
      * @type {string}
