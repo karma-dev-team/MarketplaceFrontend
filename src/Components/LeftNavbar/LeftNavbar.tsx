@@ -62,8 +62,8 @@ const LeftNavbarComponent = (props: Props) => {
             const contentLineAfterButton = buttonsLine.includes(button.id);
             return (
               <React.Fragment key={button.id}>
-                <div className="navbar-button" onClick={() => handleButtonClick(button.label, button.navpath)}>
-                  <img src={button.icon} alt={`${button.label} Icon`} className="button-icon"/>
+                <div className={`navbar-button ${button.label === props.category ? "active" : ""}`} onClick={() => handleButtonClick(button.label, button.navpath)}>
+                  <img src={button.icon} alt={`${button.label} Icon`} className={`button-icon `}/>
                   <p>{button.label}</p>
                 </div>
                 {contentLineAfterButton && <ContentLine color="#2F3241" margin="5px"/>}

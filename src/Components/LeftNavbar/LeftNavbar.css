@@ -1,10 +1,10 @@
 .navbar-button:hover {
-    transform: scale(1.06); /* Увеличение кнопки при наведении */
+    transform: scale(1.02); /* Увеличение кнопки при наведении */
     transition: ease 0.1s;
   }
 
   .navbar-button:active {
-    background-color: #FF6B00; /* Цвет фона активной кнопки */
+    background-color: #cd5702ca; /* Цвет фона активной кнопки */
     border-radius: 15px;
   }
   
@@ -12,6 +12,11 @@
     filter: brightness(1); /* Пример изменения иконки, используя filter для упрощения */
   }
   
+.navbar-button.active { 
+  background-color: #cd5702ca; /* Цвет фона активной кнопки */
+  color: white; 
+}
+
   /* Исходные стили */
   .navbar {
     width: 235px;
