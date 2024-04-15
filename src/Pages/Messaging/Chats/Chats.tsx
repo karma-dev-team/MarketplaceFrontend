@@ -19,14 +19,6 @@ const SendIcon: React.FC<iconProps> = (props: iconProps) => {
     )
 }
 
-const LoadingIcon: React.FC<iconProps> = (props: iconProps) => { 
-    return ( 
-        <div>
-
-        </div>
-    )
-} 
-
 const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Сообщение')  
     const { chatId } = useParams()

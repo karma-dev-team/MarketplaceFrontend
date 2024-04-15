@@ -9,8 +9,7 @@
 }
 
 .productcard-image { 
-    width: 100%;
-    height: 210px;
+
     border-radius: 15px;
     object-fit: cover;
     object-position: center center;
@@ -25,8 +24,14 @@
 
 .productcard-image-container { 
     margin-bottom: 10px;
+    width: 100%;
+    height: 210px;
+    min-width: 250px;
+    background-color: rgb(43, 43, 51);
+    border-radius: 15px;
     cursor: pointer;
 }
+
 .productcard-header { 
     display: flex;
     align-items: center;

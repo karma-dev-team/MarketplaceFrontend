@@ -264,7 +264,7 @@ export const PurchaseControllersApiAxiosParamCreator = function (configuration?:
         },
         /**
          * 
-         * @param {string} userId 
+         * @param {string} tempUserId 
          * @param {string} [status] 
          * @param {Date} [startTime] 
          * @param {Date} [endTime] 
@@ -274,13 +274,13 @@ export const PurchaseControllersApiAxiosParamCreator = function (configuration?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPurchaseUserUserIdGet: async (userId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            if (userId === null || userId === undefined) {
-                throw new RequiredError('userId','Required parameter userId was null or undefined when calling apiPurchaseUserUserIdGet.');
+        apiPurchaseUserTempUserIdGet: async (tempUserId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tempUserId' is not null or undefined
+            if (tempUserId === null || tempUserId === undefined) {
+                throw new RequiredError('tempUserId','Required parameter tempUserId was null or undefined when calling apiPurchaseUserTempUserIdGet.');
             }
-            const localVarPath = `/api/purchase/user/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            const localVarPath = `/api/purchase/user/{tempUserId}`
+                .replace(`{${"tempUserId"}}`, encodeURIComponent(String(tempUserId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -415,7 +415,7 @@ export const PurchaseControllersApiFp = function(configuration?: Configuration) 
         },
         /**
          * 
-         * @param {string} userId 
+         * @param {string} tempUserId 
          * @param {string} [status] 
          * @param {Date} [startTime] 
          * @param {Date} [endTime] 
@@ -425,8 +425,8 @@ export const PurchaseControllersApiFp = function(configuration?: Configuration) 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPurchaseUserUserIdGet(userId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PurchaseEntity>>>> {
-            const localVarAxiosArgs = await PurchaseControllersApiAxiosParamCreator(configuration).apiPurchaseUserUserIdGet(userId, status, startTime, endTime, userId, start, ends, options);
+        async apiPurchaseUserTempUserIdGet(tempUserId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PurchaseEntity>>>> {
+            const localVarAxiosArgs = await PurchaseControllersApiAxiosParamCreator(configuration).apiPurchaseUserTempUserIdGet(tempUserId, status, startTime, endTime, userId, start, ends, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -487,7 +487,7 @@ export const PurchaseControllersApiFactory = function (configuration?: Configura
         },
         /**
          * 
-         * @param {string} userId 
+         * @param {string} tempUserId 
          * @param {string} [status] 
          * @param {Date} [startTime] 
          * @param {Date} [endTime] 
@@ -497,8 +497,8 @@ export const PurchaseControllersApiFactory = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPurchaseUserUserIdGet(userId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PurchaseEntity>>> {
-            return PurchaseControllersApiFp(configuration).apiPurchaseUserUserIdGet(userId, status, startTime, endTime, userId, start, ends, options).then((request) => request(axios, basePath));
+        async apiPurchaseUserTempUserIdGet(tempUserId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PurchaseEntity>>> {
+            return PurchaseControllersApiFp(configuration).apiPurchaseUserTempUserIdGet(tempUserId, status, startTime, endTime, userId, start, ends, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -560,7 +560,7 @@ export class PurchaseControllersApi extends BaseAPI {
     }
     /**
      * 
-     * @param {string} userId 
+     * @param {string} tempUserId 
      * @param {string} [status] 
      * @param {Date} [startTime] 
      * @param {Date} [endTime] 
@@ -571,7 +571,7 @@ export class PurchaseControllersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PurchaseControllersApi
      */
-    public async apiPurchaseUserUserIdGet(userId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<PurchaseEntity>>> {
-        return PurchaseControllersApiFp(this.configuration).apiPurchaseUserUserIdGet(userId, status, startTime, endTime, userId, start, ends, options).then((request) => request(this.axios, this.basePath));
+    public async apiPurchaseUserTempUserIdGet(tempUserId: string, status?: string, startTime?: Date, endTime?: Date, userId?: string, start?: number, ends?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<PurchaseEntity>>> {
+        return PurchaseControllersApiFp(this.configuration).apiPurchaseUserTempUserIdGet(tempUserId, status, startTime, endTime, userId, start, ends, options).then((request) => request(this.axios, this.basePath));
     }
 }

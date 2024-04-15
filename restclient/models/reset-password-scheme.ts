@@ -30,5 +30,5 @@ export interface ResetPasswordScheme {
      * @type {string}
      * @memberof ResetPasswordScheme
      */
-    code: string;
+    email: string;
 }

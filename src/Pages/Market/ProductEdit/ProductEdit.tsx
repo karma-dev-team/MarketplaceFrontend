@@ -3,14 +3,12 @@ import ContentLine from "src/Components/ContentLine/ContentLine";
 import ProductCard from "src/Components/ProductCard/ProductCard";
 import eye from "@images/eye.png"
 import producthuinia from "@images/product_huinia.png"
-import zvezda from "@images/star-image.svg"
 import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
 import { useState } from 'react'
 import { OptionScheme, OptionType } from "src/Schemas/Option";
-import { OptionTypes } from "src/Schemas/Enums";
 import SelectorComponent from "src/Components/Selector/Selector";
 import InputField from "src/Components/InputField/InputField";
 import StarsComponent from "src/Components/Stars/Stars";

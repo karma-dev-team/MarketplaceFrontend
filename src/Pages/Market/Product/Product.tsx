@@ -2,7 +2,6 @@ import "./Product.css"
 import ProductCard from "src/Components/ProductCard/ProductCard";
 import eye from "@images/eye.png"
 import producthuinia from "@images/product_huinia.png"
-import zvezda from "@images/star-image.svg"
 import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"

@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import LeftNavbar from './Components/LeftNavbar/LeftNavbar';
 import Navbar from './Components/Navbar/Navbar'
 import UserRoles from './Schemas/UserRoles';
@@ -12,7 +12,7 @@ import WaitingPage from './Pages/Payment/Waiting/Waiting';
 import ContactPage from './Pages/Contact/Contact';
 import UserSettingsPage from './Pages/Users/UserSettings/UserSettings';
 import UserSecurityPage from './Pages/Users/UserSettings/Categories/Security';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GamesPage from './Pages/Market/Games/Games';
 import WalletPage from './Pages/Payment/Wallet/Wallet';
 import GamePage from './Pages/Market/Game/Game';
@@ -28,13 +28,46 @@ import ChatsPage from './Pages/Messaging/Chats/Chats';
 import ProductEditPage from './Pages/Market/ProductEdit/ProductEdit';
 import AnalyticsPage from './Pages/Market/Analytics/Analytics';
 import AboutPage from './Pages/About/About';
+import { ApiConfig, removeToken, setAccessTokenForClient } from './Gateway/Config';
+import { useCookies } from 'react-cookie';
+import { AuthorizationCookieKey } from './Utils/Consts';
+import { UserControllersApi } from 'restclient';
 
 function App() {	
 	const location = useLocation();
 	const excludeNavbarPaths = ['/login', '/register', '/reset_password'];
 	const showNavbar = !excludeNavbarPaths.includes(location.pathname);
 	const [category, setCategory] = useState<string>('')
+	const navigate = useNavigate();
 	const [navpath] = useState<string>('')
+	const [cookies, setCookies, removeCookies] = useCookies([AuthorizationCookieKey]);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+	useEffect(() => { 
+		const checkAuthorization = async () => {
+            const token = cookies.Authorization;
+            if (token) {
+                setAccessTokenForClient(token);
+                var userApi = new UserControllersApi(ApiConfig); 
+				try { 
+					await userApi.apiUserMeGet()
+				} catch { 
+					// If token doesn't exist, remove access token and mark as not authenticated
+					removeToken(removeCookies);
+					setIsAuthenticated(false);
+				}
+				setIsAuthenticated(true);
+            }
+        };
+
+        checkAuthorization();
+	}, [cookies])
+
+	useEffect(() => {
+        if (isAuthenticated && excludeNavbarPaths.includes(location.pathname)) {
+            navigate('/');
+        }
+    }, [isAuthenticated, location.pathname, navigate]);
 
 	return (
 		<div className='root-content'>

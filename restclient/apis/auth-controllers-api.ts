@@ -174,11 +174,10 @@ export const AuthControllersApiAxiosParamCreator = function (configuration?: Con
          * 
          * @param {string} code 
          * @param {ResetPasswordScheme} [body] 
-         * @param {string} [email] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthResetCodeVerifyCodePost: async (code: string, body?: ResetPasswordScheme, email?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiAuthResetCodeVerifyCodePost: async (code: string, body?: ResetPasswordScheme, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'code' is not null or undefined
             if (code === null || code === undefined) {
                 throw new RequiredError('code','Required parameter code was null or undefined when calling apiAuthResetCodeVerifyCodePost.');
@@ -202,10 +201,6 @@ export const AuthControllersApiAxiosParamCreator = function (configuration?: Con
                     ? await configuration.accessToken()
                     : await configuration.accessToken;
                 localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
-
-            if (email !== undefined) {
-                localVarQueryParameter['email'] = email;
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -280,12 +275,11 @@ export const AuthControllersApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} code 
          * @param {ResetPasswordScheme} [body] 
-         * @param {string} [email] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAuthResetCodeVerifyCodePost(code: string, body?: ResetPasswordScheme, email?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await AuthControllersApiAxiosParamCreator(configuration).apiAuthResetCodeVerifyCodePost(code, body, email, options);
+        async apiAuthResetCodeVerifyCodePost(code: string, body?: ResetPasswordScheme, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await AuthControllersApiAxiosParamCreator(configuration).apiAuthResetCodeVerifyCodePost(code, body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -331,12 +325,11 @@ export const AuthControllersApiFactory = function (configuration?: Configuration
          * 
          * @param {string} code 
          * @param {ResetPasswordScheme} [body] 
-         * @param {string} [email] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAuthResetCodeVerifyCodePost(code: string, body?: ResetPasswordScheme, email?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return AuthControllersApiFp(configuration).apiAuthResetCodeVerifyCodePost(code, body, email, options).then((request) => request(axios, basePath));
+        async apiAuthResetCodeVerifyCodePost(code: string, body?: ResetPasswordScheme, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return AuthControllersApiFp(configuration).apiAuthResetCodeVerifyCodePost(code, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -382,12 +375,11 @@ export class AuthControllersApi extends BaseAPI {
      * 
      * @param {string} code 
      * @param {ResetPasswordScheme} [body] 
-     * @param {string} [email] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthControllersApi
      */
-    public async apiAuthResetCodeVerifyCodePost(code: string, body?: ResetPasswordScheme, email?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return AuthControllersApiFp(this.configuration).apiAuthResetCodeVerifyCodePost(code, body, email, options).then((request) => request(this.axios, this.basePath));
+    public async apiAuthResetCodeVerifyCodePost(code: string, body?: ResetPasswordScheme, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return AuthControllersApiFp(this.configuration).apiAuthResetCodeVerifyCodePost(code, body, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -4,6 +4,7 @@ import gamelogo from "@images/gamelogo1.png"
 import testicon from "@images/testico123.png"
 import testsmth from "@images/test123.png"
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { range } from "src/Utils/Range";
 
 const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Товары') 
@@ -38,36 +39,18 @@ const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => {
             <div className="main-content123">
                 <div className="shop123">🛒 Товары</div>
                 <div className="products123">
-                    <ProductCard 
-                        productId = "string" 
-                        title = "Ключ"
-                        image = {testsmth}
-                        gameImage = {testicon}
-                        userStars = {4}
-                        price = {69}
-                        game = "Garry's Mod"
-                        category = "Ключи"
-                    />
-                    <ProductCard 
-                        productId = "string" 
-                        title = "Ключ"
-                        image = {testsmth}
-                        gameImage = {testicon}
-                        userStars = {4}
-                        price = {69}
-                        game = "Garry's Mod"
-                        category = "Ключи"
-                    />
-                    <ProductCard 
-                        productId = "string" 
-                        title = "Ключ"
-                        image = {testsmth}
-                        gameImage = {testicon}
-                        userStars = {4}
-                        price = {69}
-                        game = "Garry's Mod"
-                        category = "Ключи"
-                    />
+                    {range(1, 10).map((value) => {
+                        return <ProductCard 
+                            productId = "string" 
+                            title = "Ключ"
+                            image = {testsmth}
+                            gameImage = {testicon}
+                            userStars = {4}
+                            price = {69}
+                            game = "Garry's Mod"
+                            category = "Ключи"
+                        />
+                    })}
                 </div>
             </div>
         </div>
