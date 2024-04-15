@@ -17,7 +17,7 @@ import ImageUploaderComponent from "src/Components/ImageUploader/ImageUploader";
 import { NavbarProps } from "src/Utils/NavbarProps";
 
 const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
-    props.setCategory('Товары')  
+    props.setCategory('Продать')  
     // delete when connecting to backend 
     const gameOptions: OptionType[] = [
         { 

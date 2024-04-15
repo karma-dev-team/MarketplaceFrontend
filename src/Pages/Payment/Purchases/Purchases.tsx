@@ -12,7 +12,7 @@ import { NavbarProps } from "src/Utils/NavbarProps";
 
 
 const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
-    props.setCategory('Аналитика') 
+    props.setCategory('Покупки') 
     let transactions = data.transactions; 
     const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
     const [operationFilter, setOperationFilter] = useState<TransactonOperations>()

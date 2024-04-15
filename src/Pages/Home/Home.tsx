@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { NavbarProps } from "src/Utils/NavbarProps";
 
 const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {  
-    props.setCategory('')
+    props.setCategory('Товары')
     const [games, setGames] = useState(data.games.filter((x => x.type === "GAME"))); 
     const [applications, setApplications] = useState(data.games.filter((x => x.type === "APPLICATION")))
     const [gameCounter, setGameCounter] = useState<number>(games.length); 
