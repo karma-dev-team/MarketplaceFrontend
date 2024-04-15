@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./Home.css"
-import data from "@testdata/Home.json"
 import arrowIcon from "@images/Arrow.svg"
 import ProductCardComponent from "src/Components/ProductCard/ProductCard";
 import { useNavigate } from "react-router-dom";

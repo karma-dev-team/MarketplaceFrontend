@@ -8,11 +8,12 @@ import testsmth from "@images/test123.png"
 import testico from "@images/testico255.png"
 import { range } from "src/Utils/Range";
 import { useState } from 'react'
-import { OptionScheme, OptionType } from "src/Schemas/Option";
+import { OptionType } from "src/Schemas/Option";
 import SelectorComponent from "src/Components/Selector/Selector";
 import InputField from "src/Components/InputField/InputField";
 import StarsComponent from "src/Components/Stars/Stars";
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { OptionEntity } from "restclient";
 
 
 const ProductEditPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
@@ -30,7 +31,7 @@ const ProductEditPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     ]
     // end deletable zone! 
 
-    let options: OptionScheme[] = []
+    let options: OptionEntity[] = []
     const [selectedharakteristik, setSelectedharakteristik] = useState<string>()
     const [titleText, setTitle] = useState<string>('')
 

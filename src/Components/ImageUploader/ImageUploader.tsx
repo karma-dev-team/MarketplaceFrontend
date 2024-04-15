@@ -2,6 +2,9 @@ import React, { useState, useRef } from "react";
 import "./ImageUploader.css";
 import ImageScheme from "src/Schemas/Image";
 import binIcon from "@images/Bin.svg"
+import { FileControllersApi } from "restclient";
+import { ApiConfig } from "src/Gateway/Config";
+import { read } from "fs";
 
 type Props = {
   images: ImageScheme[];
@@ -14,21 +17,19 @@ type Props = {
 const ImageUploaderComponent: React.FC<Props> = (props) => {
   const [imageBinaries, setImageBinaries] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileApi = new FileControllersApi(ApiConfig)
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
       const newImages: ImageScheme[] = [];
       for (let i = 0; i < files.length; i++) {
+        let newImage = await fileApi.apiFilesUploadPostForm(files[i])
         const reader = new FileReader();
         reader.readAsDataURL(files[i]);
         reader.onload = () => {
           if (typeof reader.result === "string") {
-            newImages.push({
-              fileId: files[i].name,
-              filePath: files[i].name,
-              fileBinary: reader.result,
-            });
+            newImages.push(newImage.data);
             setImageBinaries([...imageBinaries, reader.result]);
             props.setImages([...props.images, ...newImages]);
           }
@@ -41,21 +42,18 @@ const ImageUploaderComponent: React.FC<Props> = (props) => {
     e.preventDefault();
   };
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const files = e.dataTransfer.files;
     if (files) {
       const newImages: ImageScheme[] = [];
       for (let i = 0; i < files.length; i++) {
+        let newImage = await fileApi.apiFilesUploadPostForm(files[i])
         const reader = new FileReader();
         reader.readAsDataURL(files[i]);
         reader.onload = () => {
           if (typeof reader.result === "string") {
-            newImages.push({
-              fileId: files[i].name,
-              filePath: reader.result,
-              // fileBinary: reader.result
-            });
+            newImages.push(newImage.data);
             setImageBinaries([...imageBinaries, reader.result]);
             props.setImages([...props.images, ...newImages]);
           }
@@ -121,13 +119,13 @@ const ImageUploaderComponent: React.FC<Props> = (props) => {
                 <div className="uploaded-image-container">
                     <img
                         key={index}
-                        src={image.fileBinary}
+                        src={imageBinaries[index]}
                         alt={`Uploaded ${index + 1}`}
                         height={"75px"}
                         width={"75px"}
                         className="uploaded-image-image"
                     />
-                    <h2>{image.filePath}</h2>
+                    <h2>{image.fileName}</h2>
                 </div>
                 <div className="uploaded-image-clear" onClick={() => { 
                     props.setImages([

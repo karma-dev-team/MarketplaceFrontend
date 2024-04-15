@@ -1,10 +1,11 @@
 import React, { Dispatch, useState } from 'react';
-import { OptionScheme, OptionType } from 'src/Schemas/Option';
+import { OptionType } from 'src/Schemas/Option';
 import { OptionTypes } from 'src/Schemas/Enums';
 import "./Attributes.css"
 import SelectorComponent from 'src/Components/Selector/Selector';
+import { OptionEntity } from 'restclient';
 
-function getUniqueGroups(arr: OptionScheme[]): string[] {
+function getUniqueGroups(arr: OptionEntity[]): string[] {
   let uniqueGroups: string[] = [];
   arr.forEach((option) => {
     if (!uniqueGroups.includes(option.group)) {
@@ -14,8 +15,8 @@ function getUniqueGroups(arr: OptionScheme[]): string[] {
   return uniqueGroups;
 }
 
-function filterOptionsByType(options: OptionScheme[], type: OptionTypes): OptionScheme[] {
-  let result: OptionScheme[] = [];
+function filterOptionsByType(options: OptionEntity[], type: OptionTypes): OptionEntity[] {
+  let result: OptionEntity[] = [];
 
   options.forEach((option) => {
     if (option.type === type.toUpperCase()) {
@@ -26,7 +27,7 @@ function filterOptionsByType(options: OptionScheme[], type: OptionTypes): Option
 }
 
 
-type rangeProps = { options: OptionScheme[], addAttributes: (label: string, value: string) => void }
+type rangeProps = { options: OptionEntity[], addAttributes: (label: string, value: string) => void }
 
 export const RangeAttributes: React.FC<rangeProps> = (props) => {
   const { options } = props;
@@ -46,7 +47,7 @@ export const RangeAttributes: React.FC<rangeProps> = (props) => {
   );
 }
 
-type switchProps = { options: OptionScheme[], addAttributes: (label: string, value: string) => void }
+type switchProps = { options: OptionEntity[], addAttributes: (label: string, value: string) => void }
 
 export const SwitchAttributes: React.FC<switchProps> = (props) => {
   const { options } = props;
@@ -76,8 +77,8 @@ export const SwitchAttributes: React.FC<switchProps> = (props) => {
 }
 
 type selectorProps = { 
-    options: OptionScheme[], 
-    onLabelClick: Dispatch<OptionScheme>
+    options: OptionEntity[], 
+    onLabelClick: Dispatch<OptionEntity>
     width?: string, 
     titleOn?: boolean
 }

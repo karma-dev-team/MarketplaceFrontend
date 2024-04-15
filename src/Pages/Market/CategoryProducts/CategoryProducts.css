@@ -18,6 +18,16 @@
     gap: 20px; 
 }
 
+.none-text { 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #515265; 
+    margin-top: 12px; 
+    width: 100%;
+}
+
 @media (min-width: 1600px) {
     .products-list { 
         grid-template: 1fr/repeat(6, 1fr);

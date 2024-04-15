@@ -1,5 +1,4 @@
 import "./Games.css" 
-import data from "@testdata/Games.json"
 import { Dispatch, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { GameControllersApi, GameEntity } from "restclient"
@@ -8,7 +7,6 @@ import SearchbarComponent from "src/Components/Search/Search"
 import { ApiConfig, asFileUrl } from "src/Gateway/Config"
 import { NavbarCategories, NavbarProps } from "src/Utils/NavbarProps";
 
-type Game = { name: string, logo: string, categories: string[], type: string }
 type props = { type: "Application" | "Game", setCategory: Dispatch<NavbarCategories>}
 
 const GamesPage: React.FC<props> = (props: props) => {  
@@ -103,7 +101,7 @@ const GamesPage: React.FC<props> = (props: props) => {
                                             <div className="group-game-categories">
                                                 {value.categories?.map((value) => { 
                                                     return ( 
-                                                        <Link to={`/category/${value}`} className="game-category-element-text">{value.name}</Link>
+                                                        <Link to={`/category/${value.id}`} className="game-category-element-text">{value.name}</Link>
                                                     )
                                                 })}
                                             </div>

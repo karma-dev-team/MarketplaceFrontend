@@ -1,8 +1,8 @@
 interface ImageScheme {
-    fileId: string;
+    id: string;
     filePath: string;
-    fileBinary?: string;
-    Name?: string;
+    stream?: string;
+    fileName?: string;
     MimeType?: string;
 }
 

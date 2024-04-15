@@ -61,9 +61,9 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
             images: selectedFile !== undefined ? [ 
                 { 
                     MimeType: "image",
-                    fileBinary: selectedFileBinary, 
+                    stream: selectedFileBinary, 
                     filePath: "dasdads", 
-                    fileId: "dasda"
+                    id: "dasda"
                 }
             ] : undefined,  
             createdById: userId
@@ -149,7 +149,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                     <div className={value.createdById === userId ? "user-message" : "other-message"}>
                                         <div className={`chat-message `}> 
                                             {value.images?.length !== 0 && value.images !== undefined ? <div className="message-image-container">
-                                                <img src={value.images[0].fileBinary} alt="" className="message-image"/>
+                                                <img src={value.images[0].stream} alt="" className="message-image"/>
                                             </div> : null}
                                             <span className="chat-message-text">{value.text}</span>
                                             <span className="chat-message-corner">

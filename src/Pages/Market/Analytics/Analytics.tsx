@@ -2,13 +2,14 @@ import "./Analytics.css"
 import StarsComponent from "src/Components/Stars/Stars";
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import SelectorComponent from "src/Components/Selector/Selector";
-import { OptionScheme, OptionType } from "src/Schemas/Option";
+import { OptionType } from "src/Schemas/Option";
 import { OptionTypes } from "src/Schemas/Enums";
 import { useState } from 'react'
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
 import SearchbarComponent from "src/Components/Search/Search";
 import data from "@testdata/Analytics.json"
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { OptionEntity } from "restclient";
 
 interface Product {
     createdAt: string; 
@@ -40,18 +41,13 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     ]
     // end deletable zone! 
 
-    let options: OptionScheme[] = []
+    let options: OptionEntity[] = []
     const [selectedGame, setSelectedGame] = useState<string>()
     const [selectedCategory, setSelectedCategory] = useState<string>()
     const [searchText, setSearchText] = useState<string>('')
 
-    data.options.forEach((option) => {
-        options.push(
-            {
-                ...option, 
-                type: option.type as OptionTypes
-            }
-        )
+    options.forEach((option) => {
+        options.push(option)
     })
 
     return (

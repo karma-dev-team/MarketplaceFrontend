@@ -1,11 +1,9 @@
 import SelectorComponent from "src/Components/Selector/Selector";
 import "./ProductCreate.css"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import InputField from "src/Components/InputField/InputField";
-import data from "@testdata/ProductCreate.json"
-import { OptionScheme, OptionType } from "src/Schemas/Option";
-import { OptionTypes } from "src/Schemas/Enums";
+import { OptionType } from "src/Schemas/Option";
 import { RangeAttributes, SelectorAttributes, SwitchAttributes } from "./Attributes";
 import SwitchComponent from "src/Components/Switch/Switch";
 import plusIcon from "@images/PlusLog.svg"
@@ -15,46 +13,18 @@ import warningIcon from "@images/warning.png"
 import criticalWarningIcon from "@images/criticalWarning.png"
 import ImageUploaderComponent from "src/Components/ImageUploader/ImageUploader";
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { CategoryControllersApi, CategoryEntity, GameControllersApi, OptionEntity, OptionEntityTypeEnum, ProductControllersApi } from "restclient";
+import { convertObjectToOptions } from "src/Utils/Options";
+import { ApiConfig } from "src/Gateway/Config";
+import { useNavigate } from "react-router-dom";
 
 const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Продать')  
-    // delete when connecting to backend 
-    const gameOptions: OptionType[] = [
-        { 
-            label: "Garry's mod", 
-            value: "Garrys-mod"  // game name 
-        }
-    ]
-
-    const categoryOptions: OptionType[] = [ 
-        { 
-            label: "Донат на FastRp", 
-            value: "31323213123213312"  // category id 
-        }
-    ]
-    // end deletable zone! 
-
-    let options: OptionScheme[] = []
-
-    data.options.forEach((option) => {
-        options.push(
-            {
-                ...option, 
-                type: option.type as OptionTypes
-            }
-        )
-    })
-
-    const submitProduct = async () => { 
-
-    }
-
-    const draftProduct = async () => { 
-        
-    }
-
+    
+    const [categoryOptions, setCategoryOptions] = useState<OptionType[]>([])
+    const [gamesOptions, setGamesOptions] = useState<OptionType[]>([])
+    const [options, setOptions] = useState<OptionEntity[]>([])
     const [attributes, setAttributes] = useState<Map<string, string>[]>([]);
-    const [selectedLabel, setSelectedLabel] = useState<string>();
     const [selectedGame, setSelectedGame] = useState<string>()
     const [selectedCategory, setSelectedCategory] = useState<string>()
     const [titleText, setTitle] = useState<string>('')
@@ -62,8 +32,8 @@ const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [price, setPrice] = useState<number>(1.0)
     const [autoDistrub, setTurnAutoDistrub] = useState<boolean>(false)
     const [distrubtion, setAutoDistrubtion] = useState<string[]>([])
-    const handleLabelClick = (option: OptionScheme) => {
-        setSelectedLabel(option.field);
+    const handleLabelClick = (option: OptionEntity) => {
+        // setSelectedLabel(option.field);
         addAttributes(option.field, option.value);
     };
     const [images, setImages] = useState<ImageScheme[]>([]); 
@@ -76,13 +46,74 @@ const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => {
         localStorage.setItem('selectedAttributes', JSON.stringify(updatedAttributes));
     }
 
+    
+    useEffect(() => { 
+        (async () => { 
+            try { 
+                const gameApi = new GameControllersApi(ApiConfig)
+
+                let gameResponse = await gameApi.apiGameGet()
+                setGamesOptions(convertObjectToOptions(gameResponse.data))
+
+                let categoryResponse = await categoryApi.apiCategoryGet()
+                setCategoryOptions(convertObjectToOptions(categoryResponse.data))
+
+                let currenctCategory: CategoryEntity = categoryResponse.data.filter((value: CategoryEntity) => value.id === selectedCategory)[0]
+                setOptions(currenctCategory.options)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [selectedCategory])
+
+    const categoryApi = new CategoryControllersApi(ApiConfig)
+    const productApi = new ProductControllersApi(ApiConfig)
+    const navigate = useNavigate()
+    const submitProduct = async () => { 
+        if (selectedCategory === "" || selectedCategory === undefined
+            || selectedGame === "" || selectedGame === undefined) { 
+            return; 
+        }
+
+        let resultAttributes: { [key: string]: string } = {}
+
+        attributes.forEach((value) => {
+            // O(n^2) вообще похуй 
+            value.forEach((value, key) => { 
+                resultAttributes[key] = value
+            })
+        })
+        
+        try { 
+            await productApi.apiProductPost({ 
+                name: titleText, 
+                description: description, 
+                categoryId: selectedCategory, 
+                gameId: selectedGame,
+                price: price, 
+                attributes: resultAttributes,
+                images: images,   
+                autoAnswers: distrubtion,  
+            })
+            setTimeout(() => { 
+                navigate("/")
+            })
+        } catch (e) { 
+            console.error(e)
+        } 
+    }
+
+    const draftProduct = async () => { 
+        submitProduct() // to do draft product
+    }
+
     return (
         <div className="root-createproduct">
             <h1>Создать товар</h1>
             <div className="createproduct-container">
                 <div className="createproduct-main-selector">
                     <SelectorComponent 
-                        options={gameOptions}
+                        options={gamesOptions}
                         onChange={(value) => {setSelectedGame(value?.value)}}
                     />
                     <SelectorComponent 
