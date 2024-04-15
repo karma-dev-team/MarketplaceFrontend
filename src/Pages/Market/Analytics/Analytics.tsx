@@ -65,7 +65,7 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <div className="korobkadliakorobok123">
                             <div className="levaia-korobka123">
                                 <div className="pervaiakorobka123">
-                                    <p className="textvkorobke123">ㅤ</p>
+                                    <p className="textvkorobke123"> </p>
                                     <p className="textvkorobke123">Просмотров <br/>обьявления</p>
                                     <p className="textvkorobke123">Оплачено <br/>покупок</p>
                                 </div>
