@@ -10,6 +10,7 @@ import { ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, Message
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import karmaLogo from "@images/karmastore-logo.png"
 import { format } from "date-fns";
+import { ru } from 'date-fns/locale'
 
 type iconProps = { width?: string, height?: string }
 
@@ -149,7 +150,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                     {value.lastMessage !== null ? 
                                         <p className="chat-last-message-date">
                                             {value.lastMessage?.createdAt !== null || value.lastMessage?.createdAt !== undefined 
-                                                ? format(value.lastMessage?.createdAt || "", "eeee") : null}
+                                                ? format(value.lastMessage?.createdAt || "", "eeee", { locale: ru }) : null}
                                         </p>
                                     : null }
                                 </div>
@@ -189,7 +190,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                                     <span className="chat-message-date">
                                                         {
                                                             value.createdAt !== null || value.createdAt !== undefined 
-                                                                ? format(value.createdAt || "", "eeee") : null}
+                                                                ? format(value.createdAt || "", "eeee", { locale: ru }) : null}
                                                         </span>
                                                 </div>
                                             </span>
