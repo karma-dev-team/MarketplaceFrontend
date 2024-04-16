@@ -12,11 +12,11 @@ const ChatSelectPage: React.FC<NavbarProps> = (props: NavbarProps) => {
             <h1 className="text-123">Выбырите тип чата в котором хотите продолжить общение</h1>
             <br />
             <div className="container12332">
-                <div className="left">
+                <div className="left-part">
                     <div className="img3218327"><img src={telegramIcon} alt="telegram" /></div>
                     <p>Telegram</p>
                 </div>
-                <div className="right">
+                <div className="right-part">
                     <div className="img3218327"><img src={chatIcon} alt="chat" /></div>
                     <p>Сообщение</p>
                 </div>

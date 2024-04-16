@@ -25,4 +25,10 @@ export interface UserAnalyticsSchema {
      * @memberof UserAnalyticsSchema
      */
     avarageRating: number;
+
+    /**
+     * @type {number}
+     * @memberof UserAnalyticsSchema
+     */
+    reviewsCount: number;
 }

@@ -1,63 +1,100 @@
-import { calculateSum } from "src/Utils/Math";
 import "./User.css"
-import data from "@testdata/User.json"
 import StarsComponent from "src/Components/Stars/Stars";
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import { RoleConversion } from "src/Utils/Conversions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserOptionsIcon from "src/Components/Icons/UserOptions";
 import ProductCardComponent from "src/Components/ProductCard/ProductCard";
 import SearchbarComponent from "src/Components/Search/Search";
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { AnalyticsApi, ProductControllersApi, ProductEntity, PurchaseControllersApi, PurchaseEntity, ReviewControllersApi, ReviewEntity, UserAnalyticsSchema, UserControllersApi, UserEntity } from "restclient";
+import { ApiConfig, asFileUrl } from "src/Gateway/Config";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
+import { useNavigate, useParams } from "react-router-dom";
 
 type userPageStatuses = "Products" | "Reviews"
 
 const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     props.setCategory('')  
-    const products = data.products; 
-    const reviews = data.reviews; 
-    const user = data; 
+    const { id } = useParams()
+    const userId = id || ""; 
+    const navigate = useNavigate()
+    const [products, setProducts] = useState<ProductEntity[]>([]); 
+    const [reviews, setReviews] = useState<ReviewEntity[]>([]) 
+    const [user, setUser] = useState<UserEntity>(); 
+    const [analytics, setAnalytics] = useState<UserAnalyticsSchema>()
     const [currentState, setCurrentState] = useState<userPageStatuses>('Products'); 
     const [searchText, setSearchText] = useState<string>('')
+    const [purchases, setPurchases] = useState<PurchaseEntity[]>([])
 
-    const reviewsRating: number[] = []
-    data.reviews.forEach(element => {
-        reviewsRating.push(element.rate)
-    });
+    useEffect(() => { 
+        (async () => { 
+            const reviewsApi = new ReviewControllersApi(ApiConfig)
+            const userApi = new UserControllersApi(ApiConfig)
+            const analyticsApi = new AnalyticsApi(ApiConfig)
+            const purchaseApi = new PurchaseControllersApi(ApiConfig)
 
-    const avarageRating = data.reviews.length / calculateSum(reviewsRating);
-    const userRating = Math.ceil(avarageRating)
+            try { 
+                let reviewResponse = await reviewsApi.apiReviewUserUserIdGet(userId)
+                setReviews(reviewResponse.data)
+                let userResponse = await userApi.apiUserUserIdGet(userId)
+                setUser(userResponse.data)
+                let analyticsResponse = await analyticsApi.apiAnalyticsUserUserIdAnalyticsGet(userId)
+                setAnalytics(analyticsResponse.data)
+                let purchasesResponse = await purchaseApi.apiPurchaseMeGet(
+                    undefined, undefined, undefined, undefined, undefined, userId)
+                setPurchases(purchasesResponse.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [userId, navigate])
+
+    useEffect(() => { 
+        (async () => {
+            const productApi = new ProductControllersApi(ApiConfig)
+
+            try { 
+                let productResponse = await productApi.apiProductGet(
+                    searchText, undefined, undefined, undefined, userId)
+                setProducts(productResponse.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [searchText])
 
     return (
         <div className="root-user">
             <div className="root-user-banner">
-                <img src={user.banner} alt="" className="banner-image"/>
+                <img src={asFileUrl(user?.image?.id)} alt="" className="banner-image"/>
             </div>
 
             <div className="user-container">
                 <div className="user-info">
                     <div className="user-avatar">
                         <div className="user-avatar-container">
-                            {user.avatar === undefined 
+                            {user?.image === undefined 
                                 ? <div className="user-avatar-none"></div>
-                                : <img className="user-avatar-image" src={user.avatar} alt={user.name}/>}
+                                : <img className="user-avatar-image" src={asFileUrl(user?.image.id || "")} alt={user?.image.fileName}/>}
                         </div>
                     </div>
                     <div className="user-main-info">
-                        <h1>{user.name}</h1>
-                        <div className="user-online-indicator" style={{color: user.isOnline ? "rgb(139, 195, 74)" : "#A8A8A8"}}>
-                            {user.isOnline ? "Онлайн" : "Не в сети"}
+                        <h1>{user?.userName}</h1>
+                        <div className="user-online-indicator" style={{color: user?.isOnline ? "rgb(139, 195, 74)" : "#A8A8A8"}}>
+                            {user?.isOnline ? "Онлайн" : "Не в сети"}
                         </div>
                     </div>
                     <div className="user-meta-info">
                         <div className="user-purchases-info user-info-field">
                             <div className="user-purchases user-wallet-info">
-                                {user.purchases}
+                                {purchases?.length}
                                 <span>Продаж</span>
                             </div>
                             <div className="vertical-border"></div>
                             <div className="user-sells user-wallet-info">
-                                {user.sells}
+                                {purchases?.length}
                                 <span>Покупок</span>
                             </div>
                         </div>
@@ -65,11 +102,11 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             <p>Рейтинг</p>
                             <div className="user-stars-container">
                                 <div className="user-stars">
-                                    <h1>{userRating}</h1>
-                                    <StarsComponent stars={userRating} width={24} height={24}/>
+                                    <h1>{analytics?.avarageRating || 0}</h1>
+                                    <StarsComponent stars={analytics?.avarageRating || 0} width={24} height={24}/>
                                 </div>
                                 <div className="user-reviews-info">
-                                    {user.reviews.length} {user.reviews.length > 1 ? "Отзывов" : "Отзыв"}
+                                    {analytics?.reviewsCount} {analytics?.reviewsCount || 0 > 1 ? "Отзывов" : "Отзыв"}
                                 </div>
                             </div>
                         </div>
@@ -77,17 +114,19 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             <h4 className="user-description-header">
                                 О пользвателе
                             </h4>
-                            <div className="user-description-content">{user.description}</div>
+                            <div className="user-description-content">{user?.description}</div>
                             <ContentLine color="rgb(43, 45, 60)" />
                             <h4 className="user-description-header">
                                 Роль
                             </h4>
-                            <div className="user-description-content">{RoleConversion.get(user.role)}</div>
+                            <div className="user-description-content">{RoleConversion.get(user?.role || "")}</div>
                             <ContentLine color="#303139"/>
                             <h4 className="user-description-header">
                                 Регистрация
                             </h4>
-                            <div className="user-description-content">{user.createdAt}</div>
+                            <div className="user-description-content">{
+                                user?.createdAt !== null || user?.createdAt !== undefined 
+                                    ? format(user?.createdAt || Date.now(), "eeee", { locale: ru }) : null}</div>
                         </div>
                     </div>
                 </div>
@@ -97,11 +136,11 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             <ul className="control-buttons-list">
                                 <li className={`control-button user-products-button ${currentState === "Products" ? "current-control" : ""}`} onClick={() => setCurrentState("Products")}>
                                     Товары
-                                    <span className="nav-counter">{user.products.length}</span>
+                                    <span className="nav-counter">{products.length}</span>
                                 </li>
                                 <li className={`control-button user-reviews-button ${currentState === "Reviews" ? "current-control" : ""}`} onClick={() => setCurrentState("Reviews")}>
                                     Отзывы
-                                    <span className="nav-counter">{user.reviews.length}</span>
+                                    <span className="nav-counter">{reviews.length}</span>
                                 </li>
                             </ul>
                         </nav>
@@ -121,41 +160,43 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                     {products.map((value) => { 
                                         return ( 
                                             <ProductCardComponent 
-                                                title={value.title}
-                                                category={value.category}
-                                                price={value.price}
-                                                game={value.game}
-                                                gameImage={value.gameImage}
+                                                title={value.name}
+                                                category={value.category.name}
+                                                price={value.basePrice.amount}
+                                                game={value.category.name}
+                                                gameImage={value.game.logo.id}
                                                 productId={value.id}
-                                                image={value.image}
-                                                userStars={value.stars}
+                                                image={value.images[0].id}
+                                                userStars={4} // Исправить
                                             />
                                         )
                                     })}
                                 </div>
                             </div> 
                             : <div className="user-reviews-list">
-                                {reviews.map((value) => { 
+                                {reviews.length > 0 ? reviews.map((value) => { 
                                     return ( 
                                         <div className="user-review">
-                                            <img src={value.createdBy.image} alt="" className="user-review-image"/>
+                                            <img src={asFileUrl(value.createdBy.image?.id)} alt="" className="user-review-image"/>
                                             <div className="user-review-container">
                                                 <div className="user-review-header">
-                                                    <h4 className="user-review-createdby">{value.createdBy.name}</h4>
+                                                    <h4 className="user-review-createdby">{value.createdBy.userName}</h4>
                                                     <div className="user-review-stars">
                                                         <div className="review-stars-meta">
-                                                            <span>Оценка: {value.rate}</span>
+                                                            <span>Оценка: {value.rating}</span>
                                                         </div>
-                                                        <StarsComponent stars={value.rate} width={13} height={13}/>
+                                                        <StarsComponent stars={value.rating || 0} width={13} height={13}/>
                                                     </div>
                                                 </div>
-                                                <p className="user-review-product">{value.product.name}, {value.product.price}</p>
+                                                <p className="user-review-product">{value.product.name}, {value.product.currentPrice?.amount || 0}</p>
                                                 <p className="user-review-content">{value.text}</p>
-                                                <p className="user-review-createdat">{value.createdAt}</p>
+                                                <p className="user-review-createdat">{
+                                                            value.createdAt !== null || value.createdAt !== undefined 
+                                                                ? format(value.createdAt || "", "eeee", { locale: ru }) : null}</p>
                                             </div>
                                         </div>
                                     )
-                                })}
+                                }) : <p className="none-text">Не найдено отзывов</p> }
                             </div>}
                     </div>
                 </div>

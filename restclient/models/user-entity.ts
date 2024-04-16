@@ -95,6 +95,12 @@ export interface UserEntity {
     description?: string | null;
 
     /**
+     * @type {boolean}
+     * @memberof UserEntity
+     */
+    isOnline: boolean;
+
+    /**
      * @type {string}
      * @memberof UserEntity
      */
