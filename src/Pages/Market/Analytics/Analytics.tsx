@@ -24,13 +24,13 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [selectedCategory, setSelectedCategory] = useState<string>()
     const [searchText, setSearchText] = useState<string>()
     const [products, setProducts] = useState<ProductEntity[]>([])
-    const [cookies, setCookies] = useCookies([AuthKey])
+    const [cookies] = useCookies([AuthKey])
 
     useEffect(() => { 
         if (cookies.Authorization === undefined || cookies.Authorization === "") { 
             navigate("/login")
         }
-    }, [cookies])
+    }, [cookies, navigate])
 
     useEffect(() => { 
         const categoryApi = new CategoryControllersApi(ApiConfig)
@@ -62,7 +62,7 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 console.error(e)
             }
         })()
-    }, [searchText])
+    }, [searchText, props.user, selectedCategory, selectedGame])
 
     const deleteProduct = async (productId: string) => { 
         const productApi = new ProductControllersApi(ApiConfig)

@@ -7,10 +7,8 @@ import ContentLine from "src/Components/ContentLine/ContentLine";
 import ProductWithActionsComponent from "src/Components/ProductWithActions/ProductWithActions";
 import SearchbarComponent from "src/Components/Search/Search";
 import StaffControlsComponent from "src/Components/StaffControls/StaffControls";
-import TagsSearchComponent from "src/Components/Tags/Tags";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import { AuthKey } from "src/Gateway/Consts";
-import { SelectorAttributes } from "src/Pages/Market/ProductCreate/Attributes";
 import { StaffCategories } from "src/Schemas/Enums";
 import { NavbarProps } from "src/Utils/NavbarProps";
 
@@ -19,20 +17,20 @@ const ProductApprovePage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
     const [category, setCategory] = useState<StaffCategories>('APPROVED')
     const navigate = useNavigate()
-    const [cookies, setCookies] = useCookies([AuthKey])
+    const [cookies] = useCookies([AuthKey])
     const [products, setProducts] = useState<ProductEntity[]>([])
     const [searchText, setSearchText] = useState<string>()
-    const productApi = new ProductControllersApi(ApiConfig)
 
     useEffect(() => { 
         if (cookies.Authorization === undefined || cookies.Authorization === "") { 
             navigate("/login")
         }
-    }, [cookies])
+    }, [cookies, navigate])
 
     useEffect(() => { 
         (async () => { 
 
+            const productApi = new ProductControllersApi(ApiConfig)
             try { 
                 let productResponse = await productApi.apiProductGet(searchText, undefined, undefined, "Processing")
                 setProducts(productResponse.data)
@@ -44,6 +42,7 @@ const ProductApprovePage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
     const approveProduct = async (productId: string) => { 
         try { 
+            const productApi = new ProductControllersApi(ApiConfig)
             await productApi.apiProductProductIdPatch(productId, { 
                 productId: productId, 
                 productStatus: "Approved"
@@ -59,6 +58,7 @@ const ProductApprovePage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
     const denyProduct = async (productId: string) => { 
         try { 
+            const productApi = new ProductControllersApi(ApiConfig)
             await productApi.apiProductProductIdPatch(productId, { 
                 productId: productId, 
                 productStatus: "Declined"
@@ -66,6 +66,7 @@ const ProductApprovePage: React.FC<NavbarProps> = (props: NavbarProps) => {
             
             let productIndex = products.findIndex((product) => productId === product.id)
             const tempProducts = [...products.slice(0, productIndex), ...products.slice(productIndex + 1, products.length)]
+            setProducts(tempProducts)
         } catch (e) { 
             console.error(e)
         } 

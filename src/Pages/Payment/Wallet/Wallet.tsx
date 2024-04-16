@@ -3,14 +3,18 @@ import ContentLine from "src/Components/ContentLine/ContentLine";
 import wallet from "@images/wallet.png"
 import cashout from "@images/cahsout.png"
 import SelectorComponent from "src/Components/Selector/Selector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
 import { OptionType } from "src/Schemas/Option";
 import Modal from "src/Modals/Base/Base";
 import BuyModal from "src/Modals/Buy/Buy";
 import PayoutModal from "src/Modals/Payout/Payout";
 import { NavbarProps } from "src/Utils/NavbarProps";
-import { TransactionEntity, TransactionEntityDirectionEnum, TransactionEntityOperationEnum, TransactionEntityStatusEnum } from "restclient";
+import { TransactionControllersApi, TransactionEntity, TransactionEntityDirectionEnum, TransactionEntityOperationEnum, TransactionEntityStatusEnum } from "restclient";
+import { ApiConfig } from "src/Gateway/Config";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
+import { useNavigate } from "react-router-dom";
 
 const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('') 
@@ -19,6 +23,26 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [operationFilter, setOperationFilter] = useState<TransactionEntityOperationEnum>()
     const [payinModal, setPayinModal] = useState<boolean>(false)
     const [cashoutModal, setCashoutModal] = useState<boolean>(false)
+    const [cookies] = useCookies([AuthKey])
+    const navigate = useNavigate()
+
+    useEffect(() => { 
+        if (cookies.Authorization === undefined || cookies.Authorization === "") { 
+            navigate("/login")
+        }
+    }, [cookies, navigate])
+
+    useEffect(() => { 
+        (async () => { 
+            const transactionsApi = new TransactionControllersApi(ApiConfig)
+            try { 
+                let response = await transactionsApi.apiTransactionUserUserIdGet(props.user?.id || "")
+                setTransactions(response.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [props.user])
 
     const transactionStatuses: OptionType[] = [
         {
@@ -149,7 +173,7 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 </div>
             </div>
             <div className="transactions">
-                {transactions === undefined ? 
+                {transactions === undefined || transactions.length === 0 ? 
                      <p className="text123">У вас не было транзакции связанные с кошёлком</p>
                 : 
                 <div className="transactions-list">

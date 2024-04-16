@@ -23,11 +23,11 @@ const NavbarComponent = (props: Props) => {
             </div>
             {props.user !== undefined ? 
             <>
-                <div className="navbar_notification navbar-item" onClick={() => navigate("/user/123/notifications")}>
+                <div className="navbar_notification navbar-item" onClick={() => navigate("/notifications")}>
                     <img src={NotificationLogo} alt="notification" />
                     <p>Уведомления</p>
                 </div>
-                <div className="navbar_payment navbar-item" onClick={() => navigate("/wallet/132")}>
+                <div className="navbar_payment navbar-item" onClick={() => navigate("/wallet")}>
                     <img src={PaymantLogo} alt="paymant" />
                     <p>0 ₽</p>  
                 </div>

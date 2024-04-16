@@ -86,12 +86,12 @@ function App() {
 					<Route path="/contact/" element={<ContactPage setCategory={setCategory}/>} />
 					<Route path="/user/:id/settings/" element={<UserSettingsPage setCategory={setCategory}/>} />
 					<Route path="/user/:id/security/" element={<UserSecurityPage setCategory={setCategory}/>} />
-					<Route path="/user/:id/notifications/" element={<NotificationsPage setCategory={setCategory}/>} />
+					<Route path="/notifications/" element={<NotificationsPage setCategory={setCategory} user={user}/>} />
 					<Route path="/games" element={<GamesPage  type="Game" setCategory={setCategory}/>}/>
 					<Route path="/applications" element={<GamesPage type="Application" setCategory={setCategory}/>}/>
 					<Route path='/category/:id' element={<CategoryProductsPage setCategory={setCategory}/>}/>
 					<Route path="/products/create" element={<ProductCreatePage setCategory={setCategory}/>}/>
-					<Route path="/wallet/:id" element={<WalletPage setCategory={setCategory}/>} />
+					<Route path="/wallet" element={<WalletPage setCategory={setCategory} user={user}/>} />
 					<Route path="/games/:id" element={<GamePage setCategory={setCategory}/>}/>
 					<Route path="/user/:id" element={<UserPage />}/>
 					<Route path="/user/:id/purchases/" element={<PurchasesPage setCategory={setCategory}/>}/>
