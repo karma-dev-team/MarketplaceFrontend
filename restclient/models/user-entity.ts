@@ -92,6 +92,12 @@ export interface UserEntity {
      * @type {string}
      * @memberof UserEntity
      */
+    description?: string | null;
+
+    /**
+     * @type {string}
+     * @memberof UserEntity
+     */
     telegramId?: string | null;
 
     /**

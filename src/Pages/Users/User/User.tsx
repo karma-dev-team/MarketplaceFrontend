@@ -8,10 +8,12 @@ import { useState } from "react";
 import UserOptionsIcon from "src/Components/Icons/UserOptions";
 import ProductCardComponent from "src/Components/ProductCard/ProductCard";
 import SearchbarComponent from "src/Components/Search/Search";
+import { NavbarProps } from "src/Utils/NavbarProps";
 
 type userPageStatuses = "Products" | "Reviews"
 
-const UserPage: React.FC = () => {  
+const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
+    props.setCategory('')  
     const products = data.products; 
     const reviews = data.reviews; 
     const user = data; 

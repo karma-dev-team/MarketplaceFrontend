@@ -1,68 +1,76 @@
-.root-usersettings {
-    padding: 24px; 
-    display: flex;
-    flex-direction: column;
+.user-settings-container {
+    padding: 24px;
     width: 100%;
-}
-
-.omegacontainer {
+  }
+  
+  .omega-container {
     display: flex;
     flex-direction: column;
-    align-items: left;
-}
+    align-items: flex-start;
+  }
 
-.left {
-    flex-direction: left;
-    justify-content: left;
-    color: #FFFFFF;
-    text-align: left;
-    margin-right: 0%;
-    margin-left: 0%;
-}
-
-.right {
-    color: #FFFFFF;
-    text-align: left;
-    margin-left: 5%;
-}
-
-.img321 {
-    background-color: #D9D9D9;
-    padding: 15px;
-    border-radius: 40px;
-}
-
-.qwerty {
-    display: flex;
-}
-
-.textinfo {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+  .avatar-icon { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .section-header {
+    margin-bottom: 14px;
     color: #A8A8A8;
-}
+  }
+  
+  .user-profile {
+    gap: 15px; 
+    display: flex;
+  }
+  
+  .profile-left {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .avatar-upload {
+    background-color: #9b9797;
+    padding: 10px; 
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 80px ;
+    min-height: 80px;
+    border-radius: 30px;
+    cursor: pointer;
+  }
 
-.username {
+  .avatar-upload.noFile { 
+    background-color: #D9D9D9;
+    border-radius: 30px;
+    padding: 15px;
+  }
+  
+  .profile-right {
+    flex: 3;
+    color: #FFFFFF;
+  }
+  
+  .info-label {
+    color: #A8A8A8;
+  }
+
+  .info-value { 
+    margin-bottom: 14px;
+  }
+  
+  .username,
+  .user-email {
     font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 15px;
     color: #FFFFFF;
-}
-
-.useremail {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 15px;
-    color: #FFFFFF;
-}
-
-.knopka {
+  }
+  
+  .save-button {
     background-color: #FF5722;
     color: #FFFFFF;
     height: 39px;
@@ -71,16 +79,13 @@
     border: none;
     cursor: pointer;
     font-family: 'Inter';
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 15px;
-    /* identical to box height, or 94% */
     text-align: center;
-    
-    color: #FFFFFF;
-}
-
-.knopka:hover {
+  }
+  
+  .save-button:hover {
     background-color: #c7461f;
-}
+  }
+  

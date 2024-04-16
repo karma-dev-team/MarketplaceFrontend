@@ -81,28 +81,28 @@ function App() {
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/register" element={<RegisterPage/>} />
 					<Route path="/reset-password" element={<ResetPasswordPage/>} />
-					<Route path="/transaction/:id/chat-select" element={<ChatSelectPage setCategory={setCategory}/>} />
-					<Route path="/transaction/:id" element={<WaitingPage setCategory={setCategory}/>} />
-					<Route path="/contact/" element={<ContactPage setCategory={setCategory}/>} />
-					<Route path="/user/:id/settings/" element={<UserSettingsPage setCategory={setCategory}/>} />
+					<Route path="/transaction/:id/chat-select" element={<ChatSelectPage setCategory={setCategory} user={user}/>} />
+					<Route path="/transaction/:id" element={<WaitingPage setCategory={setCategory} user={user}/>} />
+					<Route path="/contact/" element={<ContactPage setCategory={setCategory} user={user}/>} />
+					<Route path="/user/:id/settings/" element={<UserSettingsPage setCategory={setCategory} user={user}/>} />
 					<Route path="/user/:id/security/" element={<UserSecurityPage setCategory={setCategory}/>} />
 					<Route path="/notifications/" element={<NotificationsPage setCategory={setCategory} user={user}/>} />
 					<Route path="/games" element={<GamesPage  type="Game" setCategory={setCategory}/>}/>
 					<Route path="/applications" element={<GamesPage type="Application" setCategory={setCategory}/>}/>
-					<Route path='/category/:id' element={<CategoryProductsPage setCategory={setCategory}/>}/>
-					<Route path="/products/create" element={<ProductCreatePage setCategory={setCategory}/>}/>
+					<Route path='/category/:id' element={<CategoryProductsPage setCategory={setCategory} user={user}/>}/>
+					<Route path="/products/create" element={<ProductCreatePage setCategory={setCategory} user={user}/>}/>
 					<Route path="/wallet" element={<WalletPage setCategory={setCategory} user={user}/>} />
-					<Route path="/games/:id" element={<GamePage setCategory={setCategory}/>}/>
-					<Route path="/user/:id" element={<UserPage />}/>
-					<Route path="/user/:id/purchases/" element={<PurchasesPage setCategory={setCategory}/>}/>
+					<Route path="/games/:id" element={<GamePage setCategory={setCategory} user={user}/>}/>
+					<Route path="/user/:id" element={<UserPage setCategory={setCategory} user={user} />}/>
+					<Route path="/user/:id/purchases/" element={<PurchasesPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/user/:id/sales/" element={<SalesPage setCategory={setCategory}/>}/>
-					<Route path="/user/:id/analytics" element={<AnalyticsPage setCategory={setCategory}/>}/>
+					<Route path="/user/:id/analytics" element={<AnalyticsPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/chats" element={<ChatsPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/chat/:chatId" element={<ChatsPage setCategory={setCategory} user={user}/>}/>
-					<Route path="/product/:id" element={<ProductPage setCategory={setCategory}/>}/>
-					<Route path="/product/:id/edit" element={<ProductAnalPage setCategory={setCategory}/>}/>
-					<Route path="/product/:id/edit/edit" element={<ProductEditPage setCategory={setCategory}/>}/>
-					<Route path="/about" element={<AboutPage setCategory={setCategory}/>}/>
+					<Route path="/product/:id" element={<ProductPage setCategory={setCategory} user={user}/>}/>
+					<Route path="/product/:id/edit" element={<ProductAnalPage setCategory={setCategory} user={user}/>}/>
+					<Route path="/product/:id/edit/edit" element={<ProductEditPage setCategory={setCategory} user={user}/>}/>
+					<Route path="/about" element={<AboutPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/control/approved" element={<ProductApprovePage setCategory={setCategory} user={user}/>}/>
 				</Routes>
 			</div>

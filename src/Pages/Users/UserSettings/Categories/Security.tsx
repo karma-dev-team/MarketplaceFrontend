@@ -1,9 +1,23 @@
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import "./Security.css"
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const UserSecurityPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('')  
+    const [cookies] = useCookies([AuthKey])
+    const navigate = useNavigate()
+
+    useEffect(() => { 
+        if (cookies.Authorization === undefined || cookies.Authorization === "") { 
+            navigate("/login")
+        }
+    }, [cookies, navigate])
+
+
     return (
         <div className="root-usersecurity">
             <div className="korobka">

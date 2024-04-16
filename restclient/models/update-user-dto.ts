@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { CreateFileDto } from './create-file-dto';
  /**
  * 
  *
@@ -37,6 +38,18 @@ export interface UpdateUserDto {
      * @memberof UpdateUserDto
      */
     role?: UpdateUserDtoRoleEnum;
+
+    /**
+     * @type {CreateFileDto}
+     * @memberof UpdateUserDto
+     */
+    avatar?: CreateFileDto;
+
+    /**
+     * @type {string}
+     * @memberof UpdateUserDto
+     */
+    description?: string | null;
 
     /**
      * @type {string}
