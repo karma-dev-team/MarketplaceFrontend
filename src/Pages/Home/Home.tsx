@@ -30,7 +30,7 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 var gamesResponse = await gamesApi.apiGameGet("Game")
                 setGames(gamesResponse.data)
 
-                var appsResponse = await gamesApi.apiGameGet("Applicaiton")
+                var appsResponse = await gamesApi.apiGameGet("Application")
                 setApplications(appsResponse.data)
 
                 var response = await productApi.apiProductGet();

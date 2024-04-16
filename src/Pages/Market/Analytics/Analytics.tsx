@@ -91,12 +91,12 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 </div>
                                 <div className="vtoraiakorobka123">
                                     <p className="textvkorobke123">Всего</p>
-                                    <p className="numbervkorobke123">7328</p>
+                                    <p className="numbervkorobke123">0</p>
                                     <p className="numbervkorobke123">0</p>
                                 </div>
                                 <div className="tretiaiakorobka123">
                                     <p className="textvkorobke123">За неделю</p>
-                                    <p className="numbervkorobke123">1</p>
+                                    <p className="numbervkorobke123">0</p>
                                     <p className="numbervkorobke123">0</p>
                                 </div>
                             </div>
