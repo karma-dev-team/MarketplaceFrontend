@@ -1,0 +1,13 @@
+.root-productapprove { 
+    padding: 24px; 
+}
+
+.productapprove-container { 
+    display: flex;
+    flex-direction: row;
+}
+
+.productapprove-content { 
+    width: 100%;
+    margin-right: 20px;
+}

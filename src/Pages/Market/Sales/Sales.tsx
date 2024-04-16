@@ -1,26 +1,25 @@
 import "./Sales.css"
-import data from "@testdata/Wallet.json"
 import SelectorComponent from "src/Components/Selector/Selector";
 import { useEffect, useState } from "react";
-import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ProductCard from "src/Components/ProductCard/ProductCard";
-import testicon from "@images/testico123.png"
-import testsmth from "@images/test123.png"
 import { OptionType } from "src/Schemas/Option";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
-
+import { PurchaseControllersApi, PurchaseEntity, TransactionEntityOperationEnum, TransactionEntityStatusEnum } from "restclient";
+import { ApiConfig } from "src/Gateway/Config";
 
 
 const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Продажи') 
-    let transactions = data.transactions; 
-    const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
-    const [operationFilter, setOperationFilter] = useState<TransactonOperations>()
+    
+    let [purchases, setPurchases] = useState<PurchaseEntity[]>([]); 
+    const [statusFilter, setStatusFilter] = useState<TransactionEntityStatusEnum>()
+    const [operationFilter, setOperationFilter] = useState<TransactionEntityOperationEnum>()
     const [cookies] = useCookies([AuthKey])
     const navigate = useNavigate()
+    const purchaseApi = new PurchaseControllersApi(ApiConfig)
 
     const transactionStatuses: OptionType[] = [
         {
@@ -29,30 +28,42 @@ const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         },
         {
           label: "Не оплачен",
-          value: TransactionStatus.Failed,
+          value: TransactionEntityStatusEnum.Failed,
         },
         {
             label: "Оплачено",
-            value: TransactionStatus.Confirmed,
+            value: TransactionEntityStatusEnum.Confirmed,
         },
         {
           label: "В работе",
-          value: TransactionStatus.Pending,
+          value: TransactionEntityStatusEnum.Pending,
         },
         {
           label: "Возврат",
-          value: TransactionStatus.RolledBack,
+          value: TransactionEntityStatusEnum.RolledBack,
         },
         {
           label: "Истекшие",
-          value: TransactionStatus.Expired,
+          value: TransactionEntityStatusEnum.Expired,
         },
     ];
+
     useEffect(() => { 
         if (cookies.Authorization === undefined || cookies.Authorization === "") { 
             navigate("/login")
         }
-    })
+    }, [cookies])
+
+    useEffect(() => { 
+        (async () => { 
+            try { 
+                let purchaseResponse = await purchaseApi.apiPurchaseMeGet(statusFilter)
+                setPurchases(purchaseResponse.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [])
 
     return (
         <div className="root-sales">
@@ -61,61 +72,42 @@ const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 <div className="sales-filter-selector">
                     <SelectorComponent options={transactionStatuses} width="auto" onChange={(value, action) => {
                         if (value === undefined || value === null) { return; }
-                        let parsedStatus = value.value as keyof typeof TransactionStatus;
-                        let status = TransactionStatus[parsedStatus]
+                        let parsedStatus = value.value as keyof typeof TransactionEntityStatusEnum;
+                        let status = TransactionEntityStatusEnum[parsedStatus]
 
                         setStatusFilter(status)
                     }}/>
                 </div>
                 <div className="sales">
-                    {transactions === undefined ? 
+                    {purchases === undefined || purchases === null || purchases.length === 0 ? 
                         <p className="superubertext228">У вас не было транзакции связанные с продажами</p>
                     : 
                     <div className="sales-list">
-                        {transactions.map((value) => { 
+                        {purchases.map((purchase) => { 
                             if (operationFilter !== undefined) { 
-                                if (operationFilter?.toLowerCase() !== value.operation.toLowerCase()) { 
+                                if (operationFilter?.toLowerCase() !== purchase.transaction.operation.toLowerCase()) { 
                                     return null; 
                                 }
                             } 
                             
                             if (statusFilter !== undefined) { 
-                                if (statusFilter?.toLowerCase() !== value.status.toLowerCase()) { 
+                                if (statusFilter?.toLowerCase() !== purchase.transaction.status.toLowerCase()) { 
                                     return null; 
                                 }
                             }
-
+                            
+                            const value = purchase.product; 
                             return ( 
                                 <div className="sales-container">
                                     <ProductCard 
-                                        productId = "string" 
-                                        title = "Ключ"
-                                        image = {testsmth}
-                                        gameImage = {testicon}
-                                        userStars = {4}
-                                        price = {69}
-                                        game = "Garry's Mod"
-                                        category = "Ключи"
-                                    />
-                                    <ProductCard 
-                                        productId = "string" 
-                                        title = "Ключ"
-                                        image = {testsmth}
-                                        gameImage = {testicon}
-                                        userStars = {4}
-                                        price = {69}
-                                        game = "Garry's Mod"
-                                        category = "Ключи"
-                                    />
-                                    <ProductCard 
-                                        productId = "string" 
-                                        title = "Ключ"
-                                        image = {testsmth}
-                                        gameImage = {testicon}
-                                        userStars = {4}
-                                        price = {69}
-                                        game = "Garry's Mod"
-                                        category = "Ключи"
+                                        title={value.name}
+                                        category={value.category.name}
+                                        price={value.basePrice.amount}
+                                        game={value.category.name}
+                                        gameImage={value.game.logo.id}
+                                        productId={value.id}
+                                        image={value.images[0].id}
+                                        userStars={4} // Исправить
                                     />
                                 </div>
                             )

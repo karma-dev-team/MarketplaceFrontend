@@ -41,7 +41,7 @@ const LeftNavbarComponent = (props: Props) => {
       { id: 5, icon: CorzineLogo, label: 'Продажи', navpath: '/user/1/sales/'  },
       { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика', navpath: '/user/1/analytics'  },
       { id: 7, icon: PlusLogo, label: 'Продать', navpath: '/products/create'  },
-      { id: 8, icon: cogsIcon, label: "Управление", navpath: "/control"}
+      { id: 8, icon: cogsIcon, label: "Управление", navpath: "/control/approved"}
     ];
   
     const buttonsLine = [2, 3, 6, 7];

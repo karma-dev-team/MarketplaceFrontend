@@ -1,0 +1,35 @@
+.root-staffcontrols { 
+    top: 96px;
+    position: sticky;
+    width: 296px;
+    min-width: 296px;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgb(43, 45, 60);
+    height: auto;
+    background-color: rgb(26, 27, 33);
+    transition: border-color 200ms ease 0s;
+    height: 229px;
+    max-height: 300px;
+}
+
+.staff-control-element { 
+    display: flex;
+    border-bottom: 1px solid rgb(43, 45, 60);
+    color: #A8A8A8; 
+    cursor: pointer;
+    padding: 8px 10px; 
+    position: relative;
+}
+
+.staff-control-element.active::before { 
+    position: absolute;
+    content: "";
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 4px;
+    background-color: rgb(72, 74, 91);
+}

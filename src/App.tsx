@@ -32,6 +32,7 @@ import { ApiConfig, removeToken, setAccessTokenForClient } from './Gateway/Confi
 import { useCookies } from 'react-cookie';
 import { AuthorizationCookieKey } from './Utils/Consts';
 import { UserControllersApi, UserEntity } from 'restclient';
+import ProductApprovePage from './Pages/Control/ProductApprove/ProductApprove';
 
 function App() {	
 	const location = useLocation();
@@ -102,6 +103,7 @@ function App() {
 					<Route path="/product/:id/edit" element={<ProductAnalPage setCategory={setCategory}/>}/>
 					<Route path="/product/:id/edit/edit" element={<ProductEditPage setCategory={setCategory}/>}/>
 					<Route path="/about" element={<AboutPage setCategory={setCategory}/>}/>
+					<Route path="/control/approved" element={<ProductApprovePage setCategory={setCategory} user={user}/>}/>
 				</Routes>
 			</div>
 		</div>

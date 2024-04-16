@@ -2,7 +2,6 @@ import "./Product.css"
 import ProductCard from "src/Components/ProductCard/ProductCard";
 import eye from "@images/eye.png"
 import producthuinia from "@images/product_huinia.png"
-import testico from "@images/testico255.png"
 import StarsComponent from "src/Components/Stars/Stars";
 import Modal from "src/Modals/Base/Base";
 import { useEffect, useState } from "react";
@@ -45,7 +44,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 let userAnalyticsResponse = await analyticsApi.apiAnalyticsUserUserIdAnalyticsGet(productResponse.data.createdBy.id || "")
                 setUserAnalyitcsInfo(userAnalyticsResponse.data)
 
-                let analyticsResponse = await analyticsApi.apiAnalyticsProductProductIdAnalyticsGet("", productResponse.data.id)
+                let analyticsResponse = await analyticsApi.apiAnalyticsProductTempProductIdAnalyticsGet("", productResponse.data.id)
                 setAnalyticsInfo(analyticsResponse.data)
 
                 setProductOptions(JSON.parse(productResponse.data.attributes || "{}"))

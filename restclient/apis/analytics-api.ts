@@ -27,20 +27,20 @@ export const AnalyticsApiAxiosParamCreator = function (configuration?: Configura
     return {
         /**
          * 
-         * @param {string} productId 
+         * @param {string} tempProductId 
          * @param {string} [productId] 
          * @param {Date} [startDate] 
          * @param {Date} [endDate] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsProductProductIdAnalyticsGet: async (tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'productId' is not null or undefined
-            if (productId === null || productId === undefined) {
-                throw new RequiredError('productId','Required parameter productId was null or undefined when calling apiAnalyticsProductProductIdAnalyticsGet.');
+        apiAnalyticsProductTempProductIdAnalyticsGet: async (tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'tempProductId' is not null or undefined
+            if (tempProductId === null || tempProductId === undefined) {
+                throw new RequiredError('tempProductId','Required parameter tempProductId was null or undefined when calling apiAnalyticsProductTempProductIdAnalyticsGet.');
             }
-            const localVarPath = `/api/analytics/product/{productId}/analytics`
-                .replace(`{${"productId"}}`, encodeURIComponent(String(productId)));
+            const localVarPath = `/api/analytics/product/{tempProductId}/analytics`
+                .replace(`{${"tempProductId"}}`, encodeURIComponent(String(tempProductId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -151,15 +151,15 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} productId 
+         * @param {string} tempProductId 
          * @param {string} [productId] 
          * @param {Date} [startDate] 
          * @param {Date} [endDate] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsProductProductIdAnalyticsGet(tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<AnalyticsInformationDto>>> {
-            const localVarAxiosArgs = await AnalyticsApiAxiosParamCreator(configuration).apiAnalyticsProductProductIdAnalyticsGet(tempProductId, productId, startDate, endDate, options);
+        async apiAnalyticsProductTempProductIdAnalyticsGet(tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<AnalyticsInformationDto>>> {
+            const localVarAxiosArgs = await AnalyticsApiAxiosParamCreator(configuration).apiAnalyticsProductTempProductIdAnalyticsGet(tempProductId, productId, startDate, endDate, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -189,15 +189,15 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
-         * @param {string} productId 
+         * @param {string} tempProductId 
          * @param {string} [productId] 
          * @param {Date} [startDate] 
          * @param {Date} [endDate] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsProductProductIdAnalyticsGet(tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options?: AxiosRequestConfig): Promise<AxiosResponse<AnalyticsInformationDto>> {
-            return AnalyticsApiFp(configuration).apiAnalyticsProductProductIdAnalyticsGet(tempProductId, productId, startDate, endDate, options).then((request) => request(axios, basePath));
+        async apiAnalyticsProductTempProductIdAnalyticsGet(tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options?: AxiosRequestConfig): Promise<AxiosResponse<AnalyticsInformationDto>> {
+            return AnalyticsApiFp(configuration).apiAnalyticsProductTempProductIdAnalyticsGet(tempProductId, productId, startDate, endDate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -220,7 +220,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
 export class AnalyticsApi extends BaseAPI {
     /**
      * 
-     * @param {string} productId 
+     * @param {string} tempProductId 
      * @param {string} [productId] 
      * @param {Date} [startDate] 
      * @param {Date} [endDate] 
@@ -228,8 +228,8 @@ export class AnalyticsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AnalyticsApi
      */
-    public async apiAnalyticsProductProductIdAnalyticsGet(tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options?: AxiosRequestConfig) : Promise<AxiosResponse<AnalyticsInformationDto>> {
-        return AnalyticsApiFp(this.configuration).apiAnalyticsProductProductIdAnalyticsGet(tempProductId, productId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
+    public async apiAnalyticsProductTempProductIdAnalyticsGet(tempProductId: string, productId?: string, startDate?: Date, endDate?: Date, options?: AxiosRequestConfig) : Promise<AxiosResponse<AnalyticsInformationDto>> {
+        return AnalyticsApiFp(this.configuration).apiAnalyticsProductTempProductIdAnalyticsGet(tempProductId, productId, startDate, endDate, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

@@ -60,3 +60,5 @@ export enum PurchaseStatus {
   Rejected = "Rejected",
   Expired = "Expired",
 }
+
+export type StaffCategories = "APPROVED" | "ISSUES" | "EVENTS" | "SUSTRANSACTIONS" | "ANALYTICS" | "GAME"
