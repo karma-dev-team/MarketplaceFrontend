@@ -72,22 +72,6 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <h5 className="nazvanieharakteristiki">Донат</h5>
                         <p className="opisanieharakteristiki">1000</p>
                     </div>
-                    <div className="harakteristika">
-                        <h5 className="nazvanieharakteristiki">Донат</h5>
-                        <p className="opisanieharakteristiki">1000</p>
-                    </div>
-                    <div className="harakteristika">
-                        <h5 className="nazvanieharakteristiki">Донат</h5>
-                        <p className="opisanieharakteristiki">1000</p>
-                    </div>
-                    <div className="harakteristika">
-                        <h5 className="nazvanieharakteristiki">Донат</h5>
-                        <p className="opisanieharakteristiki">1000</p>
-                    </div>
-                    <div className="harakteristika">
-                        <h5 className="nazvanieharakteristiki">Донат</h5>
-                        <p className="opisanieharakteristiki">1000</p>
-                    </div>
                 </div>
 
                 <h3 className="razdeli228">Продавец</h3>

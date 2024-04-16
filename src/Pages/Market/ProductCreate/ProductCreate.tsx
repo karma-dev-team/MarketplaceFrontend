@@ -19,7 +19,7 @@ import { ApiConfig } from "src/Gateway/Config";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
-import { ConvertUploadedToCreate } from "src/Utils/Fo;es";
+import { ConvertUploadedToCreate } from "src/Utils/Files";
 
 const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Продать')  
