@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./ItemsSort.css"
 
 interface SortableListItem {
-  createdAt: string;
+  createdAt?: Date | null | undefined;
 }
 
 interface Props<T extends SortableListItem> {

@@ -2,84 +2,83 @@ import "./Wallet.css"
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import wallet from "@images/wallet.png"
 import cashout from "@images/cahsout.png"
-import data from "@testdata/Wallet.json"
 import SelectorComponent from "src/Components/Selector/Selector";
 import { useState } from "react";
-import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
 import { OptionType } from "src/Schemas/Option";
 import Modal from "src/Modals/Base/Base";
 import BuyModal from "src/Modals/Buy/Buy";
 import PayoutModal from "src/Modals/Payout/Payout";
 import { NavbarProps } from "src/Utils/NavbarProps";
+import { TransactionEntity, TransactionEntityDirectionEnum, TransactionEntityOperationEnum, TransactionEntityStatusEnum } from "restclient";
 
 const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('') 
-    let transactions = data.transactions; 
-    const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
-    const [operationFilter, setOperationFilter] = useState<TransactonOperations>()
+    const [transactions, setTransactions] = useState<TransactionEntity[]>([])
+    const [statusFilter, setStatusFilter] = useState<TransactionEntityStatusEnum>()
+    const [operationFilter, setOperationFilter] = useState<TransactionEntityOperationEnum>()
     const [payinModal, setPayinModal] = useState<boolean>(false)
     const [cashoutModal, setCashoutModal] = useState<boolean>(false)
 
     const transactionStatuses: OptionType[] = [
         {
           label: "Подтвержденные",
-          value: TransactionStatus.Confirmed,
+          value: TransactionEntityStatusEnum.Confirmed,
         },
         {
           label: "Откатывающиеся",
-          value: TransactionStatus.RolledBack,
+          value: TransactionEntityStatusEnum.RolledBack,
         },
         {
           label: "Неудачные",
-          value: TransactionStatus.Failed,
+          value: TransactionEntityStatusEnum.Failed,
         },
         {
           label: "Истекшие",
-          value: TransactionStatus.Expired,
+          value: TransactionEntityStatusEnum.Expired,
         },
         {
           label: "В ожидании",
-          value: TransactionStatus.Pending,
+          value: TransactionEntityStatusEnum.Pending,
         }
     ];
 
     const transactionOperations: OptionType[] = [
         {
           label: "Продажа",
-          value: TransactonOperations.Sell,
+          value: TransactionEntityOperationEnum.Sell,
         },
         {
           label: "Вывод",
-          value: TransactonOperations.Withdraw,
+          value: TransactionEntityOperationEnum.Withdraw,
         },
         {
           label: "Уменьшение вручную баланса",
-          value: TransactonOperations.ManualBalanceDecrease,
+          value: TransactionEntityOperationEnum.ManualBalanceDecrease,
         },
         {
           label: "Приоритет премиум-продукта",
-          value: TransactonOperations.ProductPremiumPriority,
+          value: TransactionEntityOperationEnum.ProductPremiumPriority,
         },
         {
           label: "Увеличение вручную баланса",
-          value: TransactonOperations.ManualBalanceIncrease,
+          value: TransactionEntityOperationEnum.ManualBalanceIncrease,
         },
         {
           label: "Депозит",
-          value: TransactonOperations.Deposit,
+          value: TransactionEntityOperationEnum.Deposit,
         },
         {
           label: "Замороженный",
-          value: TransactonOperations.Frozen,
+          value: TransactionEntityOperationEnum.Frozen,
         },
         {
           label: "Покупка",
-          value: TransactonOperations.Buy,
+          value: TransactionEntityOperationEnum.Buy,
         },
         {
           label: "Бонус за реферал",
-          value: TransactonOperations.ReferralBonus,
+          value: TransactionEntityOperationEnum.ReferralBonus,
         }
     ];
 
@@ -126,15 +125,15 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 <div className="transaction-filter-selector">
                     <SelectorComponent options={transactionStatuses} width="auto" onChange={(value, action) => {
                         if (value === undefined || value === null) { return; }
-                        let parsedStatus = value.value as keyof typeof TransactionStatus;
-                        let status = TransactionStatus[parsedStatus]
+                        let parsedStatus = value.value as keyof typeof TransactionEntityStatusEnum;
+                        let status = TransactionEntityStatusEnum[parsedStatus]
 
                         setStatusFilter(status)
                     }}/>
                     <SelectorComponent options={transactionOperations} width="auto" onChange={(value, action) => {
                         if (value === undefined || value === null) { return; }
-                        let parsedOperations = value.value as keyof typeof TransactonOperations;
-                        let operation = TransactonOperations[parsedOperations]
+                        let parsedOperations = value.value as keyof typeof TransactionEntityOperationEnum;
+                        let operation = TransactionEntityOperationEnum[parsedOperations]
 
                         setOperationFilter(operation)
                     }}/>
@@ -142,10 +141,10 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 <div className="transaction-filter-sort">
                     <p className="filter-sorting-header">Сортировать: </p>
                     <ItemsSortComponent name="По умолчянию" items={transactions} sortFunction={(tx, tx2) => { 
-                        return new Date(tx.createdAt).getTime() - new Date(tx2.createdAt).getTime();
+                        return new Date(tx.createdAt || "").getTime() - new Date(tx2.createdAt || "").getTime();
                     }}/>
                     <ItemsSortComponent name="По дате" items={transactions} sortFunction={(tx, tx2) => { 
-                        return new Date(tx.createdAt).getTime() - new Date(tx2.createdAt).getTime();
+                        return new Date(tx.createdAt || "").getTime() - new Date(tx2.createdAt || "").getTime();
                     }}/>
                 </div>
             </div>
@@ -172,15 +171,16 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 <div className="transaction-container-left">
                                     <img src={wallet} alt="" width={30} height={30}/>
                                     <div className="transaction-container-header">
-                                        <p className="transaction-title">{value.title}</p>
-                                        <p className="transaction-provider-name">{value.providerName}</p>
+                                        <p className="transaction-title">{value.operation}</p>
+                                        <p className="transaction-provider-name">{value.provider.name}</p>
                                     </div>
                                 </div>
                                 <div className="transaction-container-right">
                                     <div className="transaction-container-amount">
-                                        {value.direction !== "IN" ? "-" : "+"}{value.amount.amount}{value.amount.currency}
+                                        {value.direction !== TransactionEntityDirectionEnum.In ? "-" : "+"}{value.amount.amount}{value.amount.currency}
                                     </div>
-                                    <div className="transaction-container-type" style={{color: value.direction !== "IN" ? "red" : "green"}}>
+                                    <div className="transaction-container-type" 
+                                        style={{color: value.direction !== TransactionEntityDirectionEnum.In ? "red" : "green"}}>
                                         {value.operation}
                                     </div>
                                 </div>

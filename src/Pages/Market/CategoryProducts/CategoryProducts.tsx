@@ -100,11 +100,11 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
             <div className="categoryproduct-sorter">
             <div className="transaction-filter-sort">
                     <p className="filter-sorting-header">Сортировать: </p>
-                    <ItemsSortComponent name="По умолчянию" items={data.products} sortFunction={(product, product2) => { 
-                        return new Date(product.createdAt).getTime() - new Date(product2.createdAt).getTime();
+                    <ItemsSortComponent name="По умолчянию" items={products} sortFunction={(product, product2) => { 
+                        return new Date(product.createdAt || "").getTime() - new Date(product2.createdAt || "").getTime();
                     }}/>
-                    <ItemsSortComponent name="По дате" items={data.products} sortFunction={(product, product2) => { 
-                        return new Date(product.createdAt).getTime() - new Date(product2.createdAt).getTime();
+                    <ItemsSortComponent name="По дате" items={products} sortFunction={(product, product2) => { 
+                        return new Date(product.createdAt || "").getTime() - new Date(product2.createdAt || "").getTime();
                     }}/>
                 </div>
             </div>

@@ -3,52 +3,76 @@ import StarsComponent from "src/Components/Stars/Stars";
 import ContentLine from "src/Components/ContentLine/ContentLine";
 import SelectorComponent from "src/Components/Selector/Selector";
 import { OptionType } from "src/Schemas/Option";
-import { OptionTypes } from "src/Schemas/Enums";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
 import SearchbarComponent from "src/Components/Search/Search";
-import data from "@testdata/Analytics.json"
 import { NavbarProps } from "src/Utils/NavbarProps";
-import { OptionEntity } from "restclient";
-
-interface Product {
-    createdAt: string; 
-    stars: number;    
-}
+import { CategoryControllersApi, GameControllersApi, ProductControllersApi, ProductEntity } from "restclient";
+import { ApiConfig, asFileUrl } from "src/Gateway/Config";
+import { convertObjectToOptions } from "src/Utils/Options";
+import { useCookies } from "react-cookie";
+import { AuthKey } from "src/Gateway/Consts";
+import { useNavigate } from "react-router-dom";
+import ProductWithActionsComponent from "src/Components/ProductWithActions/ProductWithActions";
 
 const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Аналитика')  
-    const gameOptions: OptionType[] = [
-        { 
-            label: "Garry's mod", 
-            value: "Garrys-mod"  // game name 
-        },
-        { 
-            label: "Minecraft", 
-            value: "Minecraft"  // game name 
-        }
-    ]
-
-    const categoryOptions: OptionType[] = [ 
-        { 
-            label: "Донат", 
-            value: "31323213123213312"  // category id 
-        },
-        { 
-            label: "Сборки", 
-            value: "78327832839892947"  // category id 
-        }
-    ]
-    // end deletable zone! 
-
-    let options: OptionEntity[] = []
+    const [categoryOptions, setCategoryOptions] = useState<OptionType[]>([])
+    const [gameOptions, setGamesOptions] = useState<OptionType[]>([])
+    const navigate = useNavigate()
     const [selectedGame, setSelectedGame] = useState<string>()
     const [selectedCategory, setSelectedCategory] = useState<string>()
-    const [searchText, setSearchText] = useState<string>('')
+    const [searchText, setSearchText] = useState<string>()
+    const [products, setProducts] = useState<ProductEntity[]>([])
+    const [cookies, setCookies] = useCookies([AuthKey])
 
-    options.forEach((option) => {
-        options.push(option)
-    })
+    useEffect(() => { 
+        if (cookies.Authorization === undefined || cookies.Authorization === "") { 
+            navigate("/login")
+        }
+    }, [cookies])
+
+    useEffect(() => { 
+        const categoryApi = new CategoryControllersApi(ApiConfig)
+        const gameApi = new GameControllersApi(ApiConfig);
+
+        (async () => { 
+            try { 
+                let gameResponse = await gameApi.apiGameGet()
+                let data = convertObjectToOptions(gameResponse.data)
+                setGamesOptions(data)
+
+                let categoryResponse = await categoryApi.apiCategoryGet(selectedGame)
+                let catData = convertObjectToOptions(categoryResponse.data)
+                setCategoryOptions(catData)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [selectedGame, selectedCategory])
+    
+    useEffect(() => { 
+        (async () => {
+            const productApi = new ProductControllersApi(ApiConfig)
+            
+            try { 
+                let response = await productApi.apiProductGet(searchText, selectedCategory, selectedGame, undefined, props.user?.id)
+                setProducts(response.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [searchText])
+
+    const deleteProduct = async (productId: string) => { 
+        const productApi = new ProductControllersApi(ApiConfig)
+
+        await productApi.apiProductProductIdDelete(productId)
+
+        let productIndex = products.findIndex((product) => productId === product.id)
+        const tempProducts = [...products.slice(0, productIndex), ...products.slice(productIndex + 1, products.length)]
+        setProducts(tempProducts)
+    }
 
     return (
         <div className="root-analytic">
@@ -110,7 +134,7 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 </div>
                 <ContentLine />
                 <h2 className="analytic-categoryname123">Товары</h2>
-                <SearchbarComponent searchText={searchText} onChange={setSearchText} placeholder="Введите название"/> 
+                <SearchbarComponent searchText={searchText || ""} onChange={setSearchText} placeholder="Введите название"/> 
                 <div className="analytic-row123">
                     <SelectorComponent 
                         options={gameOptions}
@@ -126,23 +150,42 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <p className="filter-sorting-textname">Сортировать: </p>
                         <ItemsSortComponent
                             name="По Популярности"
-                            items={data.products}
-                            sortFunction={(product1, product2) => new Date(product2.createdAt).getTime() - new Date(product1.createdAt).getTime()}
+                            items={products}
+                            sortFunction={(product1, product2) => new Date(product2.createdAt || "").getTime() - new Date(product1.createdAt || "").getTime()}
                         />
-                        <ItemsSortComponent<Product>
+                        <ItemsSortComponent<ProductEntity>
                             name="По рейтингу"
-                            items={data.products}
-                            sortFunction={(product1: Product, product2: Product) => product2.stars - product1.stars}
+                            items={products}
+                            sortFunction={(product1: ProductEntity, product2: ProductEntity) => 4 - 1}
                         />
-                        <ItemsSortComponent<Product>
+                        <ItemsSortComponent<ProductEntity>
                             name="По умолчанию"
-                            items={data.products}
+                            items={products}
                             sortFunction={(product1, product2) => 1}
                         />
                     </div>
                 </div>
 
-                <div className="product-redact123"></div>
+                <div className="product-redact123">
+                    {products.length > 0 ? products.map((value) => { 
+                        if (value.category.id !== selectedCategory && selectedGame !== undefined) { 
+                            return null;
+                        }
+                        if (value.game.id !== selectedGame && selectedGame !== undefined) { 
+                            return null; 
+                        }
+                        return ( 
+                            <ProductWithActionsComponent
+                                productImage={asFileUrl(value.images[0].id)}
+                                name={value.name}
+                                views={value.productViewed}
+                                description={value.description}
+                                acceptButtonClick={() => navigate(`/products/${value.id}/edit`)}
+                                badButtonClick={() => deleteProduct(value.id)}
+                            />
+                        )
+                    }) : <p className="none-text">Не найдено продуктов с статусом Processing</p>}
+                </div>
             </div>
         </div>
     ); 

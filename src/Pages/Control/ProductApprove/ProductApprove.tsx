@@ -25,6 +25,12 @@ const ProductApprovePage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const productApi = new ProductControllersApi(ApiConfig)
 
     useEffect(() => { 
+        if (cookies.Authorization === undefined || cookies.Authorization === "") { 
+            navigate("/login")
+        }
+    }, [cookies])
+
+    useEffect(() => { 
         (async () => { 
 
             try { 
@@ -57,6 +63,9 @@ const ProductApprovePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 productId: productId, 
                 productStatus: "Declined"
             })
+            
+            let productIndex = products.findIndex((product) => productId === product.id)
+            const tempProducts = [...products.slice(0, productIndex), ...products.slice(productIndex + 1, products.length)]
         } catch (e) { 
             console.error(e)
         } 

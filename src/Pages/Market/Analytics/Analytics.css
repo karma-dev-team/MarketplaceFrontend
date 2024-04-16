@@ -45,6 +45,13 @@
     gap: 90px;
 }
 
+.product-redact123 { 
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    margin-top: 20px; 
+}
+
 .levaia-korobka123 {
     width: 370px;
     height: 150px;
