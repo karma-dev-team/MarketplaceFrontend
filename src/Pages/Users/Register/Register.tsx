@@ -25,7 +25,7 @@ const RegisterPage: React.FC = () => {
         if (cookies.Authorization !== undefined) { 
             navigate("/")
         }
-    }, [cookies])
+    }, [cookies, navigate])
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => { 
        e.preventDefault()
@@ -41,7 +41,7 @@ const RegisterPage: React.FC = () => {
                     email: email, 
                     password: password, 
                     name: username, 
-            }
+                }
         )
         } catch (e: any) { 
             setError("Такой пользватель уже существует")

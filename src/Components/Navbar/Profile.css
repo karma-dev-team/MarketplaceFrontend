@@ -1,0 +1,109 @@
+.root-navbarprofile {
+    position: relative;
+}
+  
+.navbar-profile-trigger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+  
+.navbar-profile-trigger p {
+    margin-right: 10px;
+}
+  
+.navbar-user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+  
+.navbar-dropdown-arrow {
+    margin-left: 10px;
+    rotate: 90deg;
+    transition: 0.3s ease rotate;
+}
+  
+.navbar-profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 99999;
+    background-color: #1C1D26;
+    border: 1px solid #2F3241;
+    border-radius: 5px;
+}
+  
+.navbar-dropdown-arrow.open { 
+    rotate: 0deg;
+}
+
+.user-info-dropdown {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    border-radius: 4px;
+    padding: 7px 4px; 
+}
+  
+.dropdown-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+  
+.dropdown-user-name {
+    text-decoration: none;
+    color: #A8A8A8;
+    font-weight: bold;
+    min-width: max-content;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+  
+.dropdown-user-name:hover { 
+    text-decoration: none;
+    outline: none;
+}
+
+.user-info-dropdown:hover { 
+    background-color: #38425439; 
+}
+
+.react-select-container {
+    width: 200px;
+}
+
+.dropdown-options { 
+    list-style: none;
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px; 
+}
+
+.dropdown-options li { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; 
+    padding: 7px 4px; 
+    color: #54617A; 
+    border-radius: 5px;
+}
+
+.dropdown-options li:hover { 
+    background-color: #38425439; 
+}
+
+.dropdown-settings { 
+    border-top: 1px solid #2F3241; 
+}
+  
+.dropdown-logout { 
+    border-top: 1px solid #2F3241; 
+    margin-top: 4px; 
+}
