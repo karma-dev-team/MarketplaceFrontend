@@ -55,7 +55,7 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                     <div className="home-grid-content">
                         {games.map((value) => { 
                             return ( 
-                                <div className="home-game-container" onClick={() => navigate(`/games/${value.name}`)}>
+                                <div className="home-game-container" onClick={() => navigate(`/games/${value.id}`)}>
                                     <img src={asFileUrl(value.logo.id)} alt="" className="game-image"/>
                                     <p>{value.name}</p>
                                 </div>
@@ -74,7 +74,7 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                     <div className="home-grid-content">
                         {applications.map((value) => { 
                             return ( 
-                                <div className="home-application-container"  onClick={() => navigate(`/games/${value.name}`)}>
+                                <div className="home-application-container"  onClick={() => navigate(`/games/${value.id}`)}>
                                     <img src={asFileUrl(value.logo.id)} alt="" className="game-image"/>
                                     <p>{value.name}</p>
                                 </div>

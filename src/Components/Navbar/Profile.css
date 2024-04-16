@@ -20,8 +20,7 @@
   
 .navbar-dropdown-arrow {
     margin-left: 10px;
-    rotate: 90deg;
-    transition: 0.3s ease rotate;
+    transition: 0.2s ease rotate;
 }
   
 .navbar-profile-dropdown {
@@ -35,7 +34,7 @@
 }
   
 .navbar-dropdown-arrow.open { 
-    rotate: 0deg;
+    rotate: 180deg;
 }
 
 .user-info-dropdown {

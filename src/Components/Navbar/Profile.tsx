@@ -48,11 +48,11 @@ const NavbarProfileComponent: React.FC<NavbarProfileComponentProps> = ({ user })
       <div onClick={toggleMenu} className="navbar-profile-trigger">
         <p>User</p>
         <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="navbar-user-image" />
-        <img src={arrow} alt="Dropdown Arrow" width={20} height={20} className={`navbar-dropdown-arrow ${isMenuOpen ? 'open' : ''}`} />
+        <img src={arrow} alt="Dropdown Arrow" width={14} height={14} className={`navbar-dropdown-arrow ${isMenuOpen ? 'open' : ''}`} />
       </div>
       {isMenuOpen && (
         <div className={`navbar-profile-dropdown`}>
-          <div className="user-info-dropdown">
+          <div className="user-info-dropdown" onClick={() => navigate(`/user/${user.id}`)}>
             <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="dropdown-avatar" />
             <Link to={`/user/${user.id}`} className="dropdown-user-name">
                 <p>{user.userName}</p>
