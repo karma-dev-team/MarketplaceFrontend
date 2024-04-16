@@ -1,6 +1,6 @@
 import "./Wallet.css"
 import ContentLine from "src/Components/ContentLine/ContentLine";
-import wallet from "@images/wallet.png"
+import walletIcon from "@images/wallet.png"
 import cashout from "@images/cahsout.png"
 import SelectorComponent from "src/Components/Selector/Selector";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import Modal from "src/Modals/Base/Base";
 import BuyModal from "src/Modals/Buy/Buy";
 import PayoutModal from "src/Modals/Payout/Payout";
 import { NavbarProps } from "src/Utils/NavbarProps";
-import { TransactionControllersApi, TransactionEntity, TransactionEntityDirectionEnum, TransactionEntityOperationEnum, TransactionEntityStatusEnum } from "restclient";
+import { TransactionControllersApi, TransactionEntity, TransactionEntityDirectionEnum, TransactionEntityOperationEnum, TransactionEntityStatusEnum, WalletControllersApi, WalletEntity } from "restclient";
 import { ApiConfig } from "src/Gateway/Config";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
@@ -21,6 +21,7 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [transactions, setTransactions] = useState<TransactionEntity[]>([])
     const [statusFilter, setStatusFilter] = useState<TransactionEntityStatusEnum>()
     const [operationFilter, setOperationFilter] = useState<TransactionEntityOperationEnum>()
+    const [wallet, setWallet] = useState<WalletEntity>()
     const [payinModal, setPayinModal] = useState<boolean>(false)
     const [cashoutModal, setCashoutModal] = useState<boolean>(false)
     const [cookies] = useCookies([AuthKey])
@@ -35,7 +36,11 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     useEffect(() => { 
         (async () => { 
             const transactionsApi = new TransactionControllersApi(ApiConfig)
+            const walletApi = new WalletControllersApi(ApiConfig)
             try { 
+                let walletResponse = await walletApi.apiWalletUserUserIdGet(props.user?.id || "")
+                setWallet(walletResponse.data)
+
                 let response = await transactionsApi.apiTransactionUserUserIdGet(props.user?.id || "")
                 setTransactions(response.data)
             } catch (e) { 
@@ -125,10 +130,10 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 <div className="walletactions">
                     <div className="wallet">
                         <div className="img123">
-                            <img src={wallet} alt="wallet icon"/>
+                            <img src={walletIcon} alt="wallet icon"/>
                         </div>
                         <p className="info1">Балланс</p>
-                        <p className="userballance">0 ₽</p>
+                        <p className="userballance">{wallet?.availableBalance.amount} ₽</p>
                     </div>
                     <div className="cashout" onClick={() => setCashoutModal(true)}>
                         <div className="img123">
@@ -138,7 +143,7 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                     </div>
                     <div className="deposit" onClick={() => setPayinModal(true)}>
                         <div className="img123">
-                            <img src={wallet} alt="deposit icon" />
+                            <img src={walletIcon} alt="deposit icon" />
                         </div>
                         <p className="info">Пополнить</p>
                     </div>
@@ -193,15 +198,15 @@ const WalletPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         return ( 
                             <div className="transaction-container">
                                 <div className="transaction-container-left">
-                                    <img src={wallet} alt="" width={30} height={30}/>
+                                    <img src={walletIcon} alt="" width={30} height={30}/>
                                     <div className="transaction-container-header">
                                         <p className="transaction-title">{value.operation}</p>
-                                        <p className="transaction-provider-name">{value.provider.name}</p>
+                                        <p className="transaction-provider-name">{value.provider?.name}</p>
                                     </div>
                                 </div>
                                 <div className="transaction-container-right">
                                     <div className="transaction-container-amount">
-                                        {value.direction !== TransactionEntityDirectionEnum.In ? "-" : "+"}{value.amount.amount}{value.amount.currency}
+                                        {value.direction !== TransactionEntityDirectionEnum.In ? "-" : "+"}{value.amount.amount} ₽
                                     </div>
                                     <div className="transaction-container-type" 
                                         style={{color: value.direction !== TransactionEntityDirectionEnum.In ? "red" : "green"}}>
