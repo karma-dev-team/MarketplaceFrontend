@@ -176,12 +176,15 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         }
                         return ( 
                             <ProductWithActionsComponent
+                                id={value.id}
                                 productImage={asFileUrl(value.images[0].id)}
                                 name={value.name}
                                 views={value.productViewed}
                                 description={value.description}
                                 acceptButtonClick={() => navigate(`/products/${value.id}/edit`)}
                                 badButtonClick={() => deleteProduct(value.id)}
+                                badButtonText="Изменить"
+                                acceptButtonText="Удалить"
                             />
                         )
                     }) : <p className="none-text">Не найдено продуктов с статусом Processing</p>}

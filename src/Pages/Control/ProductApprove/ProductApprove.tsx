@@ -82,6 +82,7 @@ const ProductApprovePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         {products.length > 0 ? products.map((value) => { 
                             return ( 
                                 <ProductWithActionsComponent
+                                    id={value.id}
                                     productImage={asFileUrl(value.images[0].id)}
                                     name={value.name}
                                     views={value.productViewed}

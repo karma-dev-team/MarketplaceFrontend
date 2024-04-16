@@ -31,6 +31,11 @@
 
 .olololo { 
     display: flex;
+    cursor: pointer;
+}
+
+.productwithactions-info *:hover { 
+    text-decoration: underline;
 }
 
 .bad-button { 
