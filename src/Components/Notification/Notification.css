@@ -8,6 +8,10 @@
     background-color: #1B1D27;    
 }
 
+.root-notification:hover { 
+    background-color: #262937;
+}
+
 .notfication-container { 
     display: flex;
 }

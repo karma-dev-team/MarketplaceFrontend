@@ -9,6 +9,8 @@ import { ApiConfig } from "src/Gateway/Config";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
+import Modal from "src/Modals/Base/Base";
+import NotificationModal from "src/Modals/Notification/Notification";
 
 const NotificationTypeToText: { [key in NotificationEntityTypeEnum]: string | undefined } = { 
     [NotificationEntityTypeEnum.Other]: undefined, 
@@ -30,6 +32,8 @@ const NotificationsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
             navigate("/login")
         }
     }, [cookies, navigate])
+    const [isNotificationOpen, setNotificationOpen] = useState<boolean>(false)
+    const [currentNotification, setNotification] = useState<NotificationEntity>()
 
     const notificationTypes = { 
         "": "Все уведомления",  
@@ -46,7 +50,7 @@ const NotificationsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
             const notificationApi = new NotificationApi(ApiConfig)
 
             try { 
-                let response = await notificationApi.apiNotificationUserUserIdGet(props.user?.id || "")
+                let response = await notificationApi.apiNotificationUserUserIdGet(props.user?.id || "", 0, 10)
                 setNotifications(response.data)
             } catch (e) { 
                 console.error(e)
@@ -54,8 +58,21 @@ const NotificationsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         })()
     }, [navigate, props.user])
 
+    const openNotification = (notification: NotificationEntity) => { 
+        setNotification(notification)
+        setNotificationOpen(true)
+    }
+
     return (
         <div className="root-notifications">
+            <Modal isOpen={isNotificationOpen} onClose={() => setNotificationOpen(false)}>
+                <NotificationModal 
+                    information={JSON.parse(currentNotification?.data || "{}")}
+                    isSystem={currentNotification?.type === "System"}
+                    title={currentNotification?.title || ""}
+                    text={currentNotification?.text || ""}
+                />
+            </Modal>
             <div className="korobka337">
                 <div className="notifications-header">
                     <h2>Уведомления</h2>
@@ -67,13 +84,17 @@ const NotificationsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             if (value.type !== currentType && currentType !== "") { 
                                 return null; 
                             } 
-                            return <NotificationComponent        
-                                notificationId = {value.id} 
-                                title = {value.title}
-                                image = {karmaLogo}
-                                content = {NotificationTypeToText[value.type || NotificationEntityTypeEnum.Other] || value.text}
-                            />
-                        }) : <p className="text123">У вас пока нету уведомлении</p>}
+                            return (
+                                <div onClick={() => openNotification(value)}>
+                                    <NotificationComponent        
+                                        notificationId = {value.id} 
+                                        title = {value.title}
+                                        image = {karmaLogo}
+                                        content = {NotificationTypeToText[value.type || NotificationEntityTypeEnum.Other] || value.text}
+                                    />
+                                </div>
+                            )
+                        }) : <p className="none-text">У вас пока нету уведомлении</p>}
                     </div>
                     <ul className="notifications-selector-list">
                         {Object.entries(notificationTypes).map((value) => {

@@ -1,8 +1,10 @@
+import { FileEntity } from "restclient"
 import { OptionType } from "src/Schemas/Option"
 
 export interface ConvertableOption { 
     id: string 
-    name: string
+    name: string, 
+    logo?: FileEntity
 }
 
 export const convertObjectToOptions = (op: ConvertableOption[]): OptionType[] => { 
@@ -10,7 +12,8 @@ export const convertObjectToOptions = (op: ConvertableOption[]): OptionType[] =>
     op.forEach((value) => { 
         options.push({ 
             label: value.name, 
-            value: value.id
+            value: value.id, 
+            icon: value.logo?.id, 
         })
     })
 

@@ -70,7 +70,7 @@ export interface ReviewEntity {
      * @type {number}
      * @memberof ReviewEntity
      */
-    rating?: number;
+    rating: number;
 
     /**
      * @type {string}

@@ -151,7 +151,7 @@ export interface ProductEntity {
      * @type {Money}
      * @memberof ProductEntity
      */
-    currentPrice?: Money;
+    currentPrice: Money;
 }
 
 /**

@@ -57,7 +57,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     return (
         <div className="root-product">
             <Modal isOpen={buyModal} onClose={() => setBuyModal(false)}>
-                <BuyModal price={589}/>
+                <BuyModal price={product?.currentPrice.amount || 0}  productId={product?.id}/>
             </Modal> 
 
             <div className="productkorobka228">

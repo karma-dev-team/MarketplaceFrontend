@@ -13,6 +13,7 @@
  */
 
 import { BaseEvent } from './base-event';
+import { FileEntity } from './file-entity';
 import { PaymentSystemEntity } from './payment-system-entity';
  /**
  * 
@@ -75,4 +76,10 @@ export interface TransactionProviderEntity {
      * @memberof TransactionProviderEntity
      */
     systems: Array<PaymentSystemEntity>;
+
+    /**
+     * @type {FileEntity}
+     * @memberof TransactionProviderEntity
+     */
+    logo: FileEntity;
 }
