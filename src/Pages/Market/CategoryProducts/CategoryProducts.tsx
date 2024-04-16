@@ -11,6 +11,7 @@ import { NavbarProps } from "src/Utils/NavbarProps";
 import { CategoryControllersApi, CategoryEntity, GameControllersApi, GameEntity, OptionEntity, ProductControllersApi, ProductEntity } from "restclient";
 import { ApiConfig } from "src/Gateway/Config";
 import { useNavigate, useParams } from "react-router-dom";
+import { OptionType } from "src/Schemas/Option";
 
 const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Каталог игр') 
@@ -32,9 +33,14 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [currentCategory, setCurrentCategory] = useState<CategoryEntity>(); 
     const [products, setProducts] = useState<ProductEntity[]>([])
     const [searchTextSubmited, setSubmitedText] = useState<string>('')
+    const [options, setOptions] = useState<Map<string, string>>()
 
-    const onLabelClick = () => { 
-        
+    const onLabelClick = (option: OptionType) => { 
+        if (options === undefined) { 
+            setOptions(new Map<string, string>())
+        }
+        options?.set(option.label, option.value)
+        setOptions(options)
     }
 
     const productApi = new ProductControllersApi(ApiConfig)
@@ -44,8 +50,6 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     useEffect(() => { 
         (async () => {
             try { 
-                const responseProducts = await productApi.apiProductGet(searchText === '' ? undefined : searchText, id) 
-                setProducts(responseProducts.data)
 
                 const responseCategory = await categoryApi.apiCategoryCategoryIdGet(id)
                 setCurrentCategory(responseCategory.data)
@@ -59,10 +63,19 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         })()
     }, [searchTextSubmited])
 
+    useEffect(() => { 
+        (async () => { 
+            const responseProducts = await productApi.apiProductGet(
+                searchText === '' ? undefined : searchText, currentCategory?.id, game?.id, "Approved", undefined) 
+            setProducts(responseProducts.data)
+        })()
+    }, [searchTextSubmited, currentCategory, game])
+
     const changeCategory = async (name: string) => { 
         var category = game?.categories?.find(x => x.name === name)
         console.log(category)
         if (category) { 
+            setSubmitedText(searchTextSubmited)
             setCurrentCategory(category)
             navigate(`/category/${category.id}`)
         }
@@ -104,7 +117,7 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             category={value.category.name}
                             price={value.basePrice.amount}
                             game={value.category.name}
-                            gameImage={value.game.logo.id}
+                            gameImage={game?.logo.id || ""}
                             productId={value.id}
                             image={value.images[0].id}
                             userStars={4} // Исправить
