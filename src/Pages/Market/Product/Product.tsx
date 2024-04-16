@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import BuyModal from "src/Modals/Buy/Buy";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { AnalyticsApi, AnalyticsInformationDto, ProductControllersApi, ProductEntity, UserAnalyticsSchema } from "restclient";
-import { ApiConfig } from "src/Gateway/Config";
+import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import { useParams } from "react-router-dom";
 
 
@@ -112,7 +112,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
                 <h3 className="razdeli228">Продавец</h3>
                 <div className="sallerprofile">
-                    <img src={testico} alt="" />
+                    <img src={asFileUrl(product?.createdBy.image?.id)} alt="" width={50} height={50} />
                     <div className="salleropisanie">
                         <h4 className="sallername">{product?.createdBy.userName}</h4>
                         <div className="karobkadliaotziva">

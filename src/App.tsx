@@ -96,8 +96,8 @@ function App() {
 					<Route path="/user/:id/purchases/" element={<PurchasesPage setCategory={setCategory}/>}/>
 					<Route path="/user/:id/sales/" element={<SalesPage setCategory={setCategory}/>}/>
 					<Route path="/user/:id/analytics" element={<AnalyticsPage setCategory={setCategory}/>}/>
-					<Route path="/chats" element={<ChatsPage setCategory={setCategory}/>}/>
-					<Route path="/chat/:chatId" element={<ChatsPage setCategory={setCategory}/>}/>
+					<Route path="/chats" element={<ChatsPage setCategory={setCategory} user={user}/>}/>
+					<Route path="/chat/:chatId" element={<ChatsPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/product/:id" element={<ProductPage setCategory={setCategory}/>}/>
 					<Route path="/product/:id/edit" element={<ProductAnalPage setCategory={setCategory}/>}/>
 					<Route path="/product/:id/edit/edit" element={<ProductEditPage setCategory={setCategory}/>}/>

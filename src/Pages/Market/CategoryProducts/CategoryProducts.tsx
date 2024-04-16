@@ -22,11 +22,6 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         throw new Error("id is none") 
     }
 
-    elements.set("Главная", "/")
-    elements.set("Игры", "/games")
-    elements.set(data.game, `/games/${data.game}`)
-    elements.set(data.category.title, `/category/${data.category.id}`)
-
     const navigate = useNavigate()
     const [game, setGame] = useState<GameEntity>()
     const [searchText, setSearchText] = useState<string>('')
@@ -85,6 +80,11 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     game?.categories?.map((value) => { 
         categoryNames.push(value.name)
     }) 
+
+    elements.set("Главная", "/")
+    elements.set("Игры", "/games")
+    elements.set(data.game, `/games/${game?.id}`)
+    elements.set(data.category.title, `/category/${id}`)
 
     return (
         <div className="root-categoryproducts">

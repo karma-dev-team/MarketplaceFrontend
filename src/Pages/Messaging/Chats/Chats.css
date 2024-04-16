@@ -8,9 +8,11 @@
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+    min-width: 310px;
     overflow: auto;
     max-width: 320px;
     border-right: 1px solid #2B2D3C;
+    overflow-x:hidden;
 }
 
 .chat-last-message { 
@@ -297,6 +299,7 @@
     visibility: visible;
     white-space: nowrap;
     margin-bottom: 13.6px;
+    min-width: fit-content;
     margin-right: 10px;
     margin-left: 10px;
     color: rgba(255, 255, 255, 0.5);

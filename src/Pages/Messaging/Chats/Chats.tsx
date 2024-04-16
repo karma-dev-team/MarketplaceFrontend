@@ -1,15 +1,15 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import "./Chats.css"
-import data from "@testdata/Chats.json"
-import { MessageScheme } from "src/Schemas/Message";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ChatScheme } from "src/Schemas/Chat";
 import plusIcon from "@images/PlusLog.svg"
-import { format } from 'date-fns';
 import VerifiedIcon from "src/Components/Icons/VerfiedIcon";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
+import { ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, MessageEntity, MessagesApi } from "restclient";
+import { ApiConfig, asFileUrl } from "src/Gateway/Config";
+import karmaLogo from "@images/karmastore-logo.png"
+import { format } from "date-fns";
 
 type iconProps = { width?: string, height?: string }
 
@@ -26,18 +26,48 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
     const [cookies] = useCookies([AuthKey])
     const navigate = useNavigate()
+    const chatApi = new ChatControllersApi(ApiConfig)
+    const messagesApi = new MessagesApi(ApiConfig)
+    const fileApi = new FileControllersApi(ApiConfig)
 
     const { chatId } = useParams()
-    const [currentMessages, setMessages] = useState<MessageScheme[]>([])
-    const [currentChat, setCurrentChat] = useState<ChatScheme>()
+    const [currentMessages, setMessages] = useState<MessageEntity[]>([])
+    const [currentChat, setCurrentChat] = useState<ChatEntity>()
     const [messageText, setMessageText] = useState<string>('')
-    const userId = "dsdadas"
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [selectedFileBinary, setFileBinary] = useState<string>()
+    const [chats, setChats] = useState<ChatEntity[]>([])
+    const [currentFileScheme, setCurrentFileScheme] = useState<FileEntity>()
+
+    useEffect(() => { 
+        (async () => {
+            try { 
+                let chatResponse = await chatApi.apiChatMeGet()
+                setChats(chatResponse.data)
+
+                setCurrentChat(chatResponse.data.filter(x => x.id === chatId)[0])
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [chatId, navigate])
+
+    useEffect(() => { 
+        (async () => {
+            try { 
+                let messageResponse = await messagesApi.apiMessagesChatChatIdMessagesGet(chatId || "")
+                setMessages(messageResponse.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [currentChat])
 
     const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
         if (file) {
+            let fileResponse = await fileApi.apiFilesUploadPostForm(file)
+            setCurrentFileScheme(fileResponse.data)
             const reader = new FileReader()
             reader.readAsDataURL(file)
             reader.onload = () => { 
@@ -50,6 +80,9 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     };
 
     const handleSendMessage = async () => {
+        if (chatId === "" || chatId === undefined) { 
+            return; 
+        }
         if (messageText.trim() !== '') {
             console.log('Sending message:', messageText);
         }
@@ -59,21 +92,15 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         if (messageText.length === 0 && (selectedFileBinary === "" || selectedFileBinary === undefined)) { 
             return; 
         }
-        let newMessages: MessageScheme[] = [{ 
+        let newMessageResponse = await messagesApi.apiMessagesChatChatIdSendPost(chatId, { 
+            chatId: chatId, 
             text: messageText, 
-            id: "dsada", 
-            createdAt: format(new Date(), 'h:mm'), 
-            type: "Text", 
-            images: selectedFile !== undefined ? [ 
-                { 
-                    MimeType: "image",
-                    stream: selectedFileBinary, 
-                    filePath: "dasdads", 
-                    id: "dasda"
-                }
-            ] : undefined,  
-            createdById: userId
-        }, ...currentMessages]
+            image: currentFileScheme !== undefined ? { 
+                fileId: currentFileScheme.id, 
+            } : undefined, 
+        })
+
+        let newMessages = [newMessageResponse.data, ...currentMessages]
         setMessages(newMessages)
         setFileBinary(undefined)
         setMessageText('');
@@ -94,20 +121,12 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         if (cookies.Authorization === undefined || cookies.Authorization === "") { 
             navigate("/login")
         }
-
-        if (chatId) {
-            const selectedChat = data.chats.find((chat) => chat.id === chatId);
-            if (selectedChat) {
-              setCurrentChat(selectedChat);
-              setMessages(selectedChat.messages);
-            }
-        }
     }, [chatId])
 
     return (
         <div className="root-chats">
             <div className="chats-list">
-                {data.chats.map((value) => { 
+                {chats.map((value) => { 
                     return (
                         <Link
                             to={`/chat/${value.id}`}
@@ -117,8 +136,8 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             key={value.id}
                         >
                             <div className="chat-image">
-                                <img src={value.image} alt="" />
-                                {value.createdBy.isOnline || value.type === "Support" ? <div className="chat-image-online"></div> : null}
+                                <img src={value.image !== null ? asFileUrl(value.image?.id) : karmaLogo} alt="" />
+                                {value.type === "Support" ? <div className="chat-image-online"></div> : null}
                             </div>
                             <div className="chat-header">
                                 <div className="chat-header-text">
@@ -127,12 +146,15 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                         
                                         {value.isVerified ? <div className="verified-icon-container"><VerifiedIcon /></div> : null}
                                     </p>
-                                    <p className="chat-last-message-date">
-                                        {value.lastMessage.createdAt}
-                                    </p>
+                                    {value.lastMessage !== null ? 
+                                        <p className="chat-last-message-date">
+                                            {value.lastMessage?.createdAt !== null || value.lastMessage?.createdAt !== undefined 
+                                                ? format(value.lastMessage?.createdAt || "", "eeee") : null}
+                                        </p>
+                                    : null }
                                 </div>
                                 <div className="chat-last-message">
-                                    {value.lastMessage.text}
+                                    {value.lastMessage?.text || ""}
                                 </div>
                             </div>
                         </Link>
@@ -144,8 +166,8 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                     <div className="current-chat">
                         <div className="current-chat-header">
                             <div className="current-chat-logo">                           
-                                <img src={currentChat?.image} alt="" />
-                                {currentChat.createdBy.isOnline || currentChat.type === "Support" ?
+                                <img src={currentChat.image !== null ? asFileUrl(currentChat.image?.id) : karmaLogo} alt="" />
+                                {false || currentChat.type === "Support" ?
                                     <div className="chat-online"></div> : null}
                             </div>
                             <div className="current-chat-text">
@@ -156,15 +178,19 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <div className="current-chat-messages">
                             {currentMessages.map(value => { 
                                 return (
-                                    <div className={value.createdById === userId ? "user-message" : "other-message"}>
+                                    <div className={value.fromUser.id === props.user?.id ? "user-message" : "other-message"}>
                                         <div className={`chat-message `}> 
-                                            {value.images?.length !== 0 && value.images !== undefined ? <div className="message-image-container">
-                                                <img src={value.images[0].stream} alt="" className="message-image"/>
+                                            {value.image !== undefined ? <div className="message-image-container">
+                                                <img src={asFileUrl(value.image?.id || "")} alt="" className="message-image"/>
                                             </div> : null}
                                             <span className="chat-message-text">{value.text}</span>
                                             <span className="chat-message-corner">
                                                 <div className="chat-message-date-container">
-                                                    <span className="chat-message-date">{value.createdAt}</span>
+                                                    <span className="chat-message-date">
+                                                        {
+                                                            value.createdAt !== null || value.createdAt !== undefined 
+                                                                ? format(value.createdAt || "", "eeee") : null}
+                                                        </span>
                                                 </div>
                                             </span>
                                         </div>
