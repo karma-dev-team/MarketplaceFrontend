@@ -108,7 +108,7 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                         category={value.category.name}
                                         price={value.basePrice.amount}
                                         game={value.category.name}
-                                        gameImage={value.game.logo.id}
+                                        gameImage={value.game.logo?.id || ""}
                                         productId={value.id}
                                         image={value.images[0].id}
                                         userStars={4} // Исправить

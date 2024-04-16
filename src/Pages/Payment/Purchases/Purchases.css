@@ -18,13 +18,6 @@
     margin: 15px 0; 
 }
 
-.purchases-container { 
-    border-bottom: 1px solid #414357;
-    display: flex;
-    padding: 10px 10px; 
-    justify-content: space-between;
-    gap: 10px;
-}
 
 .purchases { 
     margin-top: 18px; 
@@ -47,4 +40,27 @@
     font-size: 24px;
     line-height: 29px;
     color: #A8A8A8;
+}
+
+.purchases-list { 
+    display: grid;
+    gap: 20px;
+}
+
+@media (min-width: 1600px) {
+    .purchases-list { 
+        grid-template: 1fr/repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1440px) {
+    .purchases-list { 
+        grid-template: 1fr/repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1024px) { 
+    .purchases-list { 
+        grid-template: 1fr/repeat(4, 1fr);
+    }
 }
