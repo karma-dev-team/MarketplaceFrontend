@@ -13,12 +13,13 @@ import warningIcon from "@images/warning.png"
 import criticalWarningIcon from "@images/criticalWarning.png"
 import ImageUploaderComponent from "src/Components/ImageUploader/ImageUploader";
 import { NavbarProps } from "src/Utils/NavbarProps";
-import { CategoryControllersApi, CategoryEntity, GameControllersApi, OptionEntity, OptionEntityTypeEnum, ProductControllersApi } from "restclient";
+import { CategoryControllersApi, CategoryEntity, CreateFileDto, GameControllersApi, OptionEntity, OptionEntityTypeEnum, ProductControllersApi } from "restclient";
 import { convertObjectToOptions } from "src/Utils/Options";
 import { ApiConfig } from "src/Gateway/Config";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
+import { ConvertUploadedToCreate } from "src/Utils/Fo;es";
 
 const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Продать')  
@@ -91,6 +92,9 @@ const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => {
             })
         })
         
+        let correctImages: CreateFileDto[] = ConvertUploadedToCreate(images)
+
+        console.log(correctImages)
         try { 
             await productApi.apiProductPost({ 
                 name: titleText, 
@@ -99,7 +103,7 @@ const ProductCreatePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 gameId: selectedGame,
                 price: price, 
                 attributes: resultAttributes,
-                images: images,   
+                images: correctImages,   
                 autoAnswers: distrubtion,  
             })
             setTimeout(() => { 

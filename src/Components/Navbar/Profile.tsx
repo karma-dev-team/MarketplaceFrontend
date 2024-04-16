@@ -36,7 +36,10 @@ const NavbarProfileComponent: React.FC<NavbarProfileComponentProps> = ({ user })
         console.log("Logout completed")
         setAccessTokenForClient("")
         deleteCookies(AuthKey)
-        navigate("/")
+        setTimeout(() => {
+            navigate("/")
+        }, 200)
+        window.location.reload()
     }
   }
 
