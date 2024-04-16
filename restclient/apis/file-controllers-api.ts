@@ -30,10 +30,10 @@ export const FileControllersApiAxiosParamCreator = function (configuration?: Con
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiFilesDownloadFileIdPost: async (fileId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiFilesDownloadFileIdGet: async (fileId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'fileId' is not null or undefined
             if (fileId === null || fileId === undefined) {
-                throw new RequiredError('fileId','Required parameter fileId was null or undefined when calling apiFilesDownloadFileIdPost.');
+                throw new RequiredError('fileId','Required parameter fileId was null or undefined when calling apiFilesDownloadFileIdGet.');
             }
             const localVarPath = `/api/files/download/{fileId}`
                 .replace(`{${"fileId"}}`, encodeURIComponent(String(fileId)));
@@ -43,7 +43,7 @@ export const FileControllersApiAxiosParamCreator = function (configuration?: Con
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -138,8 +138,8 @@ export const FileControllersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiFilesDownloadFileIdPost(fileId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await FileControllersApiAxiosParamCreator(configuration).apiFilesDownloadFileIdPost(fileId, options);
+        async apiFilesDownloadFileIdGet(fileId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await FileControllersApiAxiosParamCreator(configuration).apiFilesDownloadFileIdGet(fileId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -173,8 +173,8 @@ export const FileControllersApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiFilesDownloadFileIdPost(fileId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return FileControllersApiFp(configuration).apiFilesDownloadFileIdPost(fileId, options).then((request) => request(axios, basePath));
+        async apiFilesDownloadFileIdGet(fileId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return FileControllersApiFp(configuration).apiFilesDownloadFileIdGet(fileId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -202,8 +202,8 @@ export class FileControllersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof FileControllersApi
      */
-    public async apiFilesDownloadFileIdPost(fileId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return FileControllersApiFp(this.configuration).apiFilesDownloadFileIdPost(fileId, options).then((request) => request(this.axios, this.basePath));
+    public async apiFilesDownloadFileIdGet(fileId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return FileControllersApiFp(this.configuration).apiFilesDownloadFileIdGet(fileId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

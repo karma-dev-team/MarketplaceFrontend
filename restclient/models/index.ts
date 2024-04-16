@@ -1,3 +1,4 @@
+export * from './analytics-information-dto';
 export * from './base-event';
 export * from './category-entity';
 export * from './chat-entity';

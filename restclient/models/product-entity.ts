@@ -142,6 +142,12 @@ export interface ProductEntity {
     productViews: Array<ProductViewEntity>;
 
     /**
+     * @type {number}
+     * @memberof ProductEntity
+     */
+    productViewed: number;
+
+    /**
      * @type {Money}
      * @memberof ProductEntity
      */

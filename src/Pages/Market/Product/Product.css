@@ -99,10 +99,28 @@
 }
 
 .rowdliarazdela {
-    display: flex;
-    flex-direction: row;
+    display: grid;
     margin-bottom: 30px;
     gap: 20px;
+}
+
+
+@media (min-width: 1600px) {
+    .rowdliarazdela { 
+        grid-template: 1fr/repeat(6, 1fr);
+    }
+}
+
+@media (min-width: 1440px) {
+    .rowdliarazdela { 
+        grid-template: 1fr/repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1024px) { 
+    .rowdliarazdela { 
+        grid-template: 1fr/repeat(4, 1fr);
+    }
 }
 
 .sallerprofile {

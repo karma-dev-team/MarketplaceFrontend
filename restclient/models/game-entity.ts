@@ -105,7 +105,7 @@ export interface GameEntity {
      * @type {Array<CategoryEntity>}
      * @memberof GameEntity
      */
-    categories?: Array<CategoryEntity> | null;
+    categories: Array<CategoryEntity>;
 
     /**
      * @type {string}
