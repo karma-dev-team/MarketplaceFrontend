@@ -232,6 +232,7 @@
 .lefthuinia228 { 
     width: 630px;
     height: auto;
+    max-height: 400px;
 }
 
 .lefthuinia228 img { 
