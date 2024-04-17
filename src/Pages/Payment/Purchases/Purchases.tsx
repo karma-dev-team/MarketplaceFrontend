@@ -1,11 +1,8 @@
 import "./Purchases.css"
-import data from "@testdata/Wallet.json"
 import SelectorComponent from "src/Components/Selector/Selector";
 import { useEffect, useState } from "react";
 import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ProductCard from "src/Components/ProductCard/ProductCard";
-import testicon from "@images/testico123.png"
-import testsmth from "@images/test123.png"
 import { OptionType } from "src/Schemas/Option";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { useCookies } from "react-cookie";
@@ -22,7 +19,6 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [operationFilter, setOperationFilter] = useState<TransactonOperations>()
     const [cookies] = useCookies([AuthKey])
     let [purchases, setPurchases] = useState<PurchaseEntity[]>([]); 
-    const purchaseApi = new PurchaseControllersApi(ApiConfig)
     const navigate = useNavigate()
 
     const transactionStatuses: OptionType[] = [
@@ -56,18 +52,20 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         if (cookies.Authorization === undefined || cookies.Authorization === "") { 
             navigate("/login")
         }
-    }, [cookies])
+    }, [cookies, navigate])
 
     useEffect(() => { 
         (async () => { 
             try { 
+                
+                const purchaseApi = new PurchaseControllersApi(ApiConfig)
                 let purchaseResponse = await purchaseApi.apiPurchaseMeGet(statusFilter, undefined, operationFilter)
                 setPurchases(purchaseResponse.data)
             } catch (e) { 
                 console.error(e)
             }
         })()
-    }, [])
+    }, [statusFilter, operationFilter])
 
     return (
         <div className="root-purchases">
@@ -107,8 +105,7 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                         title={value.name}
                                         category={value.category.name}
                                         price={value.basePrice.amount}
-                                        game={value.category.name}
-                                        gameImage={value.game.logo?.id || ""}
+                                        game={value.game}
                                         productId={value.id}
                                         image={value.images[0].id}
                                         userStars={4} // Исправить

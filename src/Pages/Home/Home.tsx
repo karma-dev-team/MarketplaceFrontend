@@ -94,8 +94,7 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 title={value.name}
                                 category={value.category.name}
                                 price={value.basePrice.amount}
-                                game={value.category.name}
-                                gameImage={value.game.logo.id}
+                                game={value.game}
                                 productId={value.id}
                                 image={value.images[0].id}
                                 userStars={4} // Исправить

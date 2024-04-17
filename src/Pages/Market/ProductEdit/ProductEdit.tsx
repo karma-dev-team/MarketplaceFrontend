@@ -106,7 +106,7 @@ const ProductEditPage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
                 <h3 className="razdeli1337">Похожие товары</h3>
                 <div className="rowdliarazdela1337">
-                    {range(1, 3).map((value) => {
+                    {/* {range(1, 3).map((value) => {
                         return <ProductCard 
                             productId = "string" 
                             title = "Ключ"
@@ -117,7 +117,7 @@ const ProductEditPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             game = "Garry's Mod"
                             category = "Ключи"
                         />
-                    })}
+                    })} */}
                 </div>
             </div>
         </div>
