@@ -104,22 +104,28 @@
     gap: 20px;
 }
 
-
-@media (min-width: 1600px) {
-    .rowdliarazdela { 
-        grid-template: 1fr/repeat(6, 1fr);
-    }
+.arslangay { 
+    display: grid;
+    margin-bottom: 20px;
+    gap: 20px; 
 }
 
-@media (min-width: 1440px) {
-    .rowdliarazdela { 
+
+@media (min-width: 1600px) {
+    .rowdliarazdela, .arslangay { 
         grid-template: 1fr/repeat(5, 1fr);
     }
 }
 
-@media (min-width: 1024px) { 
-    .rowdliarazdela { 
+@media (min-width: 1440px) {
+    .rowdliarazdela, .arslangay { 
         grid-template: 1fr/repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) { 
+    .rowdliarazdela, .arslangay { 
+        grid-template: 1fr/repeat(3, 1fr);
     }
 }
 

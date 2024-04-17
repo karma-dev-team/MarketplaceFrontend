@@ -13,7 +13,6 @@
  */
 
 import { BaseEvent } from './base-event';
-import { ChatEntity } from './chat-entity';
 import { Money } from './money';
 import { ProductEntity } from './product-entity';
 import { TransactionEntity } from './transaction-entity';
@@ -93,10 +92,10 @@ export interface PurchaseEntity {
     completed: boolean;
 
     /**
-     * @type {ChatEntity}
+     * @type {string}
      * @memberof PurchaseEntity
      */
-    chat: ChatEntity;
+    chatId?: string | null;
 
     /**
      * @type {string}

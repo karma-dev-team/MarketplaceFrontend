@@ -30,6 +30,12 @@
         top: 40px;
     }
 
+    .user-reviews-list { 
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
     .user-avatar-image { 
         width: 156px;
         height: 156px;

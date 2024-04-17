@@ -37,9 +37,9 @@ const LeftNavbarComponent = (props: Props) => {
       { id: 1, icon: HartCartLogo, label: 'Товары', navpath: '/' },
       { id: 2, icon: SearchLogo, label: 'Каталог игр', navpath: '/games' },
       { id: 3, icon: ChatLogo, label: 'Сообщение', navpath: '/chats'  },
-      { id: 4, icon: CartLogo, label: 'Покупки', navpath: '/user/1/purchases/'  },
-      { id: 5, icon: CorzineLogo, label: 'Продажи', navpath: '/user/1/sales/'  },
-      { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика', navpath: '/user/1/analytics'  },
+      { id: 4, icon: CartLogo, label: 'Покупки', navpath: '/purchases/'  },
+      { id: 5, icon: CorzineLogo, label: 'Продажи', navpath: '/sales/'  },
+      { id: 6, icon: AnaliticLoopLogo, label: 'Аналитика', navpath: '/analytics'  },
       { id: 7, icon: PlusLogo, label: 'Продать', navpath: '/products/create'  },
       { id: 8, icon: cogsIcon, label: "Управление", navpath: "/control/approved"}
     ];
@@ -60,7 +60,7 @@ const LeftNavbarComponent = (props: Props) => {
           <div className="logo-section">
             <LogoComponent />
           </div>
-          {buttons.map((button, index) => {
+          {buttons.map((button) => {
             const contentLineAfterButton = buttonsLine.includes(button.id);
             return (
               <React.Fragment key={button.id}>

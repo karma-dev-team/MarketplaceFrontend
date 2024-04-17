@@ -7,9 +7,11 @@ import Modal from "src/Modals/Base/Base";
 import { useEffect, useState } from "react";
 import BuyModal from "src/Modals/Buy/Buy";
 import { NavbarProps } from "src/Utils/NavbarProps";
-import { AnalyticsApi, AnalyticsInformationDto, ProductControllersApi, ProductEntity, UserAnalyticsSchema } from "restclient";
+import { AnalyticsApi, AnalyticsInformationDto, ProductControllersApi, ProductEntity, ReviewControllersApi, ReviewEntity, UserAnalyticsSchema } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import { useParams } from "react-router-dom";
+import { ProductStatus } from "src/Schemas/Enums";
+import ReviewComponent from "src/Components/Review/Review";
 
 
 const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
@@ -28,26 +30,31 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [userAnalyitcsInfo, setUserAnalyitcsInfo] = useState<UserAnalyticsSchema>()
     const productApi = new ProductControllersApi(ApiConfig)
     const [productOptions, setProductOptions] = useState<{[key: string]: string}>({})
+    const [reviews, setReviews] = useState<ReviewEntity[]>([])
 
     useEffect(() => { 
         (async () => {
             const analyticsApi = new AnalyticsApi(ApiConfig)
-
+            const reviewsApi = new ReviewControllersApi(ApiConfig)
 
             try { 
                 let productResponse = await productApi.apiProductProductIdGet(productId || "")
                 setProduct(productResponse.data)
                 
-                let otherProductsResp = await productApi.apiProductGet(undefined, productResponse.data.category.id)
+                let otherProductsResp = await productApi.apiProductGet(
+                    undefined, productResponse.data.category.id, undefined, ProductStatus.Approved)
                 setOtherProducts(otherProductsResp.data)
 
                 let userAnalyticsResponse = await analyticsApi.apiAnalyticsUserUserIdAnalyticsGet(productResponse.data.createdBy.id || "")
                 setUserAnalyitcsInfo(userAnalyticsResponse.data)
 
-                let analyticsResponse = await analyticsApi.apiAnalyticsProductTempProductIdAnalyticsGet("", productResponse.data.id)
+                setProductOptions(JSON.parse(productResponse.data.attributes || "{}"))
+                let analyticsResponse = await analyticsApi.apiAnalyticsProductTempProductIdAnalyticsGet(productResponse.data.id, productResponse.data.id)
                 setAnalyticsInfo(analyticsResponse.data)
 
-                setProductOptions(JSON.parse(productResponse.data.attributes || "{}"))
+                let reviewsResponse = await reviewsApi.apiReviewUserUserIdGet(productResponse.data.createdBy.id, 0, 5)
+
+                setReviews(reviewsResponse.data)
             } catch (e) { 
                 console.error(e)
             }
@@ -127,7 +134,15 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 </div>
 
                 <h3 className="razdeli228">Отзывы</h3>
-                <div className="arslangay"></div>
+                <div className="arslangay">
+                    {reviews.map((value) => {
+                        return <ReviewComponent 
+                            review={value}
+                            userStars={4}
+                            product={product}
+                        />
+                    })}
+                </div>
 
                 <h3 className="razdeli228">Похожие товары</h3>
                 <div className="rowdliarazdela">
@@ -136,12 +151,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             return null; 
                         }
                         return <ProductCard 
-                            title={value.name}
-                            category={value.category.name}
-                            price={value.basePrice.amount}
-                            game={value.game}
-                            productId={value.id}
-                            image={value.images[0].id}
+                            product={value}
                             userStars={4} // Исправить
                         />
                     })}

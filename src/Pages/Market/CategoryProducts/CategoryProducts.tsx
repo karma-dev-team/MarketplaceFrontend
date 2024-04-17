@@ -113,12 +113,7 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 {products.map((value) => { 
                     return ( 
                         <ProductCardComponent 
-                            title={value.name}
-                            category={value.category.name}
-                            price={value.basePrice.amount}
-                            game={value.game}
-                            productId={value.id}
-                            image={value.images[0].id}
+                            product={value}
                             userStars={4} // Исправить
                         /> 
                     )

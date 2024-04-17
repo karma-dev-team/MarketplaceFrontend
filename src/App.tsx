@@ -53,7 +53,7 @@ function App() {
 			try { 
 				let response = await userApi.apiUserMeGet()
 				setUser(response.data)
-			} catch { 
+			} catch (e) { 
 				// If token doesn't exist, remove access token and mark as not authenticated
 				removeToken(removeCookies);
 				setIsAuthenticated(false);
@@ -94,9 +94,9 @@ function App() {
 					<Route path="/wallet" element={<WalletPage setCategory={setCategory} user={user}/>} />
 					<Route path="/games/:id" element={<GamePage setCategory={setCategory} user={user}/>}/>
 					<Route path="/user/:id" element={<UserPage setCategory={setCategory} user={user} />}/>
-					<Route path="/user/:id/purchases/" element={<PurchasesPage setCategory={setCategory} user={user}/>}/>
-					<Route path="/user/:id/sales/" element={<SalesPage setCategory={setCategory}/>}/>
-					<Route path="/user/:id/analytics" element={<AnalyticsPage setCategory={setCategory} user={user}/>}/>
+					<Route path="/purchases/" element={<PurchasesPage setCategory={setCategory} user={user}/>}/>
+					<Route path="/sales/" element={<SalesPage setCategory={setCategory}/>}/>
+					<Route path="/analytics" element={<AnalyticsPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/chats" element={<ChatsPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/chat/:chatId" element={<ChatsPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/product/:id" element={<ProductPage setCategory={setCategory} user={user}/>}/>

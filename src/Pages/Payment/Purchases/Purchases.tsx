@@ -1,22 +1,21 @@
 import "./Purchases.css"
 import SelectorComponent from "src/Components/Selector/Selector";
 import { useEffect, useState } from "react";
-import { TransactionStatus, TransactonOperations } from "src/Schemas/Enums";
 import ProductCard from "src/Components/ProductCard/ProductCard";
 import { OptionType } from "src/Schemas/Option";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
 import { useNavigate } from "react-router-dom";
-import { PurchaseControllersApi, PurchaseEntity } from "restclient";
+import { PurchaseControllersApi, PurchaseEntity, TransactionEntityOperationEnum, TransactionEntityStatusEnum } from "restclient";
 import { ApiConfig } from "src/Gateway/Config";
 
 
 
 const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Покупки') 
-    const [statusFilter, setStatusFilter] = useState<TransactionStatus>()
-    const [operationFilter, setOperationFilter] = useState<TransactonOperations>()
+    const [statusFilter, setStatusFilter] = useState<TransactionEntityStatusEnum>()
+    const [operationFilter, setOperationFilter] = useState<TransactionEntityOperationEnum>()
     const [cookies] = useCookies([AuthKey])
     let [purchases, setPurchases] = useState<PurchaseEntity[]>([]); 
     const navigate = useNavigate()
@@ -28,23 +27,23 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         },
         {
           label: "Не оплачен",
-          value: TransactionStatus.Failed,
+          value: TransactionEntityStatusEnum.Failed,
         },
         {
             label: "Оплачено",
-            value: TransactionStatus.Confirmed,
+            value: TransactionEntityStatusEnum.Confirmed,
         },
         {
           label: "В работе",
-          value: TransactionStatus.Pending,
+          value: TransactionEntityStatusEnum.Pending,
         },
         {
           label: "Возврат",
-          value: TransactionStatus.RolledBack,
+          value: TransactionEntityStatusEnum.RolledBack,
         },
         {
           label: "Истекшие",
-          value: TransactionStatus.Expired,
+          value: TransactionEntityStatusEnum.Expired,
         },
     ];
 
@@ -58,7 +57,7 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         (async () => { 
             try { 
                 const purchaseApi = new PurchaseControllersApi(ApiConfig)
-                let purchaseResponse = await purchaseApi.apiPurchaseMeGet(statusFilter, undefined, operationFilter)
+                let purchaseResponse = await purchaseApi.apiPurchaseMeGet(undefined, undefined, operationFilter, statusFilter)
                 setPurchases(purchaseResponse.data)
             } catch (e) { 
                 console.error(e)
@@ -73,8 +72,8 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 <div className="purchases-filter-selector">
                     <SelectorComponent options={transactionStatuses} width="auto" onChange={(value, action) => {
                         if (value === undefined || value === null) { return; }
-                        let parsedStatus = value.value as keyof typeof TransactionStatus;
-                        let status = TransactionStatus[parsedStatus]
+                        let parsedStatus = value.value as keyof typeof TransactionEntityStatusEnum;
+                        let status = TransactionEntityStatusEnum[parsedStatus]
 
                         setStatusFilter(status)
                     }}/>
@@ -92,7 +91,7 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             } 
                             
                             if (statusFilter !== undefined) { 
-                                if (statusFilter?.toLowerCase() !== purchase.status.toLowerCase()) { 
+                                if (statusFilter?.toLowerCase() !== purchase.transaction.status.toLowerCase()) { 
                                     return null; 
                                 }
                             }
@@ -101,12 +100,7 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             return ( 
                                 <div className="purchases-container">
                                     <ProductCard 
-                                        title={value.name}
-                                        category={value.category.name}
-                                        price={value.basePrice.amount}
-                                        game={value.game}
-                                        productId={value.id}
-                                        image={value.images[0].id}
+                                        product={value}
                                         userStars={4} // Исправить
                                     />
                                 </div>

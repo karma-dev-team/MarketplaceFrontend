@@ -13,6 +13,12 @@
     margin-bottom: 20px;
 }
 
+.head-image {
+    max-width: 50px;
+    border-radius: 5px;
+    max-height: 50px;
+}
+
 .nav-dot {
     width: 13px;
     height: 26px;

@@ -98,6 +98,12 @@ export interface MessageEntity {
     review?: ReviewEntity;
 
     /**
+     * @type {string}
+     * @memberof MessageEntity
+     */
+    reviewId?: string | null;
+
+    /**
      * @type {PurchaseEntity}
      * @memberof MessageEntity
      */

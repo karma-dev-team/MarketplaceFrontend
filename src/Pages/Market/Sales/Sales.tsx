@@ -57,13 +57,13 @@ const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     useEffect(() => { 
         (async () => { 
             try { 
-                let purchaseResponse = await purchaseApi.apiPurchaseMeGet(statusFilter)
+                let purchaseResponse = await purchaseApi.apiPurchaseMeGet(undefined, undefined, operationFilter, statusFilter)
                 setPurchases(purchaseResponse.data)
             } catch (e) { 
                 console.error(e)
             }
         })()
-    }, [])
+    }, [statusFilter, operationFilter])
 
     return (
         <div className="root-sales">
@@ -100,12 +100,7 @@ const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             return ( 
                                 <div className="sales-container">
                                     <ProductCard 
-                                        title={value.name}
-                                        category={value.category.name}
-                                        price={value.basePrice.amount}
-                                        game={value.game}
-                                        productId={value.id}
-                                        image={value.images[0].id}
+                                        product={value}
                                         userStars={4} // Исправить
                                     />
                                 </div>

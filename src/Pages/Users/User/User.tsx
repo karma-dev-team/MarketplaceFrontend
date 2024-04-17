@@ -43,7 +43,7 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 let analyticsResponse = await analyticsApi.apiAnalyticsUserUserIdAnalyticsGet(userId)
                 setAnalytics(analyticsResponse.data)
                 let purchasesResponse = await purchaseApi.apiPurchaseMeGet(
-                    undefined, undefined, undefined, undefined, undefined, userId)
+                    undefined, undefined, undefined, undefined, undefined, undefined, userId)
                 setPurchases(purchasesResponse.data)
             } catch (e) { 
                 console.error(e)
@@ -157,19 +157,14 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             ? <div>
                                 <SearchbarComponent searchText={searchText} onChange={setSearchText} placeholder="Поиск продуктов ..."/>
                                 <div className="user-products">
-                                    {products.map((value) => { 
+                                    {products.length > 0 ? products.map((value) => { 
                                         return ( 
                                             <ProductCardComponent 
-                                                title={value.name}
-                                                category={value.category.name}
-                                                price={value.basePrice.amount}
-                                                game={value.game}
-                                                productId={value.id}
-                                                image={value.images[0].id}
+                                                product={value}
                                                 userStars={4} // Исправить
                                             />
                                         )
-                                    })}
+                                    }) : <p className="none-text">У пользвателя нету товаров</p> }
                                 </div>
                             </div> 
                             : <div className="user-reviews-list">

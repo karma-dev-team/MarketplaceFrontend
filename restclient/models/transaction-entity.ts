@@ -98,12 +98,6 @@ export interface TransactionEntity {
     completedAt?: Date | null;
 
     /**
-     * @type {string}
-     * @memberof TransactionEntity
-     */
-    statusDescription: string;
-
-    /**
      * @type {Money}
      * @memberof TransactionEntity
      */

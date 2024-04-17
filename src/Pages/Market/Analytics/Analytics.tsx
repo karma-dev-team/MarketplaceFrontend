@@ -181,8 +181,8 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 name={value.name}
                                 views={value.productViewed}
                                 description={value.description}
-                                acceptButtonClick={() => navigate(`/products/${value.id}/edit`)}
-                                badButtonClick={() => deleteProduct(value.id)}
+                                acceptButtonClick={() => deleteProduct(value.id)}
+                                badButtonClick={() => navigate(`/product/${value.id}/edit`)}
                                 badButtonText="Изменить"
                                 acceptButtonText="Удалить"
                             />

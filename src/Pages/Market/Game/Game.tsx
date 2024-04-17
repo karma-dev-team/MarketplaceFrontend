@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { GameControllersApi, GameEntity, ProductControllersApi, ProductEntity } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
+import { ProductStatus } from "src/Schemas/Enums";
 
 const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => { 
     props.setCategory('Товары') 
@@ -26,7 +27,7 @@ const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 let gameResponse = await gameApi.apiGameGameIdGet(gameId || "")
                 setGame(gameResponse.data)
 
-                let products = await productApi.apiProductGet(undefined, undefined, gameResponse.data.id)
+                let products = await productApi.apiProductGet(undefined, undefined, gameResponse.data.id, ProductStatus.Approved)
                 setProducts(products.data)
             } catch (e) { 
                 // then this game does not exists
@@ -48,8 +49,8 @@ const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => {
             <div className="gradient" style={{backgroundImage: `url(${asFileUrl(game?.banner?.id)})`}}>
             </div>
                 <div className="head-info123">
-                    <img src={gamelogo} alt="gamelogo" />
-                    <p className="game-test123">Garry's mod is a greatest game</p>
+                    <img src={asFileUrl(game?.logo.id)} alt="gamelogo" className="head-image"/>
+                    <p className="game-test123">{game?.name}</p>
                     <div className="categorykeys">
                         {game?.categories?.map((value) => {
                             return <div className="key" onClick={() => navigate(`/category/${value.id}`)}>{value.name}</div>
@@ -65,12 +66,7 @@ const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 <div className="products123">
                     {products.map((value) => {
                         return <ProductCard 
-                            title={value.name}
-                            category={value.category.name}
-                            price={value.basePrice.amount}
-                            game={value.game}
-                            productId={value.id}
-                            image={value.images[0].id}
+                            product={value}
                             userStars={4} // Исправить
                         />
                     })}
