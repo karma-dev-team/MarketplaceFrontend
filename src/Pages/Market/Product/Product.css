@@ -130,6 +130,10 @@
     align-items: center;
 }
 
+.sallerprofile img { 
+    border-radius: 20px;
+}
+
 .salleropisanie {
     display: flex;
     flex-direction: column;

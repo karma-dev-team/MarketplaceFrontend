@@ -111,7 +111,9 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
                 <h3 className="razdeli228">Продавец</h3>
                 <div className="sallerprofile">
-                    <img src={asFileUrl(product?.createdBy.image?.id)} alt="" width={50} height={50} />
+                    {product?.createdBy.image !== undefined || product?.createdBy.image !== null ? 
+                        <img src={asFileUrl(product?.createdBy.image?.id || "")} alt="" width={50} height={50} />
+                    : null}
                     <div className="salleropisanie">
                         <h4 className="sallername">{product?.createdBy.userName}</h4>
                         <div className="karobkadliaotziva">
