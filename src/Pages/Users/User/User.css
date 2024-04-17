@@ -211,9 +211,28 @@
     }
 
     .user-products { 
-        display: flex;
-        gap: 25px; 
+        display: grid;
+        gap: 20px;
+        grid-template: 1fr / repeat(3, 1fr); 
         margin-top: 20px; 
+    }
+
+    @media (min-width: 1600px) {
+        .user-products { 
+            grid-template: 1fr/repeat(5, 1fr);
+        }
+    }
+    
+    @media (min-width: 1440px) {
+        .user-products { 
+            grid-template: 1fr/repeat(4, 1fr);
+        }
+    }
+    
+    @media (min-width: 1024px) { 
+        .user-products { 
+            grid-template: 1fr/repeat(3, 1fr);
+        }
     }
     
     .user-content { 

@@ -1,11 +1,11 @@
 import "./Games.css" 
 import { Dispatch, useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import { GameControllersApi, GameEntity } from "restclient"
 import NavigationMapComponent from "src/Components/NavigationMap/NavigationMap"
 import SearchbarComponent from "src/Components/Search/Search"
 import { ApiConfig, asFileUrl } from "src/Gateway/Config"
-import { NavbarCategories, NavbarProps } from "src/Utils/NavbarProps";
+import { NavbarCategories } from "src/Utils/NavbarProps";
 
 type props = { type: "Application" | "Game", setCategory: Dispatch<NavbarCategories>}
 
@@ -13,7 +13,15 @@ const GamesPage: React.FC<props> = (props: props) => {
     props.setCategory('Каталог игр')
     const [type, setType] = useState<"Application" | "Game">(props.type);
     const navigate = useNavigate();
-    const [searchText, setSearchText] = useState<string>("");
+    const [searchParams] = useSearchParams();
+    const fromQuerySearchText = searchParams.get("search")
+
+    const [searchText, tempSetSearchText] = useState<string>(fromQuerySearchText || "");
+
+    const setSearchText = (value: string) => { 
+        tempSetSearchText(value)
+        searchParams.set("string", value)
+    }
     const [games, setGames] = useState<GameEntity[]>([]);
     const [gamesByFirstCharacters, setGamesByFirstCharacters] = useState<{ [name: string]: GameEntity[] }>({});
 

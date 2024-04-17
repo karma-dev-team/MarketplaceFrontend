@@ -26,8 +26,8 @@ const ControlGamesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     }, [cookies, navigate])
 
     useEffect(() => {
-        
-    })
+
+    }, [searchText])
 
     return (
         <div className="root-controlgames">

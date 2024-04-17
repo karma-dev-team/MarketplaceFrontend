@@ -4,6 +4,7 @@
     background-color: #202027; /* Dark background */
     border: 1px solid #2F3241; /* Slightly lighter border for contrast */
     border-radius: 4px;
+    position: relative;
     width: 300px;
 }
 
@@ -13,6 +14,15 @@
     flex-grow: 1;
     background-color: #202027; /* Match the background color */
     color: #a8a8a8; /* Light text color for visibility */
+}
+
+.search-result-container { 
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex: 1 1 auto;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .search-input input::placeholder {
