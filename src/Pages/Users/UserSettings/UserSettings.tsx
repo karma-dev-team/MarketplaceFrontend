@@ -12,7 +12,7 @@ import avatarIcon from "@images/cameraicon.png";
 import { ConvertUploadedToCreate } from "src/Utils/Files";
 
 const UserSettingsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>('');
   const [user, setUser] = useState<UserEntity | undefined>();
   const [cookies] = useCookies([AuthKey]);
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ const UserSettingsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
       try {
         const response = await userApi.apiUserMeGet();
         setUser(response.data);
+        setText(response.data.description || text)
       } catch (error) {
         console.error(error);
       }
@@ -115,7 +116,6 @@ const UserSettingsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
             <InputField
               height={71}
               width={338}
-              titleText="ввв"
               placeholder="Пару предложении о себе"
               type="textarea"
               text={text}
