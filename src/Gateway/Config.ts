@@ -16,7 +16,7 @@ export function setToken(token: string, setCookie: any) {
 
 export function removeToken(removeCookie: any) { 
     ApiConfig.accessToken = undefined
-    removeCookie(AuthKey)
+    removeCookie(AuthKey, { path: "/"})
 }
 
 export function setAccessTokenForClient(token: string) { 

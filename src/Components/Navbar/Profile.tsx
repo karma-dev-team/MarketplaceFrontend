@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { UserEntity } from "restclient";
-import { asFileUrl, setAccessTokenForClient } from "src/Gateway/Config";
+import { asFileUrl, removeToken, setAccessTokenForClient } from "src/Gateway/Config";
 import arrow from "@images/Arrow.svg";
 import settingsIcon from "@images/settings.svg"
 import helpIcon from "@images/help.svg"
@@ -34,8 +34,7 @@ const NavbarProfileComponent: React.FC<NavbarProfileComponentProps> = ({ user })
   const logoutAction = () => { 
     if (cookies.Authorization !== undefined || cookies.Authorization !== "") { 
         console.log("Logout completed")
-        setAccessTokenForClient("")
-        deleteCookies(AuthKey)
+        removeToken(deleteCookies)
         setTimeout(() => {
             navigate("/")
         }, 200)
