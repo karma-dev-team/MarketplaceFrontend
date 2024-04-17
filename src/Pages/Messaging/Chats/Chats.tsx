@@ -6,11 +6,13 @@ import VerifiedIcon from "src/Components/Icons/VerfiedIcon";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
-import { ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, MessageEntity, MessagesApi } from "restclient";
+import { ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, MessageEntity, MessagesApi, PurchaseControllersApi, PurchaseEntity } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import karmaLogo from "@images/karmastore-logo.png"
 import { format } from "date-fns";
 import { ru } from 'date-fns/locale'
+import Modal from "src/Modals/Base/Base";
+import PurchaseConfirmModal from "src/Modals/Messaging/PurchaseConfirm";
 
 type iconProps = { width?: string, height?: string }
 
@@ -39,6 +41,8 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [selectedFileBinary, setFileBinary] = useState<string>()
     const [chats, setChats] = useState<ChatEntity[]>([])
     const [currentFileScheme, setCurrentFileScheme] = useState<FileEntity>()
+    const [currentPurchase, setCurrentPurchase] = useState<PurchaseEntity>()
+    const [reviewOpen, setReviewOpen] = useState<boolean>(false)
 
     useEffect(() => { 
         (async () => {
@@ -62,7 +66,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 console.error(e)
             }
         })()
-    }, [currentChat])
+    }, [currentChat, chatId])
 
     const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
@@ -118,6 +122,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         }
     };
     
+
     useEffect(() => {
         if (cookies.Authorization === undefined || cookies.Authorization === "") { 
             navigate("/login")
@@ -126,6 +131,13 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
     return (
         <div className="root-chats">
+            <Modal isOpen={reviewOpen} onClose={() => setReviewOpen(false)}>
+                <PurchaseConfirmModal 
+                    productId={currentPurchase?.product.id || ""}
+                    purchaseId={currentPurchase?.id || ""}
+                    price={currentPurchase?.product.currentPrice.amount || 0}
+                />
+            </Modal>
             <div className="chats-list">
                 {chats.map((value) => { 
                     return (
@@ -181,7 +193,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 return (
                                     <div className={value.fromUser.id === props.user?.id ? "user-message" : "other-message"}>
                                         <div className={`chat-message `}> 
-                                            {value.image !== undefined ? <div className="message-image-container">
+                                            {value.image !== undefined || value.image !== null ? <div className="message-image-container">
                                                 <img src={asFileUrl(value.image?.id || "")} alt="" className="message-image"/>
                                             </div> : null}
                                             <span className="chat-message-text">{value.text}</span>
@@ -194,6 +206,14 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                                         </span>
                                                 </div>
                                             </span>
+                                            {value.type === "Purchase" ? 
+                                                <button className="purchase-confirm" onClick={() => { 
+                                                    setCurrentPurchase(value.purchase)
+                                                    setReviewOpen(true)
+                                                }}>
+                                                    Подвердить
+                                                </button>
+                                            : null}
                                         </div>
                                     </div>
                                 )

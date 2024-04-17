@@ -20,7 +20,7 @@
   max-width: 80%;
   animation: fadeIn 0.3s ease forwards;
   background-color: #1E1F29;
-  min-height: 300px;
+  min-height: 150px;
   z-index: 1000;
   min-width: 450px; 
 }

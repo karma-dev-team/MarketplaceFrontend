@@ -206,6 +206,10 @@
     background-color: #191920; 
 }
 
+.purchase-confirm { 
+    margin-bottom: 15px;
+}
+
 .current-chat-messages::-webkit-scrollbar-thumb {
     background-color: #2F3241;
     border-radius: 10px; 
