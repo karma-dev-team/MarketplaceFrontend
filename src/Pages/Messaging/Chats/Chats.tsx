@@ -136,6 +136,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                     productId={currentPurchase?.product.id || ""}
                     purchaseId={currentPurchase?.id || ""}
                     price={currentPurchase?.product.currentPrice.amount || 0}
+                    onClose={() => setReviewOpen(false)}
                 />
             </Modal>
             <div className="chats-list">
@@ -193,7 +194,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 return (
                                     <div className={value.fromUser.id === props.user?.id ? "user-message" : "other-message"}>
                                         <div className={`chat-message `}> 
-                                            {value.image !== undefined || value.image !== null ? <div className="message-image-container">
+                                            {value.image !== null ? <div className="message-image-container">
                                                 <img src={asFileUrl(value.image?.id || "")} alt="" className="message-image"/>
                                             </div> : null}
                                             <span className="chat-message-text">{value.text}</span>
@@ -206,7 +207,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                                         </span>
                                                 </div>
                                             </span>
-                                            {value.type === "Purchase" ? 
+                                            {value.type === "Purchase" && value.purchase?.status !== "Success" ? 
                                                 <button className="purchase-confirm" onClick={() => { 
                                                     setCurrentPurchase(value.purchase)
                                                     setReviewOpen(true)

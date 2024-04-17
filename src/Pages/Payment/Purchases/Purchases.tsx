@@ -57,7 +57,6 @@ const PurchasesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     useEffect(() => { 
         (async () => { 
             try { 
-                
                 const purchaseApi = new PurchaseControllersApi(ApiConfig)
                 let purchaseResponse = await purchaseApi.apiPurchaseMeGet(statusFilter, undefined, operationFilter)
                 setPurchases(purchaseResponse.data)

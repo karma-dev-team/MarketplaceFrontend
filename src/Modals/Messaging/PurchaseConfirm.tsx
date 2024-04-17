@@ -8,13 +8,14 @@ type props = {
     purchaseId: string, 
     productId: string, 
     price: number, 
-    currency?: string
+    currency?: string, 
+    onClose: () => void
 }
 
 const PurchaseConfirmModal: React.FC<props> = (props: props) => { 
     const [text, setText] = useState<string>('')
 
-    const confirmPurchase = () => { 
+    const confirmPurchase = async () => { 
         if (props.purchaseId === "" || props.productId === "") { 
             console.error("Purchase id or product id are none")
             return; 
@@ -23,12 +24,13 @@ const PurchaseConfirmModal: React.FC<props> = (props: props) => {
         const purchaseApi = new PurchaseControllersApi(ApiConfig)
 
         try { 
-            purchaseApi.apiPurchasePurchaseIdConfirmPost(props.purchaseId, { 
+            await purchaseApi.apiPurchasePurchaseIdConfirmPost(props.purchaseId, { 
                 purchaseId: props.purchaseId, 
                 productId: props.productId, 
                 rate: 5, 
                 rateText: text
             })
+            
         } catch (e) { 
             console.error(e)
         }
