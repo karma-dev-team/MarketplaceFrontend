@@ -33,7 +33,7 @@ const HomePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 var appsResponse = await gamesApi.apiGameGet("Application")
                 setApplications(appsResponse.data)
 
-                var response = await productApi.apiProductGet();
+                var response = await productApi.apiProductGet(undefined, undefined, undefined, "Approved");
                 setProducts(response.data)
             } catch (e) { 
                 console.error(e)

@@ -79,7 +79,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 </div>
                 <div className="razedenitel228">
                     <div className="lefthuinia228">
-                        <img src={producthuinia} alt="product img" />
+                        <img src={asFileUrl(product?.images[0].id)} alt="product img" />
                     </div>
                     <div className="righthuinia228">
                         <p className="cenanatovar">{product?.currentPrice?.amount || 0} ₽</p>

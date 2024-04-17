@@ -225,6 +225,18 @@
     color: #FFFFFF;
 }
 
+.lefthuinia228 { 
+    width: 630px;
+    height: auto;
+}
+
+.lefthuinia228 img { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
 .kupittovar228:hover {
     background: #a84122;
 }
