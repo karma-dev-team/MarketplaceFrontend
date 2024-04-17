@@ -1,7 +1,6 @@
 import "./Product.css"
 import ProductCard from "src/Components/ProductCard/ProductCard";
 import eye from "@images/eye.png"
-import producthuinia from "@images/product_huinia.png"
 import StarsComponent from "src/Components/Stars/Stars";
 import Modal from "src/Modals/Base/Base";
 import { useEffect, useState } from "react";
@@ -10,7 +9,6 @@ import { NavbarProps } from "src/Utils/NavbarProps";
 import { AnalyticsApi, AnalyticsInformationDto, ProductControllersApi, ProductEntity, ReviewControllersApi, ReviewEntity, UserAnalyticsSchema } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import { useParams } from "react-router-dom";
-import { ProductStatus } from "src/Schemas/Enums";
 import ReviewComponent from "src/Components/Review/Review";
 
 
@@ -25,15 +23,15 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const { id } = useParams()
     const productId = id; 
     const [product, setProduct] = useState<ProductEntity>()
-    const [otherProducts, setOtherProducts] = useState<ProductEntity[]>()
+    const [otherProducts, setOtherProducts] = useState<ProductEntity[]>([])
     const [analyticsInfo, setAnalyticsInfo] = useState<AnalyticsInformationDto>(); 
     const [userAnalyitcsInfo, setUserAnalyitcsInfo] = useState<UserAnalyticsSchema>()
-    const productApi = new ProductControllersApi(ApiConfig)
     const [productOptions, setProductOptions] = useState<{[key: string]: string}>({})
     const [reviews, setReviews] = useState<ReviewEntity[]>([])
 
     useEffect(() => { 
         (async () => {
+            const productApi = new ProductControllersApi(ApiConfig)
             const analyticsApi = new AnalyticsApi(ApiConfig)
             const reviewsApi = new ReviewControllersApi(ApiConfig)
 
@@ -42,7 +40,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 setProduct(productResponse.data)
                 
                 let otherProductsResp = await productApi.apiProductGet(
-                    undefined, productResponse.data.category.id, undefined, ProductStatus.Approved)
+                    undefined, productResponse.data.category.id, undefined)
                 setOtherProducts(otherProductsResp.data)
 
                 let userAnalyticsResponse = await analyticsApi.apiAnalyticsUserUserIdAnalyticsGet(productResponse.data.createdBy.id || "")
@@ -59,7 +57,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 console.error(e)
             }
         })()
-    }, [])
+    }, [productId])
 
     return (
         <div className="root-product">
@@ -146,7 +144,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
                 <h3 className="razdeli228">Похожие товары</h3>
                 <div className="rowdliarazdela">
-                    {otherProducts?.map((value) => {
+                    {otherProducts.length > 0 ? otherProducts?.map((value) => {
                         if (value.id === productId) { 
                             return null; 
                         }
@@ -154,7 +152,7 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             product={value}
                             userStars={4} // Исправить
                         />
-                    })}
+                    }) : <p className="none-text">Отсвутсвуют похожие продукты</p>}
                 </div>
             </div>
         </div>

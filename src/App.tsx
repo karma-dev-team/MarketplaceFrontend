@@ -33,6 +33,8 @@ import { useCookies } from 'react-cookie';
 import { AuthorizationCookieKey } from './Utils/Consts';
 import { UserControllersApi, UserEntity } from 'restclient';
 import ProductApprovePage from './Pages/Control/ProductApprove/ProductApprove';
+import GameSettingsPage from './Pages/Control/ControlGames/GameSettings';
+import ControlGamesPage from './Pages/Control/ControlGames/ControlGames';
 
 function App() {	
 	const location = useLocation();
@@ -104,6 +106,7 @@ function App() {
 					<Route path="/product/:id/edit/edit" element={<ProductEditPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/about" element={<AboutPage setCategory={setCategory} user={user}/>}/>
 					<Route path="/control/approved" element={<ProductApprovePage setCategory={setCategory} user={user}/>}/>
+					<Route path="/control/games" element={<ControlGamesPage setCategory={setCategory} user={user}/>}/>
 				</Routes>
 			</div>
 		</div>

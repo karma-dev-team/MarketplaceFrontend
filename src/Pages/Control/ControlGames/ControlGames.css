@@ -1,0 +1,12 @@
+.root-controlgames { 
+    padding: 24px; 
+}
+
+.controlgames-container { 
+    display: flex;
+    gap: 20px; 
+}
+
+.controlgames-content { 
+    width: 100%;
+}
