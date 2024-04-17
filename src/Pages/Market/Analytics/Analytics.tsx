@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import ItemsSortComponent from "src/Components/ItemsSorting/ItemsSort";
 import SearchbarComponent from "src/Components/Search/Search";
 import { NavbarProps } from "src/Utils/NavbarProps";
-import { CategoryControllersApi, GameControllersApi, ProductControllersApi, ProductEntity } from "restclient";
+import { AnalyticsApi, AnalyticsInformationDto, CategoryControllersApi, GameControllersApi, ProductControllersApi, ProductEntity, UserAnalyticsSchema } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import { convertObjectToOptions } from "src/Utils/Options";
 import { useCookies } from "react-cookie";
@@ -24,6 +24,8 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [selectedCategory, setSelectedCategory] = useState<string>()
     const [searchText, setSearchText] = useState<string>()
     const [products, setProducts] = useState<ProductEntity[]>([])
+    const [userAnalyticsInfo, setUserAnalyticsInfo] = useState<UserAnalyticsSchema>(); 
+    const [analyticsInfo, setAnalyticsInfo] = useState<AnalyticsInformationDto>()
     const [cookies] = useCookies([AuthKey])
 
     useEffect(() => { 
@@ -64,6 +66,26 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         })()
     }, [searchText, props.user, selectedCategory, selectedGame])
 
+    useEffect(() => { 
+        (async () => {
+            try { 
+                if (props.user?.id === undefined) { 
+                    return; 
+                }
+                const analyticsApi = new AnalyticsApi(ApiConfig)
+
+                let userAnalyticsResponse = await analyticsApi.apiAnalyticsUserUserIdAnalyticsGet(props.user?.id)
+                setUserAnalyticsInfo(userAnalyticsResponse.data)
+
+                // will be changed
+                let analyticsInfo = await analyticsApi.apiAnalyticsProductTempProductIdAnalyticsGet("")
+                setAnalyticsInfo(analyticsInfo.data)
+            } catch (e) { 
+                console.error(e)
+            }
+        })()
+    }, [props.user])
+
     const deleteProduct = async (productId: string) => { 
         const productApi = new ProductControllersApi(ApiConfig)
 
@@ -85,31 +107,30 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <div className="korobkadliakorobok123">
                             <div className="levaia-korobka123">
                                 <div className="pervaiakorobka123">
-                                    <p className="textvkorobke123"> </p>
                                     <p className="textvkorobke123">Просмотров <br/>обьявления</p>
                                     <p className="textvkorobke123">Оплачено <br/>покупок</p>
                                 </div>
                                 <div className="vtoraiakorobka123">
                                     <p className="textvkorobke123">Всего</p>
-                                    <p className="numbervkorobke123">0</p>
-                                    <p className="numbervkorobke123">0</p>
+                                    <p className="numbervkorobke123">{analyticsInfo?.totalViews || 0}</p>
+                                    <p className="numbervkorobke123">{userAnalyticsInfo?.reviewsCount || 0}</p>
                                 </div>
                                 <div className="tretiaiakorobka123">
                                     <p className="textvkorobke123">За неделю</p>
-                                    <p className="numbervkorobke123">0</p>
-                                    <p className="numbervkorobke123">0</p>
+                                    <p className="numbervkorobke123">{analyticsInfo?.viewsInWeek || 0}</p>
+                                    <p className="numbervkorobke123">{userAnalyticsInfo?.reviewsCount || 0}</p>
                                 </div>
                             </div>
 
                             <div className="sredniaia-korobka123">
                                 <div className="korobkaprostotak321">
                                     <p className="stringstyle321">Выручка</p>
-                                    <div className="korobkaprostotak123"><p className="stringstyle123">0 ₽</p></div>
+                                    <div className="korobkaprostotak123"><p className="stringstyle123">{analyticsInfo?.revenue.amount || 0} ₽</p></div>
                                 </div>
                                 
                                 <div className="korobkaprostotak321">
                                     <p className="stringstyle321">Обороты</p>
-                                    <div className="korobkaprostotak123"><p className="stringstyle123">0 ₽</p></div>
+                                    <div className="korobkaprostotak123"><p className="stringstyle123">{analyticsInfo?.revenue.amount || 0} ₽</p></div>
                                 </div>
                             </div>
 
@@ -117,14 +138,14 @@ const AnalyticsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 <div className="korobkaprostotak321">
                                     <p className="stringstyle321">Средняя оценка</p>
                                     <div className="ocenkamid123">
-                                        <p className="stringstyle123">4.0</p>
-                                        <StarsComponent stars={4} width={15} height={15}/>
+                                        <p className="stringstyle123">{userAnalyticsInfo?.avarageRating}</p>
+                                        <StarsComponent stars={userAnalyticsInfo?.avarageRating || 0} width={15} height={15} reviewsCount={userAnalyticsInfo?.reviewsCount || 0}/>
                                     </div>
                                 </div>
 
                                 <div className="korobkaprostotak321">
                                     <p className="stringstyle321">Уникальных покупателей</p>
-                                    <div className="korobkaprostotak123"><p className="stringstyle123">123</p></div>
+                                    <div className="korobkaprostotak123"><p className="stringstyle123">1</p></div>
                                 </div>
                             </div>
                         </div>
