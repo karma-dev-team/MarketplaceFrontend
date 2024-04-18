@@ -204,6 +204,8 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                             {value.image !== null && value.image !== undefined ? <div className="message-image-container">
                                                 <img src={asFileUrl(value.image?.id || "")} alt="" className="message-image"/>
                                             </div> : null}
+                                            {value.type === "Review" ? 
+                                                <span className="chat-message-text">{value.text}</span> : null }
                                             {value.type === "Purchase"  && value.purchase?.status !== "Success" ? <div className="message-product">
                                                 <div className="message-product-image-container">
                                                     <img 
@@ -224,7 +226,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                                         </p>
                                                         <StarsComponent stars={4} width={20} height={20}/>
                                                     </div>
-                                                    {value.purchase?.createdById !== value.fromUser.id ? <button className="purchase-confirm" onClick={() => { 
+                                                    {value.purchase?.transaction.createdByUser.id === value.fromUser.id ? <button className="purchase-confirm" onClick={() => { 
                                                         setCurrentPurchase(value.purchase)
                                                         setReviewOpen(true)
                                                     }}>

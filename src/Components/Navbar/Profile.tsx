@@ -53,7 +53,7 @@ const NavbarProfileComponent: React.FC<NavbarProfileComponentProps> = ({ user })
       {isMenuOpen && (
         <div className={`navbar-profile-dropdown`}>
           <div className="user-info-dropdown" onClick={() => navigate(`/user/${user.id}`)}>
-          {user.image !== null ? <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="navbar-user-image dropdown-avatar" /> : 
+          {user.image !== null && user.image !== undefined ? <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="navbar-user-image dropdown-avatar" /> : 
             <div className="user-avatar-none"></div> }
             <Link to={`/user/${user.id}`} className="dropdown-user-name">
                 <p>{user.userName}</p>
