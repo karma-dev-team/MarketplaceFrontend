@@ -270,6 +270,7 @@
 .user-message .chat-message-text { 
     font-size: 1.1rem;
     line-height: 155%;
+    max-width: 500px;
 }
 
 .message-added-files { 

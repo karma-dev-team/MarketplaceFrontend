@@ -99,16 +99,21 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         if (messageText.length === 0 && (selectedFileBinary === "" || selectedFileBinary === undefined)) { 
             return; 
         }
-        let newMessageResponse = await messagesApi.apiMessagesChatChatIdSendPost(chatId, { 
-            chatId: chatId, 
-            text: messageText, 
-            image: currentFileScheme !== undefined ? { 
-                fileId: currentFileScheme.id, 
-            } : undefined, 
-        })
+        try { 
+            let newMessageResponse = await messagesApi.apiMessagesChatChatIdSendPost(chatId, { 
+                chatId: chatId, 
+                text: messageText, 
+                image: currentFileScheme !== undefined ? { 
+                    fileId: currentFileScheme.id, 
+                } : undefined, 
+            })
 
-        let newMessages = [newMessageResponse.data, ...currentMessages]
-        setMessages(newMessages)
+            let newMessages = [newMessageResponse.data, ...currentMessages]
+            setMessages(newMessages)
+        } catch (e) { 
+            console.error(e)
+        }
+
         setFileBinary(undefined)
         setMessageText('');
         setSelectedFile(null);
