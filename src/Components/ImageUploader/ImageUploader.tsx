@@ -132,6 +132,10 @@ const ImageUploaderComponent: React.FC<Props> = (props) => {
                         ...props.images.slice(0, index),
                         ...props.images.slice(index + 1, props.images.length)
                     ])
+                    setImageBinaries([ 
+                        ...imageBinaries.slice(0, index),
+                        ...imageBinaries.slice(index + 1, props.images.length)
+                    ])
                 }}>
                     <img src={binIcon} alt="" width={35} height={35}/>
                 </div>
