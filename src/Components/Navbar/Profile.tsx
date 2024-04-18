@@ -46,13 +46,15 @@ const NavbarProfileComponent: React.FC<NavbarProfileComponentProps> = ({ user })
     <div className="root-navbarprofile">
       <div onClick={toggleMenu} className="navbar-profile-trigger">
         <p>{user.userName}</p>
-        <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="navbar-user-image" />
+        {user.image !== null ? <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="navbar-user-image" /> : 
+        <div className="user-avatar-none"></div> }
         <img src={arrow} alt="Dropdown Arrow" width={14} height={14} className={`navbar-dropdown-arrow ${isMenuOpen ? 'open' : ''}`} />
       </div>
       {isMenuOpen && (
         <div className={`navbar-profile-dropdown`}>
           <div className="user-info-dropdown" onClick={() => navigate(`/user/${user.id}`)}>
-            <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="dropdown-avatar" />
+          {user.image !== null ? <img src={asFileUrl(user.image?.id)} alt="User Avatar" width={30} height={30} className="navbar-user-image dropdown-avatar" /> : 
+            <div className="user-avatar-none"></div> }
             <Link to={`/user/${user.id}`} className="dropdown-user-name">
                 <p>{user.userName}</p>
                 <p>Мой профиль</p>

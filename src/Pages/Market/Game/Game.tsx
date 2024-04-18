@@ -44,7 +44,7 @@ const GamePage: React.FC<NavbarProps> = (props: NavbarProps) => {
                 <div><p className="nav-dot">•</p></div>
                 <p className="nav-info1">Игры</p>
                 <p className="nav-dot">•</p>
-                <p className="nav-info2">Garry's mod</p>
+                <p className="nav-info2">{game?.name}</p>
             </div>
             <div className="gradient" style={{backgroundImage: `url(${asFileUrl(game?.banner?.id)})`}}>
             </div>

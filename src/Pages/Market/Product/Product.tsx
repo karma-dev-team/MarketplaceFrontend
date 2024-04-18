@@ -6,7 +6,7 @@ import Modal from "src/Modals/Base/Base";
 import { useEffect, useState } from "react";
 import BuyModal from "src/Modals/Buy/Buy";
 import { NavbarProps } from "src/Utils/NavbarProps";
-import { AnalyticsApi, AnalyticsInformationDto, ProductControllersApi, ProductEntity, ReviewControllersApi, ReviewEntity, UserAnalyticsSchema } from "restclient";
+import { AnalyticsApi, AnalyticsInformationDto, ProductControllersApi, ProductEntity, ProductEntityStatusEnum, ReviewControllersApi, ReviewEntity, UserAnalyticsSchema } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import { useParams } from "react-router-dom";
 import ReviewComponent from "src/Components/Review/Review";
@@ -97,7 +97,12 @@ const ProductPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 <p className="numberotzivov">1</p>
                             </div>
                         </div>
-                        <button className="kupittovar228" onClick={(e) => openBuyModal()}>Купить</button>
+                        
+                        {product?.status === ProductEntityStatusEnum.Sold ? 
+                            <div className="product-is-sold">
+                                Куплен
+                            </div>
+                        : <button className="kupittovar228" onClick={(e) => openBuyModal()}>Купить</button> }
                     </div>
                 </div>
 

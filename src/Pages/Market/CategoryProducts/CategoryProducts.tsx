@@ -83,8 +83,8 @@ const CategoryProductsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
 
     elements.set("Главная", "/")
     elements.set("Игры", "/games")
-    elements.set(data.game, `/games/${game?.id}`)
-    elements.set(data.category.title, `/category/${id}`)
+    elements.set(game?.name || "", `/games/${game?.id}`)
+    elements.set(currentCategory?.name || "", `/category/${id}`)
 
     return (
         <div className="root-categoryproducts">

@@ -207,7 +207,19 @@
 }
 
 .purchase-confirm { 
-    margin-bottom: 15px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    color: white; 
+    background-color: #FF5722; 
+    outline: none;
+    width: 100%;
+    margin-top: 15px;
+    border: none; 
+    cursor: pointer;
+}
+
+.purchase-confirm:hover { 
+    background-color: rgb(207, 66, 24);
 }
 
 .current-chat-messages::-webkit-scrollbar-thumb {
@@ -271,6 +283,51 @@
     color: white;
     font-size: 1.125rem;
     line-height: 155%;
+}
+
+.message-product { 
+    display: flex;
+    margin-top: 10px; 
+}
+
+.message-product-name { 
+    display: flex;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: white;
+    font-size: 1.125rem;
+    line-height: 155%;
+    min-height: 2.4em;
+}
+
+.message-product-stars-counter { 
+    margin-right: 4px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.message-product-stars { 
+    display: flex;
+    align-items: center;
+}
+
+.message-product-image-container { 
+    width: 200px;
+    max-height: 138px;
+    object-fit: cover;
+    object-position: center center;
+    margin-right: 10px;
+}
+
+.message-product-image { 
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.message-product * { 
+    color: white; 
 }
 
 .message-added-file-container { 

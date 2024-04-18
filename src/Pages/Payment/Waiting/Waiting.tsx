@@ -11,21 +11,17 @@ const WaitingPage: React.FC<NavbarProps> = (props: NavbarProps) => {
   props.setCategory('Покупки');
   const { id } = useParams();
   const transactionId = id;
-  const [retryCount, setRetryCount] = useState(0);
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
-      if (transactionId === undefined) {
-        throw new Error("no transaction id");
-      }
       const transactionApi = new TransactionControllersApi(ApiConfig);
 
       try {
-        const response = await transactionApi.apiTransactionTxIdPost(
-          transactionId,
+        await transactionApi.apiTransactionTxIdPost(
+          transactionId || "",
           {
-            transactionId: transactionId,
+            transactionId: transactionId || "",
           }
         );
         navigate("/chats")
@@ -33,20 +29,12 @@ const WaitingPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         // Handle response
       } catch (e) {
         console.error(e);
-        // Retry logic
-        if (retryCount < 3) {
-          setTimeout(() => {
-            setRetryCount(retryCount + 1);
-          }, 2000); // Retry after 5 seconds
-        } else {
-          console.error("Max retries exceeded");
-          // Handle max retries exceeded
-        }
       }
     };
 
     fetchData();
-  }, [id, retryCount]);
+    console.log("I fire once")
+  }, []);
 
   return (
     <div className="root-waiting">

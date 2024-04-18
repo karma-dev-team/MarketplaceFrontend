@@ -6,13 +6,14 @@ import VerifiedIcon from "src/Components/Icons/VerfiedIcon";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
-import { ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, MessageEntity, MessagesApi, PurchaseControllersApi, PurchaseEntity } from "restclient";
+import { AnalyticsApi, ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, MessageEntity, MessagesApi, PurchaseControllersApi, PurchaseEntity, UserAnalyticsSchema } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import karmaLogo from "@images/karmastore-logo.png"
 import { format } from "date-fns";
 import { ru } from 'date-fns/locale'
 import Modal from "src/Modals/Base/Base";
 import PurchaseConfirmModal from "src/Modals/Messaging/PurchaseConfirm";
+import StarsComponent from "src/Components/Stars/Stars";
 
 type iconProps = { width?: string, height?: string }
 
@@ -43,6 +44,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [currentFileScheme, setCurrentFileScheme] = useState<FileEntity>()
     const [currentPurchase, setCurrentPurchase] = useState<PurchaseEntity>()
     const [reviewOpen, setReviewOpen] = useState<boolean>(false)
+    const [userAnalyticsInfo, setUserAnalyitcs] = useState<UserAnalyticsSchema>()
 
     useEffect(() => { 
         (async () => {
@@ -194,10 +196,40 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                 return (
                                     <div className={value.fromUser.id === props.user?.id ? "user-message" : "other-message"}>
                                         <div className={`chat-message `}> 
-                                            {value.image !== null ? <div className="message-image-container">
+                                            {value.image !== null && value.image !== undefined ? <div className="message-image-container">
                                                 <img src={asFileUrl(value.image?.id || "")} alt="" className="message-image"/>
                                             </div> : null}
-                                            <span className="chat-message-text">{value.text}</span>
+                                            {value.type === "Purchase"  && value.purchase?.status !== "Success" ? <div className="message-product">
+                                                <div className="message-product-image-container">
+                                                    <img 
+                                                        src={
+                                                            (value.purchase?.product.images.length || 0) > 0
+                                                            ? asFileUrl(value.purchase?.product.images[0].id)
+                                                            : ""} alt="" className="message-product-image"
+                                                    />
+                                                </div>
+                                                <div className="message-product-info">
+                                                    <h3>{value.purchase?.product.currentPrice.amount || 0} ₽</h3>
+                                                    <p className="message-product-name">
+                                                        {value.purchase?.product.name}
+                                                    </p>
+                                                    <div className="message-product-stars">
+                                                        <p className="message-product-stars-counter">
+                                                            {4}
+                                                        </p>
+                                                        <StarsComponent stars={4} width={20} height={20}/>
+                                                    </div>
+                                                    <button className="purchase-confirm" onClick={() => { 
+                                                        setCurrentPurchase(value.purchase)
+                                                        setReviewOpen(true)
+                                                    }}>
+                                                        Подвердить
+                                                    </button>
+                                                </div>
+                                            </div> : null}
+                                            {value.type === "Text" ? 
+                                                <span className="chat-message-text">{value.text}</span>
+                                            : null}
                                             <span className="chat-message-corner">
                                                 <div className="chat-message-date-container">
                                                     <span className="chat-message-date">
@@ -207,14 +239,6 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                                         </span>
                                                 </div>
                                             </span>
-                                            {value.type === "Purchase" && value.purchase?.status !== "Success" ? 
-                                                <button className="purchase-confirm" onClick={() => { 
-                                                    setCurrentPurchase(value.purchase)
-                                                    setReviewOpen(true)
-                                                }}>
-                                                    Подвердить
-                                                </button>
-                                            : null}
                                         </div>
                                     </div>
                                 )

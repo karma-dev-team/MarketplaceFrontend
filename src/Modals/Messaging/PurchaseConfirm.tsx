@@ -30,7 +30,7 @@ const PurchaseConfirmModal: React.FC<props> = (props: props) => {
                 rate: 5, 
                 rateText: text
             })
-            
+            props.onClose()
         } catch (e) { 
             console.error(e)
         }

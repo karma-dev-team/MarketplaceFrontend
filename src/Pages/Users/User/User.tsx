@@ -68,16 +68,19 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     return (
         <div className="root-user">
             <div className="root-user-banner">
-                <img src={asFileUrl(user?.image?.id)} alt="" className="banner-image"/>
+                <img src={
+                    user?.image !== null
+                        ? asFileUrl(user?.image?.id) 
+                        : "https://t4.ftcdn.net/jpg/04/61/47/03/360_F_461470323_6TMQSkCCs9XQoTtyer8VCsFypxwRiDGU.jpg"} alt="" className="banner-image"/>
             </div>
 
             <div className="user-container">
                 <div className="user-info">
                     <div className="user-avatar">
                         <div className="user-avatar-container">
-                            {user?.image === undefined 
+                            {user?.image === undefined || user?.image === null
                                 ? <div className="user-avatar-none"></div>
-                                : <img className="user-avatar-image" src={asFileUrl(user?.image.id || "")} alt={user?.image.fileName}/>}
+                                : <img className="user-avatar-image" src={asFileUrl(user?.image?.id || "")} alt={user?.image?.fileName}/>}
                         </div>
                     </div>
                     <div className="user-main-info">

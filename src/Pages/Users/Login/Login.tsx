@@ -22,7 +22,7 @@ const LoginPage: React.FC = () => {
         if (cookies.Authorization !== undefined) { 
             navigate("/")
         }
-    }, [cookies])
+    }, [cookies, navigate])
 
     const handleLogin = async () => { 
         const authApi = new AuthControllersApi(ApiConfig)

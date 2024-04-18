@@ -62,7 +62,7 @@ const BuyModal: React.FC<props> = (props: props) => {
                 providerName: providerName, 
             })
 
-            navigate(purchase.data.transaction.props?.paymentUrl || "")
+            navigate(purchase.data.transaction.props?.paymentUrl || "", { replace: true })
         } catch (e) { 
             setError(String(e))
             console.error(e)

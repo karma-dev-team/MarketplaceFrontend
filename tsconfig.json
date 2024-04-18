@@ -16,6 +16,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "sourceMap": true,  // disable this in production!!!
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",

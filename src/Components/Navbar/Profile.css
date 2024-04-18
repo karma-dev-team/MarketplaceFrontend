@@ -11,6 +11,13 @@
 .navbar-profile-trigger p {
     margin-right: 10px;
 }
+
+.user-avatar-none { 
+    background-color: gray;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
   
 .navbar-user-image {
     width: 30px;
@@ -41,6 +48,7 @@
     display: flex;
     align-items: center;
     margin: 10px;
+    gap: 7px; 
     border-radius: 4px;
     padding: 7px 4px; 
 }
