@@ -224,12 +224,13 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                                         </p>
                                                         <StarsComponent stars={4} width={20} height={20}/>
                                                     </div>
-                                                    <button className="purchase-confirm" onClick={() => { 
+                                                    {value.purchase?.createdById !== value.fromUser.id ? <button className="purchase-confirm" onClick={() => { 
                                                         setCurrentPurchase(value.purchase)
                                                         setReviewOpen(true)
                                                     }}>
                                                         Подвердить
                                                     </button>
+                                                    : null } 
                                                 </div>
                                             </div> : null}
                                             {value.type === "Text" ? 
