@@ -104,6 +104,12 @@ export interface ChatEntity {
     type: ChatEntityTypeEnum;
 
     /**
+     * @type {Array<MessageEntity>}
+     * @memberof ChatEntity
+     */
+    messages?: Array<MessageEntity> | null;
+
+    /**
      * @type {MessageEntity}
      * @memberof ChatEntity
      */

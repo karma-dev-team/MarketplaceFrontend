@@ -62,7 +62,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     useEffect(() => { 
         (async () => {
             try { 
-                let messageResponse = await messagesApi.apiMessagesChatChatIdMessagesGet(chatId || "")
+                let messageResponse = await messagesApi.apiMessagesChatChatIdMessagesGet(chatId || "", 0, 20)
                 setMessages(messageResponse.data)
             } catch (e) { 
                 console.error(e)
