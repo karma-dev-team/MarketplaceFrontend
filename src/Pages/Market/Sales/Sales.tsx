@@ -57,7 +57,8 @@ const SalesPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     useEffect(() => { 
         (async () => { 
             try { 
-                let purchaseResponse = await purchaseApi.apiPurchaseMeGet(undefined, undefined, operationFilter, statusFilter)
+                let purchaseResponse = await purchaseApi.apiPurchaseMeGet(
+                    undefined, undefined, operationFilter, statusFilter, undefined, undefined, undefined, props.user?.id)
                 setPurchases(purchaseResponse.data)
             } catch (e) { 
                 console.error(e)
