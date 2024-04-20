@@ -4,6 +4,7 @@ import { asFileUrl } from "src/Gateway/Config"
 import StarsComponent from "../Stars/Stars"
 import { format } from "date-fns"
 import { ru } from "date-fns/locale"
+import { formatDefault } from "src/Utils/Date"
 
 type props = { 
     review: ReviewEntity, 
@@ -29,7 +30,7 @@ const ReviewComponent: React.FC<props> = (props: props) => {
                         </div>
                     </div>
                     <div className="review-header-right">
-                        {format(review.createdAt || "", 'eeee в HH:mm', { locale: ru })}
+                        {formatDefault(review.createdAt)}
                     </div>
                 </div>
                 <div className="review-content">

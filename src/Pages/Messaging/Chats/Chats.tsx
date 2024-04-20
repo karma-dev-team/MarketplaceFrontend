@@ -6,18 +6,18 @@ import VerifiedIcon from "src/Components/Icons/VerfiedIcon";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { useCookies } from "react-cookie";
 import { AuthKey } from "src/Gateway/Consts";
-import { AnalyticsApi, ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, MessageEntity, MessagesApi, PurchaseControllersApi, PurchaseEntity, UserAnalyticsSchema } from "restclient";
+import { ChatControllersApi, ChatEntity, FileControllersApi, FileEntity, MessageEntity, MessagesApi, PurchaseEntity } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
 import karmaLogo from "@images/karmastore-logo.png"
-import { format } from "date-fns";
-import { ru } from 'date-fns/locale'
 import Modal from "src/Modals/Base/Base";
 import PurchaseConfirmModal from "src/Modals/Messaging/PurchaseConfirm";
-import StarsComponent from "src/Components/Stars/Stars";
+import { formatDefault } from "src/Utils/Date";
+import MessageComponent from "src/Components/Message/Message";
+import ChatInputField from "src/Components/ChatInputField/ChatInputField";
 
 type iconProps = { width?: string, height?: string }
 
-const SendIcon: React.FC<iconProps> = (props: iconProps) => { 
+const SendIcon: React.FC<iconProps> = () => { 
     return ( 
         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 15 20" fill="none">
             <path d="M0.849336 0.0606498L18.9337 8.97178C19.2254 9.11554 19.3454 9.46858 19.2016 9.76032C19.1443 9.87672 19.0501 9.97092 18.9337 10.0283L0.849708 18.9392C0.557965 19.083 0.204923 18.963 0.0611659 18.6713C-0.00169501 18.5437 -0.0162668 18.3977 0.0201422 18.2602L1.81186 11.4942C1.87111 11.2704 2.05596 11.1021 2.28428 11.0641L10.3886 9.71277C10.4879 9.69622 10.57 9.63067 10.6094 9.54158L10.6306 9.47073C10.6536 9.33324 10.5772 9.20214 10.4539 9.15066L10.3886 9.13189L2.23852 7.77354C2.01011 7.73547 1.82521 7.56708 1.76601 7.34321L0.0197339 0.739521C-0.0634541 0.425102 0.123996 0.102778 0.438415 0.0195896C0.575854 -0.0167737 0.721809 -0.00218951 0.849336 0.0606498Z" fill="#0066FF"/>
@@ -44,7 +44,6 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
     const [currentFileScheme, setCurrentFileScheme] = useState<FileEntity>()
     const [currentPurchase, setCurrentPurchase] = useState<PurchaseEntity>()
     const [reviewOpen, setReviewOpen] = useState<boolean>(false)
-    const [userAnalyticsInfo, setUserAnalyitcs] = useState<UserAnalyticsSchema>()
 
     useEffect(() => { 
         (async () => {
@@ -119,17 +118,6 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
         setSelectedFile(null);
     };
 
-    const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-        // Check if Enter key is pressed
-        if (e.key === 'Enter') {
-            // Prevent default behavior of the Enter key (e.g., form submission)
-            e.preventDefault();
-            // Call the function to send the message
-            handleSendMessage();
-        }
-    };
-    
-
     useEffect(() => {
         if (cookies.Authorization === undefined || cookies.Authorization === "") { 
             navigate("/login")
@@ -152,8 +140,7 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                         <Link
                             to={`/chat/${value.id}`}
                             className={`chat-container ${
-                            currentChat?.id === value.id ? "active" : ""
-                            }`}
+                            currentChat?.id === value.id ? "active" : ""}`}
                             key={value.id}
                         >
                             <div className="chat-image">
@@ -169,13 +156,12 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                     </p>
                                     {value.lastMessage !== null ? 
                                         <p className="chat-last-message-date">
-                                            {value.lastMessage?.createdAt !== null || value.lastMessage?.createdAt !== undefined 
-                                                ? format(value.lastMessage?.createdAt || "", "eeee", { locale: ru }) : null}
+                                            {formatDefault(value.lastMessage?.createdAt)}
                                         </p>
                                     : null }
                                 </div>
                                 <div className="chat-last-message">
-                                    {value.lastMessage?.text || ""}
+                                    {value.lastMessage?.text}
                                 </div>
                             </div>
                         </Link>
@@ -197,99 +183,26 @@ const ChatsPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             </div>
                         </div>
                         <div className="current-chat-messages">
-                            {currentMessages.map(value => { 
+                            {currentMessages.map(message => { 
                                 return (
-                                    <div className={value.fromUser.id === props.user?.id ? "user-message" : "other-message"}>
-                                        <div className={`chat-message `}> 
-                                            {value.image !== null && value.image !== undefined ? <div className="message-image-container">
-                                                <img src={asFileUrl(value.image?.id || "")} alt="" className="message-image"/>
-                                            </div> : null}
-                                            {value.type === "Review" ? 
-                                                <span className="chat-message-text">{value.text}</span> : null }
-                                            {value.type === "Purchase"  && value.purchase?.status !== "Success" ? <div className="message-product">
-                                                <div className="message-product-image-container">
-                                                    <img 
-                                                        src={
-                                                            (value.purchase?.product.images.length || 0) > 0
-                                                            ? asFileUrl(value.purchase?.product.images[0].id)
-                                                            : ""} alt="" className="message-product-image"
-                                                    />
-                                                </div>
-                                                <div className="message-product-info">
-                                                    <h3>{value.purchase?.product.currentPrice.amount || 0} ₽</h3>
-                                                    <p className="message-product-name">
-                                                        {value.purchase?.product.name}
-                                                    </p>
-                                                    <div className="message-product-stars">
-                                                        <p className="message-product-stars-counter">
-                                                            {4}
-                                                        </p>
-                                                        <StarsComponent stars={4} width={20} height={20}/>
-                                                    </div>
-                                                    {value.purchase?.transaction.createdByUser.id === value.fromUser.id ? <button className="purchase-confirm" onClick={() => { 
-                                                        setCurrentPurchase(value.purchase)
-                                                        setReviewOpen(true)
-                                                    }}>
-                                                        Подвердить
-                                                    </button>
-                                                    : null } 
-                                                </div>
-                                            </div> : null}
-                                            {value.type === "Text" ? 
-                                                <span className="chat-message-text">{value.text}</span>
-                                            : null}
-                                            <span className="chat-message-corner">
-                                                <div className="chat-message-date-container">
-                                                    <span className="chat-message-date">
-                                                        {
-                                                            value.createdAt !== null || value.createdAt !== undefined 
-                                                                ? format(value.createdAt || "", "eeee", { locale: ru }) : null}
-                                                        </span>
-                                                </div>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    <MessageComponent 
+                                        message={message}
+                                        setCurrentPurchase={setCurrentPurchase}
+                                        setReviewOpen={setReviewOpen}
+                                        currentUser={props.user}
+                                    /> 
                                 )
                             })}
                         </div>
-                        {selectedFileBinary !== undefined && selectedFileBinary !== "" ? <div className="message-added-files">
-                            <div className="message-added-file-container">
-                                <img src={selectedFileBinary} alt="" className="message-added-file-image" height={"100%"}/>
-                                <img src={plusIcon} alt="close-icon" width={25} height={25} className="message-file-clear" onClick={() => { 
-                                    setSelectedFile(null)
-                                    setFileBinary("")
-                                }}/>
-                            </div>
-                        </div> : null }
-                        <div className="message-input">
-                            <div className="message-input-container">
-                                <div className="message-add-file">
-                                    <label htmlFor="fileInput" className="fileInputLabel">
-                                        <input 
-                                            type="file" 
-                                            id="fileInput" 
-                                            className="message-input-file"      
-                                            accept="image/png,.png,image/jpeg,.jpg,.jpeg"
-                                            onChange={handleFileChange} 
-                                            style={{ display: 'none' }} // Hide the input element
-                                        />
-                                        <img src={plusIcon} alt="Add File" className="add-file-icon" width={30} height={30}/>
-                                    </label>
-                                </div>
-                                <input
-                                    type="text"
-                                    className="message-input-text"
-                                    placeholder="Написать сообщение..."
-                                    value={messageText}
-                                    onChange={(e) => setMessageText(e.target.value)}
-                                    onKeyDown={handleKeyPress}
-                                    autoFocus={true} 
-                                />
-                            </div>
-                            <button className="message-send" onClick={handleSendMessage}>
-                                <SendIcon width="25" height="25"/>
-                            </button>
-                        </div>
+                        <ChatInputField 
+                            selectedFileBinary={selectedFileBinary}
+                            setFileBinary={setFileBinary}
+                            setMessageText={setMessageText}
+                            handleFileChange={handleFileChange}
+                            handleSendMessage={handleSendMessage}
+                            setSelectedFile={setSelectedFile}
+                            messageText={messageText}
+                        />
                     </div>
                  : <div className="chat-select-message">
                         <svg width="125" height="119" viewBox="0 0 125 119" fill="none" xmlns="http://www.w3.org/2000/svg">

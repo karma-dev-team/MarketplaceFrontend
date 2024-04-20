@@ -9,9 +9,8 @@ import SearchbarComponent from "src/Components/Search/Search";
 import { NavbarProps } from "src/Utils/NavbarProps";
 import { AnalyticsApi, ProductControllersApi, ProductEntity, PurchaseControllersApi, PurchaseEntity, ReviewControllersApi, ReviewEntity, UserAnalyticsSchema, UserControllersApi, UserEntity } from "restclient";
 import { ApiConfig, asFileUrl } from "src/Gateway/Config";
-import { format } from "date-fns";
-import { ru } from "date-fns/locale";
 import { useNavigate, useParams } from "react-router-dom";
+import { formatDefault } from "src/Utils/Date";
 
 type userPageStatuses = "Products" | "Reviews"
 
@@ -129,7 +128,7 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                             </h4>
                             <div className="user-description-content">{
                                 user?.createdAt !== null || user?.createdAt !== undefined 
-                                    ? format(user?.createdAt || Date.now(), "eeee", { locale: ru }) : null}</div>
+                                    ? formatDefault(user?.createdAt || Date.now()) : null}</div>
                         </div>
                     </div>
                 </div>
@@ -189,7 +188,7 @@ const UserPage: React.FC<NavbarProps> = (props: NavbarProps) => {
                                                 <p className="user-review-content">{value.text}</p>
                                                 <p className="user-review-createdat">{
                                                             value.createdAt !== null || value.createdAt !== undefined 
-                                                                ? format(value.createdAt || "", "eeee", { locale: ru }) : null}</p>
+                                                                ? formatDefault(value.createdAt) : null}</p>
                                             </div>
                                         </div>
                                     )

@@ -1,0 +1,99 @@
+
+.message-input-container { 
+    display: flex;
+    height: 55px;
+    width: 100%;
+    padding: 5px 15px; 
+    align-items: center;
+    background-color: #2F3241;
+    border-radius: 11px;
+}
+
+.message-input { 
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    margin: 10px 20px;
+    margin-bottom: 27px; 
+}
+
+.message-add-file {
+    position: relative;
+    display: inline-block;
+}
+
+.message-input-file {
+    display: none;
+}
+
+.add-file-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.uploaded-file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.message-added-file-container { 
+    display: flex;
+    position: relative;
+    max-height: 200px;
+}
+
+.message-added-files { 
+    margin-left: 20px; 
+}
+
+.message-added-file-image { 
+    object-fit: cover;
+    object-position: center center;
+    max-height: 200px;
+    min-height: 100px;
+}
+
+.message-file-clear { 
+    margin-left: -25px; 
+    rotate: 45deg;
+    cursor: pointer;
+}
+
+.message-input-text { 
+    background-color: transparent;
+    color: #A8A8A8; 
+    border: none; 
+    margin-left: 10px; 
+    width: 100%;
+    font-size: 16px;
+    animation: blink-caret 1s infinite; /* Blinking cursor animation */
+}
+
+.message-input-text:focus { 
+    outline: none; /* Remove outline on focus */
+    border: none; 
+}
+
+.message-send { 
+    margin-left: 15px;
+    background-color: #2F3241;
+    border-radius: 50%; 
+    border: none; 
+    outline: none;
+    padding: 15px;
+    align-content: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.message-send:hover { 
+    background-color: #3a3b45;
+}
+
+@keyframes blink-caret { 
+    50% {
+        border-color: transparent; /* Hide cursor */
+    }
+}
